@@ -1,0 +1,17 @@
+{
+  "name": "Denksport & Logikspiele",
+  "short_name": "Denksport",
+  "lang": "de-DE",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8f9f2",
+  "theme_color": "#0b6e4f",
+  "icons": [
+    {
+      "src": "/assets/img/og-default.svg",
+      "sizes": "1200x630",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
