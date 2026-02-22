@@ -1,38 +1,38 @@
-# Denksport & Logikspiele (statische Web-App)
+# klickspiele.de – static game portal (vanilla HTML/CSS/JS)
 
-Dieses Projekt ist ein mobil-optimiertes, deutsches Spieleportal mit 30 Browser-Spielen, SEO-Basis (Meta, JSON-LD, Sitemap, Robots), Cookie-Einwilligung und optionaler PWA-Unterstützung.
+This repository is a fully static, mobile-first game portal with per-game static pages for SEO.
 
-## Projektstruktur
+## Structure
 
-- `/index.html` Startseite
-- `/spiele/<slug>/index.html` 30 Spielseiten
-- `/assets/css/styles.css` globales Styling
-- `/assets/js/core/*` Kernlogik (Theme, Consent, Seite)
-- `/assets/js/games/*` Spiel-Engines
-- `/impressum/`, `/datenschutz/`, `/kontakt/` Recht & Kontakt
-- `/sitemap.xml`, `/robots.txt`, `/manifest.webmanifest`, `/sw.js`
+- `/index.html` – homepage (categories + top games)
+- `/{category}/index.html` – category hubs
+- `/{category}/{game-id}/index.html` – individual game page
+- `/{category}/{game-id}/game.js` – game type selector (connects page to engine)
+- `/{category}/{game-id}/page.js` – page wiring (modes, scoring, history, share, tracking)
+- `/assets/css/site.css` – global CSS
+- `/assets/js/site.js` – global JS (cookie consent + scroll depth)
+- `/assets/js/tracking.js` – local analytics abstraction (no external calls)
+- `/assets/js/engine.js` – tiny game engine implementations
+- `/data/games.json` – dataset (source of truth)
+- `/sitemap.xml`, `/robots.txt`, `/manifest.webmanifest`
 
-## Lokal starten
+## Local dev server
 
-1. In den Projektordner wechseln.
-2. Einen statischen Server starten, z. B.:
+From the project root:
 
 ```bash
-python3 -m http.server 8080
+python3 -m http.server 8080 --directory .
 ```
 
-3. Im Browser öffnen: `http://localhost:8080`
+Open: http://localhost:8080
 
-## Deployment (statisches Hosting)
+## Tracking
 
-Du kannst das Projekt direkt auf Netlify, Vercel (Static), GitHub Pages, Cloudflare Pages oder jedem klassischen Webspace mit HTML-Auslieferung deployen.
+Nothing fires without consent. After accepting the cookie banner, events are logged to the console:
+- start, restart, mode_change, score_submit, share, faq_open, scroll_depth_50, ad_impression
 
-1. Dateien unverändert hochladen.
-2. Sicherstellen, dass Root-Auslieferung aktiv ist (kein Unterordner-Offset).
-3. Eigene Domain eintragen (z. B. `www.deine-domain.de`).
-4. In `assets/js/core/game-data.js` und `assets/js/core/game-data.mjs` die `SITE_URL` auf deine echte Domain ändern.
-5. Danach `node scripts/generate-pages.mjs` erneut ausführen, damit Canonicals und Sitemap korrekt zur Domain passen.
+Swap tracking output in `/assets/js/tracking.js` if you want Plausible/GA later.
 
-## Rechtlicher Hinweis
+## Rebuild
 
-Die Seiten in `/impressum/` und `/datenschutz/` enthalten Platzhalter und müssen vor produktivem Einsatz rechtlich geprüft und vollständig ersetzt werden.
+A minimal scaffold exists in `tools/build.py`. The current output is already generated; extend that script if you want full regeneration from templates.
