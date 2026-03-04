@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#F57C00">
+
+  <title>Schiffe versenken kostenlos online spielen – klickspiele.de</title>
+  <meta name="description" content="Schiffe versenken gratis online spielen – klassisches Strategiespiel im Browser, kein Download, kein Login. Gegen Computer oder zu zweit auf einem Gerät.">
+  <link rel="canonical" href="https://klickspiele.de/schiffe-versenken">
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website">
+  <meta property="og:site_name"   content="klickspiele.de">
+  <meta property="og:title"       content="Schiffe versenken kostenlos online spielen">
+  <meta property="og:description" content="Klassisches Schiffe versenken im Browser – kostenlos, ohne Anmeldung. Spiel gegen den Computer oder local mit einem Freund.">
+  <meta property="og:url"         content="https://klickspiele.de/schiffe-versenken">
+  <meta property="og:image"       content="https://klickspiele.de/og-schiffe-versenken.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="Schiffe versenken kostenlos online spielen">
+  <meta name="twitter:description" content="Klassisches Schiffe versenken im Browser – kostenlos, ohne Anmeldung.">
+  <meta name="twitter:image"       content="https://klickspiele.de/og-schiffe-versenken.png">
+
+  <link rel="stylesheet" href="./style.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23F57C00'/><path d='M8 4 L8 24 L13 19 L16.5 27 L19.5 25.5 L16 17.5 L22 17.5 Z' fill='white'/></svg>">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Schiffe versenken",
+      "url": "https://klickspiele.de/schiffe-versenken",
+      "description": "Kostenloses Schiffe versenken Spiel im Browser. Kein Download, kein Login.",
+      "applicationCategory": "Game",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "klickspiele.de",
+        "url": "https://klickspiele.de"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Game",
+      "name": "Schiffe versenken",
+      "description": "Klassisches Strategie-Brettspiel als kostenlose Browserversion.",
+      "genre": ["Strategie", "Brettspiel"],
+      "numberOfPlayers": "1-2",
+      "url": "https://klickspiele.de/schiffe-versenken",
+      "image": "https://klickspiele.de/og-schiffe-versenken.png"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type":"ListItem","position":1,"name":"klickspiele.de","item":"https://klickspiele.de" },
+        { "@type":"ListItem","position":2,"name":"Schiffe versenken","item":"https://klickspiele.de/schiffe-versenken" }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Wie funktioniert Schiffe versenken?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Jeder Spieler platziert zunächst seine Schiffe auf einem 10×10-Gitter. Abwechselnd werden Koordinaten auf dem gegnerischen Feld angesagt. Trifft man ein Schiff, wird es markiert. Sind alle Felder eines Schiffes getroffen, gilt es als versenkt. Wer zuerst alle Schiffe des Gegners versenkt, gewinnt."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Welche Schiffe gibt es im klassischen Schiffe versenken?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Im klassischen Spiel gibt es: 1 Flugzeugträger (5 Felder), 1 Schlachtschiff (4 Felder), 2 Kreuzer (je 3 Felder) und 1 Zerstörer (2 Felder)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kann ich Schiffe versenken alleine spielen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja! Unser Spiel bietet drei KI-Schwierigkeitsstufen: Leicht (zufällige Züge), Mittel (gezielte Suche nach Treffern) und Schwer (strategische Mustererkennung mit Schachbrett-Suchmuster)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Dürfen Schiffe nebeneinander stehen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In der Standard-Variante dürfen Schiffe nicht direkt aneinandergrenzen – weder seitlich noch diagonal. Zwischen je zwei Schiffen muss mindestens ein Feld Abstand bestehen."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wie gewinne ich gegen den Computer auf Schwer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Platziere deine Schiffe unregelmäßig und vermeide Randpositionen, da die KI im Schachbrettmuster sucht. Schieße selbst systematisch: Nutze das Schachbrettmuster (jedes zweite Feld) in der Suchphase, um alle 2er-Schiffe sicher zu finden. Sobald du einen Treffer landest, schiesse in alle vier Richtungen, um das Schiff zu versenken."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wie funktioniert der 2-Spieler-Modus?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Im Lokal-Modus teilen sich beide Spieler ein Gerät. Nach dem Platzieren der Schiffe wird der Bildschirm jeweils übergeben. Ein Übergabe-Bildschirm verhindert, dass man die Schiffe des Gegners sehen kann."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Was ist die Daily Challenge?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Jeden Tag gibt es eine neue Herausforderung mit fest platziertem Computergegner (Seed basiert auf dem Datum). So können alle Spieler weltweit denselben Gegner herausfordern und ihre Punktzahlen vergleichen."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wird der Spielstand gespeichert?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja, das Spiel wird automatisch im Browser-Speicher (LocalStorage) gesichert. Wenn du das Fenster schließt und wieder öffnest, kannst du dort weitermachen, wo du aufgehört hast."
+          }
+        }
+      ]
+    }
+  ]
+  </script>
+
+  <style>
+    /* ═══ Battleship Game Styles ═══ */
+
+    /* Screens */
+    .screen { display: block; }
+    .screen[hidden] { display: none; }
+
+    /* ── Menu Screen ── */
+    .menu-wrap {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 20px 16px 40px;
+    }
+    .menu-intro {
+      font-size: 17px;
+      color: var(--c-on-surf-var);
+      line-height: 27px;
+      margin-bottom: 24px;
+    }
+    .menu-section-title {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: .4px;
+      text-transform: uppercase;
+      color: var(--c-on-surf-var);
+      margin: 20px 0 10px;
+    }
+    .mode-btns {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .mode-btn {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 18px 20px;
+      border-radius: var(--r-lg);
+      border: 2px solid var(--c-outline-var);
+      background: var(--c-surf-low);
+      text-align: left;
+      cursor: pointer;
+      transition: box-shadow var(--dur-normal) var(--ease), border-color var(--dur-normal);
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .mode-btn::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: var(--c-primary);
+      opacity: 0;
+      transition: opacity var(--dur-fast);
+    }
+    .mode-btn:hover { box-shadow: var(--elev-2); border-color: var(--c-primary); }
+    .mode-btn:hover::before { opacity: .04; }
+    .mode-btn:active::before { opacity: .09; }
+    .mode-btn__icon { font-size: 32px; flex-shrink: 0; }
+    .mode-btn__text { flex: 1; }
+    .mode-btn__label { font-size: 18px; font-weight: 700; color: var(--c-on-surface); display: block; }
+    .mode-btn__desc  { font-size: 15px; color: var(--c-on-surf-var); display: block; margin-top: 2px; }
+
+    .diff-row-menu {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .diff-opt {
+      flex: 1;
+      min-width: 80px;
+      height: 52px;
+      border-radius: var(--r-full);
+      border: 2px solid var(--c-outline);
+      background: var(--c-surface);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--c-on-surf-var);
+      cursor: pointer;
+      position: relative; overflow: hidden;
+      transition: all var(--dur-normal) var(--ease);
+      -webkit-tap-highlight-color: transparent;
+    }
+    .diff-opt::before {
+      content: ''; position: absolute; inset: 0; border-radius: inherit;
+      background: currentColor; opacity: 0; transition: opacity var(--dur-fast);
+    }
+    .diff-opt:hover::before { opacity: .07; }
+    .diff-opt:active::before { opacity: .13; }
+    .diff-opt.active {
+      background: var(--c-primary-container);
+      color: var(--c-on-primary-container);
+      border-color: var(--c-primary);
+      font-weight: 700;
+    }
+
+    .menu-actions-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .menu-actions-row .pill-btn { flex: 1; }
+
+    /* ── Setup Screen ── */
+    .setup-wrap {
+      max-width: 520px;
+      margin: 0 auto;
+      padding: 12px 12px 40px;
+    }
+    .setup-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    #setup-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--c-on-surface);
+    }
+    #setup-player-info {
+      font-size: 15px;
+      color: var(--c-on-surf-var);
+      margin-bottom: 14px;
+      line-height: 22px;
+    }
+    #setup-hint {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--c-primary);
+      min-height: 22px;
+      margin-bottom: 10px;
+    }
+    .setup-controls {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .setup-controls button {
+      height: 48px;
+      padding: 0 18px;
+      border-radius: var(--r-full);
+      font-size: 15px;
+      font-weight: 600;
+    }
+    #btn-rotate {
+      background: var(--c-secondary-container);
+      color: var(--c-on-secondary-container);
+      border: 2px solid var(--c-outline-var);
+      display: flex; align-items: center; gap: 6px;
+      cursor: pointer; position: relative; overflow: hidden;
+      -webkit-tap-highlight-color: transparent;
+    }
+    #btn-rotate::before {
+      content: ''; position: absolute; inset: 0;
+      background: currentColor; opacity: 0; transition: opacity var(--dur-fast);
+    }
+    #btn-rotate:hover::before { opacity: .07; }
+
+    #btn-auto-place {
+      background: var(--c-surf-mid);
+      color: var(--c-on-surf-var);
+      border: 2px solid var(--c-outline-var);
+      cursor: pointer; position: relative; overflow: hidden;
+      -webkit-tap-highlight-color: transparent;
+    }
+    #btn-auto-place::before {
+      content: ''; position: absolute; inset: 0;
+      background: currentColor; opacity: 0; transition: opacity var(--dur-fast);
+    }
+    #btn-auto-place:hover::before { opacity: .07; }
+
+    #btn-confirm-setup {
+      flex: 1;
+      background: var(--c-primary);
+      color: var(--c-on-primary);
+      border: none;
+      cursor: pointer;
+      transition: opacity var(--dur-fast);
+      position: relative; overflow: hidden;
+      -webkit-tap-highlight-color: transparent;
+      box-shadow: var(--elev-1);
+    }
+    #btn-confirm-setup:disabled {
+      opacity: .5;
+      cursor: not-allowed;
+    }
+    #btn-confirm-setup::before {
+      content: ''; position: absolute; inset: 0;
+      background: #fff; opacity: 0; transition: opacity var(--dur-fast);
+    }
+    #btn-confirm-setup:not(:disabled):hover::before { opacity: .1; }
+
+    /* Ship list */
+    .ship-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+    .ship-list-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: var(--r-md);
+      border: 2px solid var(--c-outline-var);
+      background: var(--c-surf-low);
+      cursor: pointer;
+      transition: all var(--dur-normal) var(--ease);
+      position: relative; overflow: hidden;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .ship-list-item::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--c-primary); opacity: 0; transition: opacity var(--dur-fast);
+    }
+    .ship-list-item:hover:not(.placed)::before { opacity: .05; }
+    .ship-list-item.active {
+      border-color: var(--c-primary);
+      background: var(--c-primary-container);
+    }
+    .ship-list-item.placed {
+      opacity: .6;
+      cursor: default;
+    }
+    .ship-list-item span:first-child {
+      font-size: 16px; font-weight: 600; flex: 1;
+    }
+    .ship-size-vis {
+      display: flex; gap: 3px;
+    }
+    .ship-seg {
+      display: block;
+      width: 18px; height: 18px;
+      border-radius: 4px;
+      background: var(--c-primary);
+      border: 1.5px solid var(--c-on-primary-container);
+    }
+    .ship-edit-btn {
+      height: 36px;
+      padding: 0 12px;
+      font-size: 16px;
+      color: var(--c-primary);
+      background: none;
+      border: none;
+      cursor: pointer;
+      position: relative; overflow: hidden;
+      border-radius: var(--r-full);
+    }
+    .ship-edit-btn::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--c-primary); opacity: 0; transition: opacity var(--dur-fast);
+    }
+    .ship-edit-btn:hover::before { opacity: .09; }
+
+    /* ── Board ── */
+    .board-outer {
+      margin: 0 auto 16px;
+      max-width: 400px;
+    }
+    .board-label {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--c-on-surf-var);
+      margin-bottom: 6px;
+      text-align: center;
+    }
+    .brd-wrap {
+      background: var(--c-surf-low);
+      border-radius: var(--r-md);
+      border: 2px solid var(--c-outline-var);
+      box-shadow: var(--elev-1);
+      overflow: hidden;
+      touch-action: none;
+    }
+    .brd-header-row,
+    .brd-row {
+      display: grid;
+      grid-template-columns: 22px repeat(10, 1fr);
+    }
+    .brd-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(10px, 1.8vw, 13px);
+      font-weight: 600;
+      color: var(--c-on-surf-var);
+      background: var(--c-surf-mid);
+      padding: 4px 0;
+    }
+    .brd-label--num {
+      font-size: clamp(10px, 1.8vw, 12px);
+    }
+    .brd-header-row .brd-label { height: 22px; }
+
+    .brd-cell {
+      aspect-ratio: 1;
+      min-height: 0;
+      border: 1px solid var(--c-outline-var);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(10px, 2.5vw, 16px);
+      font-weight: 700;
+      cursor: pointer;
+      user-select: none;
+      outline: none;
+      transition: background var(--dur-fast) var(--ease);
+      position: relative; overflow: hidden;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      background: var(--c-surface);
+    }
+    .brd-cell::after {
+      content: ''; position: absolute; inset: 0;
+      background: var(--c-primary); opacity: 0;
+      transition: opacity var(--dur-fast); pointer-events: none;
+    }
+    .brd-cell:hover::after  { opacity: .07; }
+    .brd-cell:focus-visible { outline: 2px solid var(--c-primary); outline-offset: -2px; z-index: 2; }
+
+    /* Cell states */
+    .cell-ship        { background: var(--c-primary-container); }
+    .cell-ship.ship-head-h { border-radius: 50% 0 0 50%; }
+    .cell-ship.ship-tail-h { border-radius: 0 50% 50% 0; }
+    .cell-ship.ship-head-v { border-radius: 50% 50% 0 0; }
+    .cell-ship.ship-tail-v { border-radius: 0 0 50% 50%; }
+    .cell-hit  { background: #FF7043; color: #fff; }
+    .cell-miss { background: var(--c-surf-high); color: var(--c-on-surf-var); font-size: 120%; }
+    .cell-sunk { background: #4E342E; color: #fff; }
+
+    /* Preview */
+    .cell-preview-valid   { background: rgba(245, 124, 0, .22) !important; }
+    .cell-preview-invalid { background: rgba(179, 38, 30, .22) !important; }
+
+    /* Flash animations */
+    @keyframes flash-hit  { 0%,100%{} 50%{background:#FF7043;box-shadow:0 0 12px #FF7043;} }
+    @keyframes flash-miss { 0%,100%{} 50%{background:#4FC3F7;} }
+    @keyframes flash-sunk { 0%,100%{} 25%{background:#FF6F00;} 75%{background:#4E342E;} }
+    .cell-flash-hit  { animation: flash-hit  .5s ease; }
+    .cell-flash-miss { animation: flash-miss .5s ease; }
+    .cell-flash-sunk { animation: flash-sunk .6s ease; }
+
+    /* Shake */
+    @keyframes shake {
+      0%,100%{transform:translateX(0)}
+      20%{transform:translateX(-8px)}
+      40%{transform:translateX(8px)}
+      60%{transform:translateX(-6px)}
+      80%{transform:translateX(6px)}
+    }
+    .shake { animation: shake .4s ease; }
+
+    /* ── Battle Screen ── */
+    .battle-wrap {
+      max-width: 520px;
+      margin: 0 auto;
+      padding: 8px 12px 40px;
+    }
+    .turn-banner {
+      padding: 12px 16px;
+      border-radius: var(--r-md);
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 14px;
+      text-align: center;
+      transition: background var(--dur-normal);
+    }
+    .turn-p1 { background: var(--c-primary-container); color: var(--c-on-primary-container); }
+    .turn-p2 { background: var(--c-secondary-container); color: var(--c-on-secondary-container); }
+
+    .battle-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .bstat {
+      background: var(--c-surf-low);
+      border: 1.5px solid var(--c-outline-var);
+      border-radius: var(--r-md);
+      padding: 10px 14px;
+      font-size: 14px;
+    }
+    .bstat__lbl { color: var(--c-on-surf-var); font-size: 13px; margin-bottom: 2px; }
+    .bstat__val { font-family: var(--font-mono); font-size: 22px; font-weight: 700; color: var(--c-primary); }
+
+    .battle-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 14px;
+      justify-content: center;
+    }
+
+    /* ── Pass Screen ── */
+    .pass-wrap {
+      max-width: 400px;
+      margin: 60px auto;
+      padding: 0 16px;
+      text-align: center;
+    }
+    .pass-icon { font-size: 56px; margin-bottom: 16px; }
+    #pass-text {
+      font-size: 18px;
+      color: var(--c-on-surf-var);
+      line-height: 28px;
+      margin-bottom: 28px;
+    }
+
+    /* ── Toast ── */
+    #toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: var(--c-secondary);
+      color: var(--c-on-secondary);
+      padding: 12px 24px;
+      border-radius: var(--r-full);
+      font-size: 16px;
+      font-weight: 600;
+      box-shadow: var(--elev-2);
+      z-index: 400;
+      pointer-events: none;
+      transition: transform var(--dur-normal) var(--ease), opacity var(--dur-normal);
+      opacity: 0;
+      white-space: nowrap;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* ── Highscore Dialog ── */
+    .hs-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--c-outline-var);
+      font-size: 16px;
+    }
+    .hs-row:last-child { border-bottom: none; }
+    .hs-rank  { font-weight: 700; color: var(--c-primary); width: 28px; }
+    .hs-shots { font-family: var(--font-mono); font-weight: 700; flex: 1; }
+    .hs-diff  { color: var(--c-on-surf-var); font-size: 14px; }
+    .hs-date  { color: var(--c-on-surf-var); font-size: 13px; }
+
+    /* ── SEO Section ── */
+    .seo-section h2 {
+      font-size: 22px; font-weight: 700; line-height: 32px;
+      color: var(--c-on-surface); margin: 28px 0 12px;
+    }
+    .seo-section p {
+      font-size: 17px; line-height: 27px;
+      color: var(--c-on-surf-var); margin-bottom: 12px;
+    }
+
+    /* ── Dark Mode adjustments ── */
+    body.dark-mode .cell-ship     { background: #4A2800; }
+    body.dark-mode .cell-hit      { background: #BF360C; }
+    body.dark-mode .cell-miss     { background: var(--c-surf-high); }
+    body.dark-mode .cell-sunk     { background: #3E2723; }
+    body.dark-mode .brd-cell      { background: var(--c-surf-low); }
+    body.dark-mode .mode-btn      { background: var(--c-surf-low); }
+    body.dark-mode .ship-list-item{ background: var(--c-surf-low); }
+
+    /* ── Responsive ── */
+    @media (min-width: 600px) {
+      .battle-wrap {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        align-items: start;
+        max-width: 820px;
+      }
+      .turn-banner   { grid-column: 1/-1; }
+      .battle-stats  { grid-column: 1/-1; grid-template-columns: repeat(4,1fr); }
+      .battle-actions { grid-column: 1/-1; }
+    }
+    @media (min-width: 900px) {
+      .setup-wrap { display: grid; grid-template-columns: 240px 1fr; gap: 24px; max-width: 720px; }
+      .setup-top, #setup-player-info, #setup-hint { grid-column: 1/-1; }
+      .setup-controls, #btn-confirm-setup { grid-column: 1; }
+      .ship-list { grid-column: 1; }
+      .board-outer { grid-column: 2; margin: 0; max-width: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Zum Inhalt springen</a>
+
+  <!-- ── Top App Bar ── -->
+  <header class="top-bar">
+    <a href="https://klickspiele.de" class="home-btn rpl" aria-label="Zurück zu klickspiele.de">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M4 2 L4 19 L8 15 L11 22 L13.5 21 L10.5 14 L16 14 Z"/>
+      </svg>
+    </a>
+    <span class="top-bar__title">Schiffe versenken</span>
+    <div class="top-bar__actions">
+      <button id="btn-highscores" class="bar-icon-btn rpl" aria-label="Highscores anzeigen" title="Highscores">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="26" height="26" aria-hidden="true">
+          <path d="M5 3h14v2l-4 4v10l-6-3V9L5 5V3z"/>
+        </svg>
+      </button>
+      <button id="btn-dark" class="bar-icon-btn rpl" aria-label="Dunkles Design" title="Dark Mode">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="26" height="26" aria-hidden="true">
+          <path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ═══════════════════════════════
+         SCREEN: MENU
+    ════════════════════════════════ -->
+    <section id="screen-menu" class="screen" aria-label="Startmenü">
+      <div class="menu-wrap">
+        <!-- H1 above the fold -->
+        <h1 style="font-size:26px;font-weight:700;line-height:34px;color:var(--c-on-surface);margin-bottom:10px">
+          Schiffe versenken kostenlos online spielen
+        </h1>
+        <p class="menu-intro">
+          Das klassische Strategiespiel direkt im Browser – gratis, ohne Anmeldung und ohne Download.
+          Platziere deine Flotte, beschieße das gegnerische Feld und versenke alle Schiffe des Gegners!
+          Spiele gegen unsere KI in drei Schwierigkeitsstufen oder fordere einen Freund lokal heraus.
+        </p>
+
+        <!-- Daily Challenge -->
+        <button id="btn-daily" class="btn-filled rpl" style="width:100%;margin-bottom:20px;display:flex;align-items:center;gap:10px;justify-content:center" aria-label="Daily Challenge spielen">
+          <span style="font-size:22px">📅</span>
+          <span>Daily Challenge</span>
+        </button>
+
+        <!-- Difficulty -->
+        <p class="menu-section-title">Schwierigkeit</p>
+        <div class="diff-row-menu" role="group" aria-label="Schwierigkeit wählen">
+          <button class="diff-opt rpl" data-diff="easy"   aria-pressed="false">Leicht</button>
+          <button class="diff-opt rpl active" data-diff="medium" aria-pressed="true">Mittel</button>
+          <button class="diff-opt rpl" data-diff="hard"   aria-pressed="false">Schwer</button>
+        </div>
+
+        <!-- Game Modes -->
+        <p class="menu-section-title">Spielmodus</p>
+        <div class="mode-btns" role="group" aria-label="Spielmodus wählen">
+          <button class="mode-btn rpl" data-mode="vsAI" aria-label="Gegen Computer spielen">
+            <span class="mode-btn__icon" aria-hidden="true">🤖</span>
+            <span class="mode-btn__text">
+              <span class="mode-btn__label">Gegen Computer</span>
+              <span class="mode-btn__desc">Alleine gegen die KI spielen</span>
+            </span>
+          </button>
+          <button class="mode-btn rpl" data-mode="local2P" aria-label="Lokaler 2-Spieler-Modus">
+            <span class="mode-btn__icon" aria-hidden="true">👥</span>
+            <span class="mode-btn__text">
+              <span class="mode-btn__label">2 Spieler lokal</span>
+              <span class="mode-btn__desc">Zu zweit auf einem Gerät</span>
+            </span>
+          </button>
+        </div>
+
+        <!-- Extra actions -->
+        <div class="menu-actions-row">
+          <button id="btn-resume" class="pill-btn rpl" hidden aria-label="Gespeichertes Spiel fortsetzen">
+            ▶ Fortsetzen
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════
+         SCREEN: SHIP SETUP
+    ════════════════════════════════ -->
+    <section id="screen-setup" class="screen" hidden aria-label="Schiffe platzieren" aria-live="polite">
+      <div class="setup-wrap">
+        <div class="setup-top">
+          <h2 id="setup-title">Schiffe platzieren</h2>
+        </div>
+        <p id="setup-player-info"></p>
+        <p id="setup-hint" aria-live="polite"></p>
+
+        <div class="setup-controls">
+          <button id="btn-rotate" class="rpl" aria-label="Schiff drehen">↕ Drehen (Vertikal)</button>
+          <button id="btn-auto-place" class="rpl" aria-label="Alle Schiffe zufällig platzieren">🎲 Zufällig</button>
+        </div>
+        <button id="btn-confirm-setup" class="rpl" disabled aria-label="Platzierung bestätigen und starten">
+          Schiffe platzieren (0/5)
+        </button>
+
+        <!-- Ship list -->
+        <div id="ship-list" class="ship-list" role="list" aria-label="Schiffe zum Platzieren"></div>
+
+        <!-- Setup board -->
+        <div class="board-outer">
+          <div id="board-setup" class="brd-wrap" role="grid" aria-label="Spielfeld – Schiffe platzieren"></div>
+        </div>
+
+        <p style="font-size:14px;color:var(--c-on-surf-var);text-align:center;margin-top:8px">
+          Tipp: Taste <kbd style="background:var(--c-surf-high);padding:1px 6px;border-radius:4px;font-size:13px">R</kbd> dreht das ausgewählte Schiff
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════
+         SCREEN: PASS DEVICE
+    ════════════════════════════════ -->
+    <section id="screen-pass" class="screen" hidden aria-label="Gerät übergeben">
+      <div class="pass-wrap">
+        <div class="pass-icon" aria-hidden="true">🙈</div>
+        <p id="pass-text"></p>
+        <button id="btn-pass-ready" class="btn-filled rpl" style="width:100%" aria-label="Ich bin bereit">
+          ✓ Ich bin bereit!
+        </button>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════
+         SCREEN: BATTLE
+    ════════════════════════════════ -->
+    <section id="screen-battle" class="screen" hidden aria-label="Schlachtfeld" aria-live="polite">
+      <div class="battle-wrap">
+
+        <!-- Turn banner -->
+        <div id="turn-banner" class="turn-banner turn-p1" role="status" aria-live="polite">
+          🎯 Dein Zug – schieß auf das gegnerische Feld!
+        </div>
+
+        <!-- Stats -->
+        <div class="battle-stats" aria-label="Spielstatistik">
+          <div class="bstat">
+            <div class="bstat__lbl">Schüsse (Du)</div>
+            <div class="bstat__val" id="stat-shots-1">0</div>
+          </div>
+          <div class="bstat">
+            <div class="bstat__lbl">Treffer (Du)</div>
+            <div class="bstat__val" id="stat-hits-1">0</div>
+          </div>
+          <div class="bstat">
+            <div class="bstat__lbl">Schüsse (Gegner)</div>
+            <div class="bstat__val" id="stat-shots-2">0</div>
+          </div>
+          <div class="bstat">
+            <div class="bstat__lbl">Treffer (Gegner)</div>
+            <div class="bstat__val" id="stat-sunk-2">0</div>
+          </div>
+        </div>
+
+        <!-- Enemy board (shoot here) -->
+        <div>
+          <div class="board-label" id="lbl-enemy-board">🎯 Gegnerisches Feld</div>
+          <div id="board-enemy" class="brd-wrap" role="grid" aria-label="Gegnerisches Spielfeld – hier schießen"></div>
+        </div>
+
+        <!-- Player board (own ships) -->
+        <div>
+          <div class="board-label" id="lbl-player-board">⚓ Dein Feld</div>
+          <div id="board-player" class="brd-wrap" role="grid" aria-label="Dein Spielfeld"></div>
+        </div>
+
+        <!-- Battle actions -->
+        <div class="battle-actions">
+          <button id="btn-restart" class="pill-btn rpl" aria-label="Neues Spiel starten">
+            🔄 Neustart
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════
+         SEO CONTENT SECTION
+    ════════════════════════════════ -->
+    <section class="seo-section" aria-label="Informationen zum Spiel">
+
+      <h2>Spielregeln – so geht Schiffe versenken</h2>
+      <p>
+        Schiffe versenken (englisch: Battleship) ist ein klassisches Strategiespiel für zwei Personen, das seit den 1930er-Jahren in unterschiedlichsten Varianten gespielt wird. Das Prinzip ist denkbar einfach, aber taktisch anspruchsvoll: Beide Spieler verbergen ihre Schiffsflotte auf einem 10×10-Gitter und versuchen abwechselnd, die Flotte des Gegners durch gezielte Koordinatenangaben zu zerstören.
+      </p>
+      <p>
+        Zu Beginn des Spiels platziert jeder Spieler seine Schiffe auf dem eigenen Gitter. Dabei dürfen Schiffe weder überlappen noch sich berühren – nicht einmal diagonal. Anschließend nennt der angreifende Spieler eine Koordinate (z.B. B5). Befindet sich dort ein feindliches Schiff, lautet die Antwort „Treffer"; andernfalls „Wasser". Sind alle Felder eines Schiffes getroffen worden, gilt es als „versenkt". Wer zuerst die gesamte Flotte des Gegners versenkt, gewinnt.
+      </p>
+
+      <h2>Die Schiffe im Überblick</h2>
+      <p>
+        Das klassische Set besteht aus fünf Schiffen: dem Flugzeugträger mit 5 Feldern, dem Schlachtschiff mit 4 Feldern, zwei Kreuzern mit je 3 Feldern sowie dem Zerstörer mit 2 Feldern. Das ergibt insgesamt 17 Felder, die getroffen werden müssen, um alle Schiffe zu versenken – bei einem 10×10-Spielfeld von 100 Feldern.
+      </p>
+
+      <h2>Strategietipps und Wahrscheinlichkeiten</h2>
+      <p>
+        Die Wahrscheinlichkeit, beim ersten Schuss zu treffen, beträgt theoretisch 17/100 = 17 %. Mit der richtigen Strategie lässt sich diese Quote aber deutlich verbessern. Wende das Schachbrettmuster an: Schieße zunächst nur auf jedes zweite Feld (bei gerader oder ungerader Summe von Reihe und Spalte). Damit erreichst du mit maximal 50 Schüssen jedes mögliche Schiff bis hin zum 2er-Zerstörer.
+      </p>
+      <p>
+        Sobald du einen Treffer erzielst, wechselst du in den Jagdmodus: Schieße in alle vier Richtungen vom Treffer aus. Landest du einen zweiten Treffer, hast du die Ausrichtung des Schiffes ermittelt und kannst es gezielt in dieser Richtung weiterverfolgen. Nachdem ein Schiff versenkt wurde, markiere alle benachbarten Felder automatisch als „Wasser" – denn dort kann kein weiteres Schiff liegen.
+      </p>
+      <p>
+        Beim Platzieren der eigenen Schiffe solltest du die Schiffe möglichst unregelmäßig und nicht entlang der Ränder verteilen. Erfahrene Spieler und KI-Systeme neigen dazu, zuerst die mittleren Felder zu beschießen, da die Wahrscheinlichkeit, ein langes Schiff zu treffen, dort statistisch höher ist.
+      </p>
+
+      <h2>KI-Schwierigkeitsstufen erklärt</h2>
+      <p>
+        Unser Spiel bietet drei KI-Modi. Im Modus <strong>Leicht</strong> schießt die KI vollständig zufällig – ideal für Kinder oder zum Kennenlernen der Spielmechanik. Im Modus <strong>Mittel</strong> aktiviert die KI einen gezielten Jagdmodus, sobald sie einen Treffer erzielt: Sie probiert alle angrenzenden Felder aus, bis das Schiff versenkt ist. Im Modus <strong>Schwer</strong> kombiniert die KI das Schachbrettmuster mit gezieltem Verfolgen von Treffern und Richtungserkennung. Sie nutzt außerdem die Information, dass versenkte Schiffe Nachbarfelder ausschließen.
+      </p>
+
+      <h2>Multiplayer – Zwei Spieler lokal</h2>
+      <p>
+        Beim lokalen 2-Spieler-Modus teilen sich beide Spieler ein Gerät. Nach der Platzierungsphase wird das Gerät übergeben. Ein dezenter Übergabe-Bildschirm verhindert, dass Spieler 2 die Positionen von Spieler 1 einsehen kann. Die Züge wechseln abwechselnd, jeweils nach einer erneuten Übergabe des Geräts. Dieser Modus eignet sich perfekt für spontane Duelle ohne zweites Gerät.
+      </p>
+
+      <h2>Daily Challenge</h2>
+      <p>
+        Jeden Tag gibt es eine neue Herausforderung: Das Spielfeld des Computergegners ist durch einen tagesbasierten Seed-Wert fest vorgegeben. Alle Spieler weltweit kämpfen damit gegen identische Schiffskonstellationen – ein fairer Vergleich! Dein bestes Ergebnis für den heutigen Tag wird gespeichert.
+      </p>
+
+      <h2>Geschichte des Spiels</h2>
+      <p>
+        Schiffe versenken hat seinen Ursprung in Papier-und-Bleistift-Spielen, die im Ersten Weltkrieg von Soldaten gespielt wurden. In den 1930er-Jahren erschien die erste gedruckte Version. Als Brettspiel wurde es ab 1967 durch Milton Bradley unter dem Namen „Battleship" populär und gehört seitdem zu den meistgespielten Strategiespielen der Welt. Die Digitalversion erlebte ihren Boom mit frühen PC-Spielen in den 1980ern – und hat seit Smartphones eine vollständige Renaissance erlebt.
+      </p>
+
+      <!-- FAQ Collapsibles -->
+      <h2>Häufige Fragen (FAQ)</h2>
+
+      <details class="collapsible">
+        <summary>Wie funktioniert Schiffe versenken?</summary>
+        <div class="collapsible__body">
+          <p>Jeder Spieler platziert seine Schiffe auf einem 10×10-Gitter. Abwechselnd werden Koordinaten auf dem gegnerischen Feld angesagt. Trifft man ein Schiff, wird es markiert. Sind alle Felder eines Schiffes getroffen, gilt es als versenkt. Wer zuerst alle feindlichen Schiffe versenkt, gewinnt.</p>
+        </div>
+      </details>
+
+      <details class="collapsible">
+        <summary>Welche Schiffe gibt es?</summary>
+        <div class="collapsible__body">
+          <p>Das klassische Set: 1 Flugzeugträger (5 Felder), 1 Schlachtschiff (4 Felder), 2 Kreuzer (je 3 Felder) und 1 Zerstörer (2 Felder). Insgesamt müssen 17 Felder getroffen werden.</p>
+        </div>
+      </details>
+
+      <details class="collapsible">
+        <summary>Dürfen Schiffe nebeneinanderstehen?</summary>
+        <div class="collapsible__body">
+          <p>Nein. Zwischen je zwei Schiffen muss mindestens ein Feld Abstand bestehen – auch diagonal. Diese Regel gilt sowohl für das eigene Platzieren als auch im KI-Modus.</p>
+        </div>
+      </details>
+
+      <details class="collapsible">
+        <summary>Wie gewinne ich gegen die schwere KI?</summary>
+        <div class="collapsible__body">
+          <p>Platziere deine eigenen Schiffe unregelmäßig und nicht entlang der Ränder. Beim Angreifen nutze das Schachbrettmuster: Schieße zunächst nur auf Felder, deren Koordinatensumme (Reihe + Spalte) gerade oder ungerade ist. Nach einem Treffer sofort in alle vier Richtungen weiterschießen.</p>
+        </div>
+      </details>
+
+      <details class="collapsible">
+        <summary>Wie funktioniert der 2-Spieler-Modus?</summary>
+        <div class="collapsible__body">
+          <p>Beide Spieler teilen sich ein Gerät. Nach jedem Zug wird das Gerät an den anderen Spieler übergeben. Ein Übergabe-Bildschirm verhindert, dass man die gegnerischen Schiffe sehen kann. Kein zweites Gerät nötig!</p>
+        </div>
+      </details>
+
+      <details class="collapsible">
+        <summary>Was ist die Daily Challenge?</summary>
+        <div class="collapsible__body">
+          <p>Jeden Tag gibt es eine neue Herausforderung: Der Computergegner hat eine feste, täglich wechselnde Schiffskonstellation. Alle Spieler kämpfen am selben Tag gegen denselben Gegner. Dein bestes Ergebnis wird im Browser gespeichert.</p>
+        </div>
+      </details>
+
+      <details class="collapsible">
+        <summary>Wird mein Spielstand gespeichert?</summary>
+        <div class="collapsible__body">
+          <p>Ja. Das laufende Spiel wird automatisch im Browser-LocalStorage gesichert. Beim nächsten Besuch der Seite kannst du dort weitermachen, wo du aufgehört hast. Die Highscoreliste bleibt ebenfalls gespeichert.</p>
+        </div>
+      </details>
+
+      <details class="collapsible">
+        <summary>Funktioniert das Spiel auch auf dem Smartphone?</summary>
+        <div class="collapsible__body">
+          <p>Ja! Das Spiel ist von Grund auf für Touch-Geräte optimiert – mit großen Tippen-Zielen, flüssigen Animationen und einem Layout, das sowohl im Hoch- als auch im Querformat funktioniert. Kein Download, kein App-Store.</p>
+        </div>
+      </details>
+
+    </section>
+  </main>
+
+  <!-- ── Game Over Dialog ── -->
+  <div id="dialog-gameover" class="dialog-scrim" role="dialog" aria-modal="true" aria-labelledby="dlg-headline" aria-hidden="true">
+    <div class="dialog">
+      <div class="dialog-icon" id="dlg-icon">🎉</div>
+      <h2 class="dialog-headline" id="dlg-headline">Du hast gewonnen!</h2>
+      <div class="dialog-body">Glückwunsch – alle feindlichen Schiffe versenkt!</div>
+      <div class="dialog-stats">
+        <div class="d-stat">
+          <div class="d-stat__lbl">Schüsse</div>
+          <div class="d-stat__val" id="dlg-shots">0</div>
+        </div>
+        <div class="d-stat">
+          <div class="d-stat__lbl">Treffer</div>
+          <div class="d-stat__val" id="dlg-hits">0</div>
+        </div>
+        <div class="d-stat">
+          <div class="d-stat__lbl">Zeit</div>
+          <div class="d-stat__val" id="dlg-time">0:00</div>
+        </div>
+      </div>
+      <div class="dialog-actions">
+        <button id="btn-go-menu"   class="btn-text rpl">Menü</button>
+        <button id="btn-share"     class="btn-text rpl">Teilen</button>
+        <button id="btn-play-again" class="btn-filled rpl">Nochmal spielen</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Highscores Dialog ── -->
+  <div id="dialog-highscores" class="dialog-scrim" role="dialog" aria-modal="true" aria-labelledby="hs-title" aria-hidden="true">
+    <div class="dialog" style="max-width:480px">
+      <h2 class="dialog-headline" id="hs-title">🏆 Highscores</h2>
+      <div id="hs-list" style="max-height:360px;overflow-y:auto;margin-bottom:16px"></div>
+      <div class="dialog-actions">
+        <button id="btn-hs-close" class="btn-filled rpl" style="width:100%">Schließen</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Toast ── -->
+  <div id="toast" role="status" aria-live="polite"></div>
+
+  <!-- ── Canvas for particle effects ── -->
+  <canvas id="cv" aria-hidden="true" style="display:none;position:fixed;inset:0;pointer-events:none;z-index:300"></canvas>
+
+  <!-- ── Footer ── -->
+  <footer class="site-footer">
+    <nav class="site-footer__nav" aria-label="Footer Navigation">
+      <a href="https://klickspiele.de">klickspiele.de</a>
+      <a href="./imprint">Impressum</a>
+      <a href="./privacy">Datenschutz</a>
+    </nav>
+    <p class="site-footer__copy">© 2025 klickspiele.de · Kostenlose Spiele ohne Anmeldung</p>
+  </footer>
+
+  <!-- Ripple handler -->
+  <script>
+    document.addEventListener('pointerdown', function(e) {
+      var h = e.target.closest('.rpl');
+      if (!h) return;
+      var r = h.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+      var sz = Math.max(r.width, r.height) * 2.4;
+      var w = document.createElement('span');
+      w.className = 'rpl-wave';
+      w.style.cssText = 'width:'+sz+'px;height:'+sz+'px;left:'+(x-sz/2)+'px;top:'+(y-sz/2)+'px';
+      h.appendChild(w);
+      w.addEventListener('animationend', function() { w.remove(); });
+    }, { passive: true });
+
+    // Difficulty button aria-pressed sync
+    document.querySelectorAll('.diff-opt').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.diff-opt').forEach(function(b) {
+          b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+        });
+      });
+    });
+  </script>
+
+  <script src="./game.js"></script>
+</body>
+</html>

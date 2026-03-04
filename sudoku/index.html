@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#F57C00">
+<meta name="description" content="Sudoku kostenlos online spielen. Einfach, Mittel oder Schwer – täglich neue Rätsel, kein Anmelden nötig.">
+<title>Sudoku – Kostenlos Online Spielen</title>
+
+<!-- Shared design system — no external fonts -->
+<link rel="stylesheet" href="./style.css">
+
+<!-- Favicon: cursor-pointer SVG -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23F57C00'/><path d='M8 4 L8 24 L13 19 L16.5 27 L19.5 25.5 L16 17.5 L22 17.5 Z' fill='white'/></svg>">
+</head>
+<body>
+
+<a class="skip" href="#grid-wrap">Zum Rätsel springen</a>
+
+<!-- ── Top App Bar ──────────────────────────────────────────── -->
+<header class="top-bar">
+
+  <!-- Home button: circle with cursor-pointer icon -->
+  <a href="https://klickspiele.de" class="home-btn rpl"
+     aria-label="Zurück zu klickspiele.de" title="klickspiele.de">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M4 2 L4 19 L8 15 L11 22 L13.5 21 L10.5 14 L16 14 Z"/>
+    </svg>
+  </a>
+
+  <span class="top-bar__title">Sudoku</span>
+
+  <div class="top-bar__actions">
+    <div class="streak-pill" id="streakPill" title="Tagesserie">
+      <span class="streak-pill__fire">🔥</span>
+      <span id="streakNum">0</span>
+    </div>
+
+    <button class="bar-icon-btn rpl" id="darkBtn"
+            aria-label="Dunkelmodus umschalten" title="Dunkelmodus">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/>
+      </svg>
+    </button>
+
+    <button class="bar-icon-btn rpl" onclick="window.print()"
+            aria-label="Rätsel drucken" title="Drucken">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- ── Game ───────────────────────────────────────────────── -->
+<main class="game-main">
+  <div class="game-center">
+
+    <div class="game-left" id="gameLeft">
+
+      <!-- Difficulty selector -->
+      <div class="diff-row" role="group" aria-label="Schwierigkeitsgrad">
+        <button class="diff-btn rpl" data-diff="easy"><i class="tick">✓ </i>Leicht</button>
+        <button class="diff-btn active rpl" data-diff="medium" aria-pressed="true"><i class="tick">✓ </i>Mittel</button>
+        <button class="diff-btn rpl" data-diff="hard"><i class="tick">✓ </i>Schwer</button>
+        <button class="diff-btn rpl" data-diff="daily"><i class="tick">✓ </i>Täglich</button>
+      </div>
+
+      <!-- Toolbar -->
+      <div class="toolbar-row">
+        <div style="display:flex;gap:8px;align-items:center;">
+          <div class="timer-chip">
+            <span class="timer-icon">⏱</span>
+            <time class="timer-display" id="timer" aria-label="Verstrichene Zeit">00:00</time>
+          </div>
+          <div class="timer-chip" id="puzzleCounter" title="Rätsel-Nummer" style="font-size:14px;min-width:0;padding:0 12px;gap:4px;">
+            <span style="color:var(--c-on-surf-var);font-family:var(--font-mono);font-size:15px;font-weight:700;" id="puzzleNumEl">#1</span>
+            <span style="color:var(--c-on-surf-var);font-size:13px;">/&nbsp;500</span>
+          </div>
+        </div>
+        <div class="toolbar-btns">
+          <button class="tool-btn rpl" id="btnUndo" aria-label="Rückgängig (Strg+Z)" title="Rückgängig">
+            <svg viewBox="0 0 24 24"><path d="M12.5 8c-2.65 0-5.05 1-6.9 2.6L2 7v9h9l-3.62-3.62c1.39-1.16 3.16-1.88 5.12-1.88 3.54 0 6.55 2.31 7.6 5.5l2.37-.78C21.08 11.03 17.15 8 12.5 8z"/></svg>
+          </button>
+          <button class="tool-btn rpl" id="btnRedo" aria-label="Wiederholen (Strg+Y)" title="Wiederholen">
+            <svg viewBox="0 0 24 24"><path d="M18.4 10.6C16.55 9 14.15 8 11.5 8c-4.65 0-8.58 3.03-9.96 7.22L3.9 16c1.05-3.19 4.05-5.5 7.6-5.5 1.95 0 3.73.72 5.12 1.88L13 16h9V7l-3.6 3.6z"/></svg>
+          </button>
+          <button class="tool-btn rpl" id="btnReset" aria-label="Rätsel zurücksetzen" title="Zurücksetzen">
+            <svg viewBox="0 0 24 24"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/></svg>
+          </button>
+          <button class="tool-btn rpl" id="btnNew" aria-label="Neues Spiel" title="Neues Spiel">
+            <svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Grid -->
+      <div id="grid-wrap">
+        <div id="grid" role="grid" aria-label="Sudoku-Rätsel"></div>
+      </div>
+
+      <!-- Action chips -->
+      <div class="fab-row">
+        <button class="fab-chip rpl" id="btnPencil"
+                aria-label="Bleistiftmodus (Taste P)" aria-pressed="false">
+          <span class="fi">✏️</span> Bleistift
+        </button>
+        <button class="fab-chip rpl" id="btnHint" aria-label="Hinweis anzeigen">
+          <span class="fi">💡</span> Hinweis
+        </button>
+        <button class="fab-chip rpl" id="btnCheck" aria-label="Fehler prüfen">
+          <span class="fi">✅</span> Prüfen
+        </button>
+      </div>
+
+    </div><!-- /game-left -->
+
+    <!-- Number pad -->
+    <div class="pad-surface" id="padSurface">
+      <div class="pad-handle"></div>
+      <div class="pad-grid" id="padGrid" role="group" aria-label="Zahleneingabe">
+        <button class="num-btn rpl" data-n="1" aria-label="1 eingeben">1</button>
+        <button class="num-btn rpl" data-n="2" aria-label="2 eingeben">2</button>
+        <button class="num-btn rpl" data-n="3" aria-label="3 eingeben">3</button>
+        <button class="num-btn rpl" data-n="4" aria-label="4 eingeben">4</button>
+        <button class="num-btn rpl" data-n="5" aria-label="5 eingeben">5</button>
+        <button class="num-btn rpl" data-n="6" aria-label="6 eingeben">6</button>
+        <button class="num-btn rpl" data-n="7" aria-label="7 eingeben">7</button>
+        <button class="num-btn rpl" data-n="8" aria-label="8 eingeben">8</button>
+        <button class="num-btn rpl" data-n="9" aria-label="9 eingeben">9</button>
+        <button class="num-btn erase-btn rpl" data-n="0" aria-label="Zelle löschen">⌫ DEL</button>
+      </div>
+    </div>
+
+  </div><!-- /game-center -->
+
+  <!-- ── SEO & Content ──────────────────────────────────── -->
+  <section class="seo-section">
+
+    <!-- Intro card (always visible) -->
+    <div class="card">
+      <h1>Sudoku kostenlos online spielen</h1>
+      <p>Täglich neue Rätsel für jeden Schwierigkeitsgrad – direkt im Browser, ohne Anmeldung und ohne Download. Wählen Sie Ihr Niveau und legen Sie sofort los.</p>
+      <h2>Schwierigkeitsgrad wählen</h2>
+      <div class="pill-row">
+        <button class="pill-btn rpl" onclick="newGame('easy')">Leicht</button>
+        <button class="pill-btn rpl" onclick="newGame('medium')">Mittel</button>
+        <button class="pill-btn rpl" onclick="newGame('hard')">Schwer</button>
+        <button class="pill-btn rpl" onclick="newGame('daily')">Tagesrätsel</button>
+      </div>
+      <p><strong>Leicht</strong> eignet sich für Einsteiger mit vielen vorgegebenen Zahlen. <strong>Mittel</strong> bietet eine ausgewogene Herausforderung. <strong>Schwer</strong> erfordert Kandidaten-Notizen und fortgeschrittene Strategien. Das <strong>Tagesrätsel</strong> ist für alle Spieler weltweit täglich identisch.</p>
+    </div>
+
+    <!-- FAQ — collapsed -->
+    <details class="collapsible">
+      <summary>Häufige Fragen (FAQ)</summary>
+      <div class="collapsible__body">
+        <div class="faq-item">
+          <p class="faq-q">Funktioniert das Spiel auch offline?</p>
+          <p class="faq-a">Ja – nach dem ersten Laden läuft das gesamte Spiel lokal in Ihrem Browser, ganz ohne Internetverbindung.</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-q">Was ist der Bleistiftmodus?</p>
+          <p class="faq-a">Im Bleistiftmodus tragen Sie kleine Kandidatenzahlen in ein Feld ein, ohne es fest zu belegen. Das kleine 3×3-Raster im Feld zeigt alle notierten Kandidaten.</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-q">Hat jedes Rätsel genau eine Lösung?</p>
+          <p class="faq-a">Ja. Jedes generierte Rätsel wird mit einem Backtracking-Algorithmus auf eindeutige Lösbarkeit geprüft, bevor es ausgespielt wird.</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-q">Was ist das Tagesrätsel?</p>
+          <p class="faq-a">Das Tagesrätsel basiert auf dem heutigen Datum als Zufallsstartwert. Alle Spielerinnen und Spieler weltweit lösen täglich dasselbe Rätsel – bauen Sie Ihre Tagesserie auf!</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-q">Wie funktioniert Rückgängig / Wiederholen?</p>
+          <p class="faq-a">Über die Symbole in der Toolbar oder die Tastenkürzel <kbd>Strg+Z</kbd> (Rückgängig) und <kbd>Strg+Y</kbd> (Wiederholen) können bis zu 100 Schritte zurückgenommen oder wiederholt werden.</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-q">Ist das Spiel wirklich kostenlos?</p>
+          <p class="faq-a">100 % kostenlos – keine Anmeldung, keine Werbung im Spielbereich, keine versteckten Kosten.</p>
+        </div>
+      </div>
+    </details>
+
+    <!-- Sudoku erklärt — collapsed -->
+    <details class="collapsible">
+      <summary>Was ist Sudoku? Geschichte &amp; Regeln</summary>
+      <div class="collapsible__body">
+        <h3>Die Regeln auf einen Blick</h3>
+        <p>Sudoku wird auf einem 9×9-Gitter gespielt, das in neun 3×3-Blöcke unterteilt ist. Das Ziel: Füllen Sie jede Zeile, jede Spalte und jeden der neun Blöcke so aus, dass die Ziffern 1 bis 9 jeweils genau einmal vorkommen. Mathematisches Vorwissen ist nicht nötig – reines logisches Denken genügt.</p>
+
+        <h3>Woher kommt der Name?</h3>
+        <p>Der Name <em>Sudoku</em> ist eine Abkürzung des japanischen Ausdrucks <em>Sūji wa dokushin ni kagiru</em> (数字は独身に限る), was so viel bedeutet wie „Die Zahl muss allein stehen." Der Name wurde in Japan in den 1980er-Jahren eingeführt, als der Verleger Nikoli das Rätsel populär machte.</p>
+
+        <h3>Geschichte des Rätsels</h3>
+        <p>Die Ursprünge des Sudoku reichen weiter zurück als oft angenommen. Der Schweizer Mathematiker Leonhard Euler beschrieb im 18. Jahrhundert sogenannte <em>Lateinische Quadrate</em> – Felder, in denen jedes Symbol in jeder Zeile und Spalte genau einmal vorkommt. Das ist die mathematische Grundlage des Sudoku.</p>
+        <p>Dem modernen Sudoku am nächsten kam 1979 der amerikanische Rätselmacher Howard Garns. Er veröffentlichte in der Zeitschrift <em>Dell Pencil Puzzles &amp; Word Games</em> ein Rätsel namens „Number Place" – ein 9×9-Gitter mit den uns heute vertrauten Regeln.</p>
+        <p>In Japan erlangte das Rätsel ab 1984 durch den Verlag Nikoli seine heutige Form und seinen Namen. Der Durchbruch in Europa und der Welt gelang 2004 und 2005, als der pensionierte Richter Wayne Gould ein Computerprogramm entwickelte, das Rätsel automatisch erzeugte, und diese an internationale Zeitungen weitergab – darunter <em>The Times</em> in London.</p>
+        <p>Heute gilt Sudoku als eines der populärsten Logikrätsel der Welt mit Hunderten Millionen aktiver Spielerinnen und Spieler. Weltweit erscheinen täglich tausende neue Rätsel in Zeitungen, Apps und auf Websites.</p>
+
+        <h3>Tipps für Anfänger</h3>
+        <ul>
+          <li><strong>Ausschlussprinzip:</strong> Welche Zahl fehlt noch in dieser Zeile, Spalte oder diesem Block?</li>
+          <li><strong>Einzige Möglichkeit:</strong> Gibt es ein Feld, in das nur eine einzige Zahl passt?</li>
+          <li><strong>Kandidaten notieren:</strong> Nutzen Sie den Bleistiftmodus, um mögliche Zahlen pro Feld festzuhalten.</li>
+          <li><strong>Schwer beginnen wo es leicht ist:</strong> Starten Sie mit Blöcken oder Zeilen, die bereits viele Zahlen enthalten.</li>
+        </ul>
+      </div>
+    </details>
+
+  </section>
+</main>
+
+<!-- ── Completion Dialog ─────────────────────────────────── -->
+<div class="dialog-scrim" id="dialog"
+     role="dialog" aria-modal="true"
+     aria-labelledby="dialogTitle" aria-hidden="true">
+  <div class="dialog">
+    <div class="dialog-icon" id="dIcon">🎉</div>
+    <h2 class="dialog-headline" id="dialogTitle">Rätsel gelöst!</h2>
+    <p class="dialog-body" id="dBody">Hervorragende Arbeit!</p>
+    <div class="dialog-stats">
+      <div class="d-stat">
+        <div class="d-stat__lbl">Zeit</div>
+        <div class="d-stat__val" id="dTime">—</div>
+      </div>
+      <div class="d-stat">
+        <div class="d-stat__lbl">Serie</div>
+        <div class="d-stat__val" id="dStreak">🔥 1</div>
+      </div>
+      <div class="d-stat">
+        <div class="d-stat__lbl">Hinweise</div>
+        <div class="d-stat__val" id="dHints">0</div>
+      </div>
+    </div>
+    <div class="dialog-actions">
+      <button class="btn-text rpl" id="dClose">Schließen</button>
+      <button class="btn-text rpl" id="dShare">Teilen 🔗</button>
+      <button class="btn-filled rpl" id="dNew">Neues Spiel</button>
+    </div>
+  </div>
+</div>
+
+<canvas id="cv" aria-hidden="true"></canvas>
+
+<!-- ── Footer ───────────────────────────────────────────── -->
+<footer class="site-footer">
+  <nav class="site-footer__nav" aria-label="Footer-Navigation">
+    <a href="https://klickspiele.de">klickspiele.de</a>
+    <a href="./imprint">Impressum</a>
+    <a href="./privacy">Datenschutz</a>
+  </nav>
+  <p class="site-footer__copy">© 2025 klickspiele.de · Kostenlose Spiele ohne Anmeldung</p>
+</footer>
+
+<script>
+/* ─────────────────────────────────────────────────────────
+   RIPPLE
+───────────────────────────────────────────────────────── */
+document.addEventListener('pointerdown', function(e) {
+  var h = e.target.closest('.rpl');
+  if (!h) return;
+  var r = h.getBoundingClientRect();
+  var x = e.clientX - r.left, y = e.clientY - r.top;
+  var sz = Math.max(r.width, r.height) * 2.4;
+  var w = document.createElement('span');
+  w.className = 'rpl-wave';
+  w.style.cssText = 'width:'+sz+'px;height:'+sz+'px;left:'+(x-sz/2)+'px;top:'+(y-sz/2)+'px';
+  h.appendChild(w);
+  w.addEventListener('animationend', function(){ w.remove(); });
+}, { passive: true });
+
+/* ─────────────────────────────────────────────────────────
+   PUZZLE POOL
+   500 unique seeds per difficulty, pre-shuffled once per
+   device and stored in localStorage so the order is random
+   but deterministic per user. Progress tracked per diff.
+───────────────────────────────────────────────────────── */
+var POOL_SIZE = 500;
+
+// LCG RNG — used only for pool generation
+function lcg(seed) {
+  var s = (seed >>> 0) || 1;
+  return function() { s = (Math.imul(1664525, s) + 1013904223) >>> 0; return s / 0x100000000; };
+}
+
+// Base seeds for each difficulty band (spread across u32 space)
+var BAND = { easy: 100000, medium: 200000, hard: 300000, daily: 0 };
+
+// Get (or generate) the shuffled pool for a difficulty
+function getPool(diff) {
+  var d = ls();
+  if (!d.pools) d.pools = {};
+  if (!d.pools[diff]) {
+    // build [0..499] then shuffle with a device-unique random master seed
+    var master = (Math.random() * 0xFFFFFFFF) >>> 0;
+    var rng = lcg(master);
+    var arr = Array.from({length: POOL_SIZE}, function(_, i){ return i; });
+    for (var i = arr.length - 1; i > 0; i--) {
+      var j = Math.floor(rng() * (i + 1));
+      var t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+    }
+    d.pools[diff] = arr;
+    d.poolIdx = d.poolIdx || {};
+    d.poolIdx[diff] = 0;
+    ss(d);
+  }
+  return d.pools[diff];
+}
+
+// Get next puzzle index (wraps after 500, resets position)
+function nextPuzzleIndex(diff) {
+  var d = ls();
+  if (!d.poolIdx) d.poolIdx = {};
+  var idx = (d.poolIdx[diff] || 0);
+  d.poolIdx[diff] = (idx + 1) % POOL_SIZE;
+  ss(d);
+  return idx;
+}
+
+// Get current puzzle display number (1-based)
+function currentPuzzleNum(diff) {
+  var d = ls();
+  return d.poolIdx && d.poolIdx[diff] ? d.poolIdx[diff] : 1;
+}
+
+// Convert pool position to a concrete seed
+function poolSeed(diff, poolPos) {
+  var pool = getPool(diff);
+  var offset = pool[poolPos % POOL_SIZE];
+  return BAND[diff] + offset * 997 + 1; // spread nicely
+}
+
+/* ─────────────────────────────────────────────────────────
+   SUDOKU ENGINE
+───────────────────────────────────────────────────────── */
+function makeRng(seed) {
+  var s = (seed >>> 0) || 1;
+  return function() { s = (Math.imul(1664525, s) + 1013904223) >>> 0; return s / 0x100000000; };
+}
+function shuffle(arr, rng) {
+  var a = arr.slice(), i, j, t;
+  for (i = a.length-1; i > 0; i--) { j = Math.floor(rng()*(i+1)); t=a[i]; a[i]=a[j]; a[j]=t; }
+  return a;
+}
+function dailySeed() {
+  var d = new Date();
+  return parseInt(d.getFullYear()+String(d.getMonth()+1).padStart(2,'0')+String(d.getDate()).padStart(2,'0'));
+}
+function valid(b, r, c, n) {
+  var i, br=Math.floor(r/3)*3, bc=Math.floor(c/3)*3, x, y;
+  for (i=0; i<9; i++) if (b[r][i]===n || b[i][c]===n) return false;
+  for (x=br; x<br+3; x++) for (y=bc; y<bc+3; y++) if (b[x][y]===n) return false;
+  return true;
+}
+function solveB(b) {
+  for (var r=0; r<9; r++) for (var c=0; c<9; c++) if (b[r][c]===0) {
+    for (var n=1; n<=9; n++) if (valid(b,r,c,n)) { b[r][c]=n; if(solveB(b)) return true; b[r][c]=0; }
+    return false;
+  }
+  return true;
+}
+function countSol(b, lim) {
+  var cnt = 0;
+  (function bt() {
+    if (cnt >= lim) return;
+    for (var r=0; r<9; r++) for (var c=0; c<9; c++) if (b[r][c]===0) {
+      for (var n=1; n<=9; n++) if (valid(b,r,c,n)) { b[r][c]=n; bt(); b[r][c]=0; }
+      return;
+    }
+    cnt++;
+  })();
+  return cnt;
+}
+function isUnique(b) { return countSol(b.map(function(r){return r.slice();}), 2) === 1; }
+function genSolved(rng) {
+  var b = Array.from({length:9}, function(){ return Array(9).fill(0); });
+  (function fill() {
+    for (var r=0; r<9; r++) for (var c=0; c<9; c++) if (b[r][c]===0) {
+      var ns = shuffle([1,2,3,4,5,6,7,8,9], rng), i;
+      for (i=0; i<9; i++) if (valid(b,r,c,ns[i])) { b[r][c]=ns[i]; if(fill()) return true; b[r][c]=0; }
+      return false;
+    }
+    return true;
+  })();
+  return b;
+}
+var REMOVE = { easy:36, medium:46, hard:53, daily:46 };
+function genPuzzle(diff, seed) {
+  var rng = makeRng(seed !== undefined ? seed : (Math.random()*0xFFFFFFFF)>>>0);
+  var sol = genSolved(rng);
+  var puz = sol.map(function(r){ return r.slice(); });
+  var pos = shuffle(Array.from({length:81}, function(_,i){ return [Math.floor(i/9), i%9]; }), rng);
+  var rem = REMOVE[diff]||46, removed=0, i, r, c, bk;
+  for (i=0; i<pos.length && removed<rem; i++) {
+    r=pos[i][0]; c=pos[i][1]; bk=puz[r][c]; puz[r][c]=0;
+    if (!isUnique(puz)) puz[r][c]=bk; else removed++;
+  }
+  return { puzzle:puz, solution:sol };
+}
+
+/* ─────────────────────────────────────────────────────────
+   STORAGE & STREAK
+───────────────────────────────────────────────────────── */
+var SK = 'sudoku_kl_v1';
+function ls() { try { return JSON.parse(localStorage.getItem(SK)) || {}; } catch(e) { return {}; } }
+function ss(d) { try { localStorage.setItem(SK, JSON.stringify(d)); } catch(e) {} }
+function dateStr(off) {
+  var d = new Date(); d.setDate(d.getDate()+(off||0));
+  return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+}
+function getStreak() { var s=ls(); return { current: s.sc||0 }; }
+function recordComplete() {
+  var s=ls(), today=dateStr(), yest=dateStr(-1);
+  if (s.sd===today) return { current: s.sc||1 };
+  s.sc = (s.sd===yest) ? (s.sc||0)+1 : 1;
+  s.sb = Math.max(s.sb||0, s.sc);
+  s.sd = today; ss(s);
+  return { current: s.sc };
+}
+
+/* ─────────────────────────────────────────────────────────
+   GAME STATE
+───────────────────────────────────────────────────────── */
+var G = {
+  diff:'medium', puzzle:null, solution:null, board:null, given:null,
+  pencil:null, sel:null, pencilMode:false,
+  undo:[], redo:[], secs:0, done:false, hints:0, timerID:null,
+  puzzleNum:1
+};
+
+var gridEl   = document.getElementById('grid');
+var padSurf  = document.getElementById('padSurface');
+var timerEl  = document.getElementById('timer');
+var streakEl = document.getElementById('streakNum');
+var puzzleNumEl = document.getElementById('puzzleNumEl');
+var btnPencil= document.getElementById('btnPencil');
+var btnHint  = document.getElementById('btnHint');
+var btnCheck = document.getElementById('btnCheck');
+var btnUndo  = document.getElementById('btnUndo');
+var btnRedo  = document.getElementById('btnRedo');
+var btnNew   = document.getElementById('btnNew');
+var btnReset = document.getElementById('btnReset');
+var darkBtn  = document.getElementById('darkBtn');
+var dialogEl = document.getElementById('dialog');
+var dClose   = document.getElementById('dClose');
+var dShare   = document.getElementById('dShare');
+var dNew     = document.getElementById('dNew');
+var cvEl     = document.getElementById('cv');
+var cellEls  = [];
+
+/* ─────────────────────────────────────────────────────────
+   BUILD & RENDER GRID
+───────────────────────────────────────────────────────── */
+function buildGrid() {
+  gridEl.innerHTML = ''; cellEls = [];
+  for (var r=0; r<9; r++) {
+    var row = document.createElement('div');
+    row.className = 'grid-row'; row.setAttribute('role','row');
+    var rc = [];
+    for (var c=0; c<9; c++) {
+      var cell = document.createElement('div');
+      cell.className = 'cell rpl';
+      cell.setAttribute('role','gridcell');
+      cell.setAttribute('tabindex','0');
+      cell.dataset.r = r; cell.dataset.c = c;
+      var pg = document.createElement('div'); pg.className = 'pencil-grid';
+      for (var i=1; i<=9; i++) {
+        var pm = document.createElement('span'); pm.className = 'pm'; pm.dataset.pm = i;
+        pg.appendChild(pm);
+      }
+      var ns = document.createElement('span'); ns.className = 'cell-num';
+      cell.appendChild(pg); cell.appendChild(ns);
+      row.appendChild(cell); rc.push(cell);
+    }
+    cellEls.push(rc); gridEl.appendChild(row);
+  }
+}
+
+function refreshCell(r, c) {
+  var el=cellEls[r][c], val=G.board[r][c], given=G.given[r][c];
+  var marks=G.pencil[r][c], ns=el.querySelector('.cell-num'), pg=el.querySelector('.pencil-grid');
+  var err = !given && val!==0 && val!==G.solution[r][c];
+  el.className = 'cell rpl';
+  if (given) el.classList.add('given');
+  if (err) { el.classList.add('err'); el.setAttribute('aria-invalid','true'); }
+  else       el.removeAttribute('aria-invalid');
+  if (marks.size > 0 && val === 0) {
+    el.classList.add('has-pencil');
+    pg.querySelectorAll('.pm').forEach(function(s) {
+      var show = marks.has(+s.dataset.pm);
+      s.textContent = show ? s.dataset.pm : '';
+      s.className = 'pm' + (show ? ' lit' : '');
+    });
+    ns.textContent = '';
+  } else {
+    el.classList.remove('has-pencil');
+    ns.textContent = val || '';
+    pg.querySelectorAll('.pm').forEach(function(s){ s.textContent=''; });
+  }
+  el.setAttribute('aria-selected', G.sel && G.sel.r===r && G.sel.c===c ? 'true' : 'false');
+}
+
+function applyHL() {
+  for (var r=0; r<9; r++) for (var c=0; c<9; c++) {
+    cellEls[r][c].classList.remove('sel','rel','same');
+    cellEls[r][c].setAttribute('aria-selected','false');
+  }
+  if (!G.sel) return;
+  var sr=G.sel.r, sc=G.sel.c;
+  cellEls[sr][sc].classList.add('sel'); cellEls[sr][sc].setAttribute('aria-selected','true');
+  for (var i=0; i<9; i++) {
+    if (i!==sr) cellEls[i][sc].classList.add('rel');
+    if (i!==sc) cellEls[sr][i].classList.add('rel');
+  }
+  var br=Math.floor(sr/3)*3, bc=Math.floor(sc/3)*3, x, y;
+  for (x=br; x<br+3; x++) for (y=bc; y<bc+3; y++) if (x!==sr||y!==sc) cellEls[x][y].classList.add('rel');
+  var val = G.board[sr][sc];
+  if (val) for (var r2=0; r2<9; r2++) for (var c2=0; c2<9; c2++)
+    if (G.board[r2][c2]===val && (r2!==sr||c2!==sc)) cellEls[r2][c2].classList.add('same');
+  document.querySelectorAll('#padGrid [data-n]').forEach(function(b){
+    b.classList.toggle('active', val!==0 && +b.dataset.n===val);
+  });
+}
+
+function refreshAll() {
+  for (var r=0; r<9; r++) for (var c=0; c<9; c++) refreshCell(r,c);
+  applyHL(); streakEl.textContent = getStreak().current;
+}
+
+function updatePuzzleCounter() {
+  if (puzzleNumEl) puzzleNumEl.textContent = '#' + G.puzzleNum;
+}
+
+/* ─────────────────────────────────────────────────────────
+   INPUT & UNDO
+───────────────────────────────────────────────────────── */
+function selectCell(r,c) { G.sel={r:r,c:c}; applyHL(); }
+
+function inputNum(n) {
+  if (!G.sel) return;
+  var r=G.sel.r, c=G.sel.c;
+  if (G.given[r][c]) return;
+  if (G.pencilMode && n!==0) {
+    pushUndo();
+    if (G.pencil[r][c].has(n)) G.pencil[r][c].delete(n); else G.pencil[r][c].add(n);
+    refreshCell(r,c); autoSave(); return;
+  }
+  if (G.board[r][c]===n) return;
+  pushUndo();
+  G.board[r][c] = n;
+  if (n!==0) G.pencil[r][c] = new Set();
+  var ns = cellEls[r][c].querySelector('.cell-num');
+  if (n && ns) { ns.classList.remove('pop'); void ns.offsetWidth; ns.classList.add('pop'); }
+  refreshCell(r,c); applyHL(); autoSave();
+  if (n!==0 && checkComplete()) onComplete();
+}
+
+function checkComplete() {
+  for (var r=0; r<9; r++) for (var c=0; c<9; c++) if (G.board[r][c]!==G.solution[r][c]) return false;
+  return true;
+}
+
+function snap() {
+  return {
+    b: G.board.map(function(r){ return r.slice(); }),
+    p: G.pencil.map(function(row){ return row.map(function(s){ return new Set(s); }); })
+  };
+}
+function applySnap(s) {
+  G.board  = s.b.map(function(r){ return r.slice(); });
+  G.pencil = s.p.map(function(row){ return row.map(function(x){ return new Set(x); }); });
+  refreshAll();
+}
+function pushUndo() { G.undo.push(snap()); if (G.undo.length>100) G.undo.shift(); G.redo=[]; }
+function undo() { if (!G.undo.length) return; G.redo.push(snap()); applySnap(G.undo.pop()); }
+function redo() { if (!G.redo.length) return; G.undo.push(snap()); applySnap(G.redo.pop()); }
+
+function giveHint() {
+  var em=[];
+  for (var r=0; r<9; r++) for (var c=0; c<9; c++)
+    if (!G.given[r][c] && G.board[r][c]===0) em.push([r,c]);
+  if (!em.length) return;
+  var p = em[Math.floor(Math.random()*em.length)];
+  pushUndo();
+  G.board[p[0]][p[1]] = G.solution[p[0]][p[1]];
+  G.pencil[p[0]][p[1]] = new Set();
+  G.hints++;
+  refreshCell(p[0],p[1]); applyHL(); autoSave();
+  if (checkComplete()) onComplete();
+}
+
+function checkErrors() {
+  var ok = true;
+  for (var r=0; r<9; r++) for (var c=0; c<9; c++)
+    if (!G.given[r][c] && G.board[r][c] && G.board[r][c]!==G.solution[r][c]) ok=false;
+  refreshAll();
+  if (ok) {
+    var old = btnCheck.innerHTML;
+    btnCheck.innerHTML = '<span class="fi">🎯</span> Alles korrekt!';
+    setTimeout(function(){ btnCheck.innerHTML=old; }, 2200);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────
+   GAME LIFECYCLE
+───────────────────────────────────────────────────────── */
+function newGame(diff, forceSeed) {
+  diff = diff || G.diff;
+  if (!G.done && G.board && hasProgress())
+    if (!confirm('Neues Spiel starten? Ihr Fortschritt geht verloren.')) return;
+
+  G.diff=diff; G.done=false; G.hints=0; G.undo=[]; G.redo=[]; G.sel=null;
+  G.pencilMode=false;
+  btnPencil.classList.remove('active'); btnPencil.setAttribute('aria-pressed','false');
+  padSurf.classList.remove('pencil-on');
+
+  var seed;
+  if (diff === 'daily') {
+    seed = dailySeed();
+    G.puzzleNum = 0; // daily has no number
+  } else if (forceSeed !== undefined) {
+    seed = forceSeed;
+  } else {
+    // Pick next puzzle from the shuffled pool
+    var poolPos = nextPuzzleIndex(diff);
+    seed = poolSeed(diff, poolPos);
+    G.puzzleNum = (poolPos % POOL_SIZE) + 1;
+  }
+
+  var res  = genPuzzle(diff, seed);
+  G.puzzle=res.puzzle; G.solution=res.solution;
+  G.board  = res.puzzle.map(function(r){ return r.slice(); });
+  G.given  = res.puzzle.map(function(r){ return r.map(function(v){ return v!==0; }); });
+  G.pencil = Array.from({length:9}, function(){
+    return Array.from({length:9}, function(){ return new Set(); });
+  });
+
+  document.querySelectorAll('.diff-btn').forEach(function(b){
+    b.classList.toggle('active', b.dataset.diff===diff);
+    b.setAttribute('aria-pressed', b.dataset.diff===diff ? 'true' : 'false');
+  });
+
+  G.secs=0; stopTimer(); startTimer();
+  buildGrid(); refreshAll(); closeDialog();
+  updatePuzzleCounter();
+  autoSave();
+}
+
+function hasProgress() {
+  for (var r=0; r<9; r++) for (var c=0; c<9; c++)
+    if (!G.given[r][c] && G.board[r][c]!==0) return true;
+  return false;
+}
+function resetGame() {
+  if (!G.puzzle || !confirm('Rätsel auf den Anfang zurücksetzen?')) return;
+  pushUndo();
+  G.board  = G.puzzle.map(function(r){ return r.slice(); });
+  G.pencil = Array.from({length:9}, function(){
+    return Array.from({length:9}, function(){ return new Set(); });
+  });
+  G.done=false; G.secs=0; stopTimer(); startTimer(); refreshAll(); autoSave();
+}
+
+/* ─────────────────────────────────────────────────────────
+   TIMER
+───────────────────────────────────────────────────────── */
+function startTimer() {
+  stopTimer();
+  G.timerID = setInterval(function(){
+    if (!G.done) { G.secs++; updateTimerEl(); if (G.secs%30===0) autoSave(); }
+  }, 1000);
+  updateTimerEl();
+}
+function stopTimer() { clearInterval(G.timerID); }
+function updateTimerEl() {
+  var m=Math.floor(G.secs/60), s=G.secs%60;
+  timerEl.textContent = String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+}
+
+/* ─────────────────────────────────────────────────────────
+   COMPLETION
+───────────────────────────────────────────────────────── */
+function onComplete() {
+  G.done=true; stopTimer();
+  var streak = recordComplete();
+  streakEl.textContent = streak.current;
+  showDialog(streak); doConfetti();
+}
+function showDialog(streak) {
+  var icons  = { hard:'🏆', daily:'🌟', easy:'🎉', medium:'🎉' };
+  var titles = { hard:'Ausgezeichnet!', daily:'Tagesrätsel gelöst!', easy:'Rätsel gelöst!', medium:'Rätsel gelöst!' };
+  document.getElementById('dIcon').textContent      = icons[G.diff]  || '🎉';
+  document.getElementById('dialogTitle').textContent = titles[G.diff] || 'Rätsel gelöst!';
+  document.getElementById('dBody').textContent      = G.hints
+    ? 'Gelöst mit ' + G.hints + ' Hinweis' + (G.hints>1 ? 'en' : '') + '.'
+    : 'Perfekt gelöst!';
+  document.getElementById('dTime').textContent   = timerEl.textContent;
+  document.getElementById('dStreak').textContent = '🔥 ' + streak.current;
+  document.getElementById('dHints').textContent  = G.hints;
+  dialogEl.classList.add('show'); dialogEl.removeAttribute('aria-hidden');
+}
+function closeDialog() { dialogEl.classList.remove('show'); dialogEl.setAttribute('aria-hidden','true'); }
+function shareResult() {
+  var names = { easy:'leichtes', medium:'mittleres', hard:'schweres', daily:'tägliches' };
+  var m=Math.floor(G.secs/60), s=G.secs%60;
+  var numStr = G.puzzleNum ? ' (Rätsel #'+G.puzzleNum+')' : '';
+  var txt = 'Ich habe ein ' + (names[G.diff]||'') + ' Sudoku' + numStr + ' in ' +
+    String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0') +
+    ' gelöst! 🎉 klickspiele.de';
+  if (navigator.share) navigator.share({text:txt}).catch(function(){});
+  else if (navigator.clipboard) navigator.clipboard.writeText(txt).then(function(){ alert('In Zwischenablage kopiert!'); });
+}
+
+/* ─────────────────────────────────────────────────────────
+   CONFETTI
+───────────────────────────────────────────────────────── */
+function doConfetti() {
+  cvEl.style.display = 'block';
+  var ctx = cvEl.getContext('2d');
+  cvEl.width = window.innerWidth; cvEl.height = window.innerHeight;
+  var cols = ['#F57C00','#FFB74D','#FFE0B2','#4A4A4A','#FF8F00','#FFF3E0'];
+  var pts = Array.from({length:70}, function(){ return {
+    x:Math.random()*cvEl.width, y:-12, r:Math.random()*6+3,
+    c:cols[Math.floor(Math.random()*cols.length)],
+    vx:(Math.random()-.5)*3.5, vy:Math.random()*3+2,
+    a:Math.random()*360, sp:(Math.random()-.5)*7
+  }; });
+  var raf;
+  function draw() {
+    ctx.clearRect(0,0,cvEl.width,cvEl.height); var alive=false;
+    pts.forEach(function(p){
+      p.y+=p.vy; p.x+=p.vx; p.a+=p.sp; if(p.y<cvEl.height) alive=true;
+      ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.a*Math.PI/180);
+      ctx.fillStyle=p.c; ctx.globalAlpha=.9;
+      ctx.fillRect(-p.r/2,-p.r/2,p.r,p.r*1.8); ctx.restore();
+    });
+    if (alive) raf=requestAnimationFrame(draw); else cvEl.style.display='none';
+  }
+  raf=requestAnimationFrame(draw);
+  setTimeout(function(){ cancelAnimationFrame(raf); cvEl.style.display='none'; }, 4500);
+}
+
+/* ─────────────────────────────────────────────────────────
+   SAVE / LOAD
+───────────────────────────────────────────────────────── */
+function autoSave() {
+  var d = ls();
+  d.game = {
+    diff:G.diff, puzzle:G.puzzle, solution:G.solution, board:G.board,
+    given:G.given, secs:G.secs, done:G.done, hints:G.hints, puzzleNum:G.puzzleNum,
+    pencil:G.pencil.map(function(row){ return row.map(function(s){ return Array.from(s); }); })
+  };
+  ss(d);
+}
+function loadSaved() {
+  var d=ls(); if (!d.game||!d.game.puzzle) return false;
+  var g=d.game;
+  G.diff=g.diff||'medium'; G.puzzle=g.puzzle; G.solution=g.solution;
+  G.board=g.board; G.given=g.given; G.secs=g.secs||0;
+  G.done=g.done||false; G.hints=g.hints||0; G.puzzleNum=g.puzzleNum||1;
+  G.pencil=g.pencil.map(function(row){ return row.map(function(a){ return new Set(a); }); });
+  G.undo=[]; G.redo=[]; G.sel=null; return true;
+}
+
+/* ─────────────────────────────────────────────────────────
+   DARK MODE
+───────────────────────────────────────────────────────── */
+function applyDark(on) {
+  document.body.classList.toggle('dark-mode', on);
+  document.querySelector('meta[name="theme-color"]').content = on ? '#1A1A1A' : '#F57C00';
+  var d=ls(); d.dark=on; ss(d);
+}
+
+/* ─────────────────────────────────────────────────────────
+   PENCIL
+───────────────────────────────────────────────────────── */
+function togglePencil() {
+  G.pencilMode = !G.pencilMode;
+  btnPencil.classList.toggle('active', G.pencilMode);
+  btnPencil.setAttribute('aria-pressed', G.pencilMode ? 'true' : 'false');
+  padSurf.classList.toggle('pencil-on', G.pencilMode);
+}
+
+/* ─────────────────────────────────────────────────────────
+   KEYBOARD
+───────────────────────────────────────────────────────── */
+document.addEventListener('keydown', function(e) {
+  var key = e.key;
+  if (G.sel) {
+    var r=G.sel.r, c=G.sel.c;
+    if (key==='ArrowUp'    && r>0) { e.preventDefault(); selectCell(r-1,c); cellEls[r-1][c].focus(); return; }
+    if (key==='ArrowDown'  && r<8) { e.preventDefault(); selectCell(r+1,c); cellEls[r+1][c].focus(); return; }
+    if (key==='ArrowLeft'  && c>0) { e.preventDefault(); selectCell(r,c-1); cellEls[r][c-1].focus(); return; }
+    if (key==='ArrowRight' && c<8) { e.preventDefault(); selectCell(r,c+1); cellEls[r][c+1].focus(); return; }
+  }
+  if (key>='1' && key<='9') { e.preventDefault(); inputNum(+key); return; }
+  if (key==='0'||key==='Backspace'||key==='Delete') { e.preventDefault(); inputNum(0); return; }
+  if (key.toLowerCase()==='p') { togglePencil(); return; }
+  if ((e.ctrlKey||e.metaKey) && key==='z') { e.preventDefault(); undo(); return; }
+  if ((e.ctrlKey||e.metaKey) && key==='y') { e.preventDefault(); redo(); return; }
+  if (key==='Escape') { closeDialog(); return; }
+});
+
+/* ─────────────────────────────────────────────────────────
+   EVENT BINDINGS
+───────────────────────────────────────────────────────── */
+gridEl.addEventListener('click', function(e) {
+  var cell = e.target.closest('.cell'); if (!cell) return;
+  selectCell(+cell.dataset.r, +cell.dataset.c); cell.focus();
+});
+gridEl.addEventListener('keydown', function(e) {
+  var cell = e.target.closest('.cell'); if (!cell) return;
+  if (e.key==='Enter'||e.key===' ') { e.preventDefault(); selectCell(+cell.dataset.r,+cell.dataset.c); }
+});
+document.getElementById('padGrid').addEventListener('click', function(e) {
+  var b = e.target.closest('[data-n]'); if (b) inputNum(+b.dataset.n);
+});
+document.querySelectorAll('.diff-btn').forEach(function(b) {
+  b.addEventListener('click', function(){ newGame(b.dataset.diff); });
+});
+btnUndo.addEventListener('click',  undo);
+btnRedo.addEventListener('click',  redo);
+btnNew.addEventListener('click',   function(){ newGame(G.diff); });
+btnReset.addEventListener('click', resetGame);
+btnPencil.addEventListener('click',togglePencil);
+btnHint.addEventListener('click',  giveHint);
+btnCheck.addEventListener('click', checkErrors);
+darkBtn.addEventListener('click',  function(){ applyDark(!ls().dark); });
+dClose.addEventListener('click',   closeDialog);
+dShare.addEventListener('click',   shareResult);
+dNew.addEventListener('click',     function(){ closeDialog(); newGame(G.diff); });
+dialogEl.addEventListener('click', function(e){ if(e.target===dialogEl) closeDialog(); });
+window.addEventListener('resize',  function(){ cvEl.width=window.innerWidth; cvEl.height=window.innerHeight; });
+
+/* ─────────────────────────────────────────────────────────
+   BOOT
+───────────────────────────────────────────────────────── */
+(function init() {
+  var d = ls();
+  if (d.dark) applyDark(true);
+  streakEl.textContent = getStreak().current;
+  if (loadSaved()) {
+    document.querySelectorAll('.diff-btn').forEach(function(b){
+      b.classList.toggle('active', b.dataset.diff===G.diff);
+    });
+    updateTimerEl(); updatePuzzleCounter(); buildGrid(); refreshAll();
+    if (!G.done) startTimer();
+  } else {
+    newGame('medium');
+  }
+})();
+</script>
+</body>
+</html>

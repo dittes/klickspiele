@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#F57C00">
+<title>Schach online kostenlos spielen – Gegen KI &amp; Freunde | klickspiele.de</title>
+<meta name="description" content="Schach kostenlos online spielen – ohne Anmeldung, direkt im Browser. Gegen KI in 3 Schwierigkeitsstufen oder gegen Freunde. Mit Blitz-Modus, Zugnotation und Undo. Jetzt spielen!">
+<link rel="canonical" href="https://klickspiele.de/schach">
+<link rel="stylesheet" href="./style.css">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23F57C00'/><path d='M8 4 L8 24 L13 19 L16.5 27 L19.5 25.5 L16 17.5 L22 17.5 Z' fill='white'/></svg>">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Schach online kostenlos spielen | klickspiele.de">
+<meta property="og:description" content="Schach im Browser spielen – kostenlos, ohne Anmeldung. Gegen KI oder Freunde, mit Blitz-Modus und 3 Schwierigkeitsstufen.">
+<meta property="og:url" content="https://klickspiele.de/schach">
+<meta property="og:image" content="https://klickspiele.de/og-chess.png">
+<meta property="og:site_name" content="klickspiele.de">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Schach online kostenlos spielen | klickspiele.de">
+<meta name="twitter:description" content="Schach kostenlos im Browser – KI-Gegner, Blitz-Modus, kein Download.">
+<meta name="twitter:image" content="https://klickspiele.de/og-chess.png">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://klickspiele.de/schach#app",
+      "name": "Schach Online – klickspiele.de",
+      "url": "https://klickspiele.de/schach",
+      "description": "Kostenloses Schachspiel im Browser. Spielen Sie gegen eine KI mit 3 Schwierigkeitsstufen oder gegen Freunde.",
+      "applicationCategory": "GameApplication",
+      "operatingSystem": "Any",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+      "inLanguage": "de",
+      "provider": { "@type": "Organization", "name": "klickspiele.de", "url": "https://klickspiele.de" }
+    },
+    {
+      "@type": "Game",
+      "@id": "https://klickspiele.de/schach#game",
+      "name": "Schach",
+      "alternateName": "Chess",
+      "description": "Das klassische Schachspiel – vollständige Regelimplementierung mit KI-Gegner.",
+      "url": "https://klickspiele.de/schach",
+      "genre": ["Brettspiel","Strategiespiel"],
+      "numberOfPlayers": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 2 }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "klickspiele.de", "item": "https://klickspiele.de" },
+        { "@type": "ListItem", "position": 2, "name": "Schach", "item": "https://klickspiele.de/schach" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Kann ich Schach kostenlos und ohne Anmeldung spielen?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Ja! Unser Schachspiel ist komplett kostenlos und erfordert keine Anmeldung. Einfach die Seite öffnen und sofort spielen." }
+        },
+        {
+          "@type": "Question",
+          "name": "Welche Schwierigkeitsstufen gibt es?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Es gibt drei Stufen: Einfach (Zufallszüge), Mittel (Materialbewertung) und Schwer (Minimax-KI mit Alpha-Beta-Pruning, Tiefe 3)." }
+        },
+        {
+          "@type": "Question",
+          "name": "Sind alle Schachregeln implementiert?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Ja, vollständig: Rochade (kurz und lang), En Passant, Bauernumwandlung, Schach-, Schachmatt- und Patt-Erkennung, 50-Züge-Regel." }
+        },
+        {
+          "@type": "Question",
+          "name": "Gibt es einen Blitz-Modus?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Ja! Aktivieren Sie den Blitz-Modus und wählen Sie zwischen 1, 3, 5 oder 10 Minuten pro Spieler." }
+        },
+        {
+          "@type": "Question",
+          "name": "Kann ich auch gegen einen Freund spielen?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Ja, im 2-Spieler-Modus spielen beide Spieler abwechselnd am selben Gerät." }
+        },
+        {
+          "@type": "Question",
+          "name": "Wird der Spielstand gespeichert?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Ja, der aktuelle Spielstand wird automatisch im Browser gespeichert und beim nächsten Besuch wiederhergestellt." }
+        },
+        {
+          "@type": "Question",
+          "name": "Kann ich Züge rückgängig machen?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Ja, mit der Undo-Funktion. Im Einzelspielermodus werden sowohl der eigene Zug als auch der KI-Zug rückgängig gemacht." }
+        },
+        {
+          "@type": "Question",
+          "name": "Funktioniert das Spiel auf dem Handy?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Ja! Das Spiel ist Mobile-First gestaltet, mit Touch-Unterstützung (Tippen und Wischen) und responsivem Layout für alle Bildschirmgrößen." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+/* ── Chess-specific styles (game component only) ── */
+
+/* Board container */
+.chess-wrap {
+  width: min(96vw, 520px);
+  margin: 0 auto;
+}
+
+/* Chess board grid */
+#chess-board {
+  width: 100%;
+  aspect-ratio: 1;
+  display: grid;
+  grid-template-columns: repeat(8,1fr);
+  grid-template-rows: repeat(8,1fr);
+  border: 3px solid var(--c-outline);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  box-shadow: var(--elev-2);
+  touch-action: none;
+}
+
+/* Square */
+.csq {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  transition: background var(--dur-fast) var(--ease);
+}
+.sq-l { background: #F0D9B5; }
+.sq-d { background: #B58863; }
+body.dark-mode .sq-l { background: #4B3A2A; }
+body.dark-mode .sq-d { background: #2D1B0E; }
+
+/* Piece */
+.cpc {
+  font-size: clamp(20px, 6.5vw, 52px);
+  line-height: 1;
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity var(--dur-fast);
+  text-shadow: 0 1px 3px rgba(0,0,0,.3);
+}
+.wp { filter: drop-shadow(0 1px 2px rgba(0,0,0,.5)); }
+.bp { filter: drop-shadow(0 1px 2px rgba(0,0,0,.6)); }
+
+/* Draggable */
+.csq[data-br] { -webkit-user-drag: element; }
+.dragging .cpc { opacity: 0.3; }
+.drag-over { outline: 3px solid var(--c-primary); outline-offset: -3px; }
+
+/* Highlights */
+.sq-sel  { background: #F6F669 !important; }
+.sq-lf   { background: #CDD16E !important; }
+.sq-lt   { background: #CDD16E !important; }
+/* Legal move dot */
+.sq-dot::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 28%; height: 28%;
+  border-radius: 50%;
+  background: rgba(0,0,0,.22);
+  pointer-events: none;
+  z-index: 2;
+}
+/* Legal capture ring */
+.sq-cap::before {
+  content: '';
+  position: absolute; inset: 0;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 5px rgba(0,0,0,.22);
+  pointer-events: none;
+  z-index: 2;
+}
+.sq-chk { background: rgba(200,0,0,.6) !important; }
+.sq-chk .cpc { animation: pulse-check 0.6s ease infinite alternate; }
+@keyframes pulse-check { from{filter:drop-shadow(0 0 4px #ff0000)} to{filter:drop-shadow(0 0 12px #ff4444)} }
+
+/* Square labels */
+.sq-lbl {
+  position: absolute;
+  font-size: clamp(8px,1.2vw,11px);
+  font-weight: 700;
+  pointer-events: none;
+  opacity: 0.7;
+  line-height: 1;
+}
+.sq-r { top: 3px; left: 3px; color: inherit; }
+.sq-f { bottom: 2px; right: 3px; color: inherit; }
+.sq-l .sq-lbl { color: #B58863; }
+.sq-d .sq-lbl { color: #F0D9B5; }
+body.dark-mode .sq-l .sq-lbl { color: #8B6040; }
+body.dark-mode .sq-d .sq-lbl { color: #7A5A3A; }
+/* Override for highlighted squares */
+.sq-sel .sq-lbl, .sq-lf .sq-lbl, .sq-lt .sq-lbl { color: #888 !important; }
+
+/* Animated piece ghost */
+.piece-ghost {
+  pointer-events: none;
+  user-select: none;
+  z-index: 1000;
+  text-shadow: 0 2px 8px rgba(0,0,0,.4);
+}
+
+/* Game layout */
+.game-main {
+  padding: 12px 0 180px;
+}
+.game-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+/* Player strips */
+.player-strip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: min(96vw,520px);
+  padding: 6px 12px;
+  border-radius: var(--r-md);
+  background: var(--c-surf-low);
+  margin: 4px auto;
+}
+.player-color-dot {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--c-outline);
+  flex-shrink: 0;
+}
+.dot-white { background: #fff; }
+.dot-black { background: #1a1a1a; }
+.player-label { font-weight: 600; font-size: 15px; flex: 1; }
+.captured-pieces { font-size: 14px; letter-spacing: -1px; flex: 1; text-align: right; }
+
+/* Status bar */
+.game-status {
+  text-align: center;
+  font-size: 17px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: var(--r-full);
+  margin: 8px auto;
+  max-width: min(96vw,520px);
+  background: var(--c-surf-mid);
+  transition: background var(--dur-normal), color var(--dur-normal);
+}
+.st-check { background: #FFF3CD; color: #8A5700; }
+body.dark-mode .st-check { background: #3D2A00; color: #FFC107; }
+.st-end { background: var(--c-primary-container); color: var(--c-on-primary-container); }
+
+/* AI thinking indicator */
+#ai-indicator {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: var(--r-full);
+  background: var(--c-surf-mid);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--c-secondary);
+  margin: 0 auto;
+  max-width: min(96vw,520px);
+  justify-content: center;
+}
+#ai-indicator.vis { display: flex; }
+.ai-dots span {
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--c-primary);
+  animation: ai-dot 1.2s infinite;
+  margin: 0 2px;
+}
+.ai-dots span:nth-child(2) { animation-delay: 0.2s; }
+.ai-dots span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes ai-dot { 0%,80%,100%{transform:scale(0.5);opacity:.4} 40%{transform:scale(1);opacity:1} }
+
+/* Toolbar */
+.chess-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: min(96vw,520px);
+  margin: 8px auto 0;
+  padding: 0 4px;
+}
+.toolbar-btns { display: flex; gap: 4px; }
+
+/* Timer section */
+#timer-section {
+  display: none;
+  width: min(96vw,520px);
+  margin: 6px auto 0;
+  gap: 8px;
+  justify-content: center;
+}
+#timer-section .timer-chip {
+  flex: 1;
+  max-width: 160px;
+  transition: box-shadow var(--dur-fast);
+}
+.timer-active { box-shadow: 0 0 0 2px var(--c-primary), var(--elev-1) !important; }
+
+/* Move list panel */
+.move-list-wrap {
+  width: min(96vw,520px);
+  margin: 8px auto 0;
+  border: 1.5px solid var(--c-outline-var);
+  border-radius: var(--r-md);
+  background: var(--c-surf-low);
+  overflow: hidden;
+}
+.move-list-head {
+  padding: 8px 16px;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--c-on-surf-var);
+  background: var(--c-surf-mid);
+  border-bottom: 1px solid var(--c-outline-var);
+}
+#move-list {
+  max-height: 140px;
+  overflow-y: auto;
+  padding: 8px;
+}
+.mv-row {
+  display: flex;
+  gap: 4px;
+  align-items: baseline;
+  margin-bottom: 2px;
+}
+.mv-num {
+  font-size: 13px;
+  color: var(--c-outline);
+  width: 30px;
+  flex-shrink: 0;
+  font-weight: 600;
+}
+.mv-n {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  padding: 2px 8px;
+  border-radius: var(--r-sm);
+  flex: 1;
+  cursor: pointer;
+  transition: background var(--dur-fast);
+}
+.mv-n:hover { background: var(--c-surf-high); }
+.mv-last { background: var(--c-primary-container); color: var(--c-on-primary-container); font-weight: 700; }
+
+/* Promotion dialog */
+#promo-scrim {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,.55); z-index: 500;
+  align-items: center; justify-content: center;
+}
+#promo-scrim.show { display: flex; }
+.promo-dialog {
+  background: var(--c-surface);
+  border-radius: var(--r-xl);
+  padding: 24px 20px;
+  box-shadow: var(--elev-2);
+  text-align: center;
+}
+.promo-dialog h2 { font-size: 18px; margin-bottom: 16px; }
+.promo-btns { display: flex; gap: 12px; justify-content: center; }
+.promo-btn {
+  width: 64px; height: 64px;
+  font-size: 44px;
+  border-radius: var(--r-md);
+  background: var(--c-surf-mid);
+  border: 2px solid var(--c-outline-var);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: background var(--dur-fast), border-color var(--dur-fast);
+  position: relative; overflow: hidden;
+}
+.promo-btn:hover { background: var(--c-primary-container); border-color: var(--c-primary); }
+
+/* Game over dialog */
+#go-scrim {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,.55); z-index: 500;
+  align-items: center; justify-content: center;
+}
+#go-scrim.show { display: flex; }
+.go-dialog {
+  background: var(--c-surface);
+  border-radius: var(--r-xl);
+  padding: 32px 28px;
+  box-shadow: var(--elev-2);
+  text-align: center;
+  max-width: 320px;
+  width: 90vw;
+}
+.go-dialog h2 { font-size: 28px; margin-bottom: 8px; }
+#go-msg { font-size: 18px; color: var(--c-secondary); margin-bottom: 24px; }
+.go-btns { display: flex; flex-direction: column; gap: 10px; }
+
+/* Setup dialog */
+#setup-scrim {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,.55); z-index: 500;
+  align-items: flex-end; justify-content: center;
+}
+#setup-scrim.show { display: flex; }
+.setup-dialog {
+  background: var(--c-surface);
+  border-radius: var(--r-xl) var(--r-xl) 0 0;
+  padding: 24px 20px calc(24px + env(safe-area-inset-bottom));
+  width: 100%;
+  max-width: 540px;
+  box-shadow: var(--elev-2);
+}
+.setup-dialog h2 { font-size: 20px; font-weight: 700; margin-bottom: 20px; }
+.setup-section { margin-bottom: 16px; }
+.setup-label { font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; color: var(--c-outline); margin-bottom: 8px; }
+.setup-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.mode-btn, .diff-btn, .col-btn {
+  flex: 1; min-width: 80px;
+  height: 48px;
+  border-radius: var(--r-full);
+  background: var(--c-secondary-container);
+  color: var(--c-on-secondary-container);
+  font-weight: 600; font-size: 15px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: background var(--dur-normal), border-color var(--dur-normal);
+  position: relative; overflow: hidden;
+}
+.mode-btn.active, .diff-btn.active, .col-btn.active {
+  background: var(--c-primary-container);
+  color: var(--c-on-primary-container);
+  border-color: var(--c-primary);
+}
+.blitz-row { display: flex; align-items: center; gap: 10px; }
+#blitz-select {
+  height: 44px; padding: 0 12px;
+  border-radius: var(--r-full);
+  border: 1.5px solid var(--c-outline-var);
+  background: var(--c-surface);
+  color: var(--c-on-surface);
+  font-size: 15px; font-family: var(--font-ui);
+  cursor: pointer;
+}
+
+/* Intro text above fold */
+.chess-intro {
+  max-width: min(96vw, 520px);
+  margin: 0 auto 12px;
+  padding: 0 8px;
+}
+.chess-intro p {
+  font-size: 16px;
+  line-height: 25px;
+  color: var(--c-on-surf-var);
+}
+
+/* SEO text */
+.seo-section { max-width: var(--content-max); margin: 32px auto 0; padding: 0 16px 80px; }
+.seo-section h2 { font-size: 22px; font-weight: 700; margin: 28px 0 10px; line-height: 30px; }
+.seo-section h3 { font-size: 18px; font-weight: 600; margin: 20px 0 8px; }
+.seo-section p { margin-bottom: 12px; }
+.seo-section ul { margin: 8px 0 12px 20px; }
+.seo-section li { margin-bottom: 4px; }
+
+/* FAQ collapsibles */
+.faq-section { margin-top: 24px; }
+.collapsible { border-bottom: 1px solid var(--c-outline-var); }
+.collapsible summary {
+  padding: 14px 0;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  list-style: none;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.collapsible summary::-webkit-details-marker { display: none; }
+.collapsible summary::after {
+  content: '';
+  width: 20px; height: 20px;
+  background: var(--c-primary);
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5'/%3E%3C/svg%3E");
+  mask-repeat: no-repeat; mask-position: center; mask-size: contain;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5'/%3E%3C/svg%3E");
+  -webkit-mask-repeat: no-repeat; -webkit-mask-position: center; -webkit-mask-size: contain;
+  flex-shrink: 0;
+  transition: transform var(--dur-normal) var(--ease);
+}
+.collapsible[open] summary::after { transform: rotate(180deg); }
+.collapsible__body { padding: 0 0 14px; font-size: 16px; line-height: 26px; color: var(--c-on-surf-var); }
+
+/* Desktop layout */
+@media (min-width: 900px) {
+  .chess-wrap { width: min(96vw,540px); }
+  #chess-board { }
+  .player-strip { width: min(96vw,540px); }
+  .chess-toolbar { width: min(96vw,540px); }
+  .move-list-wrap { width: min(96vw,540px); }
+  .chess-intro { max-width: min(96vw,540px); }
+  #timer-section { width: min(96vw,540px); }
+  .game-main { padding-bottom: 40px; }
+  #move-list { max-height: 180px; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Zum Inhalt springen</a>
+
+<!-- TOP APP BAR -->
+<header class="top-bar">
+  <a href="https://klickspiele.de" class="home-btn rpl" aria-label="Zurück zu klickspiele.de">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2 L4 19 L8 15 L11 22 L13.5 21 L10.5 14 L16 14 Z" fill="white"/></svg>
+  </a>
+  <span class="top-bar__title">♟ Schach</span>
+  <div class="top-bar__actions">
+    <button id="btn-dark" class="bar-icon-btn rpl" aria-label="Dark Mode umschalten">
+      <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/></svg>
+    </button>
+    <button id="btn-settings" class="bar-icon-btn rpl" aria-label="Spieleinstellungen">
+      <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.49.49 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<main id="main" class="game-main">
+
+  <!-- H1 Above the fold -->
+  <div class="chess-intro">
+    <h1 style="font-size:22px;font-weight:700;margin:12px 0 6px;line-height:30px;">Schach online kostenlos spielen</h1>
+    <p>Spielen Sie Schach direkt im Browser – kostenlos, ohne Anmeldung. Fordern Sie unsere KI in drei Schwierigkeitsstufen heraus oder spielen Sie mit einem Freund am selben Gerät. Vollständige Schachregeln, Blitz-Modus und automatische Spielstandspeicherung inklusive.</p>
+  </div>
+
+  <div class="game-area">
+
+    <!-- Black player strip -->
+    <div class="player-strip" id="strip-black" aria-label="Schwarzer Spieler">
+      <span class="player-color-dot dot-black" aria-hidden="true"></span>
+      <span class="player-label">Schwarz</span>
+      <span class="captured-pieces" id="cap-white" aria-label="Von Weiß geschlagene Figuren"></span>
+    </div>
+
+    <!-- Chess board -->
+    <div class="chess-wrap">
+      <div id="chess-board" role="grid" aria-label="Schachbrett" aria-live="polite"></div>
+    </div>
+
+    <!-- White player strip -->
+    <div class="player-strip" id="strip-white" aria-label="Weißer Spieler">
+      <span class="player-color-dot dot-white" aria-hidden="true"></span>
+      <span class="player-label">Weiß</span>
+      <span class="captured-pieces" id="cap-black" aria-label="Von Schwarz geschlagene Figuren"></span>
+    </div>
+
+    <!-- Status -->
+    <div class="game-status" id="game-status" role="status" aria-live="polite">Weiß ist am Zug</div>
+
+    <!-- AI thinking -->
+    <div id="ai-indicator" aria-live="polite" aria-label="KI denkt nach">
+      KI denkt nach
+      <span class="ai-dots" aria-hidden="true"><span></span><span></span><span></span></span>
+    </div>
+
+    <!-- Timer section (blitz) -->
+    <div id="timer-section" style="display:none;gap:8px;width:min(96vw,520px);margin:6px auto 0;justify-content:center;align-items:center;">
+      <div class="timer-chip">
+        <span class="timer-icon" aria-hidden="true">⏱</span>
+        <span class="timer-display" id="timer-w">5:00</span>
+        <span style="font-size:13px;font-weight:600;margin-left:4px;">Weiß</span>
+      </div>
+      <div class="timer-chip">
+        <span class="timer-icon" aria-hidden="true">⏱</span>
+        <span class="timer-display" id="timer-b">5:00</span>
+        <span style="font-size:13px;font-weight:600;margin-left:4px;">Schwarz</span>
+      </div>
+    </div>
+
+    <!-- Toolbar -->
+    <div class="chess-toolbar" role="toolbar" aria-label="Spielsteuerung">
+      <div class="toolbar-btns">
+        <button id="btn-undo" class="tool-btn rpl" aria-label="Zug rückgängig">
+          <svg viewBox="0 0 24 24"><path d="M12.5 8c-2.65 0-5.05.99-6.9 2.6L2 7v9h9l-3.62-3.62c1.39-1.16 3.16-1.88 5.12-1.88 3.54 0 6.55 2.31 7.6 5.5l2.37-.78C21.08 11.03 17.15 8 12.5 8z"/></svg>
+        </button>
+        <button id="btn-restart" class="tool-btn rpl" aria-label="Neues Spiel">
+          <svg viewBox="0 0 24 24"><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+        </button>
+        <button id="btn-flip" class="tool-btn rpl" aria-label="Brett drehen">
+          <svg viewBox="0 0 24 24"><path d="M16 17.01V10h-2v7.01h-3L15 21l4-3.99h-3zM9 3L5 6.99h3V14h2V6.99h3L9 3z"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Move list -->
+    <div class="move-list-wrap" aria-label="Zugprotokoll">
+      <div class="move-list-head">Zugprotokoll</div>
+      <div id="move-list" role="log" aria-label="Gespielte Züge"></div>
+    </div>
+
+  </div><!-- /game-area -->
+
+  <!-- SEO Content -->
+  <article class="seo-section">
+    <h2>Schach – Das königliche Spiel im Browser</h2>
+    <p>Schach ist eines der ältesten und faszinierendsten Strategiespiele der Welt. Auf unserem kostenlosen Onlinespiel können Sie Schach direkt im Browser spielen – ohne Download, ohne Anmeldung, ohne Kosten. Unser Spiel bietet eine vollständige Regelimplementierung mit allen Sonderregeln, eine starke KI in drei Schwierigkeitsstufen sowie den beliebten Blitz-Modus für schnelle Partien.</p>
+
+    <h2>Spielmodi und Funktionen</h2>
+    <p>Wählen Sie zwischen dem Einzelspielermodus gegen unsere KI oder dem Zwei-Spieler-Modus für zwei Personen am gleichen Gerät. Im Einzelspieler-Modus stehen drei Schwierigkeitsstufen zur Verfügung: Einsteiger (Zufallszüge), Mittel (Materialbewertung) und Experte (Minimax-Algorithmus mit Alpha-Beta-Pruning).</p>
+    <p>Praktische Funktionen wie Undo, Brett drehen, Zugnotation in Echtzeit und automatische Spielstandspeicherung via LocalStorage machen das Spielerlebnis komfortabel. Der Blitz-Modus mit konfigurierbarer Zeitkontrolle (1, 3, 5 oder 10 Minuten) sorgt für spannungsgeladene Schnellpartien.</p>
+
+    <h2>Vollständige Schachregeln</h2>
+    <p>Alle offiziellen Schachregeln sind implementiert: Grundzüge aller Figuren, kurze und lange Rochade (mit korrekter Überprüfung der Zwischenfelder), En-passant-Schlag und Bauernumwandlung mit Figurenauswahl (Dame, Turm, Läufer oder Springer). Schach, Schachmatt und Patt werden automatisch erkannt. Zusätzlich gelten die 50-Züge-Regel und die Regel zum unzureichenden Material für Remis-Situationen.</p>
+
+    <h2>Die Schachfiguren und ihre Züge</h2>
+    <p>Jede der sechs Figurentypen bewegt sich auf eigene Weise. Der König (♔♚) darf ein Feld in jede Richtung ziehen, ist aber die wichtigste Figur – sein Verlust bedeutet das Ende der Partie. Die Dame (♕♛) ist die stärkste Figur und kann beliebig weit diagonal, horizontal und vertikal ziehen.</p>
+    <p>Der Turm (♖♜) zieht horizontal und vertikal, der Läufer (♗♝) diagonal. Der Springer (♘♞) bewegt sich in einem L-förmigen Muster (zwei Felder in eine Richtung, eines senkrecht dazu) und kann als einzige Figur andere überspringen. Der Bauer (♙♟) bewegt sich vorwärts und schlägt diagonal – und kann bei Erreichen der gegnerischen Grundreihe in eine beliebige Figur umgewandelt werden.</p>
+
+    <h2>Schachstrategie für Einsteiger</h2>
+    <p>Gute Schachspieler orientieren sich an einigen grundlegenden strategischen Prinzipien. Kontrollieren Sie das Zentrum (Felder e4, d4, e5, d5) mit Bauern und Figuren. Entwickeln Sie Ihre Figuren früh: Springer und Läufer sollten in den ersten Zügen aktiviert werden. Rochieren Sie zeitig, um den König in Sicherheit zu bringen und einen Turm zu aktivieren.</p>
+    <p>Halten Sie Ihre Figuren auf aktiven Feldern, von denen aus sie möglichst viele Felder kontrollieren. Achten Sie auf taktische Motive wie Gabel (eine Figur greift zwei gegnerische gleichzeitig an), Spieß (eine wertvolle Figur wird durch eine andere gedeckt) und Fesselung (eine Figur kann nicht ziehen, ohne eine wertvollere Figur zu gefährden).</p>
+
+    <h2>Beliebte Schacheröffnungen</h2>
+    <p>Die Eröffnungsphase ist entscheidend für den weiteren Spielverlauf. Zu den bekanntesten weißen Eröffnungen gehören die Spanische Partie (Ruy López) mit 1.e4 e5 2.Sf3 Sc6 3.Lb5, die Italienische Partie (1.e4 e5 2.Sf3 Sc6 3.Lc4) und das Damengambit (1.d4 d5 2.c4).</p>
+    <p>Für Schwarz sind die Sizilianische Verteidigung (1.e4 c5), die Französische Verteidigung (1.e4 e6) und die Caro-Kann-Verteidigung (1.e4 c6) besonders populär. Jede Eröffnung hat eigene Ideen und Pläne, die es im Mittelspiel umzusetzen gilt.</p>
+
+    <h2>Schachtaktiken meistern</h2>
+    <p>Taktik ist das Fundament des Schachspiels. Die häufigsten taktischen Motive sind: Gabel (ein Springer greift zwei Figuren gleichzeitig an), Fesselung (eine Figur ist gebunden, weil sie eine wertvollere schützt), Spieß (eine wichtige Figur wird gezwungen zu ziehen, wobei die dahinterstehende Figur gefangen wird), Abzugsangriff (eine Figur zieht weg und enthüllt dabei einen Angriff einer anderen Figur) sowie die Abwicklung mit Materialgewinn. Das Erkennen und Ausnutzen dieser Motive ist entscheidend für den Spielerfolg.</p>
+
+    <h2>Geschichte des Schachspiels</h2>
+    <p>Schach hat eine mehr als 1.500-jährige Geschichte. Die Ursprünge liegen im indischen Spiel Chaturanga aus dem 6. Jahrhundert n. Chr., das sich über Persien (als Shatranj) und die arabische Welt nach Europa verbreitete. Im 15. Jahrhundert erhielt das Spiel in Europa seine heutige Form – die Königin wurde zur stärksten Figur, Läufer und Bauern erhielten ihre modernen Züge.</p>
+    <p>Weltberühmt wurde Schach durch legendäre Wettkämpfe wie den „Kampf des Jahrhunderts" zwischen Bobby Fischer und Boris Spasski (1972) sowie die epischen Duelle zwischen Garry Kasparov und Anatoly Karpov in den 1980er- und 1990er-Jahren. Heute ist Schach mit Millionen aktiver Spieler weltweit populärer denn je – und die Online-Variante macht das Spiel für jeden zugänglich.</p>
+
+    <h2>Über unsere Schach-KI</h2>
+    <p>Die Schwierigkeitsstufe „Experte" nutzt den Minimax-Algorithmus mit Alpha-Beta-Pruning – das gleiche Grundprinzip, das auch professionelle Schachprogramme wie Stockfish verwenden. Der Algorithmus simuliert mögliche Zugsequenzen in einem Spielbaum und bewertet die resultierenden Stellungen anhand von Materialwerten und positionsabhängigen Bonuspunkten (Piece-Square Tables). Alpha-Beta-Pruning eliminiert Äste des Spielbaums, die keine besseren Ergebnisse liefern können, und macht die Suche deutlich effizienter.</p>
+    <p>Die mittlere Stufe verwendet eine einfache Greedy-Bewertung (bester nächster Zug ohne Vorausschau), während die leichte Stufe vollständig zufällige legale Züge spielt – ideal für Anfänger oder zum Entspannen.</p>
+
+    <section class="faq-section" aria-label="Häufige Fragen">
+      <h2>Häufige Fragen (FAQ)</h2>
+
+      <details class="collapsible">
+        <summary>Kann ich Schach kostenlos und ohne Anmeldung spielen?</summary>
+        <div class="collapsible__body">Ja! Unser Schachspiel ist komplett kostenlos und erfordert keinerlei Anmeldung oder Account. Einfach die Seite öffnen und sofort losspielen.</div>
+      </details>
+
+      <details class="collapsible">
+        <summary>Welche Schwierigkeitsstufen gibt es?</summary>
+        <div class="collapsible__body">Es gibt drei Stufen: Einfach (KI spielt Zufallszüge – gut für Anfänger), Mittel (KI bewertet Material und Position – für Fortgeschrittene) und Experte (Minimax-KI mit Alpha-Beta-Pruning, Tiefe 3 – für erfahrene Spieler).</div>
+      </details>
+
+      <details class="collapsible">
+        <summary>Sind alle Schachregeln korrekt implementiert?</summary>
+        <div class="collapsible__body">Ja, vollständig: Alle Grundzüge, kurze und lange Rochade (mit Überprüfung der Durchzugsfelder), En-passant-Schlag, Bauernumwandlung mit Figurenauswahl, Schach- und Schachmatt-Erkennung, Patt-Erkennung sowie 50-Züge-Regel und unzureichendes Material für Remis.</div>
+      </details>
+
+      <details class="collapsible">
+        <summary>Gibt es einen Blitz-Modus?</summary>
+        <div class="collapsible__body">Ja! Klicken Sie auf das Blitz-Symbol (⚡) in der Toolbar und wählen Sie die gewünschte Zeit: 1, 3, 5 oder 10 Minuten pro Spieler. Läuft die Zeit ab, verliert der betroffene Spieler die Partie.</div>
+      </details>
+
+      <details class="collapsible">
+        <summary>Kann ich gegen einen Freund spielen?</summary>
+        <div class="collapsible__body">Ja, im Zwei-Spieler-Modus spielen beide Spieler abwechselnd am selben Gerät. Nutzen Sie die Brett-drehen-Funktion, um nach jedem Zug die Perspektive zu wechseln.</div>
+      </details>
+
+      <details class="collapsible">
+        <summary>Wird der Spielstand automatisch gespeichert?</summary>
+        <div class="collapsible__body">Ja, der aktuelle Spielstand wird automatisch im Browser (LocalStorage) gespeichert. Beim nächsten Besuch wird die laufende Partie automatisch wiederhergestellt.</div>
+      </details>
+
+      <details class="collapsible">
+        <summary>Kann ich Züge rückgängig machen?</summary>
+        <div class="collapsible__body">Ja, mit dem Undo-Button (↩) in der Toolbar. Im Einzelspieler-Modus werden sowohl Ihr eigener Zug als auch der vorherige KI-Zug rückgängig gemacht, damit Sie in einer fairen Stellung weiterspielen können.</div>
+      </details>
+
+      <details class="collapsible">
+        <summary>Funktioniert das Spiel auf dem Smartphone?</summary>
+        <div class="collapsible__body">Ja, das Spiel ist vollständig mobiloptimiert. Tippen Sie auf eine Figur, um sie auszuwählen, und dann auf das Zielfeld. Alternativ können Sie Figuren auch per Wischen (Drag) bewegen. Das responsive Layout passt sich automatisch an alle Bildschirmgrößen an.</div>
+      </details>
+    </section>
+  </article>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <nav class="site-footer__nav">
+    <a href="https://klickspiele.de">klickspiele.de</a>
+    <a href="./imprint">Impressum</a>
+    <a href="./privacy">Datenschutz</a>
+  </nav>
+  <p class="site-footer__copy">© 2025 klickspiele.de · Kostenlose Spiele ohne Anmeldung</p>
+</footer>
+
+<!-- PROMOTION DIALOG -->
+<div id="promo-scrim" role="dialog" aria-modal="true" aria-label="Bauernumwandlung – Figur wählen">
+  <div class="promo-dialog">
+    <h2>Figur wählen</h2>
+    <div class="promo-btns">
+      <button class="promo-btn rpl" aria-label="Dame"></button>
+      <button class="promo-btn rpl" aria-label="Turm"></button>
+      <button class="promo-btn rpl" aria-label="Läufer"></button>
+      <button class="promo-btn rpl" aria-label="Springer"></button>
+    </div>
+  </div>
+</div>
+
+<!-- GAME OVER DIALOG -->
+<div id="go-scrim" role="dialog" aria-modal="true" aria-labelledby="go-title">
+  <div class="go-dialog">
+    <h2 id="go-title">Schachmatt!</h2>
+    <p id="go-msg">Weiß gewinnt!</p>
+    <div class="go-btns">
+      <button id="go-new" class="btn-filled rpl" aria-label="Neues Spiel starten">Neues Spiel</button>
+      <button id="go-settings" class="pill-btn rpl" aria-label="Einstellungen öffnen">Einstellungen</button>
+    </div>
+  </div>
+</div>
+
+<!-- SETUP DIALOG -->
+<div id="setup-scrim" role="dialog" aria-modal="true" aria-labelledby="setup-title">
+  <div class="setup-dialog">
+    <h2 id="setup-title">Spieleinstellungen</h2>
+
+    <div class="setup-section">
+      <div class="setup-label">Spielmodus</div>
+      <div class="setup-row">
+        <button class="mode-btn rpl active" data-mode="pvc" aria-pressed="true">Gegen KI</button>
+        <button class="mode-btn rpl" data-mode="pvp" aria-pressed="false">2 Spieler</button>
+      </div>
+    </div>
+
+    <div class="setup-section" id="diff-section">
+      <div class="setup-label">Schwierigkeit</div>
+      <div class="setup-row">
+        <button class="diff-btn rpl" data-diff="easy" aria-pressed="false">Einfach</button>
+        <button class="diff-btn rpl active" data-diff="medium" aria-pressed="true">Mittel</button>
+        <button class="diff-btn rpl" data-diff="hard" aria-pressed="false">Experte</button>
+      </div>
+    </div>
+
+    <div class="setup-section" id="color-section">
+      <div class="setup-label">Meine Farbe</div>
+      <div class="setup-row">
+        <button class="col-btn rpl active" data-col="white" aria-pressed="true">♔ Weiß</button>
+        <button class="col-btn rpl" data-col="black" aria-pressed="false">♚ Schwarz</button>
+      </div>
+    </div>
+
+    <div class="setup-section">
+      <div class="setup-label">Blitz-Modus</div>
+      <div class="blitz-row">
+        <button id="btn-blitz" class="pill-btn rpl" aria-pressed="false" style="flex:1">⚡ Blitz</button>
+        <select id="blitz-select" aria-label="Blitz-Zeit">
+          <option value="1">1 Min</option>
+          <option value="3">3 Min</option>
+          <option value="5" selected>5 Min</option>
+          <option value="10">10 Min</option>
+        </select>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:10px;margin-top:8px;">
+      <button id="btn-new-game" class="btn-filled rpl" style="flex:2">Spiel starten</button>
+      <button id="btn-setup-close" class="pill-btn rpl" style="flex:1">Abbrechen</button>
+    </div>
+  </div>
+</div>
+
+<script src="./game.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,253 @@
+{
+  "_comment": "klickspiele.de Design System — use this JSON to generate new pages that match the existing site style exactly. Pass it as context to any AI code generator.",
+  "name": "klickspiele_design_system",
+  "version": "1.0.0",
+  "stylesheet": "./style.css",
+  "language": "de",
+
+  "brand": {
+    "siteName": "klickspiele.de",
+    "siteUrl": "https://klickspiele.de",
+    "homeButtonTitle": "Zurück zu klickspiele.de",
+    "footerCopyright": "© 2025 klickspiele.de · Kostenlose Spiele ohne Anmeldung",
+    "footerLinks": [
+      { "label": "klickspiele.de", "href": "https://klickspiele.de" },
+      { "label": "Impressum",      "href": "./imprint" },
+      { "label": "Datenschutz",    "href": "./privacy" }
+    ]
+  },
+
+  "favicon": {
+    "type": "inline-svg",
+    "description": "Orange rounded square (#F57C00) with white cursor-pointer arrow",
+    "svgDataUri": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23F57C00'/><path d='M8 4 L8 24 L13 19 L16.5 27 L19.5 25.5 L16 17.5 L22 17.5 Z' fill='white'/></svg>"
+  },
+
+  "homeButton": {
+    "element": "a",
+    "class": "home-btn rpl",
+    "href": "https://klickspiele.de",
+    "ariaLabel": "Zurück zu klickspiele.de",
+    "icon": "cursor-pointer",
+    "iconSvgPath": "M4 2 L4 19 L8 15 L11 22 L13.5 21 L10.5 14 L16 14 Z",
+    "iconViewBox": "0 0 24 24",
+    "description": "Circle button top-left in the app bar. Contains a white arrow/cursor SVG on orange background."
+  },
+
+  "fonts": {
+    "ui":   "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
+    "mono": "ui-monospace, \"Cascadia Mono\", \"Segoe UI Mono\", \"Roboto Mono\", \"Courier New\", monospace",
+    "note": "System fonts only — no external font requests (no Google Fonts)"
+  },
+
+  "color": {
+    "primary":               "#F57C00",
+    "onPrimary":             "#FFFFFF",
+    "primaryContainer":      "#FFE0B2",
+    "onPrimaryContainer":    "#2A1400",
+    "secondary":             "#4A4A4A",
+    "onSecondary":           "#FFFFFF",
+    "secondaryContainer":    "#EAEAEA",
+    "onSecondaryContainer":  "#111111",
+    "background":            "#FFFFFF",
+    "onBackground":          "#111111",
+    "surface":               "#FFFFFF",
+    "onSurface":             "#111111",
+    "surfaceVariant":        "#F2F2F2",
+    "onSurfaceVariant":      "#333333",
+    "outline":               "#6B6B6B",
+    "outlineVariant":        "#C8C8C8",
+    "error":                 "#B3261E",
+    "onError":               "#FFFFFF",
+    "errorContainer":        "#FFDAD6",
+    "onErrorContainer":      "#410002",
+    "surfaceTones": {
+      "low":     "#FAFAFA",
+      "mid":     "#F2F2F2",
+      "high":    "#E8E8E8",
+      "highest": "#DCDCDC"
+    },
+    "darkMode": {
+      "note": "Applied via CSS class 'dark-mode' on <body>",
+      "background":            "#1A1A1A",
+      "onBackground":          "#F0F0F0",
+      "surface":               "#1A1A1A",
+      "onSurface":             "#F0F0F0",
+      "surfaceVariant":        "#2A2A2A",
+      "onSurfaceVariant":      "#CCCCCC",
+      "surfaceLow":            "#232323",
+      "surfaceMid":            "#2A2A2A",
+      "outlineVariant":        "#444444"
+    }
+  },
+
+  "cssVariables": {
+    "note": "Reference these CSS custom properties when writing new components. Defined in style.css :root.",
+    "fontUi":             "--font-ui",
+    "fontMono":           "--font-mono",
+    "primary":            "--c-primary",
+    "onPrimary":          "--c-on-primary",
+    "primaryContainer":   "--c-primary-container",
+    "onPrimaryContainer": "--c-on-primary-container",
+    "secondary":          "--c-secondary",
+    "secondaryContainer": "--c-secondary-container",
+    "onSecondaryContainer":"--c-on-secondary-container",
+    "background":         "--c-bg",
+    "surface":            "--c-surface",
+    "onSurface":          "--c-on-surface",
+    "surfaceVariant":     "--c-surf-var",
+    "onSurfaceVariant":   "--c-on-surf-var",
+    "surfLow":            "--c-surf-low",
+    "surfMid":            "--c-surf-mid",
+    "surfHigh":           "--c-surf-high",
+    "outline":            "--c-outline",
+    "outlineVariant":     "--c-outline-var",
+    "error":              "--c-error",
+    "focusRing":          "--focus-ring",
+    "borderRadiusSm":     "--r-sm",
+    "borderRadiusMd":     "--r-md",
+    "borderRadiusLg":     "--r-lg",
+    "borderRadiusXl":     "--r-xl",
+    "borderRadiusFull":   "--r-full",
+    "durationFast":       "--dur-fast",
+    "durationNormal":     "--dur-normal",
+    "durationSlow":       "--dur-slow",
+    "easing":             "--ease",
+    "elevation1":         "--elev-1",
+    "elevation2":         "--elev-2",
+    "minTouchTarget":     "--touch-min",
+    "buttonHeight":       "--btn-h",
+    "contentMax":         "--content-max"
+  },
+
+  "shape": {
+    "sm":   "12px",
+    "md":   "16px",
+    "lg":   "24px",
+    "xl":   "32px",
+    "full": "9999px"
+  },
+
+  "typography": {
+    "base": { "size": "18px", "lineHeight": "28px", "weight": 400 },
+    "headline": { "size": "26px", "lineHeight": "34px", "weight": 600 },
+    "title":    { "size": "20px", "lineHeight": "30px", "weight": 600 },
+    "label":    { "size": "15px", "lineHeight": "20px", "weight": 600, "letterSpacing": "0.4px", "textTransform": "uppercase" },
+    "small":    { "size": "15px", "lineHeight": "22px", "weight": 400 },
+    "mono":     { "font": "var(--font-mono)", "size": "22px", "weight": 700 }
+  },
+
+  "motion": {
+    "fast":   "150ms",
+    "normal": "220ms",
+    "slow":   "300ms",
+    "easing": "cubic-bezier(0.2, 0, 0, 1)",
+    "reducedMotionSupport": true
+  },
+
+  "elevation": {
+    "1": "0px 2px 6px rgba(0,0,0,.12)",
+    "2": "0px 4px 12px rgba(0,0,0,.16)"
+  },
+
+  "layout": {
+    "minTouchTarget": "56px",
+    "buttonHeight":   "64px",
+    "contentMaxWidth":"760px",
+    "mobileBreakpoint": "900px",
+    "wcagTarget": "AA+"
+  },
+
+  "components": {
+    "topAppBar": {
+      "class": "top-bar",
+      "height": "68px",
+      "background": "var(--c-primary)",
+      "color": "var(--c-on-primary)",
+      "structure": "<header class=\"top-bar\"><a class=\"home-btn rpl\" ...>...</a><span class=\"top-bar__title\">PAGE TITLE</span><div class=\"top-bar__actions\">ICON BUTTONS</div></header>"
+    },
+    "homeButton": {
+      "class": "home-btn rpl",
+      "shape": "circle (border-radius: 50%)",
+      "size": "56x56px",
+      "background": "rgba(255,255,255,.18) with 2px rgba(255,255,255,.35) border",
+      "icon": "cursor-pointer arrow SVG, white fill"
+    },
+    "card": {
+      "class": "card",
+      "padding": "24px",
+      "borderRadius": "var(--r-lg)",
+      "border": "1.5px solid var(--c-outline-var)",
+      "background": "var(--c-surf-low)"
+    },
+    "collapsible": {
+      "element": "details",
+      "class": "collapsible",
+      "summaryClass": "(none extra — styled via .collapsible > summary)",
+      "bodyClass": "collapsible__body",
+      "chevron": "CSS mask-image, rotates 180° when open — no JS, no icon font",
+      "structure": "<details class=\"collapsible\"><summary>TITLE</summary><div class=\"collapsible__body\">CONTENT</div></details>"
+    },
+    "pillButton": {
+      "class": "pill-btn rpl",
+      "height": "52px",
+      "borderRadius": "var(--r-full)",
+      "background": "var(--c-secondary-container)",
+      "color": "var(--c-on-secondary-container)"
+    },
+    "filledButton": {
+      "class": "btn-filled rpl",
+      "height": "var(--btn-h)",
+      "borderRadius": "var(--r-full)",
+      "background": "var(--c-primary)",
+      "color": "var(--c-on-primary)"
+    },
+    "textButton": {
+      "class": "btn-text rpl",
+      "height": "52px",
+      "borderRadius": "var(--r-full)",
+      "color": "var(--c-primary)"
+    },
+    "iconButton": {
+      "class": "bar-icon-btn rpl",
+      "size": "56x56px",
+      "shape": "circle",
+      "note": "Use inside top-bar only. For main content use btn-icon."
+    },
+    "ripple": {
+      "class": "rpl",
+      "note": "Add class 'rpl' to any interactive element. The JS ripple handler in the page script injects .rpl-wave spans automatically on pointerdown.",
+      "waveClass": "rpl-wave"
+    },
+    "dialog": {
+      "scrimClass": "dialog-scrim",
+      "dialogClass": "dialog",
+      "openClass": "show",
+      "borderRadius": "var(--r-xl)",
+      "note": "Toggle 'show' on .dialog-scrim to open/close. Set aria-hidden accordingly."
+    },
+    "footer": {
+      "class": "site-footer",
+      "navClass": "site-footer__nav",
+      "copyClass": "site-footer__copy",
+      "requiredLinks": ["klickspiele.de → https://klickspiele.de", "Impressum → ./imprint", "Datenschutz → ./privacy"]
+    }
+  },
+
+  "htmlTemplate": {
+    "note": "Minimal skeleton for a new subpage. Replace PAGE_TITLE and MAIN_CONTENT.",
+    "code": "<!DOCTYPE html>\n<html lang=\"de\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, viewport-fit=cover\">\n<meta name=\"theme-color\" content=\"#F57C00\">\n<title>PAGE_TITLE – klickspiele.de</title>\n<link rel=\"stylesheet\" href=\"./style.css\">\n<link rel=\"icon\" type=\"image/svg+xml\" href=\"data:image/svg+xml,...FAVICON...\">\n</head>\n<body>\n<a class=\"skip\" href=\"#main\">Zum Inhalt springen</a>\n<header class=\"top-bar\">\n  <a href=\"https://klickspiele.de\" class=\"home-btn rpl\" aria-label=\"Zurück zu klickspiele.de\"><svg ...cursor arrow.../></a>\n  <span class=\"top-bar__title\">PAGE_TITLE</span>\n  <div class=\"top-bar__actions\"><!-- optional icon buttons --></div>\n</header>\n<main id=\"main\" class=\"page-content\">\n  MAIN_CONTENT\n</main>\n<footer class=\"site-footer\">\n  <nav class=\"site-footer__nav\">\n    <a href=\"https://klickspiele.de\">klickspiele.de</a>\n    <a href=\"./imprint\">Impressum</a>\n    <a href=\"./privacy\">Datenschutz</a>\n  </nav>\n  <p class=\"site-footer__copy\">© 2025 klickspiele.de · Kostenlose Spiele ohne Anmeldung</p>\n</footer>\n<!-- Ripple handler -->\n<script>\ndocument.addEventListener('pointerdown',function(e){var h=e.target.closest('.rpl');if(!h)return;var r=h.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,sz=Math.max(r.width,r.height)*2.4,w=document.createElement('span');w.className='rpl-wave';w.style.cssText='width:'+sz+'px;height:'+sz+'px;left:'+(x-sz/2)+'px;top:'+(y-sz/2)+'px';h.appendChild(w);w.addEventListener('animationend',function(){w.remove();});},{passive:true});\n</script>\n</body>\n</html>"
+  },
+
+  "codeGenerationInstructions": {
+    "stylesheet": "Always link <link rel='stylesheet' href='./style.css'>. Never add <style> blocks for layout or typography — use CSS variables and existing component classes.",
+    "fonts": "No external font imports. The font stack is defined in --font-ui and --font-mono in style.css.",
+    "favicon": "Use the inline SVG data URI provided in favicon.svgDataUri — orange square with white cursor arrow.",
+    "homeButton": "Top-left circle button in every page's top-bar. Class 'home-btn rpl', links to https://klickspiele.de, contains cursor-pointer SVG.",
+    "ripple": "Add class 'rpl' to every interactive element (buttons, links, cells). Include the minimal ripple JS snippet.",
+    "darkMode": "Toggled by adding/removing class 'dark-mode' on <body>. Persist preference in localStorage.",
+    "collapsibles": "Use native <details>/<summary> elements with class 'collapsible'. No JS accordion needed.",
+    "footer": "Every page must include .site-footer with links to klickspiele.de, ./imprint and ./privacy.",
+    "accessibility": "Min touch target 56px, focus ring 3px solid #F57C00, aria-labels on all interactive elements, prefers-reduced-motion respected via CSS."
+  }
+}

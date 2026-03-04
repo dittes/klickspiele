@@ -1,253 +1,459 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#0b1220">
-<link rel="manifest" href="/manifest.webmanifest">
-<link rel="stylesheet" href="/assets/css/site.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#F57C00">
+<title>klickspiele.de – Kostenlose Spiele direkt im Browser</title>
+<meta name="description" content="Kostenlose Browser-Spiele ohne Anmeldung: Sudoku, Schach, Mahjong, 2048, Schiffe versenken, Kreuzworträtsel, CPS Test, Reaktionstest und mehr. Sofort spielen!">
 <link rel="canonical" href="https://klickspiele.de/">
-<link rel="alternate" hreflang="de" href="https://klickspiele.de/">
-<link rel="alternate" hreflang="x-default" href="https://klickspiele.de/">
-<title>klickspiele.de – Klicktest, Reaktionstest &amp; schnelle Browser-Spiele</title>
-<meta name="description" content="Mobile-first Game-Portal: Klicktests, Reaktionstests, Präzision, Timing und Denkspiele. Schnell laden, sofort spielen, Bestwerte lokal speichern.">
+<link rel="stylesheet" href="./style.css">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23F57C00'/><path d='M8 4 L8 24 L13 19 L16.5 27 L19.5 25.5 L16 17.5 L22 17.5 Z' fill='white'/></svg>">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="klickspiele.de">
-<meta property="og:title" content="klickspiele.de – Klicktest, Reaktionstest &amp; schnelle Browser-Spiele">
-<meta property="og:description" content="Mobile-first Game-Portal: Klicktests, Reaktionstests, Präzision, Timing und Denkspiele. Schnell laden, sofort spielen, Bestwerte lokal speichern.">
 <meta property="og:url" content="https://klickspiele.de/">
+<meta property="og:title" content="klickspiele.de – Kostenlose Spiele im Browser">
+<meta property="og:description" content="Sudoku, Schach, Mahjong, 2048, Schiffe versenken, Kreuzworträtsel, CPS Test, Reaktionstest – kostenlos, sofort, ohne Anmeldung.">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="klickspiele.de – Klicktest, Reaktionstest &amp; schnelle Browser-Spiele">
-<meta name="twitter:description" content="Mobile-first Game-Portal: Klicktests, Reaktionstests, Präzision, Timing und Denkspiele. Schnell laden, sofort spielen, Bestwerte lokal speichern.">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Start", "item": "https://klickspiele.de/"}]}</script>
+<meta name="twitter:title" content="klickspiele.de – Kostenlose Browser-Spiele">
+<meta name="twitter:description" content="Kostenlose Spiele ohne Anmeldung: Sudoku, Schach, Mahjong, 2048 und mehr.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "klickspiele.de",
+  "url": "https://klickspiele.de/",
+  "description": "Kostenlose Browser-Spiele ohne Anmeldung",
+  "inLanguage": "de"
+}
+</script>
+<style>
+/* ── Hero ───────────────────────────────────────────────── */
+.hero {
+  text-align: center;
+  padding: 40px 20px 28px;
+  max-width: var(--content-max);
+  margin: 0 auto;
+}
+.hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--c-primary-container);
+  color: var(--c-on-primary-container);
+  border-radius: var(--r-full);
+  padding: 5px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: .4px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.hero h1 {
+  font-size: clamp(28px, 6vw, 46px);
+  line-height: 1.15;
+  font-weight: 700;
+  margin-bottom: 14px;
+  color: var(--c-on-bg);
+}
+.hero h1 span { color: var(--c-primary); }
+.hero__sub {
+  font-size: 18px;
+  color: var(--c-on-surf-var);
+  max-width: 540px;
+  margin: 0 auto 20px;
+  line-height: 28px;
+}
+.hero__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--c-surf-mid);
+  border: 1.5px solid var(--c-outline-var);
+  border-radius: var(--r-full);
+  padding: 5px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--c-on-surf-var);
+}
+
+/* ── Section headings ────────────────────────────────────── */
+.section-head {
+  max-width: var(--content-max);
+  margin: 32px auto 12px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-head h2 {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .7px;
+  text-transform: uppercase;
+  color: var(--c-on-surf-var);
+}
+.section-head__line {
+  flex: 1;
+  height: 1.5px;
+  background: var(--c-outline-var);
+  border-radius: 2px;
+}
+
+/* ── Game grid ───────────────────────────────────────────── */
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 20px;
+  list-style: none;
+}
+
+/* ── Game card ───────────────────────────────────────────── */
+.game-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--c-surf-low);
+  border: 1.5px solid var(--c-outline-var);
+  border-radius: var(--r-lg);
+  padding: 20px 20px 16px;
+  text-decoration: none;
+  color: inherit;
+  transition:
+    box-shadow var(--dur-normal) var(--ease),
+    transform  var(--dur-normal) var(--ease),
+    border-color var(--dur-normal) var(--ease);
+  position: relative;
+  overflow: hidden;
+}
+.game-card:hover {
+  box-shadow: var(--elev-2);
+  transform: translateY(-3px);
+  border-color: var(--c-primary);
+  text-decoration: none;
+}
+.game-card:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 3px;
+}
+.game-card__icon {
+  font-size: 38px;
+  line-height: 1;
+  margin-bottom: 12px;
+  display: block;
+}
+.game-card__title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--c-on-surface);
+  margin-bottom: 6px;
+  line-height: 24px;
+}
+.game-card__desc {
+  font-size: 14px;
+  color: var(--c-on-surf-var);
+  line-height: 21px;
+  flex: 1;
+}
+.game-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 14px;
+  padding: 6px 14px;
+  border-radius: var(--r-full);
+  background: var(--c-primary-container);
+  color: var(--c-on-primary-container);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .3px;
+  align-self: flex-start;
+  transition: background var(--dur-fast) var(--ease);
+}
+.game-card:hover .game-card__cta {
+  background: var(--c-primary);
+  color: var(--c-on-primary);
+}
+
+/* ── Intro text ──────────────────────────────────────────── */
+.intro-text {
+  max-width: var(--content-max);
+  margin: 32px auto 0;
+  padding: 0 20px 48px;
+  font-size: 16px;
+  color: var(--c-on-surf-var);
+  line-height: 26px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+.intro-text h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--c-on-surface);
+  margin-bottom: 8px;
+}
+@media (max-width: 600px) {
+  .intro-text { grid-template-columns: 1fr; }
+}
+</style>
 </head>
 <body>
-<header class="site-header">
-  <div class="container header__inner">
-    <a class="brand" href="/">klickspiele.de</a>
-    <nav class="nav" aria-label="Hauptnavigation">
-      <a class="nav__a" href="/klicktest/">Klicktests</a>
-<a class="nav__a" href="/reaktionstest/">Reaktionstests</a>
-<a class="nav__a" href="/praezision/">Präzision</a>
-<a class="nav__a" href="/timing/">Timing</a>
-<a class="nav__a" href="/denken/">Denken</a>
-      <a class="nav__a" href="/ueber-uns/">Über uns</a>
-    </nav>
+<a class="skip" href="#main">Zum Inhalt springen</a>
+
+<header class="top-bar">
+  <a href="https://klickspiele.de" class="home-btn rpl" aria-label="Zurück zu klickspiele.de">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2 L4 19 L8 15 L11 22 L13.5 21 L10.5 14 L16 14 Z"/></svg>
+  </a>
+  <span class="top-bar__title">klickspiele.de</span>
+  <div class="top-bar__actions">
+    <button class="bar-icon-btn rpl" id="dmBtn" aria-label="Dark Mode umschalten" type="button">
+      <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true">
+        <path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/>
+      </svg>
+    </button>
   </div>
 </header>
-<main class="main">
-  <div class="container">
-    <section class="hero">
-      <h1>klickspiele.de</h1>
-      <p>Klicktest, Reaktionstest, Präzision, Timing und Denkspiele – kostenlos, mobil optimiert, sofort spielbar.</p>
-    </section>
 
-    <section class="section">
-      <h2>Kategorien</h2>
-      <div class="grid grid--cards">
-        <div class="card">
-  <a href="/klicktest/">
-    <h3>Klicktests</h3>
-    <p>10 Spiele • Mobile-first • Sofort spielbar</p>
-    <div class="kv">
-      <span class="badge">klicktest</span>
-      <span class="badge">ohne Download</span>
-      <span class="badge">Bestwerte lokal</span>
-    </div>
-  </a>
-</div><div class="card">
-  <a href="/reaktionstest/">
-    <h3>Reaktionstests</h3>
-    <p>6 Spiele • Mobile-first • Sofort spielbar</p>
-    <div class="kv">
-      <span class="badge">reaktionstest</span>
-      <span class="badge">ohne Download</span>
-      <span class="badge">Bestwerte lokal</span>
-    </div>
-  </a>
-</div><div class="card">
-  <a href="/praezision/">
-    <h3>Präzision</h3>
-    <p>6 Spiele • Mobile-first • Sofort spielbar</p>
-    <div class="kv">
-      <span class="badge">praezision</span>
-      <span class="badge">ohne Download</span>
-      <span class="badge">Bestwerte lokal</span>
-    </div>
-  </a>
-</div><div class="card">
-  <a href="/timing/">
-    <h3>Timing</h3>
-    <p>4 Spiele • Mobile-first • Sofort spielbar</p>
-    <div class="kv">
-      <span class="badge">timing</span>
-      <span class="badge">ohne Download</span>
-      <span class="badge">Bestwerte lokal</span>
-    </div>
-  </a>
-</div><div class="card">
-  <a href="/denken/">
-    <h3>Denken</h3>
-    <p>4 Spiele • Mobile-first • Sofort spielbar</p>
-    <div class="kv">
-      <span class="badge">denken</span>
-      <span class="badge">ohne Download</span>
-      <span class="badge">Bestwerte lokal</span>
-    </div>
-  </a>
-</div>
-      </div>
-    </section>
+<main id="main" class="page-content">
 
-    <section class="section">
-      <h2>Top-Spiele</h2>
-      <div class="grid grid--cards">
-        <div class="card">
-  <a href="/praezision/aim-trainer-30-targets/">
-    <h3>Aim Trainer – Ziele schnell &amp; genau treffen (30 Targets)</h3>
-    <p>aim trainer ist ein schneller Web‑Test, bei dem du in wenigen Sekunden siehst, wie gut deine Hand‑Auge‑Koordination wirklich ist.  Im Spielbereich startest…</p>
-    <div class="kv">
-      <span class="badge">aim trainer</span>
-      <span class="badge badge--a">A</span>
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero__eyebrow">🎮 Kostenlos spielen</div>
+    <h1>Spiele direkt im<br><span>Browser</span> – sofort los!</h1>
+    <p class="hero__sub">Keine Anmeldung, kein Download, kein Schnickschnack. Einfach auf ein Spiel klicken und loslegen.</p>
+    <div class="hero__badges">
+      <span class="hero__badge">✓ Kostenlos</span>
+      <span class="hero__badge">✓ Ohne Anmeldung</span>
+      <span class="hero__badge">✓ Mobile-freundlich</span>
+      <span class="hero__badge">✓ Kein Download</span>
     </div>
-  </a>
-</div><div class="card">
-  <a href="/klicktest/cps-test-10s/">
-    <h3>CPS Test (10s) – Klickgeschwindigkeit testen</h3>
-    <p>cps test ist ein schneller Web‑Test, bei dem du in wenigen Sekunden siehst, wie gut deine Klickgeschwindigkeit wirklich ist.  Im Spielbereich startest du d…</p>
-    <div class="kv">
-      <span class="badge">cps test</span>
-      <span class="badge badge--a">A</span>
-    </div>
-  </a>
-</div><div class="card">
-  <a href="/klicktest/double-click-test/">
-    <h3>Double Click Test – Doppelklick testen (Maus)</h3>
-    <p>double click test ist ein schneller Web‑Test, bei dem du in wenigen Sekunden siehst, wie gut deine Doppelklick-Fähigkeit wirklich ist.  Im Spielbereich sta…</p>
-    <div class="kv">
-      <span class="badge">double click test</span>
-      <span class="badge badge--a">A</span>
-    </div>
-  </a>
-</div><div class="card">
-  <a href="/klicktest/klicktest-10-sekunden/">
-    <h3>Klicktest 10 Sekunden – Wie schnell kannst du klicken?</h3>
-    <p>klicktest 10 sekunden ist ein schneller Web‑Test, bei dem du in wenigen Sekunden siehst, wie gut deine Klickgeschwindigkeit wirklich ist.  Im Spielbereich…</p>
-    <div class="kv">
-      <span class="badge">klicktest 10 sekunden</span>
-      <span class="badge badge--a">A</span>
-    </div>
-  </a>
-</div><div class="card">
-  <a href="/reaktionstest/reaction-time-color/">
-    <h3>Reaction Time Test – Reaktionszeit (Farbwechsel)</h3>
-    <p>reaction time test ist ein schneller Web‑Test, bei dem du in wenigen Sekunden siehst, wie gut deine Reaktionszeit wirklich ist.  Im Spielbereich startest d…</p>
-    <div class="kv">
-      <span class="badge">reaction time test</span>
-      <span class="badge badge--a">A</span>
-    </div>
-  </a>
-</div><div class="card">
-  <a href="/klicktest/spacebar-clicker-10s/">
-    <h3>Spacebar Clicker (10s) – Leertaste schnell drücken</h3>
-    <p>space bar clicker ist ein schneller Web‑Test, bei dem du in wenigen Sekunden siehst, wie gut deine Tastatur-Reflexe wirklich ist.  Im Spielbereich startest…</p>
-    <div class="kv">
-      <span class="badge">space bar clicker</span>
-      <span class="badge badge--a">A</span>
-    </div>
-  </a>
-</div><div class="card">
-  <a href="/timing/stop-timer-10s/">
-    <h3>Stop at 10 Seconds – Timer genau stoppen</h3>
-    <p>10 second challenge ist ein schneller Web‑Test, bei dem du in wenigen Sekunden siehst, wie gut deine inneres Timing wirklich ist.  Im Spielbereich startest…</p>
-    <div class="kv">
-      <span class="badge">10 second challenge</span>
-      <span class="badge badge--a">A</span>
-    </div>
-  </a>
-</div><div class="card">
-  <a href="/denken/stroop-color-word/">
-    <h3>Stroop Test – Farbe statt Wort (Reaktionszeit)</h3>
-    <p>stroop test ist ein schneller Web‑Test, bei dem du in wenigen Sekunden siehst, wie gut deine kognitive Flexibilität wirklich ist.  Im Spielbereich startest…</p>
-    <div class="kv">
-      <span class="badge">stroop test</span>
-      <span class="badge badge--a">A</span>
-    </div>
-  </a>
-</div><div class="card">
-  <a href="/timing/tap-tempo-bpm/">
-    <h3>Tap Tempo – BPM per Tap berechnen (Spacebar/Touch)</h3>
-    <p>tap tempo ist ein schneller Web‑Test, bei dem du in wenigen Sekunden siehst, wie gut deine Timing wirklich ist.  Im Spielbereich startest du den Modus und…</p>
-    <div class="kv">
-      <span class="badge">tap tempo</span>
-      <span class="badge badge--a">A</span>
-    </div>
-  </a>
-</div><div class="card">
-  <a href="/klicktest/apm-test-grid/">
-    <h3>APM Test – Actions per Minute messen (Grid)</h3>
-    <p>apm test ist ein schneller Web‑Test, bei dem du in wenigen Sekunden siehst, wie gut deine Hand-Koordination wirklich ist.  Im Spielbereich startest du den…</p>
-    <div class="kv">
-      <span class="badge">apm test</span>
-      <span class="badge badge--b">B</span>
-    </div>
-  </a>
-</div><div class="card">
-  <a href="/denken/arrow-stroop-reverse/">
-    <h3>Arrow Stroop – Gegen den Pfeil tippen (Reverse)</h3>
-    <p>arrow stroop test ist ein schneller Web‑Test, bei dem du in wenigen Sekunden siehst, wie gut deine Inhibition wirklich ist.  Im Spielbereich startest du de…</p>
-    <div class="kv">
-      <span class="badge">arrow stroop test</span>
-      <span class="badge badge--b">B</span>
-    </div>
-  </a>
-</div><div class="card">
-  <a href="/reaktionstest/reaction-time-audio/">
-    <h3>Audio Reaction Test – Reagieren auf Ton</h3>
-    <p>audio reaction test ist ein schneller Web‑Test, bei dem du in wenigen Sekunden siehst, wie gut deine auditive Reaktion wirklich ist.  Im Spielbereich start…</p>
-    <div class="kv">
-      <span class="badge">audio reaction test</span>
-      <span class="badge badge--b">B</span>
-    </div>
-  </a>
-</div>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2>Über klickspiele.de</h2>
-      <div class="card">
-        <p><strong>klickspiele.de</strong> ist ein schnelles Portal für kleine Browser‑Games: Klicktests, Reaktionstests und weitere Mini‑Spiele, die komplett im Client laufen. Du kannst direkt starten, ohne Registrierung. Für jedes Spiel gibt es eine klare Beschreibung, FAQ und lokale Bestwerte.</p>
-<p>Alle Seiten sind für Core Web Vitals optimiert: keine schweren Libraries, keine externen CDNs, kein blockierendes JavaScript. Inhalte (Beschreibung & FAQ) sind als indexierbares HTML vorhanden.</p>
-      </div>
-    </section>
   </div>
+
+  <!-- Denkspiele -->
+  <div class="section-head">
+    <h2>🧩 Denkspiele &amp; Rätsel</h2>
+    <div class="section-head__line"></div>
+  </div>
+  <ul class="games-grid" aria-label="Denkspiele und Rätsel">
+
+    <li>
+      <a href="./sudoku/" class="game-card rpl">
+        <span class="game-card__icon" aria-hidden="true">🔢</span>
+        <div class="game-card__title">Sudoku</div>
+        <p class="game-card__desc">Das klassische Zahlenrätsel in vier Schwierigkeitsstufen – von Einfach bis Experte. Mit 500+ Rätseln, Bleistiftmodus und automatischer Fehlerprüfung.</p>
+        <span class="game-card__cta">Jetzt rätseln →</span>
+      </a>
+    </li>
+
+    <li>
+      <a href="./kreuzwortraetsel/" class="game-card rpl">
+        <span class="game-card__icon" aria-hidden="true">📝</span>
+        <div class="game-card__title">Kreuzworträtsel</div>
+        <p class="game-card__desc">Deutsches Kreuzworträtsel im 11×11-Raster. Tippe Buchstaben ein, erhalte Hinweise und löse das Rätsel komplett im Browser.</p>
+        <span class="game-card__cta">Rätsel starten →</span>
+      </a>
+    </li>
+
+    <li>
+      <a href="./2048/" class="game-card rpl">
+        <span class="game-card__icon" aria-hidden="true">🟧</span>
+        <div class="game-card__title">2048</div>
+        <p class="game-card__desc">Schiebe die Kacheln und verdopple Zahlen, bis du 2048 erreichst. Einfach zu lernen, schwer zu meistern – das addiktive Schiebespiel.</p>
+        <span class="game-card__cta">Kacheln schieben →</span>
+      </a>
+    </li>
+
+    <li>
+      <a href="./zahlenjagd/" class="game-card rpl">
+        <span class="game-card__icon" aria-hidden="true">🎯</span>
+        <div class="game-card__title">Zahlenjagd</div>
+        <p class="game-card__desc">Finde alle Zahlen von 1 bis 25 auf dem Spielfeld so schnell wie möglich. Trainiert Konzentration und Wahrnehmungsgeschwindigkeit.</p>
+        <span class="game-card__cta">Zahlen jagen →</span>
+      </a>
+    </li>
+
+    <li>
+      <a href="./farbenraten/" class="game-card rpl">
+        <span class="game-card__icon" aria-hidden="true">🎨</span>
+        <div class="game-card__title">Farbenraten</div>
+        <p class="game-card__desc">Erkenne den richtigen Farbton aus vier Optionen – wie gut ist dein Farbgefühl? Runde für Runde wird es kniffliger. Für echte Farb-Kenner.</p>
+        <span class="game-card__cta">Farben raten →</span>
+      </a>
+    </li>
+
+  </ul>
+
+  <!-- Brettspiele -->
+  <div class="section-head">
+    <h2>♟️ Brett- &amp; Kartenspiele</h2>
+    <div class="section-head__line"></div>
+  </div>
+  <ul class="games-grid" aria-label="Brett- und Kartenspiele">
+
+    <li>
+      <a href="./schach/" class="game-card rpl">
+        <span class="game-card__icon" aria-hidden="true">♟️</span>
+        <div class="game-card__title">Schach</div>
+        <p class="game-card__desc">Klassisches Schach gegen eine KI mit Minimax-Algorithmus und Alpha-Beta-Pruning. Wähle zwischen mehreren Schwierigkeitsstufen und fordere deinen Verstand heraus.</p>
+        <span class="game-card__cta">Partie starten →</span>
+      </a>
+    </li>
+
+    <li>
+      <a href="./dame/" class="game-card rpl">
+        <span class="game-card__icon" aria-hidden="true">⚫</span>
+        <div class="game-card__title">Dame</div>
+        <p class="game-card__desc">Das klassische Brettspiel Dame gegen eine KI. Schlage die Steine deines Gegners, werde zur Königin und räume das Brett ab.</p>
+        <span class="game-card__cta">Spiel beginnen →</span>
+      </a>
+    </li>
+
+    <li>
+      <a href="./mahjong/" class="game-card rpl">
+        <span class="game-card__icon" aria-hidden="true">🀄</span>
+        <div class="game-card__title">Mahjong Solitaire</div>
+        <p class="game-card__desc">Entferne alle 144 Spielsteine vom klassischen Turtle-Spielfeld, indem du passende freie Paare kombinierst. Entspannendes Solitaire-Spiel.</p>
+        <span class="game-card__cta">Steine legen →</span>
+      </a>
+    </li>
+
+    <li>
+      <a href="./freecell/" class="game-card rpl">
+        <span class="game-card__icon" aria-hidden="true">🃏</span>
+        <div class="game-card__title">FreeCell</div>
+        <p class="game-card__desc">Das anspruchsvolle Patience-Kartenspiel: Sortiere alle Karten auf die Fundamente – mit Köpfchen und der richtigen Strategie lösbar.</p>
+        <span class="game-card__cta">Karten mischen →</span>
+      </a>
+    </li>
+
+    <li>
+      <a href="./memory/" class="game-card rpl">
+        <span class="game-card__icon" aria-hidden="true">🧠</span>
+        <div class="game-card__title">Memory</div>
+        <p class="game-card__desc">Deck alle Kartenpaare auf dem Spielfeld auf. Trainiere dein Gedächtnis und merke dir, wo welche Karte liegt. Verschiedene Feldgrößen wählbar.</p>
+        <span class="game-card__cta">Karten aufdecken →</span>
+      </a>
+    </li>
+
+    <li>
+      <a href="./schiffeversenken/" class="game-card rpl">
+        <span class="game-card__icon" aria-hidden="true">⚓</span>
+        <div class="game-card__title">Schiffe versenken</div>
+        <p class="game-card__desc">Der Seekrieg-Klassiker im Browser. Platziere deine Flotte, beschieße das gegnerische Raster und versenke alle Schiffe vor dem Gegner.</p>
+        <span class="game-card__cta">Angriff starten →</span>
+      </a>
+    </li>
+
+  </ul>
+
+  <!-- Klick- und Reaktionstests -->
+  <div class="section-head">
+    <h2>⚡ Klick- &amp; Reaktionstests</h2>
+    <div class="section-head__line"></div>
+  </div>
+  <ul class="games-grid" aria-label="Klick- und Reaktionstests">
+
+    <li>
+      <a href="./cps-test/" class="game-card rpl">
+        <span class="game-card__icon" aria-hidden="true">🖱️</span>
+        <div class="game-card__title">CPS Test</div>
+        <p class="game-card__desc">Wie viele Klicks schaffst du pro Sekunde? Miss deinen CPS-Wert in 1, 5, 10, 30 oder 60 Sekunden. Bestleistungen werden gespeichert.</p>
+        <span class="game-card__cta">CPS messen →</span>
+      </a>
+    </li>
+
+    <li>
+      <a href="./reaktionstest/" class="game-card rpl">
+        <span class="game-card__icon" aria-hidden="true">⚡</span>
+        <div class="game-card__title">Reaktionstest</div>
+        <p class="game-card__desc">Warte auf das grüne Signal und reagiere so schnell du kannst. Deine Reaktionszeit wird auf die Millisekunde genau gemessen – wie gut sind deine Reflexe?</p>
+        <span class="game-card__cta">Reflexe testen →</span>
+      </a>
+    </li>
+
+    <li>
+      <a href="./klicktest/" class="game-card rpl">
+        <span class="game-card__icon" aria-hidden="true">⏱️</span>
+        <div class="game-card__title">Klicktest</div>
+        <p class="game-card__desc">Einfacher 10-Sekunden-Klicktest: Klicke auf das Feld so oft wie möglich und sieh dein Ergebnis sofort. Minimalistisch und direkt.</p>
+        <span class="game-card__cta">Test starten →</span>
+      </a>
+    </li>
+
+    <li>
+      <a href="./leertasten-klicker/" class="game-card rpl">
+        <span class="game-card__icon" aria-hidden="true">⌨️</span>
+        <div class="game-card__title">Leertasten-Klicker</div>
+        <p class="game-card__desc">Drücke die Leertaste so oft wie möglich in 5, 10, 30 oder 60 Sekunden. Der Spacebar-Test für Tastatur-Profis und Schnelltipper.</p>
+        <span class="game-card__cta">Spacebar testen →</span>
+      </a>
+    </li>
+
+    <li>
+      <a href="./click-counter/" class="game-card rpl">
+        <span class="game-card__icon" aria-hidden="true">🔢</span>
+        <div class="game-card__title">Click Counter</div>
+        <p class="game-card__desc">Digitaler Tally Counter ohne Zeitlimit. Zähle Klicks, Wiederholungen oder Ereignisse. Mit Undo, Reset und Keyboard-Shortcuts.</p>
+        <span class="game-card__cta">Zählen starten →</span>
+      </a>
+    </li>
+
+  </ul>
+
+  <!-- Intro text -->
+  <div class="intro-text" role="contentinfo" aria-label="Über klickspiele.de">
+    <div>
+      <h3>Was ist klickspiele.de?</h3>
+      <p>klickspiele.de ist eine Sammlung kostenloser Browser-Spiele – von klassischen Denkspielen wie Sudoku und Schach bis zu Reaktions- und <a href="https://klickspiel.net/klicktest/">Klicktest</a>. Alle Spiele sind direkt im Browser spielbar, ohne Download oder Anmeldung.</p>
+    </div>
+  </div>
+
 </main>
+
 <footer class="site-footer">
-  <div class="container footer__inner">
-    <div class="footer__links">
-      <a href="/">Start</a>
-      <a href="/ueber-uns/">Über uns</a>
-      <a href="/datenschutz/">Datenschutz</a>
-      <a href="/impressum/">Impressum</a>
-    </div>
-    <div class="footer__small">© 2026 klickspiele.de • Client-only Spiele • Keine externen Abhängigkeiten</div>
-  </div>
+  <nav class="site-footer__nav">
+    <a href="https://klickspiele.de">klickspiele.de</a>
+    <a href="./impressum.html">Impressum</a>
+    <a href="./datenschutz.html">Datenschutz</a>
+  </nav>
+  <p class="site-footer__copy">© 2025 klickspiele.de · Kostenlose Spiele ohne Anmeldung</p>
 </footer>
 
-<div class="cookie" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookie Hinweis">
-  <div class="cookie__card">
-    <div class="cookie__text">
-      Wir verwenden optionales, lokales Tracking (nur Events in der Konsole), um die Nutzung zu verstehen.
-      Erst nach Zustimmung werden Events ausgelöst. Du kannst jederzeit in deinem Browser-Speicher widerrufen.
-    </div>
-    <div class="cookie__actions">
-      <button class="btn" id="cookieAccept" type="button">Akzeptieren</button>
-      <button class="btn btn--ghost" id="cookieDecline" type="button">Ablehnen</button>
-    </div>
-  </div>
-</div>
-<script defer src="/assets/js/tracking.js"></script>
-<script defer src="/assets/js/site.js"></script>
+<script>
+(function () {
+  // Dark mode
+  var dm = localStorage.getItem('dm') === '1';
+  if (dm) document.body.classList.add('dark-mode');
+  document.getElementById('dmBtn').addEventListener('click', function () {
+    dm = !dm;
+    document.body.classList.toggle('dark-mode', dm);
+    localStorage.setItem('dm', dm ? '1' : '0');
+  });
+})();
+
+// Ripple
+document.addEventListener('pointerdown', function (e) {
+  var h = e.target.closest('.rpl');
+  if (!h) return;
+  var r = h.getBoundingClientRect(),
+      x = e.clientX - r.left,
+      y = e.clientY - r.top,
+      sz = Math.max(r.width, r.height) * 2.4,
+      w = document.createElement('span');
+  w.className = 'rpl-wave';
+  w.style.cssText = 'width:' + sz + 'px;height:' + sz + 'px;left:' + (x - sz / 2) + 'px;top:' + (y - sz / 2) + 'px';
+  h.appendChild(w);
+  w.addEventListener('animationend', function () { w.remove(); });
+}, { passive: true });
+</script>
 </body>
 </html>

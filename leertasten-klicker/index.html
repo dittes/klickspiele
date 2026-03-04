@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#F57C00">
+<title>Leertasten-Klicker – Spacebar Test online | klickspiel.net</title>
+<meta name="description" content="Leertasten-Klicker: Drücke die Leertaste so schnell wie möglich in 5, 10, 30 oder 60 Sekunden. Spacebar-Klicktest direkt im Browser – kostenlos, kein Download.">
+<link rel="canonical" href="https://klickspiel.net/leertasten-klicker.html">
+<link rel="stylesheet" href="./style.css">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23F57C00'/><path d='M8 4 L8 24 L13 19 L16.5 27 L19.5 25.5 L16 17.5 L22 17.5 Z' fill='white'/></svg>">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://klickspiel.net/leertasten-klicker.html">
+<meta property="og:title" content="Leertasten-Klicker – Spacebar Test online">
+<meta property="og:description" content="Wie oft schaffst du die Leertaste in 10 Sekunden? Jetzt testen – kostenlos im Browser.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Leertasten-Klicker – Spacebar Test">
+<meta name="twitter:description" content="Drücke die Leertaste so schnell wie möglich. Kostenloser Spacebar-Test im Browser.">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"klickspiel.net","item":"https://klickspiel.net/"},
+    {"@type":"ListItem","position":2,"name":"Leertasten-Klicker","item":"https://klickspiel.net/leertasten-klicker.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"Wie starte ich den Leertasten-Test?","acceptedAnswer":{"@type":"Answer","text":"Klicke zunächst auf den Start-Button oder drücke Enter. Danach zählt jeder Leertasten-Druck als Klick. Auf Mobile kannst du alternativ den Bildschirm-Button tippen."}},
+    {"@type":"Question","name":"Verhindert der Test das Scrollen der Seite?","acceptedAnswer":{"@type":"Answer","text":"Ja. Während ein Test läuft, wird das Standard-Scroll-Verhalten der Leertaste per preventDefault() blockiert. Nach Ende des Tests wird das normale Verhalten sofort wiederhergestellt."}},
+    {"@type":"Question","name":"Was ist ein guter Spacebar-CPS?","acceptedAnswer":{"@type":"Answer","text":"Für den 10-Sekunden-Test gilt: 5–7 Drücke/Sekunde sind durchschnittlich, 8–11 gut, über 12 sehr gut. Tastaturtechniker erreichen mit Daumen-Technik bis zu 14 Drücke/Sekunde."}},
+    {"@type":"Question","name":"Funktioniert der Test auf Mobile?","acceptedAnswer":{"@type":"Answer","text":"Ja. Auf Mobile erscheint ein Tap-Button als Alternative zur Leertaste. Die Testergebnisse sind jedoch nicht direkt mit Keyboard-Ergebnissen vergleichbar."}},
+    {"@type":"Question","name":"Welcher Finger ist am schnellsten für die Leertaste?","acceptedAnswer":{"@type":"Answer","text":"Typischerweise ist der dominante Daumen am schnellsten. Einige Nutzer wechseln zwischen linkem und rechtem Daumen (Alternating Thumbs), was höhere Werte ermöglicht."}},
+    {"@type":"Question","name":"Warum fühlt sich die Leertaste unterschiedlich an?","acceptedAnswer":{"@type":"Answer","text":"Die Stabilisatoren unter der Leertaste bestimmen Widerstand und Feedback stark. Geschmierte Stabilisatoren bei mechanischen Tastaturen erlauben schnellere Betätigung als ungespritzte Rubber-Dome-Tastaturen."}},
+    {"@type":"Question","name":"Kann ich mit zwei Daumen schneller werden?","acceptedAnswer":{"@type":"Answer","text":"Ja, die Alternating-Thumbs-Technik (linker und rechter Daumen abwechselnd) verdoppelt theoretisch die Rate. In der Praxis sind 120–160 % des Einzel-Daumen-Wertes realistisch."}},
+    {"@type":"Question","name":"Werden Bestleistungen gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Ja, deine Bestleistungen werden pro Dauer im localStorage des Browsers gespeichert. Kein Account, kein Server – alles lokal."}}
+  ]
+}
+</script>
+<style>
+.game-wrap{max-width:var(--content-max);margin:0 auto;padding:12px 16px 0}
+.dur-row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:16px}
+.dur-btn{height:44px;padding:0 18px;border-radius:var(--r-full);background:var(--c-secondary-container);color:var(--c-on-secondary-container);font-size:15px;font-weight:600;border:2px solid transparent;transition:background var(--dur-normal) var(--ease),border-color var(--dur-normal) var(--ease);position:relative;overflow:hidden}
+.dur-btn.active{background:var(--c-primary-container);color:var(--c-on-primary-container);border-color:var(--c-primary)}
+.game-zone{min-height:320px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;background:var(--c-surf-low);border-radius:var(--r-lg);border:1.5px solid var(--c-outline-var);padding:24px 16px;position:relative}
+.spacebar-area{width:min(360px,90vw);height:100px;border-radius:var(--r-md);background:var(--c-surf-mid);border:2px solid var(--c-outline-var);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;color:var(--c-on-surf-var);letter-spacing:2px;text-transform:uppercase;transition:background var(--dur-fast) var(--ease),border-color var(--dur-fast) var(--ease)}
+.spacebar-area.pressed{background:var(--c-primary-container);border-color:var(--c-primary)}
+.big-count{font-family:var(--font-mono);font-size:72px;font-weight:700;color:var(--c-primary);line-height:1;min-height:80px}
+.stats-row{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
+.stat-chip{display:flex;flex-direction:column;align-items:center;background:var(--c-surf-mid);border-radius:var(--r-md);padding:10px 20px;min-width:90px}
+.stat-val{font-family:var(--font-mono);font-size:24px;font-weight:700;color:var(--c-primary);line-height:1}
+.stat-lbl{font-size:13px;color:var(--c-on-surf-var);margin-top:4px;text-transform:uppercase;letter-spacing:.4px;font-weight:600}
+.timer-text{font-family:var(--font-mono);font-size:22px;font-weight:700;color:var(--c-on-surface)}
+.timer-bar{width:min(300px,88vw);height:8px;background:var(--c-surf-high);border-radius:var(--r-full);overflow:hidden}
+.timer-fill{height:100%;background:var(--c-primary);border-radius:var(--r-full);width:100%}
+.result-overlay{position:absolute;inset:0;background:var(--c-surf-low);border-radius:var(--r-lg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;z-index:10;padding:24px}
+.result-overlay[hidden]{display:none}
+.result-big{font-family:var(--font-mono);font-size:56px;font-weight:700;color:var(--c-primary);line-height:1}
+.best-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-top:16px}
+.best-chip{background:var(--c-surf-mid);border-radius:var(--r-md);padding:10px 14px;text-align:center}
+.best-chip__dur{font-size:13px;color:var(--c-on-surf-var);font-weight:600;text-transform:uppercase}
+.best-chip__val{font-family:var(--font-mono);font-size:20px;font-weight:700;color:var(--c-on-surface)}
+.best-chip__sub{font-size:12px;color:var(--c-on-surf-var)}
+.mobile-tap-btn{display:none}
+@media(max-width:600px){.mobile-tap-btn{display:flex}}
+.noscript-note{background:var(--c-error-container);color:var(--c-on-error-container);border-radius:var(--r-md);padding:16px;text-align:center}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Zum Inhalt springen</a>
+<header class="top-bar">
+  <a href="https://klickspiele.de" class="home-btn rpl" aria-label="Zurück zu klickspiele.de">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2 L4 19 L8 15 L11 22 L13.5 21 L10.5 14 L16 14 Z"/></svg>
+  </a>
+  <span class="top-bar__title">Leertasten-Klicker</span>
+  <div class="top-bar__actions">
+    <button class="bar-icon-btn rpl" id="dmBtn" aria-label="Dark Mode umschalten" type="button">
+      <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/></svg>
+    </button>
+  </div>
+</header>
+<main id="main" class="page-content">
+  <div class="game-wrap">
+    <noscript><div class="noscript-note" role="alert"><strong>JavaScript erforderlich</strong> – bitte aktiviere JavaScript für den Leertasten-Test. Weitere Infos unten.</div></noscript>
+
+    <div class="dur-row" role="group" aria-label="Testdauer wählen">
+      <button class="dur-btn rpl" data-dur="5" type="button">5 Sek</button>
+      <button class="dur-btn rpl active" data-dur="10" type="button">10 Sek</button>
+      <button class="dur-btn rpl" data-dur="30" type="button">30 Sek</button>
+      <button class="dur-btn rpl" data-dur="60" type="button">60 Sek</button>
+    </div>
+
+    <div class="game-zone" id="gameZone">
+      <!-- Pre-start -->
+      <div id="preStart" style="display:flex;flex-direction:column;align-items:center;gap:16px">
+        <p style="font-size:17px;color:var(--c-on-surf-var);text-align:center">Starte mit dem Start-Button,<br>dann drücke die <kbd style="background:var(--c-surf-mid);padding:2px 8px;border-radius:6px;border:1.5px solid var(--c-outline-var);font-size:15px">Leertaste</kbd> so oft wie möglich!</p>
+        <button class="btn-filled rpl" id="startBtn" type="button" style="height:var(--btn-h);padding:0 32px;border-radius:var(--r-full);background:var(--c-primary);color:var(--c-on-primary);font-size:18px;font-weight:700">
+          ▶ Starten
+        </button>
+        <!-- Mobile tap button visible only on small screens -->
+        <button class="btn-filled rpl mobile-tap-btn" id="mobileTapBtn" type="button" style="height:var(--btn-h);padding:0 32px;border-radius:var(--r-full);background:var(--c-secondary-container);color:var(--c-on-secondary-container);font-size:16px;font-weight:600">
+          📱 Mobile: Tippe hier
+        </button>
+      </div>
+
+      <!-- Running state (hidden initially) -->
+      <div id="runState" hidden style="display:flex;flex-direction:column;align-items:center;gap:12px;width:100%">
+        <div class="spacebar-area" id="spacebarArea" role="none" aria-hidden="true">Leertaste drücken ↓</div>
+        <div class="big-count" id="bigCount" aria-live="off">0</div>
+        <div class="stats-row">
+          <div class="stat-chip"><span class="stat-val" id="statSPS">0.0</span><span class="stat-lbl">T/Sek</span></div>
+          <div class="stat-chip"><span class="stat-val" id="statKMin">0</span><span class="stat-lbl">T/Min</span></div>
+        </div>
+        <div class="timer-text" id="timerText" aria-live="polite">10.0 s</div>
+        <div class="timer-bar"><div class="timer-fill" id="timerFill"></div></div>
+        <!-- Mobile tap during run -->
+        <button class="btn-filled rpl mobile-tap-btn" id="mobileTapRunBtn" type="button" style="height:56px;padding:0 24px;border-radius:var(--r-full);background:var(--c-secondary-container);color:var(--c-on-secondary-container);font-size:16px;font-weight:600">
+          Tippen!
+        </button>
+      </div>
+
+      <!-- Result overlay -->
+      <div class="result-overlay" id="resultOverlay" hidden role="dialog" aria-label="Ergebnis">
+        <div class="stat-chip" style="background:var(--c-primary-container)">
+          <span class="result-big" id="resBig" style="color:var(--c-on-primary-container)">0</span>
+          <span class="stat-lbl">Tastendrücke</span>
+        </div>
+        <p style="font-size:16px;color:var(--c-on-surf-var)" id="resSub"></p>
+        <p id="resNewBest" style="font-weight:700;color:var(--c-primary);font-size:15px"></p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:8px">
+          <button class="btn-filled rpl" id="retryBtn" type="button">Nochmal</button>
+        </div>
+      </div>
+    </div>
+
+    <div aria-live="assertive" class="visually-hidden" id="srStatus"></div>
+
+    <h2 style="font-size:18px;font-weight:600;margin:20px 0 10px">Meine Bestleistungen</h2>
+    <div class="best-row" id="bestRow"></div>
+  </div>
+
+  <section class="seo-section">
+    <h2>Leertasten-Klicker – Spacebar Test</h2>
+    <p><strong>Was ist der Leertasten-Klicker?</strong> Der Leertasten-Klicker misst, wie oft du die Leertaste in einer bestimmten Zeit drücken kannst. Anders als beim Maus-CPS-Test ist hier die Keyboard-Hardware entscheidend – Schaltertyp, Stabilisatoren und Finger-Technik machen den Unterschied.</p>
+
+    <h3>So funktioniert der Test</h3>
+    <p>Wähle eine Testdauer (5, 10, 30 oder 60 Sekunden). Klicke auf "Starten". Ab diesem Moment zählt jeder Druck auf die Leertaste. Auf Desktop wird automatisch der Scroll-Effekt der Leertaste während des Tests deaktiviert – nach Ende des Tests läuft die Seite wieder normal. Auf Mobile erscheint ein Tap-Button als Alternative zur Leertaste.</p>
+
+    <h3>Einstellungen und Modi</h3>
+    <p><strong>5 Sekunden:</strong> Maximaler Sprint-Test. Zeigt deine Peak-Spacebar-Performance ohne Ermüdungseinfluss.</p>
+    <p><strong>10 Sekunden:</strong> Standard-Modus. Guter Kompromiss aus Sprint und leichter Ausdauerkomponente. Vergleichbarer als der 5-Sekunden-Test.</p>
+    <p><strong>30 Sekunden:</strong> Ausdauertest. Hier zeigt sich, ob du ein gleichmäßiges Tempo halten kannst oder ob die Rate einbricht.</p>
+    <p><strong>60 Sekunden:</strong> Langzeit-Ausdauer. Für Nutzer, die ihre Finger-Kondition für lange Gaming-Sessions oder Tipp-Arbeit testen wollen.</p>
+
+    <h3>Ergebnisse verstehen</h3>
+    <p><strong>T/Sek (Tastendrücke pro Sekunde):</strong> Analog zu CPS – Gesamtdrücke geteilt durch Testdauer. Bei 10-Sekunden-Test und 80 Drücken: 8,0 T/Sek.</p>
+    <p><strong>T/Min:</strong> Tastendrücke pro Minute. Nützlich als Vergleichswert zu WPM (Words per Minute) bei Schreibtests, da die Leertaste bei normalen Texten etwa alle 5 Anschläge vorkommt.</p>
+    <p><strong>Orientierungswerte (10-Sekunden-Test, mechanische Tastatur):</strong> Einsteiger: 4–6 T/Sek. Durchschnitt: 6–8 T/Sek. Geübt: 8–11 T/Sek. Sehr gut: 12+ T/Sek.</p>
+
+    <h3>Tipps für schnellere Spacebar-Drücke</h3>
+    <p><strong>Daumen-Position:</strong> Platziere den Daumen der dominanten Hand in der Mitte der Leertaste. Ein zu weit außen liegender Ansatzpunkt verlängert die Hebelstrecke und kostet Zeit.</p>
+    <p><strong>Alternating Thumbs:</strong> Wechsle zwischen linkem und rechtem Daumen. Das klingt einfach, braucht aber Training, da Timing-Fehler leicht zu Doppelzählungen führen.</p>
+    <p><strong>Minimalauslösung:</strong> Drücke die Taste nur so tief wie nötig, um den Actuationpoint zu erreichen. Bei mechanischen Tastaturen mit linearen Schaltern (z.B. Cherry MX Red, Gateron Yellow) liegt dieser Punkt früher als bei taktilen Schaltern.</p>
+    <p><strong>Stabilisatoren schmieren:</strong> Ungespritzte Stabilisatoren "rattern" und bremsen durch Reibung. Dielectric Grease oder XHT-BDZ auf den Stabilisator-Drähten reduziert den Widerstand merklich.</p>
+
+    <h3>Typische Fehler und Messprobleme</h3>
+    <p><strong>Key-Bounce/Chattering:</strong> Schnelle Tastendrücke können bei abgenutzten oder günstigen Tastaturen als Mehrfach-Events registriert werden. Das erhöht den gezählten Wert künstlich. Der Test nutzt keine Debounce-Filterung, da diese den Input verfälschen würde.</p>
+    <p><strong>N-Key-Rollover:</strong> Bei sehr schnellen Drücken (über ~14/Sek) können Keyboards ohne N-Key-Rollover Inputs verwerfen. Gaming-Keyboards und mechanische Tastaturen haben meist NKRO oder 6KRO.</p>
+    <p><strong>Browser-Fokus:</strong> Der Browser muss den Fokus auf der Seite haben. Wenn du während des Tests ein anderes Fenster aktivierst, werden Leertasten-Events nicht gezählt.</p>
+    <p><strong>Mobile vs. Desktop:</strong> Auf Touchscreen-Geräten ohne Tastatur nutze den Tap-Button. Die Ergebnisse sind hardware-bedingt nicht direkt vergleichbar mit Tastatur-Ergebnissen.</p>
+
+    <h3>FAQ – Häufige Fragen zum Leertasten-Klicker</h3>
+    <details class="collapsible">
+      <summary>Wie starte ich den Leertasten-Test?</summary>
+      <div class="collapsible__body">Klicke auf den orangefarbenen "Starten"-Button oder drücke Enter. Danach zählt jeder Leertasten-Druck. Auf Mobile erscheint ein Tap-Button als Alternative.</div>
+    </details>
+    <details class="collapsible">
+      <summary>Verhindert der Test das Scrollen?</summary>
+      <div class="collapsible__body">Ja. Während ein Test läuft, wird das Standard-Scroll-Verhalten der Leertaste per <code>preventDefault()</code> blockiert. Nach Ende des Tests wird das normale Verhalten sofort wiederhergestellt. Die Seite lässt sich wieder normal scrollen.</div>
+    </details>
+    <details class="collapsible">
+      <summary>Was ist ein guter Spacebar-CPS?</summary>
+      <div class="collapsible__body">Für den 10-Sekunden-Test gilt: 6–8 T/Sek sind durchschnittlich, 8–11 gut, über 12 sehr gut. Mit der Alternating-Thumbs-Technik sind 14+ T/Sek möglich.</div>
+    </details>
+    <details class="collapsible">
+      <summary>Welcher Finger ist am schnellsten?</summary>
+      <div class="collapsible__body">Typischerweise ist der dominante Daumen am schnellsten. Einige Nutzer wechseln zwischen linkem und rechtem Daumen (Alternating Thumbs), was höhere Werte ermöglicht.</div>
+    </details>
+    <details class="collapsible">
+      <summary>Warum fühlt sich die Leertaste unterschiedlich an?</summary>
+      <div class="collapsible__body">Die Stabilisatoren unter der Leertaste bestimmen Widerstand und Feedback stark. Geschmierte Stabilisatoren erlauben schnellere Betätigung als ungespritzte Versionen.</div>
+    </details>
+    <details class="collapsible">
+      <summary>Kann ich mit zwei Daumen schneller werden?</summary>
+      <div class="collapsible__body">Ja. Die Alternating-Thumbs-Technik (linker und rechter Daumen abwechselnd) kann die Rate auf 120–160 % des Einzel-Daumen-Wertes steigern.</div>
+    </details>
+    <details class="collapsible">
+      <summary>Werden Bestleistungen gespeichert?</summary>
+      <div class="collapsible__body">Ja. Bestleistungen werden pro Testdauer im localStorage des Browsers gespeichert – lokal, ohne Server-Kommunikation.</div>
+    </details>
+    <details class="collapsible">
+      <summary>Funktioniert der Test auf Mobile?</summary>
+      <div class="collapsible__body">Ja. Auf Mobile erscheint ein Tap-Button als Alternative zur Leertaste. Ergebnisse sind nicht direkt mit Tastatur-Tests vergleichbar.</div>
+    </details>
+
+    <h3>Weitere Klickspiele</h3>
+    <nav aria-label="Verwandte Spiele">
+      <ul style="list-style:none;display:flex;flex-wrap:wrap;gap:10px;padding:0;margin-top:8px">
+        <li><a href="./cps-test.html" style="display:inline-flex;align-items:center;height:44px;padding:0 18px;border-radius:9999px;background:var(--c-secondary-container);color:var(--c-on-secondary-container);font-weight:600;font-size:15px">🖱️ CPS Test</a></li>
+        <li><a href="./reaktionstest.html" style="display:inline-flex;align-items:center;height:44px;padding:0 18px;border-radius:9999px;background:var(--c-secondary-container);color:var(--c-on-secondary-container);font-weight:600;font-size:15px">⚡ Reaktionstest</a></li>
+        <li><a href="./klicktest.html" style="display:inline-flex;align-items:center;height:44px;padding:0 18px;border-radius:9999px;background:var(--c-secondary-container);color:var(--c-on-secondary-container);font-weight:600;font-size:15px">⏱️ Klicktest</a></li>
+        <li><a href="./index.html" style="display:inline-flex;align-items:center;height:44px;padding:0 18px;border-radius:9999px;background:var(--c-surf-mid);color:var(--c-on-surf-var);font-weight:600;font-size:15px">← Alle Spiele</a></li>
+      </ul>
+    </nav>
+  </section>
+</main>
+<footer class="site-footer">
+  <nav class="site-footer__nav">
+    <a href="https://klickspiele.de">klickspiele.de</a>
+    <a href="./impressum.html">Impressum</a>
+    <a href="./datenschutz.html">Datenschutz</a>
+  </nav>
+  <p class="site-footer__copy">© 2025 klickspiel.net · Kostenlose Klickspiele ohne Anmeldung</p>
+</footer>
+<script>
+(function(){
+  var dm=localStorage.getItem('dm')==='1';
+  if(dm)document.body.classList.add('dark-mode');
+  document.getElementById('dmBtn').addEventListener('click',function(){dm=!dm;document.body.classList.toggle('dark-mode',dm);localStorage.setItem('dm',dm?'1':'0');});
+
+  var duration=10,presses=0,running=false,startTime=0,endTO=null,rafID=null;
+  var preStart=document.getElementById('preStart');
+  var runState=document.getElementById('runState');
+  var startBtn=document.getElementById('startBtn');
+  var spacebarArea=document.getElementById('spacebarArea');
+  var bigCount=document.getElementById('bigCount');
+  var statSPS=document.getElementById('statSPS');
+  var statKMin=document.getElementById('statKMin');
+  var timerText=document.getElementById('timerText');
+  var timerFill=document.getElementById('timerFill');
+  var resultOverlay=document.getElementById('resultOverlay');
+  var resBig=document.getElementById('resBig');
+  var resSub=document.getElementById('resSub');
+  var resNewBest=document.getElementById('resNewBest');
+  var retryBtn=document.getElementById('retryBtn');
+  var mobileTapBtn=document.getElementById('mobileTapBtn');
+  var mobileTapRunBtn=document.getElementById('mobileTapRunBtn');
+  var srStatus=document.getElementById('srStatus');
+
+  document.querySelectorAll('.dur-btn').forEach(function(b){
+    b.addEventListener('click',function(){
+      if(running)return;
+      duration=parseInt(this.dataset.dur);
+      document.querySelectorAll('.dur-btn').forEach(function(x){x.classList.remove('active');});
+      this.classList.add('active');
+      timerText.textContent=duration+'.0 s';
+    });
+  });
+
+  function registerPress(){
+    if(!running)return;
+    presses++;
+    bigCount.textContent=presses;
+    // Flash spacebar area
+    spacebarArea.classList.add('pressed');
+    clearTimeout(spacebarArea._to);
+    spacebarArea._to=setTimeout(function(){spacebarArea.classList.remove('pressed');},80);
+  }
+
+  function updateTimer(){
+    if(!running)return;
+    var elapsed=(performance.now()-startTime)/1000;
+    var sps=(presses/elapsed).toFixed(1);
+    var kmin=Math.round(presses/elapsed*60);
+    statSPS.textContent=sps;
+    statKMin.textContent=kmin;
+    var remaining=Math.max(0,duration-(performance.now()-startTime)/1000);
+    timerText.textContent=remaining.toFixed(1)+' s';
+    timerFill.style.width=Math.max(0,(remaining/duration)*100)+'%';
+    if(running)rafID=requestAnimationFrame(updateTimer);
+  }
+
+  function startGame(){
+    running=true;presses=0;startTime=performance.now();
+    bigCount.textContent='0';
+    preStart.style.display='none';
+    runState.hidden=false;
+    resultOverlay.hidden=true;
+    timerText.textContent=duration+'.0 s';
+    timerFill.style.width='100%';
+    srStatus.textContent='Test gestartet – '+duration+' Sekunden. Leertaste drücken!';
+    endTO=setTimeout(endGame,duration*1000);
+    rafID=requestAnimationFrame(updateTimer);
+    // Focus the run area so space events land here
+    runState.focus&&runState.focus();
+  }
+
+  function endGame(){
+    running=false;
+    cancelAnimationFrame(rafID);clearTimeout(endTO);
+    var elapsed=(performance.now()-startTime)/1000;
+    var sps=(presses/elapsed).toFixed(1);
+    var kmin=Math.round(presses/elapsed*60);
+    var key='clickgames:spacebar:'+duration;
+    var prev=parseInt(localStorage.getItem(key)||'0');
+    var isNew=presses>prev;
+    if(isNew)localStorage.setItem(key,presses);
+    resBig.textContent=presses;
+    resSub.textContent=sps+' T/Sek · '+kmin+' T/Min';
+    resNewBest.textContent=isNew?'🏆 Neue Bestleistung!':'';
+    resultOverlay.hidden=false;
+    retryBtn.focus();
+    srStatus.textContent='Test beendet. '+presses+' Drücke in '+duration+' Sekunden.'+(isNew?' Neue Bestleistung!':'');
+    renderBest();
+  }
+
+  startBtn.addEventListener('click',startGame);
+  mobileTapBtn.addEventListener('click',startGame);
+  mobileTapRunBtn.addEventListener('click',registerPress);
+
+  // Space key handler
+  document.addEventListener('keydown',function(e){
+    if(e.code==='Space'&&running){
+      e.preventDefault();
+      if(!e.repeat)registerPress();
+    }
+  });
+  // Enter to start
+  document.addEventListener('keydown',function(e){
+    if(e.code==='Enter'&&!running&&resultOverlay.hidden&&preStart.style.display!=='none'){
+      startGame();
+    }
+  });
+
+  retryBtn.addEventListener('click',function(){
+    resultOverlay.hidden=true;
+    running=false;
+    presses=0;bigCount.textContent='0';
+    runState.hidden=true;
+    preStart.style.display='flex';
+    timerText.textContent=duration+'.0 s';
+    timerFill.style.width='100%';
+    startBtn.focus();
+  });
+
+  function renderBest(){
+    var row=document.getElementById('bestRow');
+    var durs=[5,10,30,60];
+    row.innerHTML='';
+    durs.forEach(function(d){
+      var v=localStorage.getItem('clickgames:spacebar:'+d);
+      var chip=document.createElement('div');
+      chip.className='best-chip';
+      chip.innerHTML='<div class="best-chip__dur">'+d+'s</div>'
+        +'<div class="best-chip__val">'+(v||'–')+'</div>'
+        +'<div class="best-chip__sub">Drücke</div>';
+      row.appendChild(chip);
+    });
+  }
+  renderBest();
+})();
+document.addEventListener('pointerdown',function(e){var h=e.target.closest('.rpl');if(!h)return;var r=h.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,sz=Math.max(r.width,r.height)*2.4,w=document.createElement('span');w.className='rpl-wave';w.style.cssText='width:'+sz+'px;height:'+sz+'px;left:'+(x-sz/2)+'px;top:'+(y-sz/2)+'px';h.appendChild(w);w.addEventListener('animationend',function(){w.remove();});},{passive:true});
+</script>
+</body>
+</html>

@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#F57C00">
+
+<!-- ═══ SEO Meta Tags ═══ -->
+<title>2048 Spiel – Kostenlos Online Spielen | klickspiele.de</title>
+<meta name="description" content="2048 kostenlos online spielen – ohne Anmeldung, ohne Download. Schiebe die Kacheln und erreiche die magische 2048! Mit Undo, Highscore & Dark Mode.">
+<meta name="keywords" content="2048 spiel, 2048 online, 2048 kostenlos, zahlenspiel, denkspiel, browsergame">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://klickspiele.de/2048">
+
+<!-- ═══ Open Graph ═══ -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://klickspiele.de/2048">
+<meta property="og:title" content="2048 Spiel – Kostenlos Online Spielen">
+<meta property="og:description" content="Verschiebe Kacheln, kombiniere Zahlen und erreiche 2048! Kostenlos, ohne Anmeldung – jetzt sofort spielen.">
+<meta property="og:image" content="https://klickspiele.de/2048-og.png">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="klickspiele.de">
+
+<!-- ═══ Twitter Card ═══ -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="2048 Spiel – Kostenlos Online Spielen">
+<meta name="twitter:description" content="Verschiebe Kacheln, kombiniere Zahlen und erreiche 2048!">
+<meta name="twitter:image" content="https://klickspiele.de/2048-og.png">
+
+<!-- ═══ Structured Data ═══ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "VideoGame",
+      "name": "2048",
+      "description": "2048 ist ein kostenloses Zahlen-Schiebespiel für den Browser. Kombiniere gleiche Kacheln durch Wischen oder Pfeiltasten um die magische Zahl 2048 zu erreichen.",
+      "url": "https://klickspiele.de/2048",
+      "genre": ["Puzzle", "Denkspiel", "Zahlenspiel"],
+      "gamePlatform": ["Web Browser", "Mobile", "Desktop"],
+      "applicationCategory": "Game",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "klickspiele.de",
+        "url": "https://klickspiele.de"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Wie spielt man 2048?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Benutze die Pfeiltasten (Desktop) oder wische mit dem Finger (Mobile), um alle Kacheln gleichzeitig in eine Richtung zu schieben. Kacheln mit gleicher Zahl verschmelzen zu einer neuen Kachel mit dem doppelten Wert. Ziel ist es, eine Kachel mit dem Wert 2048 zu erreichen."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kann man 2048 immer gewinnen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nein, 2048 ist nicht immer lösbar. Mit einer guten Strategie – z.B. die höchste Kachel immer in eine Ecke zu halten und entlang der Ränder zu stapeln – kann man jedoch die Gewinnchance deutlich erhöhen."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Was ist der höchste mögliche Wert in 2048?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Theoretisch ist der höchste erreichbare Wert 131.072 (2 hoch 17) auf einem 4×4-Brett. In der Praxis erreichen die meisten Spieler Werte zwischen 1024 und 8192."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kann ich meinen Spielstand speichern?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja! Das Spiel speichert deinen aktuellen Spielstand und deinen Highscore automatisch im Browser-Speicher (LocalStorage). Du kannst einfach die Seite schließen und später weiterspielen."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Was macht die Undo-Funktion?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Mit Undo kannst du deinen letzten Zug rückgängig machen. Das ist besonders nützlich, wenn du eine Kachel versehentlich in die falsche Richtung geschoben hast."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<link rel="stylesheet" href="./style.css">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23F57C00'/><path d='M8 4 L8 24 L13 19 L16.5 27 L19.5 25.5 L16 17.5 L22 17.5 Z' fill='white'/></svg>">
+
+<style>
+/* ══════════════════════════════════════
+   2048 – Game-specific styles
+   (Only what's not already in style.css)
+══════════════════════════════════════ */
+
+/* ── Layout ─────────────────────────────────────────────────── */
+.game-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 24px;
+  overflow-x: hidden;
+}
+
+/* ── Score Header ───────────────────────────────────────────── */
+.score-row {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 10px;
+  padding: 12px 16px 0;
+  max-width: 520px;
+  margin: 0 auto;
+  width: 100%;
+}
+.score-box {
+  flex: 1;
+  background: var(--c-surf-mid);
+  border-radius: var(--r-md);
+  padding: 10px 12px 8px;
+  text-align: center;
+  box-shadow: var(--elev-1);
+  border: 1.5px solid var(--c-outline-var);
+  min-width: 0;
+}
+.score-box__label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--c-outline);
+  line-height: 1;
+}
+.score-box__val {
+  font-family: var(--font-mono);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--c-on-surface);
+  line-height: 1.2;
+  margin-top: 2px;
+  transition: transform var(--dur-fast) var(--ease);
+}
+.score-box__val.bump {
+  animation: score-bump var(--dur-normal) var(--ease);
+}
+@keyframes score-bump {
+  0%   { transform: scale(1); }
+  45%  { transform: scale(1.22); color: var(--c-primary); }
+  100% { transform: scale(1); }
+}
+
+/* ── Grid Size Selector ─────────────────────────────────────── */
+.size-row {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px 2px;
+}
+.size-btn {
+  height: 36px;
+  padding: 0 16px;
+  border-radius: var(--r-full);
+  background: var(--c-secondary-container);
+  color: var(--c-on-secondary-container);
+  font-size: 14px;
+  font-weight: 600;
+  transition: background var(--dur-fast), color var(--dur-fast), box-shadow var(--dur-fast);
+  border: 2px solid transparent;
+  position: relative; overflow: hidden;
+}
+.size-btn.active {
+  background: var(--c-primary);
+  color: var(--c-on-primary);
+  box-shadow: var(--elev-1);
+}
+
+/* ── Action Toolbar ─────────────────────────────────────────── */
+.action-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px 6px;
+  max-width: 520px;
+  margin: 0 auto;
+  width: 100%;
+}
+.action-btn {
+  height: 48px;
+  border-radius: var(--r-full);
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  background: var(--c-surf-mid);
+  color: var(--c-secondary);
+  border: 1.5px solid var(--c-outline-var);
+  box-shadow: var(--elev-1);
+  transition: background var(--dur-fast), box-shadow var(--dur-fast);
+  position: relative; overflow: hidden;
+}
+.action-btn:hover  { box-shadow: var(--elev-2); }
+.action-btn:active { background: var(--c-surf-high); }
+.action-btn svg { width: 20px; height: 20px; fill: currentColor; flex-shrink: 0; }
+.action-btn.primary-action {
+  background: var(--c-primary);
+  color: var(--c-on-primary);
+  border-color: transparent;
+}
+.action-btn--undo:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.action-btn--undo:disabled:hover { box-shadow: var(--elev-1); }
+
+/* ── 2048 Board ─────────────────────────────────────────────── */
+.board-wrapper {
+  position: relative;
+  width: var(--board-size, min(92vw, 440px));
+  margin: 8px auto 0;
+  touch-action: none;
+  user-select: none;
+}
+.board-bg {
+  width: 100%;
+  aspect-ratio: 1;
+  background: var(--c-surf-high);
+  border-radius: var(--r-lg);
+  box-shadow: var(--elev-2);
+  display: grid;
+  gap: var(--cell-gap, 8px);
+  padding: var(--cell-gap, 8px);
+  border: 2px solid var(--c-outline-var);
+}
+.board-cell-bg {
+  background: var(--c-surf-highest);
+  border-radius: var(--r-sm);
+  opacity: 0.55;
+}
+
+/* Tiles layer on top of board */
+.tiles-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.tile {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--r-sm);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  line-height: 1;
+  will-change: transform;
+  transition:
+    left   var(--dur-normal) var(--ease),
+    top    var(--dur-normal) var(--ease),
+    width  0ms,
+    height 0ms;
+}
+
+/* Tile appearance animation */
+.tile--new {
+  animation: tile-appear var(--dur-slow) var(--ease) both;
+}
+@keyframes tile-appear {
+  0%   { transform: scale(0);    opacity: 0; }
+  70%  { transform: scale(1.12); opacity: 1; }
+  100% { transform: scale(1);    opacity: 1; }
+}
+
+/* Merge pop */
+.tile--merge {
+  animation: tile-merge var(--dur-slow) var(--ease) both;
+  z-index: 10;
+}
+@keyframes tile-merge {
+  0%   { transform: scale(1); }
+  35%  { transform: scale(1.22); }
+  65%  { transform: scale(0.92); }
+  100% { transform: scale(1); }
+}
+
+/* ── Tile Colors ─────────────────────────────────────────────── */
+.t2    { background: #eee4da; color: #776e65; }
+.t4    { background: #ede0c8; color: #776e65; }
+.t8    { background: #f2b179; color: #fff; }
+.t16   { background: #f59563; color: #fff; }
+.t32   { background: #f67c5f; color: #fff; }
+.t64   { background: #f65e3b; color: #fff; }
+.t128  { background: #edcf72; color: #fff; box-shadow: 0 0 12px rgba(237,207,114,.6); }
+.t256  { background: #edcc61; color: #fff; box-shadow: 0 0 16px rgba(237,204,97,.7); }
+.t512  { background: #edc850; color: #fff; box-shadow: 0 0 20px rgba(237,200,80,.8); }
+.t1024 { background: #edc53f; color: #fff; box-shadow: 0 0 24px rgba(237,197,63,.9); }
+.t2048 { background: #edc22e; color: #fff; box-shadow: 0 0 30px rgba(237,194,46,1.0); }
+.t-super { background: #3c3a32; color: #f9f6f2; }
+
+/* Dark mode tile adjustments */
+body.dark-mode .t2    { background: #4a4038; color: #d4c8b8; }
+body.dark-mode .t4    { background: #52473a; color: #d4c8b8; }
+
+/* ── Overlays ────────────────────────────────────────────────── */
+.board-overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--r-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-slow) var(--ease);
+  z-index: 20;
+}
+.board-overlay.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+.overlay--gameover {
+  background: rgba(238, 228, 218, 0.85);
+}
+.overlay--win {
+  background: rgba(237, 194, 46, 0.88);
+}
+body.dark-mode .overlay--gameover {
+  background: rgba(26, 26, 26, 0.88);
+}
+body.dark-mode .overlay--win {
+  background: rgba(150, 120, 10, 0.88);
+}
+.overlay__title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--c-on-surface);
+  text-align: center;
+  line-height: 1.1;
+}
+.overlay--win .overlay__title {
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0,0,0,.25);
+}
+.overlay__sub {
+  font-size: 17px;
+  color: var(--c-on-surf-var);
+  text-align: center;
+}
+.overlay--win .overlay__sub { color: rgba(255,255,255,.9); }
+.overlay-btns {
+  display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;
+}
+
+/* ── SEO Section ─────────────────────────────────────────────── */
+.seo-section {
+  max-width: var(--content-max);
+  margin: 40px auto 0;
+  padding: 0 16px 80px;
+}
+.seo-section h1 {
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 34px;
+  margin-bottom: 16px;
+  color: var(--c-on-bg);
+}
+.seo-section h2 {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 30px;
+  margin: 32px 0 12px;
+  color: var(--c-on-bg);
+}
+.seo-section h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 24px 0 8px;
+}
+.seo-section p {
+  font-size: 17px;
+  line-height: 27px;
+  color: var(--c-on-surf-var);
+  margin-bottom: 14px;
+}
+.seo-section strong { color: var(--c-on-surface); }
+.seo-divider {
+  height: 2px;
+  background: var(--c-outline-var);
+  border: none;
+  margin: 32px 0;
+  border-radius: 2px;
+}
+
+/* FAQ */
+.faq-list { margin-top: 8px; }
+.faq-list .collapsible {
+  margin-bottom: 8px;
+}
+
+/* Dark mode toggle pulse on first load */
+@keyframes pulse-hint {
+  0%,100% { box-shadow: none; }
+  50%      { box-shadow: 0 0 0 4px rgba(245,124,0,.35); }
+}
+
+/* ── Desktop ≥ 900px ─────────────────────────────────────────── */
+@media (min-width: 900px) {
+  .board-wrapper { --board-size: 480px; }
+  .score-box__val { font-size: 28px; }
+}
+
+/* Shared collapsible from design system (FAQ) */
+.collapsible {
+  border: 1.5px solid var(--c-outline-var);
+  border-radius: var(--r-md);
+  background: var(--c-surf-low);
+  overflow: hidden;
+}
+.collapsible > summary {
+  list-style: none;
+  padding: 16px 20px;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--c-on-surface);
+  user-select: none;
+  transition: background var(--dur-fast);
+}
+.collapsible > summary::-webkit-details-marker { display: none; }
+.collapsible > summary::after {
+  content: '';
+  flex-shrink: 0;
+  width: 20px; height: 20px;
+  background: var(--c-outline);
+  mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M7 10l5 5 5-5'/></svg>");
+  mask-size: contain; mask-repeat: no-repeat; mask-position: center;
+  -webkit-mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M7 10l5 5 5-5'/></svg>");
+  -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat; -webkit-mask-position: center;
+  transition: transform var(--dur-normal) var(--ease);
+}
+.collapsible[open] > summary::after { transform: rotate(180deg); }
+.collapsible > summary:hover { background: var(--c-surf-mid); }
+.collapsible__body {
+  padding: 0 20px 18px;
+  font-size: 16px;
+  line-height: 26px;
+  color: var(--c-on-surf-var);
+}
+</style>
+</head>
+
+<body>
+<a class="skip" href="#main">Zum Inhalt springen</a>
+
+<!-- ══ TOP APP BAR ══ -->
+<header class="top-bar">
+  <a href="https://klickspiele.de" class="home-btn rpl" aria-label="Zurück zu klickspiele.de">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M4 2 L4 19 L8 15 L11 22 L13.5 21 L10.5 14 L16 14 Z"/>
+    </svg>
+  </a>
+  <span class="top-bar__title">2048</span>
+  <div class="top-bar__actions">
+    <!-- Dark Mode Toggle -->
+    <button class="bar-icon-btn rpl" id="btn-dark" aria-label="Dark Mode umschalten" title="Dark Mode">
+      <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true">
+        <path id="dark-icon-path" d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/>
+      </svg>
+    </button>
+    <!-- Share Button -->
+    <button class="bar-icon-btn rpl" id="btn-share" aria-label="Ergebnis teilen" title="Teilen">
+      <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true">
+        <path d="M18 16c-.8 0-1.5.3-2 .8l-7.2-4.1c.1-.2.1-.5.1-.7s0-.5-.1-.7L16 7.2c.5.5 1.2.8 2 .8a3 3 0 0 0 0-6 3 3 0 0 0-3 3c0 .2 0 .5.1.7L7.9 9.8C7.4 9.3 6.7 9 6 9a3 3 0 0 0 0 6c.7 0 1.4-.3 1.9-.8l7.2 4.1c-.1.2-.1.4-.1.6a3 3 0 1 0 3-3z"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- ══ GAME MAIN ══ -->
+<main id="main" class="game-main">
+
+  <!-- Score Row -->
+  <div class="score-row" role="status" aria-live="polite" aria-label="Spielstand">
+    <div class="score-box">
+      <div class="score-box__label">Punkte</div>
+      <div class="score-box__val" id="score">0</div>
+    </div>
+    <div class="score-box">
+      <div class="score-box__label">Highscore</div>
+      <div class="score-box__val" id="best">0</div>
+    </div>
+    <div class="score-box">
+      <div class="score-box__label">Züge</div>
+      <div class="score-box__val" id="moves">0</div>
+    </div>
+  </div>
+
+  <!-- Grid Size Selector -->
+  <div class="size-row" role="group" aria-label="Spielfeldgröße">
+    <button class="size-btn rpl active" data-size="4" aria-pressed="true">4×4</button>
+    <button class="size-btn rpl" data-size="5" aria-pressed="false">5×5</button>
+    <button class="size-btn rpl" data-size="6" aria-pressed="false">6×6</button>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="action-row">
+    <button class="action-btn rpl primary-action" id="btn-restart" aria-label="Neues Spiel starten">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M17.65 6.35A7.958 7.958 0 0 0 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0 1 12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
+      </svg>
+      Neu starten
+    </button>
+    <button class="action-btn rpl" id="btn-undo" aria-label="Letzten Zug rückgängig" disabled>
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12.5 8c-2.65 0-5.05.99-6.9 2.6L2 7v9h9l-3.62-3.62c1.39-1.16 3.16-1.88 5.12-1.88 3.54 0 6.55 2.31 7.6 5.5l2.37-.78C21.08 11.03 17.15 8 12.5 8z"/>
+      </svg>
+      Undo
+    </button>
+  </div>
+
+  <!-- Board -->
+  <div class="board-wrapper" id="board-wrapper" aria-label="Spielfeld">
+    <div class="board-bg" id="board-bg" role="grid" aria-label="2048 Spielfeld"></div>
+    <div class="tiles-layer" id="tiles-layer" aria-hidden="true"></div>
+
+    <!-- Game Over Overlay -->
+    <div class="board-overlay overlay--gameover" id="overlay-gameover" role="dialog" aria-modal="true" aria-label="Spiel beendet" aria-hidden="true">
+      <div class="overlay__title">😔 Game Over!</div>
+      <div class="overlay__sub">Keine Züge mehr möglich</div>
+      <div class="overlay-btns">
+        <button class="action-btn rpl primary-action" id="btn-retry" aria-label="Nochmal spielen">Nochmal spielen</button>
+      </div>
+    </div>
+
+    <!-- Win Overlay -->
+    <div class="board-overlay overlay--win" id="overlay-win" role="dialog" aria-modal="true" aria-label="Gewonnen" aria-hidden="true">
+      <div class="overlay__title">🎉 Du hast gewonnen!</div>
+      <div class="overlay__sub">Ziel 2048 erreicht!</div>
+      <div class="overlay-btns">
+        <button class="action-btn rpl" id="btn-continue" aria-label="Weiterspielen">Weiterspielen</button>
+        <button class="action-btn rpl primary-action" id="btn-win-restart" aria-label="Neues Spiel">Neu starten</button>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- ══ SEO TEXT ══ -->
+<section class="seo-section" aria-label="Über das Spiel">
+  <h1>2048 – Das Zahlen-Schiebespiel kostenlos online spielen</h1>
+  <p>
+    <strong>2048</strong> ist eines der beliebtesten Denkspiele der Welt – einfach zu lernen, aber schwer zu meistern. Das Ziel ist simpel: Schiebe die nummerierten Kacheln auf dem Spielfeld, verbinde gleiche Zahlen miteinander und versuche, die magische Zahl <strong>2048</strong> zu erreichen. Auf klickspiele.de kannst du 2048 kostenlos, ohne Anmeldung und direkt im Browser spielen – egal ob am Desktop, Tablet oder Smartphone.
+  </p>
+
+  <h2>So spielst du 2048 – Die Regeln einfach erklärt</h2>
+  <p>
+    Das Spielfeld besteht aus einem <strong>4×4-Raster</strong> (du kannst auch auf 5×5 oder 6×6 umschalten). Zu Beginn erscheinen zwei Kacheln, meist mit dem Wert 2 oder 4. Mit den <strong>Pfeiltasten</strong> auf der Tastatur oder durch <strong>Wischen</strong> auf dem Touchscreen bewegst du alle Kacheln gleichzeitig in eine Richtung. Treffen zwei Kacheln mit demselben Wert aufeinander, verschmelzen sie zu einer neuen Kachel – die Summe beider Werte. Gleichzeitig erscheint automatisch eine neue Kachel (2 oder 4) an einer zufälligen freien Position.
+  </p>
+  <p>
+    Das Spiel endet auf zwei Arten: Entweder erreichst du die <strong>2048-Kachel</strong> und gewinnst, oder das Brett ist so voll, dass kein Zug mehr möglich ist – dann ist das Spiel verloren. Mit der <strong>Undo-Funktion</strong> kannst du deinen letzten Zug rückgängig machen und eine andere Strategie ausprobieren.
+  </p>
+
+  <h2>Strategien und Tipps für 2048</h2>
+  <p>
+    Mit ein paar einfachen Strategien kannst du deine Gewinnchancen deutlich verbessern. Die wichtigste Grundregel: <strong>Halte deine höchste Kachel immer in einer Ecke</strong>, vorzugsweise in der unteren rechten oder linken Ecke. Baue von dort aus eine aufsteigende Reihe entlang des Randes auf – so entsteht eine Art „Schlange" aus hohen Zahlen, die sich leicht kombinieren lässt.
+  </p>
+  <p>
+    Eine weitere wichtige Regel: <strong>Meide unkontrollierte Aufwärts-Moves</strong>, wenn deine höchste Kachel unten sitzt. Jede Bewegung nach oben kann deine mühsam aufgebaute Struktur durcheinanderbringen. Plane lieber mehrere Züge im Voraus und priorisiere Moves, die zwei oder mehr Paare gleichzeitig kombinieren.
+  </p>
+  <p>
+    Experten empfehlen außerdem: <strong>Halte das Brett möglichst leer</strong>. Je weniger Kacheln vorhanden sind, desto mehr Bewegungsfreiheit hast du. Vermeide es, einzelne Kacheln an ungünstigen Positionen festzusetzen – besonders kleine Werte wie 2 oder 4 in der Mitte des Feldes können das gesamte Spiel blockieren.
+  </p>
+
+  <h2>Geschichte und Hintergrund des Spiels</h2>
+  <p>
+    Das Original-2048 wurde im März 2014 von dem italienischen Entwickler <strong>Gabriele Cirulli</strong> an einem Wochenende programmiert und als Open-Source-Projekt veröffentlicht. Das Spiel verbreitete sich innerhalb weniger Tage viral und wurde millionenfach gespielt. Ursprünglich inspiriert durch ähnliche Spiele wie <em>Threes!</em> und <em>1024</em>, wurde 2048 schnell zu einem eigenständigen Kulturphänomen – es gibt es als App, Browser-Game und in zahllosen Varianten mit unterschiedlichen Themen und Spielfeldern.
+  </p>
+  <p>
+    Die Faszination liegt in der perfekten Balance zwischen Zugänglichkeit und Tiefe: Jeder versteht das Konzept sofort, aber das Erreichen hoher Punktzahlen erfordert echtes strategisches Denken und etwas Glück. Das macht 2048 zu einem idealen Spiel für kurze Pausen genauso wie für stundenlange Spielsessions.
+  </p>
+
+  <h2>Unsere Version – Was dich bei klickspiele.de erwartet</h2>
+  <p>
+    Unsere 2048-Version wurde komplett <strong>neu entwickelt</strong> und bietet alles, was du dir von einem modernen Browser-Game wünschst. Das Design ist <strong>clean und modern</strong>, die Animationen sind flüssig und die Steuerung reagiert sofort. Alle wichtigen Features sind an Bord: Du kannst zwischen drei Spielfeldgrößen wählen (4×4, 5×5 oder 6×6), deinen Highscore wird automatisch gespeichert, und ein Dark Mode sorgt für bequemes Spielen auch abends. Die <strong>Swipe-Gesten</strong> auf Mobilgeräten wurden besonders sorgfältig implementiert, damit sich das Spiel auf dem Smartphone genauso gut anfühlt wie am Desktop.
+  </p>
+
+  <hr class="seo-divider">
+
+  <h2>Häufige Fragen (FAQ)</h2>
+  <div class="faq-list">
+    <details class="collapsible">
+      <summary>Wie spielt man 2048?</summary>
+      <div class="collapsible__body">Benutze die Pfeiltasten (Desktop) oder wische mit dem Finger (Mobile), um alle Kacheln gleichzeitig in eine Richtung zu schieben. Kacheln mit gleicher Zahl verschmelzen zu einer neuen Kachel mit dem doppelten Wert. Ziel ist es, eine Kachel mit dem Wert 2048 zu erreichen.</div>
+    </details>
+    <details class="collapsible">
+      <summary>Kann man 2048 immer gewinnen?</summary>
+      <div class="collapsible__body">Nein, 2048 ist nicht immer lösbar. Mit einer guten Strategie – z.B. die höchste Kachel immer in eine Ecke zu halten und entlang der Ränder zu stapeln – kann man die Gewinnchance jedoch deutlich erhöhen. Auch die Undo-Funktion hilft dabei, Fehlzüge zu korrigieren.</div>
+    </details>
+    <details class="collapsible">
+      <summary>Was ist der höchste mögliche Wert in 2048?</summary>
+      <div class="collapsible__body">Theoretisch ist der höchste erreichbare Wert 131.072 (2 hoch 17) auf einem 4×4-Brett. In der Praxis erreichen die meisten Spieler Werte zwischen 1.024 und 8.192. Auf größeren Spielfeldern (5×5, 6×6) sind noch höhere Werte erreichbar.</div>
+    </details>
+    <details class="collapsible">
+      <summary>Kann ich meinen Spielstand speichern?</summary>
+      <div class="collapsible__body">Ja! Das Spiel speichert deinen aktuellen Spielstand und deinen Highscore automatisch im Browser-Speicher (LocalStorage). Du kannst die Seite einfach schließen und beim nächsten Besuch genau dort weitermachen, wo du aufgehört hast.</div>
+    </details>
+    <details class="collapsible">
+      <summary>Funktioniert 2048 auch offline?</summary>
+      <div class="collapsible__body">Sobald die Seite einmal geladen wurde, kannst du das Spiel auch ohne Internetverbindung weiterspielen – alle Spiellogik läuft direkt im Browser. Es werden keine externen Ressourcen nachgeladen.</div>
+    </details>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="site-footer">
+  <nav class="site-footer__nav">
+    <a href="https://klickspiele.de">klickspiele.de</a>
+    <a href="./imprint">Impressum</a>
+    <a href="./privacy">Datenschutz</a>
+  </nav>
+  <p class="site-footer__copy">© 2025 klickspiele.de · Kostenlose Spiele ohne Anmeldung</p>
+</footer>
+
+<!-- ══ RIPPLE JS ══ -->
+<script>
+document.addEventListener('pointerdown', function(e) {
+  var h = e.target.closest('.rpl');
+  if (!h) return;
+  var r = h.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top,
+      sz = Math.max(r.width, r.height) * 2.4,
+      w = document.createElement('span');
+  w.className = 'rpl-wave';
+  w.style.cssText = 'width:'+sz+'px;height:'+sz+'px;left:'+(x-sz/2)+'px;top:'+(y-sz/2)+'px';
+  h.appendChild(w);
+  w.addEventListener('animationend', function() { w.remove(); });
+}, { passive: true });
+</script>
+
+<!-- ══ GAME ENGINE ══ -->
+<script>
+(function() {
+'use strict';
+
+/* ════════════════════════════════════════════════════════════════
+   STATE
+════════════════════════════════════════════════════════════════ */
+var G = {
+  size: 4,
+  board: [],
+  prevBoard: null,
+  prevScore: 0,
+  score: 0,
+  best: 0,
+  moves: 0,
+  won: false,
+  keepGoing: false,
+  over: false,
+  tileId: 0,
+};
+
+/* ════════════════════════════════════════════════════════════════
+   STORAGE
+════════════════════════════════════════════════════════════════ */
+var LS = {
+  save: function() {
+    try {
+      localStorage.setItem('2048_state', JSON.stringify({
+        size: G.size, board: G.board, score: G.score,
+        best: G.best, moves: G.moves, won: G.won,
+        keepGoing: G.keepGoing, over: G.over
+      }));
+    } catch(e){}
+  },
+  load: function() {
+    try {
+      var raw = localStorage.getItem('2048_state');
+      if (raw) {
+        var s = JSON.parse(raw);
+        G.size = s.size || 4;
+        G.board = s.board || [];
+        G.score = s.score || 0;
+        G.best  = s.best  || 0;
+        G.moves = s.moves || 0;
+        G.won   = s.won   || false;
+        G.keepGoing = s.keepGoing || false;
+        G.over  = s.over  || false;
+        return true;
+      }
+    } catch(e) {}
+    return false;
+  },
+  saveBest: function(v) {
+    try { localStorage.setItem('2048_best_'+G.size, String(v)); } catch(e){}
+  },
+  loadBest: function() {
+    try { return parseInt(localStorage.getItem('2048_best_'+G.size)||'0',10)||0; } catch(e){ return 0; }
+  },
+  saveDark: function(v) {
+    try { localStorage.setItem('2048_dark', v?'1':'0'); } catch(e){}
+  },
+  loadDark: function() {
+    try { return localStorage.getItem('2048_dark')==='1'; } catch(e){ return false; }
+  }
+};
+
+/* ════════════════════════════════════════════════════════════════
+   BOARD LOGIC
+════════════════════════════════════════════════════════════════ */
+function makeBoard(n) {
+  var b = [];
+  for (var r=0; r<n; r++) {
+    b.push([]);
+    for (var c=0; c<n; c++) b[r].push(null);
+  }
+  return b;
+}
+
+function cloneBoard(b) {
+  return b.map(function(row){ return row.map(function(cell){ return cell ? Object.assign({},cell) : null; }); });
+}
+
+function emptyCells(b, n) {
+  var cells = [];
+  for (var r=0; r<n; r++)
+    for (var c=0; c<n; c++)
+      if (!b[r][c]) cells.push({r:r,c:c});
+  return cells;
+}
+
+function addRandom(b, n) {
+  var cells = emptyCells(b, n);
+  if (!cells.length) return null;
+  var pos = cells[Math.floor(Math.random()*cells.length)];
+  var val = Math.random() < 0.9 ? 2 : 4;
+  b[pos.r][pos.c] = { v: val, id: ++G.tileId, isNew: true, isMerge: false };
+  return pos;
+}
+
+/* ── Move Logic ── */
+function slide(row) {
+  /* returns {row, score, moved} */
+  var n = row.length;
+  /* filter nulls */
+  var tiles = row.filter(function(t){ return t !== null; });
+  var merged = 0;
+  var score = 0;
+  for (var i = 0; i < tiles.length-1; i++) {
+    if (tiles[i] && tiles[i+1] && tiles[i].v === tiles[i+1].v) {
+      var newV = tiles[i].v * 2;
+      score += newV;
+      tiles[i] = { v: newV, id: tiles[i].id, isNew: false, isMerge: true };
+      tiles.splice(i+1, 1);
+      merged++;
+    }
+  }
+  /* pad with nulls */
+  while (tiles.length < n) tiles.push(null);
+  var moved = false;
+  for (var j=0; j<n; j++) {
+    if (row[j] !== tiles[j]) {
+      if (row[j] === null && tiles[j] === null) continue;
+      if (row[j] && tiles[j] && row[j].id === tiles[j].id && row[j].v === tiles[j].v) continue;
+      moved = true; break;
+    }
+  }
+  return { row: tiles, score: score, moved: moved };
+}
+
+function applyMove(dir) {
+  /* dir: 0=up 1=right 2=down 3=left */
+  var b = G.board;
+  var n = G.size;
+  var totalScore = 0;
+  var anyMoved = false;
+
+  /* Reset isNew/isMerge from previous */
+  for (var r=0; r<n; r++)
+    for (var c=0; c<n; c++)
+      if (b[r][c]) { b[r][c].isNew = false; b[r][c].isMerge = false; }
+
+  function getCol(c) {
+    var col = [];
+    for (var r=0; r<n; r++) col.push(b[r][c]);
+    return col;
+  }
+  function setCol(c, col) {
+    for (var r=0; r<n; r++) b[r][c] = col[r];
+  }
+
+  if (dir === 3) { /* left */
+    for (var r=0; r<n; r++) {
+      var res = slide(b[r].slice());
+      if (res.moved) anyMoved = true;
+      b[r] = res.row; totalScore += res.score;
+    }
+  } else if (dir === 1) { /* right */
+    for (var r=0; r<n; r++) {
+      var rev = b[r].slice().reverse();
+      var res = slide(rev);
+      if (res.moved) anyMoved = true;
+      b[r] = res.row.reverse(); totalScore += res.score;
+    }
+  } else if (dir === 0) { /* up */
+    for (var c=0; c<n; c++) {
+      var col = getCol(c);
+      var res = slide(col);
+      if (res.moved) anyMoved = true;
+      setCol(c, res.row); totalScore += res.score;
+    }
+  } else if (dir === 2) { /* down */
+    for (var c=0; c<n; c++) {
+      var col = getCol(c).reverse();
+      var res = slide(col);
+      if (res.moved) anyMoved = true;
+      setCol(c, res.row.reverse()); totalScore += res.score;
+    }
+  }
+  return { moved: anyMoved, score: totalScore };
+}
+
+function hasWon() {
+  var b = G.board, n = G.size;
+  for (var r=0; r<n; r++)
+    for (var c=0; c<n; c++)
+      if (b[r][c] && b[r][c].v >= 2048) return true;
+  return false;
+}
+
+function hasMoves() {
+  var b = G.board, n = G.size;
+  for (var r=0; r<n; r++) for (var c=0; c<n; c++) {
+    if (!b[r][c]) return true;
+    if (c<n-1 && b[r][c] && b[r][c+1] && b[r][c].v === b[r][c+1].v) return true;
+    if (r<n-1 && b[r][c] && b[r+1][c] && b[r][c].v === b[r+1][c].v) return true;
+  }
+  return false;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   RENDER
+════════════════════════════════════════════════════════════════ */
+var DOM = {};
+
+function initDOM() {
+  DOM.score    = document.getElementById('score');
+  DOM.best     = document.getElementById('best');
+  DOM.moves    = document.getElementById('moves');
+  DOM.boardBg  = document.getElementById('board-bg');
+  DOM.tilesL   = document.getElementById('tiles-layer');
+  DOM.wrapper  = document.getElementById('board-wrapper');
+  DOM.oGameover= document.getElementById('overlay-gameover');
+  DOM.oWin     = document.getElementById('overlay-win');
+  DOM.btnUndo  = document.getElementById('btn-undo');
+  DOM.sizeBtns = document.querySelectorAll('.size-btn');
+}
+
+function buildBoardBg() {
+  var n = G.size;
+  var gap = n <= 4 ? 10 : n === 5 ? 8 : 6;
+  DOM.boardBg.style.gridTemplateColumns = 'repeat('+n+',1fr)';
+  DOM.boardBg.style.gridTemplateRows    = 'repeat('+n+',1fr)';
+  DOM.boardBg.style.setProperty('--cell-gap', gap+'px');
+  DOM.boardBg.innerHTML = '';
+  for (var i=0; i<n*n; i++) {
+    var d = document.createElement('div');
+    d.className = 'board-cell-bg';
+    DOM.boardBg.appendChild(d);
+  }
+  /* Update wrapper size variable */
+  var boardSize = Math.min(window.innerWidth * 0.92, 440);
+  if (window.innerWidth >= 900) boardSize = 480;
+  DOM.wrapper.style.setProperty('--board-size', boardSize+'px');
+  DOM.wrapper.style.width = boardSize+'px';
+}
+
+function getCellRect(r, c) {
+  /* calculate tile position based on board dimensions */
+  var bw = DOM.wrapper.offsetWidth;
+  var n = G.size;
+  var gap = n <= 4 ? 10 : n === 5 ? 8 : 6;
+  var tileSize = (bw - gap*(n+1)) / n;
+  var left = gap + c*(tileSize+gap);
+  var top  = gap + r*(tileSize+gap);
+  return { left: left, top: top, size: tileSize };
+}
+
+function tileClass(v) {
+  if (v <= 2048) return 't'+v;
+  return 't-super';
+}
+
+function tileFontSize(v, sz) {
+  var digits = String(v).length;
+  if (sz < 60) {
+    if (digits <= 3) return Math.round(sz*0.42)+'px';
+    if (digits === 4) return Math.round(sz*0.33)+'px';
+    return Math.round(sz*0.26)+'px';
+  }
+  if (digits <= 2) return Math.round(sz*0.44)+'px';
+  if (digits === 3) return Math.round(sz*0.36)+'px';
+  if (digits === 4) return Math.round(sz*0.29)+'px';
+  return Math.round(sz*0.22)+'px';
+}
+
+/* Map of currently rendered tile elements by tile id */
+var tileEls = {};
+
+function renderTiles() {
+  var n = G.size;
+  var b = G.board;
+  var seen = {};
+
+  for (var r=0; r<n; r++) {
+    for (var c=0; c<n; c++) {
+      var tile = b[r][c];
+      if (!tile) continue;
+      seen[tile.id] = true;
+      var rect = getCellRect(r, c);
+
+      if (!tileEls[tile.id]) {
+        /* Create new element */
+        var el = document.createElement('div');
+        el.className = 'tile ' + tileClass(tile.v);
+        el.style.width  = rect.size+'px';
+        el.style.height = rect.size+'px';
+        el.style.left   = rect.left+'px';
+        el.style.top    = rect.top+'px';
+        el.style.fontSize = tileFontSize(tile.v, rect.size);
+        el.textContent  = tile.v;
+        el.setAttribute('data-id', tile.id);
+        if (tile.isNew)   el.classList.add('tile--new');
+        if (tile.isMerge) el.classList.add('tile--merge');
+        DOM.tilesL.appendChild(el);
+        tileEls[tile.id] = el;
+      } else {
+        /* Update existing */
+        var el = tileEls[tile.id];
+        el.style.left = rect.left+'px';
+        el.style.top  = rect.top+'px';
+        el.style.width  = rect.size+'px';
+        el.style.height = rect.size+'px';
+        el.style.fontSize = tileFontSize(tile.v, rect.size);
+        /* Update class if merged */
+        if (tile.isMerge) {
+          el.className = 'tile ' + tileClass(tile.v) + ' tile--merge';
+          el.textContent = tile.v;
+          /* remove class after animation */
+          (function(e){ setTimeout(function(){ e.classList.remove('tile--merge'); }, 300); })(el);
+        }
+      }
+    }
+  }
+
+  /* Remove stale tiles */
+  for (var id in tileEls) {
+    if (!seen[id]) {
+      var el = tileEls[id];
+      if (el.parentNode) el.parentNode.removeChild(el);
+      delete tileEls[id];
+    }
+  }
+}
+
+function updateScoreDisplay(scoreAdded) {
+  DOM.score.textContent = G.score.toLocaleString('de');
+  DOM.best.textContent  = G.best.toLocaleString('de');
+  DOM.moves.textContent = G.moves;
+  if (scoreAdded > 0) {
+    DOM.score.classList.remove('bump');
+    void DOM.score.offsetWidth;
+    DOM.score.classList.add('bump');
+  }
+}
+
+function showOverlay(which) {
+  DOM.oGameover.classList.remove('visible');
+  DOM.oGameover.setAttribute('aria-hidden','true');
+  DOM.oWin.classList.remove('visible');
+  DOM.oWin.setAttribute('aria-hidden','true');
+  if (which) {
+    which.classList.add('visible');
+    which.setAttribute('aria-hidden','false');
+  }
+}
+
+function updateSizeButtons() {
+  DOM.sizeBtns.forEach(function(b) {
+    var active = parseInt(b.dataset.size,10) === G.size;
+    b.classList.toggle('active', active);
+    b.setAttribute('aria-pressed', active?'true':'false');
+  });
+}
+
+/* ════════════════════════════════════════════════════════════════
+   GAME FLOW
+════════════════════════════════════════════════════════════════ */
+function newGame(size) {
+  if (size) G.size = size;
+  G.best = LS.loadBest();
+  G.board = makeBoard(G.size);
+  G.prevBoard = null;
+  G.score = 0;
+  G.prevScore = 0;
+  G.moves = 0;
+  G.won = false;
+  G.keepGoing = false;
+  G.over = false;
+  G.tileId = 0;
+  tileEls = {};
+
+  buildBoardBg();
+  DOM.tilesL.innerHTML = '';
+
+  addRandom(G.board, G.size);
+  addRandom(G.board, G.size);
+
+  renderTiles();
+  updateScoreDisplay(0);
+  updateSizeButtons();
+  showOverlay(null);
+  DOM.btnUndo.disabled = true;
+  LS.save();
+}
+
+function move(dir) {
+  if (G.over) return;
+  if (G.won && !G.keepGoing) return;
+
+  /* Save state for undo */
+  G.prevBoard = cloneBoard(G.board);
+  G.prevScore = G.score;
+
+  var result = applyMove(dir);
+  if (!result.moved) { G.prevBoard = null; return; }
+
+  G.score += result.score;
+  G.moves++;
+  if (G.score > G.best) {
+    G.best = G.score;
+    LS.saveBest(G.best);
+  }
+
+  addRandom(G.board, G.size);
+  renderTiles();
+  updateScoreDisplay(result.score);
+
+  DOM.btnUndo.disabled = false;
+
+  if (!G.won && hasWon()) {
+    G.won = true;
+    setTimeout(function(){ showOverlay(DOM.oWin); }, 400);
+  } else if (!hasMoves()) {
+    G.over = true;
+    setTimeout(function(){ showOverlay(DOM.oGameover); }, 400);
+  } else {
+    showOverlay(null);
+  }
+  LS.save();
+}
+
+function undo() {
+  if (!G.prevBoard) return;
+  G.board = G.prevBoard;
+  G.score = G.prevScore;
+  G.prevBoard = null;
+  G.over = false;
+  tileEls = {};
+  DOM.tilesL.innerHTML = '';
+  renderTiles();
+  updateScoreDisplay(0);
+  DOM.btnUndo.disabled = true;
+  showOverlay(null);
+  LS.save();
+}
+
+/* ════════════════════════════════════════════════════════════════
+   INPUT HANDLING
+════════════════════════════════════════════════════════════════ */
+var DIRS = { ArrowUp:0, ArrowRight:1, ArrowDown:2, ArrowLeft:3 };
+
+document.addEventListener('keydown', function(e) {
+  if (e.key in DIRS) {
+    e.preventDefault();
+    move(DIRS[e.key]);
+  }
+});
+
+/* Touch/Swipe */
+var touchStart = null;
+var wrapper = null;
+
+function onTouchStart(e) {
+  if (e.touches.length !== 1) return;
+  touchStart = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+}
+function onTouchEnd(e) {
+  if (!touchStart) return;
+  var dx = e.changedTouches[0].clientX - touchStart.x;
+  var dy = e.changedTouches[0].clientY - touchStart.y;
+  touchStart = null;
+  var abs = function(x){ return x<0?-x:x; };
+  if (abs(dx) < 20 && abs(dy) < 20) return;
+  if (abs(dx) > abs(dy)) {
+    move(dx > 0 ? 1 : 3);
+  } else {
+    move(dy > 0 ? 2 : 0);
+  }
+}
+
+function attachTouch() {
+  var bw = document.getElementById('board-wrapper');
+  bw.addEventListener('touchstart', onTouchStart, { passive: true });
+  bw.addEventListener('touchend',   onTouchEnd,   { passive: true });
+}
+
+/* ════════════════════════════════════════════════════════════════
+   BUTTON HANDLERS
+════════════════════════════════════════════════════════════════ */
+function shareResult() {
+  var text = '🎮 Ich habe bei 2048 auf klickspiele.de ' + G.score.toLocaleString('de') + ' Punkte erreicht! Kannst du das schlagen? 👉 https://klickspiele.de/2048';
+  if (navigator.share) {
+    navigator.share({ title: '2048 – Mein Ergebnis', text: text, url: 'https://klickspiele.de/2048' }).catch(function(){});
+  } else {
+    navigator.clipboard && navigator.clipboard.writeText(text).then(function() {
+      alert('Ergebnis in Zwischenablage kopiert!');
+    }).catch(function() {
+      alert(text);
+    });
+  }
+}
+
+function toggleDark() {
+  var isDark = document.body.classList.toggle('dark-mode');
+  LS.saveDark(isDark);
+  updateDarkIcon(isDark);
+}
+
+function updateDarkIcon(isDark) {
+  var path = document.getElementById('dark-icon-path');
+  if (isDark) {
+    path.setAttribute('d', 'M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2v-2H2v2zm18 0h2v-2h-2v2zM11 2v2h2V2h-2zm0 18v2h2v-2h-2zM5.99 4.58l-1.42 1.42 1.41 1.41 1.42-1.42L5.99 4.58zm12.02 12.01l-1.41-1.41-1.42 1.42 1.41 1.41 1.42-1.42zM5.99 19.42l1.42-1.42-1.41-1.41-1.42 1.42 1.41 1.41zm12.02-14.84l-1.42 1.42 1.41 1.41 1.42-1.42-1.41-1.41z');
+  } else {
+    path.setAttribute('d', 'M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z');
+  }
+}
+
+/* ════════════════════════════════════════════════════════════════
+   INIT
+════════════════════════════════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded', function() {
+  initDOM();
+
+  /* Dark mode */
+  var darkPref = LS.loadDark();
+  if (darkPref === false && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) darkPref = true;
+  if (darkPref) { document.body.classList.add('dark-mode'); updateDarkIcon(true); }
+
+  /* Load or start */
+  var loaded = LS.load();
+  buildBoardBg();
+
+  if (loaded && G.board && G.board.length === G.size && G.board.some(function(row){ return row.some(function(c){ return c; }); })) {
+    /* Re-assign tile ids */
+    G.tileId = 0;
+    tileEls = {};
+    DOM.tilesL.innerHTML = '';
+    G.board.forEach(function(row){ row.forEach(function(cell){ if(cell){ cell.id = ++G.tileId; cell.isNew = false; cell.isMerge = false; } }); });
+    G.best = LS.loadBest();
+    renderTiles();
+    updateScoreDisplay(0);
+    updateSizeButtons();
+    if (G.over) showOverlay(DOM.oGameover);
+    else if (G.won && !G.keepGoing) showOverlay(DOM.oWin);
+    DOM.btnUndo.disabled = !G.prevBoard;
+  } else {
+    newGame();
+  }
+
+  attachTouch();
+
+  /* Buttons */
+  document.getElementById('btn-restart').addEventListener('click', function(){ newGame(G.size); });
+  document.getElementById('btn-retry').addEventListener('click', function(){ newGame(G.size); });
+  document.getElementById('btn-win-restart').addEventListener('click', function(){ newGame(G.size); });
+  document.getElementById('btn-continue').addEventListener('click', function(){
+    G.keepGoing = true; showOverlay(null);
+  });
+  document.getElementById('btn-undo').addEventListener('click', undo);
+  document.getElementById('btn-dark').addEventListener('click', toggleDark);
+  document.getElementById('btn-share').addEventListener('click', shareResult);
+
+  DOM.sizeBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var sz = parseInt(btn.dataset.size, 10);
+      if (sz !== G.size) newGame(sz);
+    });
+  });
+
+  /* Resize handler */
+  var resizeTimer;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function() {
+      var bw = Math.min(window.innerWidth * 0.92, 440);
+      if (window.innerWidth >= 900) bw = 480;
+      DOM.wrapper.style.setProperty('--board-size', bw+'px');
+      DOM.wrapper.style.width = bw+'px';
+      buildBoardBg();
+      tileEls = {};
+      DOM.tilesL.innerHTML = '';
+      renderTiles();
+    }, 100);
+  });
+});
+})();
+</script>
+</body>
+</html>

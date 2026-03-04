@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#F57C00">
+<title>Memory online spielen – Kostenlos, ohne Anmeldung – klickspiele.de</title>
+<meta name="description" content="Memory kostenlos online spielen! Paare finden in 6 Themen, 5 Rastergrößen, mit Timer und Highscore – direkt im Browser, ohne Anmeldung, auf Handy und PC.">
+<link rel="canonical" href="https://klickspiele.de/memory/">
+
+<!-- Open Graph -->
+<meta property="og:type"        content="website">
+<meta property="og:url"         content="https://klickspiele.de/memory/">
+<meta property="og:title"       content="Memory online spielen – klickspiele.de">
+<meta property="og:description" content="Kostenloses Memory-Spiel im Browser: 6 Themen, 5 Rastergrößen, Timer, Highscore – sofort spielen, kein Login.">
+<meta property="og:image"       content="https://klickspiele.de/memory/assets/img/og.png">
+<meta property="og:locale"      content="de_DE">
+<meta property="og:site_name"   content="klickspiele.de">
+
+<!-- Twitter Card -->
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="Memory online spielen – klickspiele.de">
+<meta name="twitter:description" content="Kostenloses Memory-Spiel im Browser – kein Login nötig.">
+
+<!-- Stylesheets -->
+<link rel="stylesheet" href="./assets/styles.css">
+<link rel="stylesheet" href="./assets/memory.css">
+
+<!-- Favicon (Inline SVG) -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23F57C00'/><path d='M8 4 L8 24 L13 19 L16.5 27 L19.5 25.5 L16 17.5 L22 17.5 Z' fill='white'/></svg>">
+
+<!-- PWA Manifest -->
+<link rel="manifest" href="./assets/manifest.json">
+
+<!-- Structured Data: WebSite -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "klickspiele.de",
+  "url": "https://klickspiele.de",
+  "inLanguage": "de"
+}
+</script>
+
+<!-- Structured Data: WebApplication (Memory) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Memory – Paare finden",
+  "url": "https://klickspiele.de/memory/",
+  "description": "Kostenloses Memory-Spiel online spielen: Paare finden in 6 Themen und 5 Rastergrößen – direkt im Browser, ohne Anmeldung.",
+  "applicationCategory": "GameApplication",
+  "genre": "Gedächtnisspiel",
+  "operatingSystem": "Browser",
+  "inLanguage": "de",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "EUR"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "klickspiele.de",
+    "url": "https://klickspiele.de"
+  }
+}
+</script>
+
+<!-- Structured Data: BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "klickspiele.de",
+      "item": "https://klickspiele.de"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Memory",
+      "item": "https://klickspiele.de/memory/"
+    }
+  ]
+}
+</script>
+
+<!-- Structured Data: FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Wie viele Karten hat ein Memory-Spiel?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Das hängt vom gewählten Raster ab. Auf klickspiele.de gibt es 5 Größen: 3×4 (12 Karten / 6 Paare), 4×4 (16 / 8), 4×5 (20 / 10), 5×4 (20 / 10) und 6×6 (36 / 18 Paare)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kann ich Memory alleine spielen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja! Unser Memory-Spiel ist als Singleplayer-Variante konzipiert. Du spielst gegen die Uhr (optional) und versuchst, deinen eigenen Highscore zu verbessern."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Muss ich mich registrieren oder anmelden?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nein. Memory auf klickspiele.de ist vollständig kostenlos und ohne Anmeldung spielbar. Highscores werden lokal in deinem Browser gespeichert."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Welche Themen (Decks) gibt es?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Derzeit gibt es 6 Themen: Tiere 🐾, Flaggen 🏴, Emojis 😊, Weihnachten 🎄, Früchte 🍎 und Weltraum 🚀. Weitere Themen werden regelmäßig ergänzt."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Was ist der Unterschied zwischen Normal- und Schwer-Modus?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Im Normal-Modus bleibt ein nicht-passendes Paar 1 Sekunde sichtbar. Im Schwer-Modus werden alle Karten zu Beginn kurz (1,6 Sekunden) gezeigt – danach bleiben falsche Paare nur 0,7 Sekunden offen."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wie wird der Highscore berechnet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Primär zählt die Anzahl der Züge (weniger = besser). Bei Gleichstand entscheidet die Zeit. Der Highscore wird pro Deck und Rastergröße separat gespeichert."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kann ich Memory auf dem Smartphone spielen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja, das Spiel ist mobile-first entwickelt. Es funktioniert auf allen modernen Smartphones und Tablets, sowohl über den Browser als auch als PWA (zum Startbildschirm hinzufügen)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wie funktioniert die Pause-Funktion?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Mit dem Pause-Button ⏸ wird das Spiel angehalten: Alle offenen Karten werden verdeckt, der Timer gestoppt. Mit ▶ geht es nahtlos weiter."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Was passiert mit meinen Daten?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nichts verlässt deinen Browser. Einstellungen und Highscores werden ausschließlich im localStorage gespeichert – anonym, ohne Server, ohne Cookies für Tracking."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Ist Memory gut fürs Gehirn?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. Memory trainiert gezielt das visuelle Arbeitsgedächtnis, die Konzentration und Mustererkennungs-Fähigkeiten. Studien belegen positive Effekte auf Kurzzeitgedächtnis und kognitive Flexibilität."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Gibt es einen Tipp für Anfänger?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nutze eine mentale Karte des Spielfelds: Teile es in Zonen ein (z. B. Ecken, Mitte, Ränder) und merke dir, welche Symbole in welcher Zone lagen. Das reduziert die kognitive Last erheblich."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kann ich den Dunklen Modus aktivieren?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. Klicke auf das 🌙-Symbol in der App-Leiste oder aktiviere den Dunklen Modus in den Einstellungen. Die Einstellung wird dauerhaft gespeichert."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- ARIA Live Region für Screenreader -->
+<div id="mem-live" aria-live="polite" aria-atomic="true"></div>
+
+<!-- Skip Link -->
+<a class="skip" href="#main">Zum Inhalt springen</a>
+
+<!-- ═══════════════════════════════════════
+     TOP APP BAR
+═══════════════════════════════════════ -->
+<header class="top-bar" role="banner">
+  <!-- Home-Button -->
+  <a href="https://klickspiele.de" class="home-btn rpl" aria-label="Zurück zu klickspiele.de" title="klickspiele.de">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M4 2 L4 19 L8 15 L11 22 L13.5 21 L10.5 14 L16 14 Z"/>
+    </svg>
+  </a>
+
+  <!-- Titel -->
+  <span class="top-bar__title">Memory</span>
+
+  <!-- AppBar-Aktionen -->
+  <div class="top-bar__actions">
+    <!-- Dark Mode Toggle -->
+    <button class="bar-icon-btn rpl" id="btn-dark" type="button"
+            aria-label="Dunkler Modus" title="Dunkler Modus">
+      <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true">
+        <path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.39 5.39 0 0 1-4.4 2.26 5.4 5.4 0 0 1-3.51-9.6A9 9 0 0 0 12 3z"/>
+      </svg>
+    </button>
+    <!-- Einstellungen -->
+    <button class="bar-icon-btn rpl" id="btn-settings-open" type="button"
+            aria-label="Einstellungen öffnen" title="Einstellungen"
+            aria-controls="settings-scrim" aria-haspopup="dialog">
+      <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true">
+        <path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.5.5 0 0 0 .12-.64l-1.92-3.32a.5.5 0 0 0-.61-.22l-2.39.96a6.97 6.97 0 0 0-1.62-.94l-.36-2.54a.49.49 0 0 0-.49-.42h-3.84a.49.49 0 0 0-.49.42l-.36 2.54a7.34 7.34 0 0 0-1.62.94l-2.39-.96a.49.49 0 0 0-.61.22L2.74 9.84a.48.48 0 0 0 .12.64l2.03 1.58c-.05.3-.08.62-.08.94 0 .32.02.64.07.94l-2.03 1.58a.5.5 0 0 0-.12.64l1.92 3.32a.5.5 0 0 0 .61.22l2.39-.96c.5.36 1.04.67 1.62.94l.36 2.54c.07.24.29.42.49.42h3.84c.24 0 .44-.18.49-.42l.36-2.54a7.34 7.34 0 0 0 1.62-.94l2.39.96c.23.09.49 0 .61-.22l1.92-3.32a.47.47 0 0 0-.12-.64l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════
+     HAUPT-INHALT
+═══════════════════════════════════════ -->
+<main id="main">
+
+  <!-- Kein JS → Hinweis -->
+  <noscript>
+    <div class="nojs-msg" role="alert">
+      ⚠️ Das Memory-Spiel benötigt JavaScript. Bitte aktiviere JavaScript in deinem Browser, um spielen zu können.
+    </div>
+  </noscript>
+
+  <!-- ── Statistik-Leiste ──────────────────────────────── -->
+  <div class="mem-stats" role="status" aria-label="Spielstatistik">
+    <div class="mem-stat">
+      <span class="mem-stat__icon" aria-hidden="true">🎴</span>
+      <span>Züge:&nbsp;</span>
+      <span class="mem-stat__val" id="stat-moves">0</span>
+    </div>
+    <div class="mem-stat" id="stat-timer-wrap">
+      <span class="mem-stat__icon" aria-hidden="true">⏱</span>
+      <span>Zeit:&nbsp;</span>
+      <span class="mem-stat__val" id="stat-time">0:00</span>
+    </div>
+    <div class="mem-stat">
+      <span class="mem-stat__icon" aria-hidden="true">✅</span>
+      <span>Paare:&nbsp;</span>
+      <span class="mem-stat__val" id="stat-pairs">0 / 8</span>
+    </div>
+  </div>
+
+  <!-- ── Steuer-Buttons ────────────────────────────────── -->
+  <div class="mem-controls" role="toolbar" aria-label="Spiel-Steuerung">
+    <button class="btn-filled rpl" id="btn-new" type="button" aria-label="Neues Spiel starten">
+      🔀 Neues Spiel
+    </button>
+    <button class="btn-text rpl" id="btn-pause" type="button" aria-label="Pause">
+      ⏸
+    </button>
+  </div>
+
+  <!-- ── Spielfeld ─────────────────────────────────────── -->
+  <div class="mem-board-wrap">
+    <div class="pause-overlay" aria-hidden="true">⏸</div>
+    <div id="mem-board"
+         class="mem-board"
+         role="grid"
+         aria-label="Memory Spielfeld"
+         tabindex="-1">
+      <!-- Karten werden per JS gerendert -->
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       EINSTELLUNGEN-DIALOG
+  ═══════════════════════════════════════════════════════ -->
+  <div class="dialog-scrim" id="settings-scrim"
+       role="dialog" aria-modal="true"
+       aria-label="Einstellungen" aria-hidden="true">
+    <div class="dialog" id="settings-dialog">
+
+      <div class="dialog-headline">⚙️ Einstellungen</div>
+
+      <!-- Deck/Thema -->
+      <div class="settings-section">
+        <span class="settings-label" id="lbl-deck">Thema</span>
+        <div class="settings-grid" role="group" aria-labelledby="lbl-deck">
+          <button class="settings-opt rpl active" type="button"
+                  data-sett="deck" data-val="tiere"
+                  aria-pressed="true">
+            <span class="settings-opt__icon">🐾</span>Tiere
+          </button>
+          <button class="settings-opt rpl" type="button"
+                  data-sett="deck" data-val="flaggen"
+                  aria-pressed="false">
+            <span class="settings-opt__icon">🏴</span>Flaggen
+          </button>
+          <button class="settings-opt rpl" type="button"
+                  data-sett="deck" data-val="emojis"
+                  aria-pressed="false">
+            <span class="settings-opt__icon">😊</span>Emojis
+          </button>
+          <button class="settings-opt rpl" type="button"
+                  data-sett="deck" data-val="weihnachten"
+                  aria-pressed="false">
+            <span class="settings-opt__icon">🎄</span>Weihnachten
+          </button>
+          <button class="settings-opt rpl" type="button"
+                  data-sett="deck" data-val="früchte"
+                  aria-pressed="false">
+            <span class="settings-opt__icon">🍎</span>Früchte
+          </button>
+          <button class="settings-opt rpl" type="button"
+                  data-sett="deck" data-val="weltraum"
+                  aria-pressed="false">
+            <span class="settings-opt__icon">🚀</span>Weltraum
+          </button>
+        </div>
+      </div>
+
+      <!-- Raster-Größe -->
+      <div class="settings-section">
+        <span class="settings-label" id="lbl-grid">Raster-Größe</span>
+        <div class="settings-grid" role="group" aria-labelledby="lbl-grid">
+          <button class="settings-opt rpl" type="button"
+                  data-sett="grid" data-val="3x4"
+                  aria-pressed="false">
+            <span class="settings-opt__icon">📦</span>3 × 4
+          </button>
+          <button class="settings-opt rpl active" type="button"
+                  data-sett="grid" data-val="4x4"
+                  aria-pressed="true">
+            <span class="settings-opt__icon">🗃️</span>4 × 4
+          </button>
+          <button class="settings-opt rpl" type="button"
+                  data-sett="grid" data-val="4x5"
+                  aria-pressed="false">
+            <span class="settings-opt__icon">📋</span>4 × 5
+          </button>
+          <button class="settings-opt rpl" type="button"
+                  data-sett="grid" data-val="5x4"
+                  aria-pressed="false">
+            <span class="settings-opt__icon">📋</span>5 × 4
+          </button>
+          <button class="settings-opt rpl" type="button"
+                  data-sett="grid" data-val="6x6"
+                  aria-pressed="false">
+            <span class="settings-opt__icon">🗄️</span>6 × 6
+          </button>
+        </div>
+      </div>
+
+      <!-- Schwierigkeit -->
+      <div class="settings-section">
+        <span class="settings-label" id="lbl-diff">Schwierigkeit</span>
+        <div class="settings-grid" role="group" aria-labelledby="lbl-diff">
+          <button class="settings-opt rpl active" type="button"
+                  data-sett="difficulty" data-val="normal"
+                  aria-pressed="true">
+            <span class="settings-opt__icon">🌱</span>Normal
+          </button>
+          <button class="settings-opt rpl" type="button"
+                  data-sett="difficulty" data-val="hard"
+                  aria-pressed="false">
+            <span class="settings-opt__icon">🔥</span>Schwer
+          </button>
+        </div>
+      </div>
+
+      <!-- Toggle-Optionen -->
+      <div class="settings-section">
+        <div class="toggle-row">
+          <span class="toggle-row__lbl" id="lbl-timer">⏱ Timer aktivieren</span>
+          <label class="toggle-sw" aria-labelledby="lbl-timer">
+            <input type="checkbox" id="sett-timer" checked>
+            <span class="toggle-track"></span>
+          </label>
+        </div>
+        <div class="toggle-row">
+          <span class="toggle-row__lbl" id="lbl-sound">🔊 Sound aktivieren</span>
+          <label class="toggle-sw" aria-labelledby="lbl-sound">
+            <input type="checkbox" id="sett-sound">
+            <span class="toggle-track"></span>
+          </label>
+        </div>
+        <div class="toggle-row">
+          <span class="toggle-row__lbl" id="lbl-large">🔍 Große Karten</span>
+          <label class="toggle-sw" aria-labelledby="lbl-large">
+            <input type="checkbox" id="sett-large">
+            <span class="toggle-track"></span>
+          </label>
+        </div>
+        <div class="toggle-row">
+          <span class="toggle-row__lbl" id="lbl-contrast">👁 Hoher Kontrast</span>
+          <label class="toggle-sw" aria-labelledby="lbl-contrast">
+            <input type="checkbox" id="sett-contrast">
+            <span class="toggle-track"></span>
+          </label>
+        </div>
+        <div class="toggle-row">
+          <span class="toggle-row__lbl" id="lbl-dark">🌙 Dunkler Modus</span>
+          <label class="toggle-sw" aria-labelledby="lbl-dark">
+            <input type="checkbox" id="sett-dark">
+            <span class="toggle-track"></span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Aktionen -->
+      <div class="dialog-actions">
+        <button class="btn-text rpl" type="button" id="btn-sett-close">
+          Abbrechen
+        </button>
+        <button class="btn-filled rpl" type="button" id="btn-sett-apply">
+          ✅ Übernehmen
+        </button>
+      </div>
+    </div><!-- /.dialog -->
+  </div><!-- /#settings-scrim -->
+
+  <!-- ═══════════════════════════════════════════════════════
+       END-DIALOG (Gewonnen!)
+  ═══════════════════════════════════════════════════════ -->
+  <div class="dialog-scrim" id="end-scrim"
+       role="dialog" aria-modal="true"
+       aria-label="Spiel beendet" aria-hidden="true">
+    <div class="dialog">
+      <div class="dialog-icon" aria-hidden="true">🏆</div>
+      <div class="dialog-headline">Gewonnen!</div>
+      <div class="dialog-body">Alle Paare gefunden – gut gemacht!</div>
+
+      <div class="dialog-stats">
+        <div class="d-stat">
+          <div class="d-stat__lbl">Züge</div>
+          <div class="d-stat__val" id="end-moves">–</div>
+        </div>
+        <div class="d-stat">
+          <div class="d-stat__lbl">Zeit</div>
+          <div class="d-stat__val" id="end-time">–</div>
+        </div>
+        <div class="d-stat">
+          <div class="d-stat__lbl">Treffer</div>
+          <div class="d-stat__val" id="end-accuracy">–</div>
+        </div>
+      </div>
+
+      <!-- Highscore-Hinweise -->
+      <div style="text-align:center; margin-bottom:16px;">
+        <span class="hs-badge" id="end-hs-badge" style="display:none;" aria-label="Neuer Rekord">
+          🥇 Neuer Rekord!
+        </span>
+        <div id="end-hs-old" style="display:none; font-size:14px; color:var(--c-on-surf-var); margin-top:6px;"></div>
+      </div>
+
+      <div class="dialog-actions">
+        <button class="btn-text rpl" type="button" id="btn-end-close">
+          Schließen
+        </button>
+        <button class="btn-filled rpl" type="button" id="btn-end-new">
+          🔀 Nochmal
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       SEO LONGFORM-INHALT
+  ═══════════════════════════════════════════════════════ -->
+  <article class="seo-wrap" aria-label="Infos über Memory">
+
+    <h1>Memory online spielen</h1>
+
+    <p class="seo-lead">
+      Memory ist eines der beliebtesten Gedächtnisspiele der Welt – und auf klickspiele.de kannst du es
+      kostenlos, ohne Anmeldung und direkt im Browser spielen. Wähle aus 6 Themen, 5 Rastergrößen und
+      2 Schwierigkeitsstufen. Ob auf dem Smartphone, Tablet oder PC: das Spiel ist immer dabei.
+    </p>
+
+    <hr class="seo-divider">
+
+    <h2>Die Regeln: Wie funktioniert Memory?</h2>
+    <p>
+      Das Spielprinzip ist simpel: Alle Karten liegen verdeckt auf dem Tisch. Pro Zug darf der Spieler
+      genau zwei Karten aufdecken. Zeigen beide dasselbe Symbol (ein „Paar"), bleiben sie dauerhaft offen
+      und werden als gefunden markiert. Zeigen sie unterschiedliche Symbole, werden sie nach kurzer Zeit
+      wieder umgedreht – und der nächste Zug beginnt.
+    </p>
+    <p>
+      Das Ziel: Alle Paare auf dem Spielfeld finden. Wer das mit möglichst wenigen Zügen schafft,
+      spielt besonders effizient. Mit aktiviertem Timer kommt ein zusätzliches Zeitdruck-Element hinzu.
+    </p>
+    <ul>
+      <li><strong>Zug:</strong> Zwei Karten nacheinander aufdecken (Klick oder Tastatur).</li>
+      <li><strong>Treffer:</strong> Beide Karten zeigen dasselbe Symbol → beide bleiben offen.</li>
+      <li><strong>Fehlschlag:</strong> Symbole sind verschieden → beide Karten werden wieder verdeckt.</li>
+      <li><strong>Sieg:</strong> Alle Paare sind gefunden.</li>
+    </ul>
+
+    <h2>Strategien und Tipps für Memory</h2>
+    <p>
+      Wer Memory systematisch angehen möchte, profitiert von einigen erprobten Techniken, die das
+      Kurzzeitgedächtnis gezielt entlasten.
+    </p>
+
+    <h3>1. Mentale Zonenaufteilung</h3>
+    <p>
+      Teile das Spielfeld gedanklich in Bereiche auf: z. B. „oben links", „Mitte", „rechts unten".
+      Wenn du eine Karte aufdeckst, merke dir nicht nur das Symbol, sondern auch, in welcher Zone sie lag.
+      Beim nächsten Treffer auf dasselbe Symbol navigierst du direkt in die richtige Zone – statt das
+      gesamte Feld abzusuchen.
+    </p>
+
+    <h3>2. Aufmerksamkeit auf Fehlschläge lenken</h3>
+    <p>
+      Jeder Fehlschlag ist eine kostenlose Information: Du weißt jetzt, wo zwei bestimmte Karten liegen.
+      Notiere dir im Kopf beide Positionen. Beim übernächsten Zug – wenn dein Gegner (oder ein früherer
+      eigener Zug) eine der bekannten Karten aufgedeckt hat – kannst du blitzschnell den Treffer landen.
+    </p>
+
+    <h3>3. Ränder zuerst</h3>
+    <p>
+      Viele Spieler beginnen in der Mitte. Effektiver ist es, die Randkarten zuerst aufzudecken – sie sind
+      räumlich leichter zu lokalisieren und lassen sich im Gedächtnis besser verankern, weil sie eine
+      klare Position (Ecke, obere Kante, etc.) haben.
+    </p>
+
+    <h3>4. Systematisch vorgehen, nicht zufällig</h3>
+    <p>
+      Gehe Reihe für Reihe vor, anstatt zufällig zu klicken. So deckst du das Feld gleichmäßig auf und
+      sammelst maximal viele Informationen, bevor du gezielt nach Treffern suchst.
+    </p>
+
+    <h3>5. Wiederholungsintervall nutzen</h3>
+    <p>
+      Beim klassischen Memory tauchen kurz nacheinander aufgedeckte Karten im Arbeitsgedächtnis besonders
+      leicht auf. Wenn du beim zweiten Aufdecken einer unbekannten Karte sofort das passende Pendant
+      erinnerst, greife zu. Warte nicht zu lange – das Kurzzeitgedächtnis verblasst schnell.
+    </p>
+
+    <hr class="seo-divider">
+
+    <h2>Häufige Fehler – und wie du sie vermeidest</h2>
+
+    <h3>Zu schnell klicken</h3>
+    <p>
+      Viele Einsteiger decken Karten in rasantem Tempo auf, ohne sich die Position wirklich zu merken.
+      Nimm dir einen kurzen Moment, bevor du die zweite Karte wählst – dieser Mini-Pause hilft, die
+      erste Karte im Gedächtnis zu verankern.
+    </p>
+
+    <h3>Fehlschläge vergessen</h3>
+    <p>
+      Ein nicht-passendes Paar liefert wertvolle Informationen – aber nur, wenn du sie behältst. Manche
+      Spieler ignorieren die Position der „falsch" aufgedeckten Karte. Besser: kurz inne halten und
+      beide Positionen abspeichern.
+    </p>
+
+    <h3>Immer dieselbe Strategie auf größeren Feldern</h3>
+    <p>
+      Was bei 3×4 gut klappt, skaliert nicht automatisch auf 6×6. Bei größeren Feldern ist die
+      Zonenaufteilung noch wichtiger. Arbeite mit mehr mentalen „Ankerpunkten".
+    </p>
+
+    <h3>Den Druck ignorieren</h3>
+    <p>
+      Bei aktiviertem Timer neigen Spieler dazu, gehetzt und unüberlegt zu klicken. Das führt paradoxerweise
+      zu mehr Zügen und schlechteren Zeiten. Atme kurz durch – ein ruhiger, gezielter Zug ist schneller
+      als fünf hastige.
+    </p>
+
+    <hr class="seo-divider">
+
+    <h2>Memory für alle: Varianten und Zielgruppen</h2>
+
+    <h3>Memory für Kinder</h3>
+    <p>
+      Für die Jüngsten empfehlen sich das <strong>3×4-Raster</strong> (6 Paare) und die
+      Themen „Tiere" 🐾 oder „Früchte" 🍎 – die Symbole sind intuitiv und die Kartenzahl überschaubar.
+      Timer am besten ausschalten, damit kein Zeitdruck entsteht. Der Normale Modus ohne Peek-Vorschau
+      ist ideal für den Einstieg.
+    </p>
+
+    <h3>Memory für Senioren</h3>
+    <p>
+      Das regelmäßige Spielen von Memory ist ein nachweisliches Gedächtnistraining. Empfehlenswert:
+      <strong>4×4-Raster</strong>, Großkarten-Modus aktivieren, Timer ausschalten, Thema nach
+      persönlichem Interesse wählen. Das entspannte Spieltempo erlaubt Konzentration auf das Wesentliche –
+      das Merken der Kartenpositionen.
+    </p>
+
+    <h3>Für Fortgeschrittene und Highscore-Jäger</h3>
+    <p>
+      Wer sein Gedächtnis wirklich fordern möchte, wählt das <strong>6×6-Raster</strong>, aktiviert Timer
+      und Schwer-Modus. Im Schwer-Modus werden alle Karten zu Beginn kurz gezeigt (ein Peek von 1,6
+      Sekunden) – danach bleiben falsche Paare nur 0,7 Sekunden offen. Das erfordert höchste
+      Konzentration und eine präzise mentale Karte des Felds.
+    </p>
+
+    <h3>Thematisches Spielen</h3>
+    <p>
+      Das Deck „Flaggen" 🏴 eignet sich hervorragend als Lernspiel für Geographie-Interessierte.
+      „Weihnachten" 🎄 macht in der Adventszeit besonders Spaß – die jahreszeitlichen Symbole
+      sind leicht einprägsam. „Weltraum" 🚀 spricht Tech- und Science-Fans an.
+    </p>
+
+    <hr class="seo-divider">
+
+    <h2>Warum Memory gut fürs Gehirn ist</h2>
+    <p>
+      Memory-Spiele aktivieren mehrere kognitive Funktionen gleichzeitig: das <strong>visuelle
+      Kurzzeitgedächtnis</strong>, die <strong>räumliche Orientierung</strong>, die
+      <strong>Mustererkennung</strong> und die <strong>Konzentrationsfähigkeit</strong>.
+      Besonders bei Kindern ist der Trainingseffekt gut dokumentiert – aber auch Erwachsene
+      profitieren, wenn sie regelmäßig spielen.
+    </p>
+    <p>
+      Entscheidend ist die Wiederholung: Wer täglich 10–15 Minuten Memory spielt, kann nachweislich
+      seine Kapazität im Arbeitsgedächtnis verbessern. Das hat positive Auswirkungen auf Lernen,
+      Problemlösen und alltägliche Merkleistungen.
+    </p>
+
+    <hr class="seo-divider">
+
+    <h2>Datenschutz &amp; Transparenz</h2>
+    <p>
+      Memory auf klickspiele.de läuft vollständig in deinem Browser. Es gibt <strong>keine Accounts,
+      keine Cookies für Tracking, keine externen Requests</strong> während des Spiels. Deine Einstellungen
+      und Highscores werden ausschließlich im <code>localStorage</code> deines Browsers gespeichert –
+      sie verlassen niemals dein Gerät.
+    </p>
+    <p>
+      Es gibt keine Werbung, keine Zahlungsaufforderungen, keine In-App-Käufe. Das Spiel ist heute
+      kostenlos – und soll es bleiben.
+    </p>
+
+  </article><!-- /.seo-wrap -->
+
+  <!-- ═══════════════════════════════════════════════════════
+       FAQ-BEREICH
+  ═══════════════════════════════════════════════════════ -->
+  <section class="faq-wrap" id="faq" aria-labelledby="faq-heading">
+    <h2 id="faq-heading">Häufige Fragen (FAQ)</h2>
+
+    <details class="collapsible">
+      <summary>Wie viele Karten hat ein Memory-Spiel?</summary>
+      <div class="collapsible__body">
+        <p>Das hängt vom gewählten Raster ab. Auf klickspiele.de gibt es 5 Größen:
+          <strong>3×4</strong> (12 Karten / 6 Paare), <strong>4×4</strong> (16 / 8 Paare),
+          <strong>4×5</strong> (20 / 10), <strong>5×4</strong> (20 / 10) und
+          <strong>6×6</strong> (36 Karten / 18 Paare).</p>
+      </div>
+    </details>
+
+    <details class="collapsible">
+      <summary>Kann ich Memory alleine spielen?</summary>
+      <div class="collapsible__body">
+        <p>Ja! Unser Memory ist als Singleplayer-Spiel konzipiert. Du spielst gegen die Uhr (optional)
+          und versuchst, deinen eigenen Highscore zu unterbieten. Der persönliche Rekord wird pro
+          Deck und Rastergröße gespeichert.</p>
+      </div>
+    </details>
+
+    <details class="collapsible">
+      <summary>Muss ich mich anmelden oder registrieren?</summary>
+      <div class="collapsible__body">
+        <p>Nein. Memory auf klickspiele.de ist vollständig kostenlos und ohne Anmeldung spielbar.
+          Kein Account, kein Passwort, keine E-Mail-Adresse nötig.</p>
+      </div>
+    </details>
+
+    <details class="collapsible">
+      <summary>Welche Themen (Decks) gibt es?</summary>
+      <div class="collapsible__body">
+        <p>Derzeit stehen 6 Themen zur Wahl: <strong>Tiere</strong> 🐾, <strong>Flaggen</strong> 🏴,
+          <strong>Emojis</strong> 😊, <strong>Weihnachten</strong> 🎄, <strong>Früchte</strong> 🍎
+          und <strong>Weltraum</strong> 🚀. Alle Symbole sind reine Emoji/Unicode-Zeichen –
+          keine Bilder, keine externen Requests.</p>
+      </div>
+    </details>
+
+    <details class="collapsible">
+      <summary>Was ist der Unterschied zwischen Normal- und Schwer-Modus?</summary>
+      <div class="collapsible__body">
+        <p><strong>Normal:</strong> Kein Peek zu Beginn; falsche Paare bleiben 1 Sekunde sichtbar.
+          <br><strong>Schwer:</strong> Zu Spielbeginn werden alle Karten 1,6 Sekunden gezeigt
+          (Peek-Phase) – danach bleiben falsche Paare nur 0,7 Sekunden offen. Maximale Herausforderung
+          für das Kurzzeitgedächtnis!</p>
+      </div>
+    </details>
+
+    <details class="collapsible">
+      <summary>Wie wird der Highscore berechnet?</summary>
+      <div class="collapsible__body">
+        <p>Primär entscheidet die Anzahl der Züge (weniger = besser). Bei Gleichstand gewinnt die
+          kürzere Zeit. Highscores werden separat pro Deck, Rastergröße und Timer-Einstellung gespeichert.</p>
+      </div>
+    </details>
+
+    <details class="collapsible">
+      <summary>Kann ich Memory auf dem Smartphone spielen?</summary>
+      <div class="collapsible__body">
+        <p>Ja! Das Spiel ist <strong>mobile-first</strong> entwickelt und funktioniert auf allen modernen
+          Smartphones und Tablets. Du kannst es auch als Progressive Web App (PWA) zum Startbildschirm
+          hinzufügen – so hast du es wie eine App direkt griffbereit.</p>
+      </div>
+    </details>
+
+    <details class="collapsible">
+      <summary>Wie funktioniert die Pause-Funktion?</summary>
+      <div class="collapsible__body">
+        <p>Klicke auf ⏸ in der Steuerleiste. Das Spiel hält an: alle offenen Karten werden verdeckt,
+          der Timer stoppt. Mit ▶ geht es nahtlos weiter. Tipp: Im Schwer-Modus ist pausieren
+          besonders nützlich, um kurz zu verschnaufen.</p>
+      </div>
+    </details>
+
+    <details class="collapsible">
+      <summary>Was passiert mit meinen Daten?</summary>
+      <div class="collapsible__body">
+        <p>Nichts verlässt deinen Browser. Einstellungen und Highscores werden ausschließlich im
+          <code>localStorage</code> gespeichert – <strong>anonym, ohne Server, ohne Tracking-Cookies</strong>.
+          Das Spiel lädt keine externen Schriften oder Analytics-Skripte.</p>
+      </div>
+    </details>
+
+    <details class="collapsible">
+      <summary>Ist Memory gut fürs Gehirn?</summary>
+      <div class="collapsible__body">
+        <p>Ja. Memory trainiert gezielt das visuelle Arbeitsgedächtnis, Konzentration und
+          Mustererkennung. Studien belegen positive Effekte auf Kurzzeitgedächtnis und kognitive
+          Flexibilität – besonders bei regelmäßigem Spielen (10–15 Minuten täglich).</p>
+      </div>
+    </details>
+
+    <details class="collapsible">
+      <summary>Gibt es einen Tipp für Anfänger?</summary>
+      <div class="collapsible__body">
+        <p>Teile das Spielfeld in mentale Zonen ein (z. B. Ecken, Mitte, Ränder) und merke dir,
+          in welcher Zone ein Symbol lag – nicht nur das Symbol selbst. Das reduziert die kognitive
+          Last erheblich und hilft dir, Treffer gezielt zu setzen.</p>
+      </div>
+    </details>
+
+    <details class="collapsible">
+      <summary>Kann ich den Dunklen Modus aktivieren?</summary>
+      <div class="collapsible__body">
+        <p>Ja. Klicke auf das 🌙-Symbol rechts oben in der App-Leiste oder aktiviere den Dunklen Modus
+          in den Einstellungen (⚙️). Die Einstellung wird dauerhaft gespeichert.</p>
+      </div>
+    </details>
+
+  </section><!-- /#faq -->
+
+</main>
+
+<!-- ═══════════════════════════════════════
+     KONFETTI-CANVAS
+═══════════════════════════════════════ -->
+<canvas id="confetti-cv" aria-hidden="true"></canvas>
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════ -->
+<footer class="site-footer" role="contentinfo">
+  <nav class="site-footer__nav" aria-label="Footer Navigation">
+    <a href="https://klickspiele.de">klickspiele.de</a>
+    <a href="./impressum.html">Impressum</a>
+    <a href="./datenschutz.html">Datenschutz</a>
+  </nav>
+  <p class="site-footer__copy">© 2025 klickspiele.de · Kostenlose Spiele ohne Anmeldung</p>
+</footer>
+
+<!-- ═══════════════════════════════════════
+     SCRIPTS
+═══════════════════════════════════════ -->
+
+<!-- Ripple-Handler (synchron, vor dem Modul) -->
+<script>
+document.addEventListener('pointerdown', function(e) {
+  var h = e.target.closest('.rpl');
+  if (!h) return;
+  var r  = h.getBoundingClientRect();
+  var x  = e.clientX - r.left;
+  var y  = e.clientY - r.top;
+  var sz = Math.max(r.width, r.height) * 2.4;
+  var w  = document.createElement('span');
+  w.className = 'rpl-wave';
+  w.style.cssText = 'width:' + sz + 'px;height:' + sz + 'px;left:' + (x - sz/2) + 'px;top:' + (y - sz/2) + 'px';
+  h.appendChild(w);
+  w.addEventListener('animationend', function() { w.remove(); });
+}, { passive: true });
+</script>
+
+<!-- Haupt-App (ES-Modul) -->
+<script type="module" src="./assets/app.js"></script>
+
+</body>
+</html>

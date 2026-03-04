@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#F57C00">
+<title>CPS Test – Klicks pro Sekunde messen | klickspiel.net</title>
+<meta name="description" content="CPS Test: Miss deine Klicks pro Sekunde in 1, 5, 10, 30 oder 60 Sekunden. Kostenlos im Browser – kein Download, keine Anmeldung. Bestleistungen werden gespeichert.">
+<link rel="canonical" href="https://klickspiel.net/cps-test.html">
+<link rel="stylesheet" href="./style.css">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23F57C00'/><path d='M8 4 L8 24 L13 19 L16.5 27 L19.5 25.5 L16 17.5 L22 17.5 Z' fill='white'/></svg>">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://klickspiel.net/cps-test.html">
+<meta property="og:title" content="CPS Test – Klicks pro Sekunde messen">
+<meta property="og:description" content="Wie viele Klicks schaffst du pro Sekunde? Jetzt im Browser testen – kostenlos, sofort, ohne Anmeldung.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CPS Test – Klicks pro Sekunde messen">
+<meta name="twitter:description" content="Miss deinen CPS-Wert in 1 bis 60 Sekunden. Kostenlos im Browser.">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"klickspiel.net","item":"https://klickspiel.net/"},
+    {"@type":"ListItem","position":2,"name":"CPS Test","item":"https://klickspiel.net/cps-test.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"Was ist CPS?","acceptedAnswer":{"@type":"Answer","text":"CPS steht für Clicks per Second (Klicks pro Sekunde). Der Wert beschreibt, wie viele Mausklicks oder Taps jemand in einer Sekunde ausführen kann."}},
+    {"@type":"Question","name":"Was ist ein guter CPS-Wert?","acceptedAnswer":{"@type":"Answer","text":"Für den 5-Sekunden-Test liegt ein durchschnittlicher CPS-Wert bei 5–7. Geübte Gamer erreichen 8–12 CPS. Werte über 14 CPS gelten als sehr gut und erfordern spezielle Klicktechniken."}},
+    {"@type":"Question","name":"Welche Klicktechniken gibt es?","acceptedAnswer":{"@type":"Answer","text":"Die gängigsten Techniken sind: Normal Clicking (Standard), Jitter Clicking (Unterarm-Vibration), Butterfly Clicking (zwei Finger abwechselnd) und Drag Clicking (Finger über die Maustaste ziehen). Für diesen Test zählt nur der finale Klick-Input."}},
+    {"@type":"Question","name":"Zählt der erste Klick mit?","acceptedAnswer":{"@type":"Answer","text":"Ja. Der erste Klick startet den Timer und zählt gleichzeitig als erster Klick."}},
+    {"@type":"Question","name":"Warum ist mein CPS auf Mobile niedriger?","acceptedAnswer":{"@type":"Answer","text":"Touchscreen-Taps haben eine höhere Touch-Sampling-Rate-Latenz als Mausklicks und werden durch Betriebssystem-Gesten (Scroll, Zoom) gedrosselt. Ergebnisse auf Mobilgeräten sind daher nicht direkt mit Desktop-Ergebnissen vergleichbar."}},
+    {"@type":"Question","name":"Wie werden Bestleistungen gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Bestleistungen werden im localStorage deines Browsers gespeichert – lokal, ohne Server. Das Löschen des Browser-Caches oder des Verlaufs kann die Werte löschen."}},
+    {"@type":"Question","name":"Warum schwankt mein CPS-Wert?","acceptedAnswer":{"@type":"Answer","text":"CPS hängt von Müdigkeit, Konzentration, Maus-Hardware, Untergrund und sogar Raumtemperatur ab. Kurze Tests (1s) sind anfälliger für Ausreißer als 10-Sekunden-Tests."}},
+    {"@type":"Question","name":"Was misst der 1-Sekunden-Test?","acceptedAnswer":{"@type":"Answer","text":"Der 1-Sekunden-Test misst dein maximales Burst-Klickpotenzial. Da der erste Klick den Start signalisiert, hast du effektiv weniger als 1 Sekunde zum Klicken. Er ist weniger aussagekräftig als der 5- oder 10-Sekunden-Test."}},
+    {"@type":"Question","name":"Kann ich den Test mit dem Touchpad machen?","acceptedAnswer":{"@type":"Answer","text":"Ja. Touchpads erzeugen jedoch oft Doppelklick-Events und haben Firmware-seitige Debounce-Verzögerungen. Ergebnisse mit Touchpad sind schwer mit Maus-Ergebnissen zu vergleichen."}},
+    {"@type":"Question","name":"Was bedeutet K/Min?","acceptedAnswer":{"@type":"Answer","text":"K/Min steht für Klicks pro Minute. Der Wert ergibt sich aus CPS × 60 und gibt an, wie viele Klicks du in einer Minute erreichen würdest, wenn du dein Tempo konstant hältst."}}
+  ]
+}
+</script>
+<style>
+.game-wrap{max-width:var(--content-max);margin:0 auto;padding:12px 16px 0}
+.dur-row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:16px}
+.dur-btn{height:44px;padding:0 18px;border-radius:var(--r-full);background:var(--c-secondary-container);color:var(--c-on-secondary-container);font-size:15px;font-weight:600;border:2px solid transparent;transition:background var(--dur-normal) var(--ease),border-color var(--dur-normal) var(--ease);position:relative;overflow:hidden}
+.dur-btn.active{background:var(--c-primary-container);color:var(--c-on-primary-container);border-color:var(--c-primary)}
+.game-zone{min-height:300px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;background:var(--c-surf-low);border-radius:var(--r-lg);border:1.5px solid var(--c-outline-var);padding:24px 16px;position:relative}
+.click-btn{width:min(300px,88vw);height:130px;border-radius:var(--r-lg);background:var(--c-primary);color:var(--c-on-primary);font-size:clamp(20px,5vw,28px);font-weight:700;box-shadow:var(--elev-2);transition:transform var(--dur-fast) var(--ease),box-shadow var(--dur-fast) var(--ease);position:relative;overflow:hidden;letter-spacing:1px}
+.click-btn:active{transform:scale(0.97);box-shadow:var(--elev-1)}
+.click-btn:disabled{background:var(--c-surf-high);color:var(--c-on-surf-var);box-shadow:none;transform:none}
+.stats-row{display:flex;gap:24px;flex-wrap:wrap;justify-content:center}
+.stat-chip{display:flex;flex-direction:column;align-items:center;background:var(--c-surf-mid);border-radius:var(--r-md);padding:10px 20px;min-width:90px}
+.stat-val{font-family:var(--font-mono);font-size:26px;font-weight:700;color:var(--c-primary);line-height:1}
+.stat-lbl{font-size:13px;color:var(--c-on-surf-var);margin-top:4px;text-transform:uppercase;letter-spacing:.4px;font-weight:600}
+.timer-bar{width:min(300px,88vw);height:8px;background:var(--c-surf-high);border-radius:var(--r-full);overflow:hidden}
+.timer-fill{height:100%;background:var(--c-primary);border-radius:var(--r-full);transition:width .1s linear;width:100%}
+.timer-text{font-family:var(--font-mono);font-size:22px;font-weight:700;color:var(--c-on-surface)}
+.result-overlay{position:absolute;inset:0;background:var(--c-surf-low);border-radius:var(--r-lg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;z-index:10;padding:24px}
+.result-overlay[hidden]{display:none}
+.result-cps{font-family:var(--font-mono);font-size:56px;font-weight:700;color:var(--c-primary);line-height:1}
+.result-sub{font-size:16px;color:var(--c-on-surf-var)}
+.result-btns{display:flex;gap:10px;margin-top:8px;flex-wrap:wrap;justify-content:center}
+.best-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-top:16px}
+.best-chip{background:var(--c-surf-mid);border-radius:var(--r-md);padding:10px 14px;text-align:center}
+.best-chip__dur{font-size:13px;color:var(--c-on-surf-var);font-weight:600;text-transform:uppercase}
+.best-chip__val{font-family:var(--font-mono);font-size:20px;font-weight:700;color:var(--c-on-surface)}
+.best-chip__sub{font-size:12px;color:var(--c-on-surf-var)}
+.noscript-note{background:var(--c-error-container);color:var(--c-on-error-container);border-radius:var(--r-md);padding:16px;text-align:center;margin:16px 0}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Zum Inhalt springen</a>
+<header class="top-bar">
+  <a href="https://klickspiele.de" class="home-btn rpl" aria-label="Zurück zu klickspiele.de">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2 L4 19 L8 15 L11 22 L13.5 21 L10.5 14 L16 14 Z"/></svg>
+  </a>
+  <span class="top-bar__title">CPS Test</span>
+  <div class="top-bar__actions">
+    <button class="bar-icon-btn rpl" id="dmBtn" aria-label="Dark Mode umschalten" type="button">
+      <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/></svg>
+    </button>
+  </div>
+</header>
+<main id="main" class="page-content">
+  <div class="game-wrap">
+
+    <noscript>
+      <div class="noscript-note" role="alert">
+        <strong>JavaScript erforderlich:</strong> Bitte aktiviere JavaScript in deinem Browser, um den CPS Test zu nutzen. Lies unten mehr über Klick-Tests und Techniken.
+      </div>
+    </noscript>
+
+    <!-- Duration selector -->
+    <div class="dur-row" role="group" aria-label="Testdauer wählen">
+      <button class="dur-btn rpl" data-dur="1" type="button">1 Sek</button>
+      <button class="dur-btn rpl active" data-dur="5" type="button">5 Sek</button>
+      <button class="dur-btn rpl" data-dur="10" type="button">10 Sek</button>
+      <button class="dur-btn rpl" data-dur="30" type="button">30 Sek</button>
+      <button class="dur-btn rpl" data-dur="60" type="button">60 Sek</button>
+    </div>
+
+    <!-- Game area -->
+    <div class="game-zone" id="gameZone">
+      <button class="click-btn rpl" id="clickBtn" type="button" aria-label="Klicken zum Starten und Zählen">
+        Klick mich!
+      </button>
+      <div class="stats-row" role="region" aria-label="Live-Statistiken">
+        <div class="stat-chip"><span class="stat-val" id="statClicks">0</span><span class="stat-lbl">Klicks</span></div>
+        <div class="stat-chip"><span class="stat-val" id="statCPS">0.00</span><span class="stat-lbl">CPS</span></div>
+        <div class="stat-chip"><span class="stat-val" id="statKMin">0</span><span class="stat-lbl">K/Min</span></div>
+      </div>
+      <div>
+        <div class="timer-text" id="timerText" aria-live="polite" aria-atomic="true">5.0 s</div>
+        <div class="timer-bar" role="progressbar" aria-label="Restzeit" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" id="timerBar">
+          <div class="timer-fill" id="timerFill"></div>
+        </div>
+      </div>
+
+      <!-- Result overlay -->
+      <div class="result-overlay" id="resultOverlay" hidden role="dialog" aria-label="Ergebnis">
+        <div class="stat-chip" style="background:var(--c-primary-container)">
+          <span class="stat-val result-cps" id="resCPS" style="color:var(--c-on-primary-container)">0.00</span>
+          <span class="stat-lbl">CPS</span>
+        </div>
+        <p class="result-sub" id="resSub"></p>
+        <p id="resNewBest" style="font-weight:700;color:var(--c-primary);font-size:15px"></p>
+        <div class="result-btns">
+          <button class="btn-filled rpl" id="retryBtn" type="button">Nochmal</button>
+          <button class="pill-btn rpl" id="shareBtn" type="button">Ergebnis kopieren</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Status region for screen readers -->
+    <div aria-live="assertive" class="visually-hidden" id="srStatus"></div>
+
+    <!-- Best scores -->
+    <h2 style="font-size:18px;font-weight:600;margin:20px 0 10px">Meine Bestleistungen</h2>
+    <div class="best-row" id="bestRow"></div>
+  </div>
+
+  <!-- SEO Content -->
+  <section class="seo-section">
+    <h2>CPS Test – Klicks pro Sekunde messen</h2>
+    <p><strong>Kurzdefinition:</strong> Der CPS Test (Clicks per Second Test) misst, wie viele Mausklicks oder Taps du in einer bestimmten Zeitspanne ausführen kannst. Der Wert wird als CPS (Klicks pro Sekunde) angegeben.</p>
+
+    <h3>So funktioniert der CPS Test</h3>
+    <p>Wähle zunächst eine Testdauer: 1, 5, 10, 30 oder 60 Sekunden. Klicke dann auf den orangefarbenen Button – das startet automatisch den Timer und zählt deinen ersten Klick mit. Klicke so schnell wie möglich weiter, bis der Timer abläuft. Nach Ende der Zeit siehst du sofort dein Ergebnis: CPS-Wert, Gesamtklicks und Klicks pro Minute.</p>
+    <p>Der Test nutzt <code>performance.now()</code> für präzise Zeiterfassung auf sub-Millisekunden-Ebene – genauer als <code>Date.now()</code>. Der Timer startet mit dem ersten Klick, nicht mit einem separaten Start-Button, damit kein Klick verloren geht.</p>
+
+    <h3>Einstellungen und Modi</h3>
+    <p><strong>1 Sekunde:</strong> Maximaler Burst – misst dein kurzfristiges Spitzenpotenzial. Aussagekräftigkeit begrenzt, da Varianz durch Reaktionszeit hoch ist.</p>
+    <p><strong>5 Sekunden:</strong> Der populärste Modus im Gaming. Guter Kompromiss zwischen Sprint und Ausdauer.</p>
+    <p><strong>10 Sekunden:</strong> Standard für seriöse CPS-Messungen. Ausreißer werden herausgemittelt.</p>
+    <p><strong>30 Sekunden:</strong> Ausdauertest – ab hier merkt man, ob die Technik und Muskelkontrolle stabil bleiben.</p>
+    <p><strong>60 Sekunden:</strong> Langes Ausdauer-Szenario. Zeigt, wie stark dein CPS-Wert unter Erschöpfung abfällt.</p>
+
+    <h3>Ergebnisse verstehen</h3>
+    <p><strong>CPS (Clicks per Second):</strong> Gesamtklicks geteilt durch die gemessene Sekunden-Laufzeit. Ein CPS von 7,3 bedeutet: durchschnittlich 7,3 Klicks pro Sekunde über die gesamte Testdauer.</p>
+    <p><strong>K/Min (Klicks pro Minute):</strong> CPS multipliziert mit 60. Praktisch für Vergleiche mit Tipp-Geschwindigkeitstests (WPM).</p>
+    <p><strong>Orientierungswerte (5-Sekunden-Test, Desktop-Maus):</strong> Anfänger: 3–5 CPS. Durchschnitt: 5–7 CPS. Geübt: 8–11 CPS. Sehr gut: 12–14 CPS. Extremwerte (Spezialtechniken): über 14 CPS. Diese Werte gelten nur für den normalen Klickstil (Normal Clicking) mit einer Standardmaus.</p>
+
+    <h3>Tipps, um deinen CPS zu verbessern</h3>
+    <p><strong>Mausposition:</strong> Lege den Finger locker auf die linke Maustaste. Ein zu festes Greifen der Maus kostet Tempo. Der Finger sollte leicht angewinkelt sein, nicht flach aufliegen.</p>
+    <p><strong>Unterarm statt Handgelenk:</strong> Bei schnellem Klicken sollte die Kraft aus dem Unterarm kommen, nicht nur aus dem Finger. Das reduziert Ermüdung.</p>
+    <p><strong>Warm-up:</strong> 30 Sekunden lockeres Klicken vor dem eigentlichen Test verbessert das Ergebnis um 0,5–1 CPS bei den meisten Nutzern.</p>
+    <p><strong>Maus-Einstellungen:</strong> Eine niedrige Debounce-Zeit in der Maus-Software (z. B. Logitech G Hub, Razer Synapse) kann die registrierte Klickrate erhöhen. Achtung: Bei zu niedriger Einstellung entstehen Doppelklick-Fehler.</p>
+    <p><strong>Jitter Clicking:</strong> Spanne den Unterarm-Muskel an, um eine schnelle Vibration zu erzeugen. Ergibt 10–14 CPS, belastet aber Muskeln und Gelenke bei längeren Sessions.</p>
+    <p><strong>Butterfly Clicking:</strong> Zwei Finger (Zeige- und Mittelfinger) klicken abwechselnd auf dieselbe Taste. Registrierte Klickraten: 16–25 CPS. Viele Gaming-Spiele blockieren diese Technik softwareseitig.</p>
+
+    <h3>Typische Messfehler und Probleme</h3>
+    <p><strong>Touchpad-Doppelklick:</strong> Viele Laptop-Touchpads registrieren schnelle Taps als Doppelklick. Dadurch wird der gezählte Wert künstlich erhöht oder fehlerhaft. Für vergleichbare Ergebnisse externe Maus nutzen.</p>
+    <p><strong>Browser-Tab-Throttling:</strong> Manche Browser drosseln JavaScript in Hintergrund-Tabs. Stelle sicher, dass der Tab aktiv ist (sichtbar im Vordergrund), während du testest.</p>
+    <p><strong>Mobile Touch-Latenz:</strong> Betriebssysteme führen eine Tap-Delay-Heuristik durch (300 ms legacy delay, heute meistens durch <code>touch-action: manipulation</code> deaktiviert). Ergebnisse auf Mobile sind generell 10–20 % niedriger als auf Desktop.</p>
+    <p><strong>Maus-Hardware-Polling-Rate:</strong> Eine 125-Hz-Maus kann maximal 125 Events/Sekunde senden. Bei Klickreihen über 10 CPS kann dies zu ungezählten Klicks führen. Gaming-Mäuse mit 1000 Hz oder mehr sind hier überlegen.</p>
+
+    <h3>FAQ – Häufige Fragen zum CPS Test</h3>
+
+    <details class="collapsible">
+      <summary>Was ist CPS?</summary>
+      <div class="collapsible__body">CPS steht für Clicks per Second (Klicks pro Sekunde). Der Wert beschreibt, wie viele Mausklicks oder Taps jemand in einer Sekunde ausführen kann. Er wird ermittelt, indem die Gesamtklicks durch die Testdauer in Sekunden geteilt werden.</div>
+    </details>
+    <details class="collapsible">
+      <summary>Was ist ein guter CPS-Wert?</summary>
+      <div class="collapsible__body">Für den 5-Sekunden-Test liegt ein durchschnittlicher CPS bei 5–7. Geübte Gamer erreichen 8–12 CPS. Werte über 14 CPS gelten als sehr gut und erfordern spezielle Klicktechniken wie Jitter oder Butterfly Clicking.</div>
+    </details>
+    <details class="collapsible">
+      <summary>Welche Klicktechniken gibt es?</summary>
+      <div class="collapsible__body">Normal Clicking (Standard-Ein-Finger-Technik), Jitter Clicking (Unterarm-Vibration, 10–14 CPS), Butterfly Clicking (zwei Finger abwechselnd, 16–25 CPS) und Drag Clicking (Finger ziehen über die Taste, sehr hohe Werte aber hardware-abhängig). Für den 5-Sekunden-Standard-Test ist Normal Clicking die faire Vergleichsbasis.</div>
+    </details>
+    <details class="collapsible">
+      <summary>Zählt der erste Klick mit?</summary>
+      <div class="collapsible__body">Ja. Der erste Klick startet den Timer und zählt gleichzeitig als erster gültiger Klick im Ergebnis. Der Timer läuft exakt von diesem Moment bis zur eingestellten Dauer.</div>
+    </details>
+    <details class="collapsible">
+      <summary>Warum ist mein CPS auf Mobile niedriger?</summary>
+      <div class="collapsible__body">Touchscreen-Taps haben eine höhere Touch-Sampling-Rate-Latenz als Mausklicks und werden durch Betriebssystem-Gesten (Scroll, Zoom-Erkennung) begrenzt. Ergebnisse auf Mobilgeräten sind daher nicht direkt mit Desktop-Ergebnissen vergleichbar.</div>
+    </details>
+    <details class="collapsible">
+      <summary>Wie werden Bestleistungen gespeichert?</summary>
+      <div class="collapsible__body">Bestleistungen werden im localStorage deines Browsers gespeichert – lokal, ohne Server-Kommunikation. Das Löschen des Browser-Verlaufs oder Caches kann die Werte löschen. Es gibt keine Account-Funktion.</div>
+    </details>
+    <details class="collapsible">
+      <summary>Was misst der 1-Sekunden-Test?</summary>
+      <div class="collapsible__body">Der 1-Sekunden-Test misst dein maximales Burst-Klickpotenzial. Da der erste Klick zugleich den Start signalisiert, hast du effektiv etwas weniger als 1 Sekunde. Der Test ist weniger aussagekräftig als der 5- oder 10-Sekunden-Test, da Ausreißer stärker ins Gewicht fallen.</div>
+    </details>
+    <details class="collapsible">
+      <summary>Warum schwankt mein CPS-Wert?</summary>
+      <div class="collapsible__body">CPS hängt von vielen Faktoren ab: Müdigkeit, Konzentration, Maus-Hardware, Unterlage, Tageszeit und sogar Raumtemperatur. Kurze Tests (1s) sind anfälliger für Schwankungen. Für reproduzierbare Werte lieber den 10-Sekunden-Test verwenden.</div>
+    </details>
+    <details class="collapsible">
+      <summary>Kann ich den Test mit dem Touchpad machen?</summary>
+      <div class="collapsible__body">Ja. Touchpads erzeugen jedoch oft unbeabsichtigte Doppelklick-Events und haben firmware-seitige Debounce-Verzögerungen. Ergebnisse mit Touchpad sind schwer mit Maus-Ergebnissen zu vergleichen und fallen typischerweise niedriger aus.</div>
+    </details>
+    <details class="collapsible">
+      <summary>Was bedeutet K/Min?</summary>
+      <div class="collapsible__body">K/Min steht für Klicks pro Minute. Der Wert ergibt sich aus CPS × 60. Bei einem CPS von 7 wären das 420 Klicks pro Minute. Der Wert hilft beim Vergleich mit Schreib-Geschwindigkeitstests (Anschläge pro Minute).</div>
+    </details>
+
+    <h3>Weitere Klickspiele</h3>
+    <nav aria-label="Verwandte Spiele">
+      <ul style="list-style:none;display:flex;flex-wrap:wrap;gap:10px;padding:0;margin-top:8px">
+        <li><a href="./klicktest.html" class="pill-btn rpl" style="display:inline-flex;align-items:center;height:44px;padding:0 18px;border-radius:9999px;background:var(--c-secondary-container);color:var(--c-on-secondary-container);font-weight:600;font-size:15px">⏱️ Klicktest</a></li>
+        <li><a href="./leertasten-klicker.html" class="pill-btn rpl" style="display:inline-flex;align-items:center;height:44px;padding:0 18px;border-radius:9999px;background:var(--c-secondary-container);color:var(--c-on-secondary-container);font-weight:600;font-size:15px">⌨️ Leertasten-Klicker</a></li>
+        <li><a href="./reaktionstest.html" class="pill-btn rpl" style="display:inline-flex;align-items:center;height:44px;padding:0 18px;border-radius:9999px;background:var(--c-secondary-container);color:var(--c-on-secondary-container);font-weight:600;font-size:15px">⚡ Reaktionstest</a></li>
+        <li><a href="./index.html" style="display:inline-flex;align-items:center;height:44px;padding:0 18px;border-radius:9999px;background:var(--c-surf-mid);color:var(--c-on-surf-var);font-weight:600;font-size:15px">← Alle Spiele</a></li>
+      </ul>
+    </nav>
+  </section>
+</main>
+<footer class="site-footer">
+  <nav class="site-footer__nav">
+    <a href="https://klickspiele.de">klickspiele.de</a>
+    <a href="./impressum.html">Impressum</a>
+    <a href="./datenschutz.html">Datenschutz</a>
+  </nav>
+  <p class="site-footer__copy">© 2025 klickspiel.net · Kostenlose Klickspiele ohne Anmeldung</p>
+</footer>
+<script>
+(function(){
+  // Dark mode
+  var dm=localStorage.getItem('dm')==='1';
+  if(dm)document.body.classList.add('dark-mode');
+  document.getElementById('dmBtn').addEventListener('click',function(){dm=!dm;document.body.classList.toggle('dark-mode',dm);localStorage.setItem('dm',dm?'1':'0');});
+
+  // State
+  var duration=5, clicks=0, running=false, startTime=0, endTO=null, rafID=null;
+  var clickBtn=document.getElementById('clickBtn');
+  var timerText=document.getElementById('timerText');
+  var timerFill=document.getElementById('timerFill');
+  var timerBar=document.getElementById('timerBar');
+  var statClicks=document.getElementById('statClicks');
+  var statCPS=document.getElementById('statCPS');
+  var statKMin=document.getElementById('statKMin');
+  var resultOverlay=document.getElementById('resultOverlay');
+  var resCPS=document.getElementById('resCPS');
+  var resSub=document.getElementById('resSub');
+  var resNewBest=document.getElementById('resNewBest');
+  var retryBtn=document.getElementById('retryBtn');
+  var shareBtn=document.getElementById('shareBtn');
+  var srStatus=document.getElementById('srStatus');
+
+  // Duration buttons
+  document.querySelectorAll('.dur-btn').forEach(function(b){
+    b.addEventListener('click',function(){
+      if(running)return;
+      duration=parseInt(this.dataset.dur);
+      document.querySelectorAll('.dur-btn').forEach(function(x){x.classList.remove('active');});
+      this.classList.add('active');
+      timerText.textContent=duration+'.0 s';
+      timerFill.style.width='100%';
+    });
+  });
+
+  function updateStats(){
+    if(!running)return;
+    var elapsed=(performance.now()-startTime)/1000;
+    var cps=elapsed>0?(clicks/elapsed).toFixed(2):'0.00';
+    var kmin=elapsed>0?Math.round(clicks/elapsed*60):0;
+    statClicks.textContent=clicks;
+    statCPS.textContent=cps;
+    statKMin.textContent=kmin;
+    var remaining=Math.max(0,duration-(performance.now()-startTime)/1000);
+    timerText.textContent=remaining.toFixed(1)+' s';
+    var pct=Math.max(0,(remaining/duration)*100);
+    timerFill.style.width=pct+'%';
+    timerBar.setAttribute('aria-valuenow',Math.round(pct));
+    if(running) rafID=requestAnimationFrame(updateStats);
+  }
+
+  function startGame(){
+    if(running)return;
+    running=true;
+    clicks=1;
+    startTime=performance.now();
+    resultOverlay.hidden=true;
+    clickBtn.textContent='KLICK!';
+    srStatus.textContent='Test gestartet – '+duration+' Sekunden';
+    endTO=setTimeout(endGame,duration*1000);
+    rafID=requestAnimationFrame(updateStats);
+  }
+
+  function endGame(){
+    running=false;
+    cancelAnimationFrame(rafID);
+    clearTimeout(endTO);
+    var elapsed=(performance.now()-startTime)/1000;
+    var cps=(clicks/elapsed).toFixed(2);
+    var kmin=Math.round(clicks/elapsed*60);
+    statClicks.textContent=clicks;
+    statCPS.textContent=cps;
+    statKMin.textContent=kmin;
+    timerText.textContent='0.0 s';
+    timerFill.style.width='0%';
+    // Save best
+    var key='clickgames:cps:'+duration;
+    var prev=parseFloat(localStorage.getItem(key)||'0');
+    var isNew=parseFloat(cps)>prev;
+    if(isNew)localStorage.setItem(key,cps);
+    // Show result
+    resCPS.textContent=cps;
+    resSub.textContent=clicks+' Klicks in '+duration+' Sekunden · '+kmin+' K/Min';
+    resNewBest.textContent=isNew?'🏆 Neue Bestleistung!':'';
+    resultOverlay.hidden=false;
+    retryBtn.focus();
+    srStatus.textContent='Test beendet. '+cps+' CPS. '+clicks+' Klicks.'+(isNew?' Neue Bestleistung!':'');
+    clickBtn.textContent='Klick mich!';
+    renderBest();
+  }
+
+  clickBtn.addEventListener('click',function(){
+    if(!running){startGame();}
+    else{clicks++;updateStats();}
+  });
+  clickBtn.addEventListener('keydown',function(e){
+    if(e.key==='Enter'||e.key===' '){e.preventDefault();if(!running){startGame();}else{clicks++;}}
+  });
+
+  retryBtn.addEventListener('click',function(){
+    resultOverlay.hidden=true;
+    clicks=0;statClicks.textContent='0';statCPS.textContent='0.00';statKMin.textContent='0';
+    timerText.textContent=duration+'.0 s';timerFill.style.width='100%';
+    clickBtn.focus();
+  });
+
+  shareBtn.addEventListener('click',function(){
+    var txt='Mein CPS Test Ergebnis: '+resCPS.textContent+' CPS ('+duration+'s Test) auf klickspiel.net';
+    navigator.clipboard?navigator.clipboard.writeText(txt):void 0;
+    shareBtn.textContent='✓ Kopiert!';
+    setTimeout(function(){shareBtn.textContent='Ergebnis kopieren';},2000);
+  });
+
+  function renderBest(){
+    var row=document.getElementById('bestRow');
+    var durs=[1,5,10,30,60];
+    row.innerHTML='';
+    durs.forEach(function(d){
+      var v=localStorage.getItem('clickgames:cps:'+d);
+      var chip=document.createElement('div');
+      chip.className='best-chip';
+      chip.innerHTML='<div class="best-chip__dur">'+d+'s</div>'
+        +'<div class="best-chip__val">'+(v||'–')+'</div>'
+        +'<div class="best-chip__sub">CPS</div>';
+      row.appendChild(chip);
+    });
+  }
+  renderBest();
+})();
+
+// Ripple
+document.addEventListener('pointerdown',function(e){var h=e.target.closest('.rpl');if(!h)return;var r=h.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,sz=Math.max(r.width,r.height)*2.4,w=document.createElement('span');w.className='rpl-wave';w.style.cssText='width:'+sz+'px;height:'+sz+'px;left:'+(x-sz/2)+'px;top:'+(y-sz/2)+'px';h.appendChild(w);w.addEventListener('animationend',function(){w.remove();});},{passive:true});
+</script>
+</body>
+</html>

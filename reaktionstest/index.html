@@ -1,115 +1,325 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#0b1220">
-<link rel="manifest" href="/manifest.webmanifest">
-<link rel="stylesheet" href="/assets/css/site.css">
-<link rel="canonical" href="https://klickspiele.de/reaktionstest/">
-<link rel="alternate" hreflang="de" href="https://klickspiele.de/reaktionstest/">
-<link rel="alternate" hreflang="x-default" href="https://klickspiele.de/reaktionstest/">
-<title>Reaktionstests – kostenlose Spiele &amp; Tests | klickspiele.de</title>
-<meta name="description" content="Reaktionstests: mobile-first Spiele &amp; Tests im Browser. Schnell laden, klare Regeln, sofort loslegen.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#F57C00">
+<title>Reaktionstest – Reaktionszeit in Millisekunden messen | klickspiel.net</title>
+<meta name="description" content="Reaktionstest: Miss deine Reaktionszeit in Millisekunden. Warte auf das grüne Signal und klicke so schnell wie möglich. Statistiken, Durchschnitt und Bestzeit werden gespeichert.">
+<link rel="canonical" href="https://klickspiel.net/reaktionstest.html">
+<link rel="stylesheet" href="./style.css">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23F57C00'/><path d='M8 4 L8 24 L13 19 L16.5 27 L19.5 25.5 L16 17.5 L22 17.5 Z' fill='white'/></svg>">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="klickspiele.de">
-<meta property="og:title" content="Reaktionstests – kostenlose Spiele &amp; Tests | klickspiele.de">
-<meta property="og:description" content="Reaktionstests: mobile-first Spiele &amp; Tests im Browser. Schnell laden, klare Regeln, sofort loslegen.">
-<meta property="og:url" content="https://klickspiele.de/reaktionstest/">
+<meta property="og:url" content="https://klickspiel.net/reaktionstest.html">
+<meta property="og:title" content="Reaktionstest – Reaktionszeit in Millisekunden messen">
+<meta property="og:description" content="Teste deine Reflexe: Warte auf das Signal und klicke so schnell wie möglich. Reaktionszeit in ms, Statistiken der letzten 10 Versuche.">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Reaktionstests – kostenlose Spiele &amp; Tests | klickspiele.de">
-<meta name="twitter:description" content="Reaktionstests: mobile-first Spiele &amp; Tests im Browser. Schnell laden, klare Regeln, sofort loslegen.">
+<meta name="twitter:title" content="Reaktionstest – Reflexe online testen">
+<meta name="twitter:description" content="Wie schnell reagierst du? Reaktionszeit in Millisekunden messen.">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"klickspiel.net","item":"https://klickspiel.net/"},
+    {"@type":"ListItem","position":2,"name":"Reaktionstest","item":"https://klickspiel.net/reaktionstest.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"Was ist eine normale Reaktionszeit?","acceptedAnswer":{"@type":"Answer","text":"Die durchschnittliche visuelle Reaktionszeit eines Menschen beträgt 200–250 Millisekunden. Geübte Gamer liegen oft bei 150–200 ms. Werte unter 150 ms sind sehr gut; Werte über 300 ms deuten auf Ablenkung oder Müdigkeit hin."}},
+    {"@type":"Question","name":"Was ist ein Frühstart?","acceptedAnswer":{"@type":"Answer","text":"Ein Frühstart liegt vor, wenn du klickst, bevor das grüne Signal erscheint. Das zählt nicht als gültiger Versuch und wird als 'Zu früh' gewertet."}},
+    {"@type":"Question","name":"Warum variiert meine Reaktionszeit?","acceptedAnswer":{"@type":"Answer","text":"Reaktionszeit schwankt durch Müdigkeit, Aufmerksamkeit, Koffein, Tageszeit und zufällige neurologische Variation. Selbst Hochleistungssportler haben Schwankungen von ±20–50 ms."}},
+    {"@type":"Question","name":"Misst der Test wirklich meine Reaktionszeit?","acceptedAnswer":{"@type":"Answer","text":"Der Test misst die Browser-seitige Zeit zwischen dem Erscheinen des Signals und deinem Klick. Dazu kommen Monitor-Latenz (1–20 ms), Input-Latenz der Maus (1–8 ms) und Browser-Rendering-Delay. Die tatsächliche neurologische Reaktionszeit ist minimal kürzer."}},
+    {"@type":"Question","name":"Verbessert Gaming die Reaktionszeit?","acceptedAnswer":{"@type":"Answer","text":"Ja. Studien zeigen, dass Gamer (besonders Action-Game-Spieler) im Durchschnitt schnellere Reaktionszeiten haben als Nicht-Gamer. Der Effekt ist auf verbesserte Aufmerksamkeitssteuerung zurückzuführen, nicht auf veränderte Nervenimpulse."}},
+    {"@type":"Question","name":"Wie kann ich meine Reaktionszeit verbessern?","acceptedAnswer":{"@type":"Answer","text":"Regelmäßiges Training mit Reaktionstests, ausreichend Schlaf, keine Ablenkungen, Koffein in moderaten Mengen und ein ergonomisches Setup mit niedriger Input-Latenz helfen nachweislich."}},
+    {"@type":"Question","name":"Was bedeutet der Durchschnitt aus 10 Versuchen?","acceptedAnswer":{"@type":"Answer","text":"Der Durchschnitt aus 10 Versuchen ist aussagekräftiger als ein einzelner Wert. Er glättet Ausreißer durch Unachtsamkeit oder zufällige Frühstarts und gibt ein stabileres Bild deiner Reaktionsleistung."}},
+    {"@type":"Question","name":"Zählt Klicken oder Drücken von Space?","acceptedAnswer":{"@type":"Answer","text":"Beides. Du kannst auf das Signal-Feld klicken oder die Leertaste drücken, sobald das Signal erscheint."}},
+    {"@type":"Question","name":"Was passiert bei einem Frühstart?","acceptedAnswer":{"@type":"Answer","text":"Der Versuch wird als ungültig gewertet und als 'Zu früh' markiert. Du kannst sofort neu starten."}},
+    {"@type":"Question","name":"Warum gibt es eine zufällige Wartezeit?","acceptedAnswer":{"@type":"Answer","text":"Eine zufällige Wartezeit (1,5–4 Sekunden) verhindert, dass du das Signal antizipierst. Würde das Signal immer nach derselben Zeit kommen, würde der Test reflexartiges Timing messen, nicht echte Reaktionszeit."}},
+    {"@type":"Question","name":"Können Übungsversuche das Ergebnis verzerren?","acceptedAnswer":{"@type":"Answer","text":"Ja. Die ersten 2–3 Versuche sind typischerweise langsamer (Aufwärm-Effekt). Für eine aussagekräftige Durchschnittszeit empfiehlt es sich, 1–2 Aufwärmversuche zu machen und dann 10 Messversuche zu starten."}},
+    {"@type":"Question","name":"Wie werden Bestzeiten gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Bestzeiten und die letzten 10 Versuche werden im localStorage des Browsers gespeichert. Keine Serverübertragung, kein Account erforderlich."}}
+  ]
+}
+</script>
+<style>
+.game-wrap{max-width:var(--content-max);margin:0 auto;padding:12px 16px 0}
+.reaction-field{width:min(440px,92vw);min-height:240px;border-radius:var(--r-xl);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;margin:0 auto;cursor:pointer;border:none;transition:background var(--dur-normal) var(--ease);position:relative;overflow:hidden;font-family:var(--font-ui)}
+.reaction-field.state-idle{background:var(--c-surf-low);border:2px solid var(--c-outline-var)}
+.reaction-field.state-ready{background:#1565C0;color:#fff}
+.reaction-field.state-go{background:#2E7D32;color:#fff}
+.reaction-field.state-result{background:var(--c-primary-container);color:var(--c-on-primary-container);border:2px solid var(--c-primary)}
+.reaction-field.state-early{background:var(--c-error-container);color:var(--c-on-error-container);border:2px solid var(--c-error)}
+.rf-icon{font-size:56px;pointer-events:none}
+.rf-label{font-size:22px;font-weight:700;pointer-events:none;text-align:center;padding:0 16px}
+.rf-sub{font-size:16px;opacity:.8;pointer-events:none}
+.result-time{font-family:var(--font-mono);font-size:64px;font-weight:700;line-height:1;pointer-events:none}
+.hint{font-size:15px;color:var(--c-on-surf-var);text-align:center;margin-top:8px}
+.stats-panel{background:var(--c-surf-low);border-radius:var(--r-lg);border:1.5px solid var(--c-outline-var);padding:16px;margin-top:16px;max-width:440px;margin-left:auto;margin-right:auto}
+.stats-panel h3{font-size:16px;font-weight:600;margin-bottom:12px;color:var(--c-on-surface)}
+.stats-summary{display:flex;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.stat-chip{background:var(--c-surf-mid);border-radius:var(--r-md);padding:8px 16px;flex:1;min-width:100px;text-align:center}
+.stat-val{font-family:var(--font-mono);font-size:22px;font-weight:700;color:var(--c-primary);display:block}
+.stat-lbl{font-size:12px;color:var(--c-on-surf-var);text-transform:uppercase;letter-spacing:.4px;font-weight:600}
+.attempts-list{display:flex;flex-direction:column;gap:4px}
+.attempt-row{display:flex;align-items:center;gap:8px;padding:6px 10px;border-radius:var(--r-sm);background:var(--c-surf-mid);font-size:15px}
+.attempt-row.best{background:var(--c-primary-container);color:var(--c-on-primary-container)}
+.attempt-row.early{background:var(--c-error-container);color:var(--c-on-error-container);font-style:italic}
+.attempt-n{font-size:12px;color:var(--c-on-surf-var);width:20px;text-align:right;flex-shrink:0}
+.attempt-bar{flex:1;height:6px;background:var(--c-surf-high);border-radius:var(--r-full);overflow:hidden}
+.attempt-fill{height:100%;background:var(--c-primary);border-radius:var(--r-full)}
+.attempt-val{font-family:var(--font-mono);font-weight:700;min-width:70px;text-align:right;font-size:15px;flex-shrink:0}
+</style>
 </head>
 <body>
-<header class="site-header">
-  <div class="container header__inner">
-    <a class="brand" href="/">klickspiele.de</a>
-    <nav class="nav" aria-label="Hauptnavigation">
-      <a class="nav__a" href="/klicktest/">Klicktests</a>
-<a class="nav__a is-active" href="/reaktionstest/">Reaktionstests</a>
-<a class="nav__a" href="/praezision/">Präzision</a>
-<a class="nav__a" href="/timing/">Timing</a>
-<a class="nav__a" href="/denken/">Denken</a>
-      <a class="nav__a" href="/ueber-uns/">Über uns</a>
-    </nav>
+<a class="skip" href="#main">Zum Inhalt springen</a>
+<header class="top-bar">
+  <a href="https://klickspiele.de" class="home-btn rpl" aria-label="Zurück zu klickspiele.de">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2 L4 19 L8 15 L11 22 L13.5 21 L10.5 14 L16 14 Z"/></svg>
+  </a>
+  <span class="top-bar__title">Reaktionstest</span>
+  <div class="top-bar__actions">
+    <button class="bar-icon-btn rpl" id="dmBtn" aria-label="Dark Mode umschalten" type="button">
+      <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/></svg>
+    </button>
   </div>
 </header>
-<div class="crumb"><div class="container"><a class="crumb__a" href="/">Start</a><span class="crumb__sep">/</span><span class="crumb__current">Reaktionstests</span></div></div>
-<main class="main">
-  <div class="container">
-    <section class="hero">
-      <h1>Reaktionstests</h1>
-      <p><strong>Reaktionstests</strong> als schnelle Browser-Games: kein Login, keine Downloads, optimiert für Smartphone. Wähle ein Spiel, starte sofort und speichere deinen Bestwert lokal.</p>
-    </section>
-    <section class="section">
-      <h2>Top-Spiele in Reaktionstests</h2>
-      <div class="grid grid--cards">
-        <div class="card">
-  <a href="/reaktionstest/reaction-time-color/">
-    <h3>Reaction Time Test – Reaktionszeit (Farbwechsel)</h3>
-    <p>reaction time test ist ein schneller Web‑Test, bei dem du in wenigen Sekunden siehst, wie gut deine Reaktionszeit wirklich ist.  Im Spielbereich startest d…</p>
-    <div class="kv"><span class="badge badge--a">Top</span><span class="badge">reaction time test</span></div>
-  </a>
-</div><div class="card">
-  <a href="/reaktionstest/reaction-time-audio/">
-    <h3>Audio Reaction Test – Reagieren auf Ton</h3>
-    <p>audio reaction test ist ein schneller Web‑Test, bei dem du in wenigen Sekunden siehst, wie gut deine auditive Reaktion wirklich ist.  Im Spielbereich start…</p>
-    <div class="kv"><span class="badge badge--b">Beliebt</span><span class="badge">audio reaction test</span></div>
-  </a>
-</div><div class="card">
-  <a href="/reaktionstest/go-no-go-test/">
-    <h3>Go/No-Go Test – Impulskontrolle &amp; Reaktion</h3>
-    <p>go no go test ist ein schneller Web‑Test, bei dem du in wenigen Sekunden siehst, wie gut deine Impulskontrolle wirklich ist.  Im Spielbereich startest du d…</p>
-    <div class="kv"><span class="badge badge--b">Beliebt</span><span class="badge">go no go test</span></div>
-  </a>
-</div><div class="card">
-  <a href="/reaktionstest/choice-reaction-4way/">
-    <h3>Choice Reaction Test – 4‑Wege Reaktion (Pfeile)</h3>
-    <p>choice reaction test ist ein schneller Web‑Test, bei dem du in wenigen Sekunden siehst, wie gut deine Auswahlreaktion wirklich ist.  Im Spielbereich starte…</p>
-    <div class="kv"><span class="badge badge--c">Spiel</span><span class="badge">choice reaction test</span></div>
-  </a>
-</div><div class="card">
-  <a href="/reaktionstest/left-right-swipe-reaction/">
-    <h3>Swipe Reaction – Links/Rechts in Millisekunden</h3>
-    <p>swipe reaction test ist ein schneller Web‑Test, bei dem du in wenigen Sekunden siehst, wie gut deine Mobile Reflex wirklich ist.  Im Spielbereich startest…</p>
-    <div class="kv"><span class="badge badge--c">Spiel</span><span class="badge">swipe reaction test</span></div>
-  </a>
-</div><div class="card">
-  <a href="/reaktionstest/color-audio-switch/">
-    <h3>Switch Reaction – Farbe oder Ton entscheidet</h3>
-    <p>switch reaction test ist ein schneller Web‑Test, bei dem du in wenigen Sekunden siehst, wie gut deine Task‑Switching wirklich ist.  Im Spielbereich startes…</p>
-    <div class="kv"><span class="badge badge--c">Spiel</span><span class="badge">switch reaction test</span></div>
-  </a>
-</div>
+<main id="main" class="page-content">
+  <div class="game-wrap">
+    <noscript><p style="background:var(--c-error-container);color:var(--c-on-error-container);padding:12px;border-radius:12px;margin-bottom:16px"><strong>JavaScript erforderlich</strong> für den Reaktionstest. Weitere Infos unten.</p></noscript>
+
+    <button class="reaction-field state-idle rpl" id="reactionField" type="button"
+            aria-label="Reaktionsfeld – Klicken zum Starten" aria-live="assertive">
+      <span class="rf-icon" id="rfIcon" aria-hidden="true">⚡</span>
+      <span class="rf-label" id="rfLabel">Klicken zum Starten</span>
+      <span class="rf-sub" id="rfSub">Oder Leertaste drücken</span>
+    </button>
+    <p class="hint">Warte auf <strong style="color:#2E7D32">Grün</strong> – dann so schnell wie möglich klicken!</p>
+
+    <div aria-live="polite" class="visually-hidden" id="srStatus"></div>
+
+    <div class="stats-panel" id="statsPanel">
+      <h3>Meine Statistiken</h3>
+      <div class="stats-summary">
+        <div class="stat-chip"><span class="stat-val" id="statBest">–</span><span class="stat-lbl">Bestzeit</span></div>
+        <div class="stat-chip"><span class="stat-val" id="statAvg">–</span><span class="stat-lbl">Ø Letzte 10</span></div>
+        <div class="stat-chip"><span class="stat-val" id="statCount">0</span><span class="stat-lbl">Versuche</span></div>
       </div>
-    </section>
+      <div class="attempts-list" id="attemptsList">
+        <p style="font-size:14px;color:var(--c-on-surf-var);text-align:center;padding:8px">Noch keine Versuche. Starte den Test!</p>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:12px">
+      <button class="pill-btn rpl" id="clearBtn" type="button" style="height:44px;padding:0 20px;border-radius:var(--r-full);background:var(--c-secondary-container);color:var(--c-on-secondary-container);font-size:15px;font-weight:600">
+        Statistiken löschen
+      </button>
+    </div>
   </div>
+
+  <section class="seo-section">
+    <h2>Reaktionstest – Reaktionszeit in Millisekunden messen</h2>
+    <p><strong>Was ist der Reaktionstest?</strong> Der Reaktionstest misst die Zeit zwischen einem visuellen Signal (Grün-Wechsel) und deiner motorischen Reaktion (Klick oder Leertaste). Das Ergebnis gibt deine visuelle Reaktionszeit in Millisekunden an.</p>
+
+    <h3>So funktioniert der Test</h3>
+    <p>Klicke auf das Feld oder drücke die Leertaste. Das Feld wechselt auf Blau ("Bereit") – warte. Nach einer zufälligen Verzögerung von 1,5 bis 4 Sekunden wird das Feld Grün ("Los!"). Reagiere sofort. Das Ergebnis zeigt deine Reaktionszeit in ms. Klickst du zu früh (vor dem Grün-Signal), wird der Versuch als Frühstart gewertet.</p>
+
+    <h3>Warum eine zufällige Wartezeit?</h3>
+    <p>Eine feste Wartezeit würde es ermöglichen, das Signal zu antizipieren (Rhythmus-Timing statt echter Reaktion). Die zufällige Verzögerung zwischen 1500 und 4000 ms stellt sicher, dass du wirklich auf das visuelle Signal reagierst – nicht auf eine Erwartung.</p>
+
+    <h3>Was bedeuten die Ergebnisse?</h3>
+    <p><strong>Unter 150 ms:</strong> Außergewöhnlich schnell. Typisch für Hochleistungs-Esportler und Profi-Athleten unter optimalen Bedingungen.</p>
+    <p><strong>150–200 ms:</strong> Sehr gut. Oberes Drittel der Bevölkerung, typisch für geübte Gamer.</p>
+    <p><strong>200–250 ms:</strong> Durchschnittlich. Normalbereich für einen aufmerksamen Erwachsenen.</p>
+    <p><strong>250–300 ms:</strong> Leicht unterdurchschnittlich. Oft durch Ablenkung, Müdigkeit oder Unvertrautheit mit dem Test.</p>
+    <p><strong>Über 300 ms:</strong> Deutlich langsamer als Durchschnitt. Mögliche Ursachen: Schlafmangel, Alkohol/Medikamente, starke Ablenkung.</p>
+    <p>Wichtig: Der Test misst Maus/Klick-Reaktionszeit, nicht rein neurologische Reaktionszeit. Monitore, Mäuse und Browser-Latenz fügen je 1–20 ms hinzu.</p>
+
+    <h3>Wie kann ich meine Reaktionszeit verbessern?</h3>
+    <p>Regelmäßiges Training mit diesem Test verbessert die Reaktionszeit messbar – hauptsächlich durch erhöhte Aufmerksamkeitssteuerung, nicht durch schnellere Nervenimpulse. Ausreichend Schlaf (7–9 Stunden) reduziert die Reaktionszeit um durchschnittlich 10–15 %. Koffein in moderaten Mengen verbessert die kognitive Verarbeitung. Ein Monitor mit niedriger Response-Time (1ms vs 5ms) und eine Gaming-Maus mit hoher Polling-Rate (1000 Hz) reduzieren Hardware-Latenz.</p>
+
+    <h3>Messfehler und Einschränkungen</h3>
+    <p><strong>Monitor-Latenz:</strong> TN-Panels: 1–5 ms, IPS: 4–10 ms, VA: 5–20 ms. Bei normalen Tests vernachlässigbar, bei Präzisionsmessungen relevant.</p>
+    <p><strong>Browser-Rendering-Delay:</strong> Der Browser kann zwischen dem Trigger und dem sichtbaren Farbwechsel 1–16 ms verzögern (Frame-Budget). Der Test kompensiert dies nicht.</p>
+    <p><strong>Input-Lag der Maus:</strong> Standard-USB-Mäuse: 8 ms (125 Hz Polling). Gaming-Mäuse: 1 ms (1000 Hz). Dieser Unterschied ist bei normalen Tests kaum relevant.</p>
+    <p><strong>Vorhersage vs. Reaktion:</strong> Bei kurzen Wartezeiten können Nutzer unbewusst antizipieren. Die zufällige Wartezeit bis zu 4 Sekunden macht dies deutlich schwieriger.</p>
+
+    <h3>FAQ – Reaktionstest</h3>
+    <details class="collapsible">
+      <summary>Was ist eine normale Reaktionszeit?</summary>
+      <div class="collapsible__body">Die durchschnittliche visuelle Reaktionszeit liegt bei 200–250 ms. Geübte Gamer liegen oft bei 150–200 ms. Werte unter 150 ms sind sehr gut, über 300 ms deuten auf Ablenkung oder Müdigkeit hin.</div>
+    </details>
+    <details class="collapsible">
+      <summary>Was ist ein Frühstart?</summary>
+      <div class="collapsible__body">Ein Frühstart liegt vor, wenn du klickst, bevor das grüne Signal erscheint. Der Versuch zählt nicht und wird als "Zu früh" markiert. Frühstarts entstehen oft durch Antizipation oder zufällige Bewegungen.</div>
+    </details>
+    <details class="collapsible">
+      <summary>Warum variiert meine Reaktionszeit?</summary>
+      <div class="collapsible__body">Reaktionszeit schwankt durch Müdigkeit, Aufmerksamkeit, Koffein, Tageszeit und zufällige neurologische Variation. Selbst Hochleistungssportler haben Schwankungen von ±20–50 ms zwischen den Versuchen.</div>
+    </details>
+    <details class="collapsible">
+      <summary>Misst der Test wirklich meine Reaktionszeit?</summary>
+      <div class="collapsible__body">Der Test misst die Browser-seitige Zeit. Dazu kommen Monitor-Latenz (1–20 ms), Maus-Input-Latenz (1–8 ms) und Browser-Rendering-Delay. Die neurologische Reaktionszeit ist minimal kürzer als das angezeigte Ergebnis.</div>
+    </details>
+    <details class="collapsible">
+      <summary>Verbessert Gaming die Reaktionszeit?</summary>
+      <div class="collapsible__body">Ja. Studien zeigen, dass Action-Game-Spieler im Durchschnitt schnellere Reaktionszeiten haben. Der Effekt basiert auf verbesserter Aufmerksamkeitssteuerung, nicht auf veränderten Nervenimpulsen.</div>
+    </details>
+    <details class="collapsible">
+      <summary>Warum gibt es eine zufällige Wartezeit?</summary>
+      <div class="collapsible__body">Eine feste Wartezeit würde Antizipation ermöglichen, kein echter Reaktionstest. Zufällige 1,5–4 Sekunden stellen sicher, dass du auf das visuelle Signal reagierst.</div>
+    </details>
+    <details class="collapsible">
+      <summary>Kann ich Klick oder Space verwenden?</summary>
+      <div class="collapsible__body">Beides. Du kannst auf das Signal-Feld klicken oder die Leertaste drücken, sobald das grüne Signal erscheint.</div>
+    </details>
+    <details class="collapsible">
+      <summary>Wie werden Bestzeiten gespeichert?</summary>
+      <div class="collapsible__body">Bestzeit und die letzten 10 Versuche werden lokal im localStorage des Browsers gespeichert. Keine Serverübertragung, kein Account erforderlich.</div>
+    </details>
+    <details class="collapsible">
+      <summary>Was bedeutet der Durchschnitt aus 10 Versuchen?</summary>
+      <div class="collapsible__body">Der Durchschnitt glättet Ausreißer durch Unachtsamkeit und gibt ein stabileres Bild deiner Reaktionsleistung als ein einzelner Versuch.</div>
+    </details>
+    <details class="collapsible">
+      <summary>Können Übungsversuche das Ergebnis verzerren?</summary>
+      <div class="collapsible__body">Ja. Die ersten 2–3 Versuche sind typischerweise langsamer (Aufwärm-Effekt). Für aussagekräftige Ergebnisse empfehlen sich 1–2 Aufwärmversuche, dann 10 Messversuche.</div>
+    </details>
+    <details class="collapsible">
+      <summary>Wie kann ich meine Reaktionszeit verbessern?</summary>
+      <div class="collapsible__body">Regelmäßiges Training, ausreichend Schlaf, keine Ablenkungen und moderates Koffein helfen nachweislich. Hardware mit niedriger Latenz (Gaming-Monitor, Gaming-Maus) reduziert zusätzlich die Hardware-seitige Verzögerung.</div>
+    </details>
+    <details class="collapsible">
+      <summary>Was passiert bei einem Frühstart?</summary>
+      <div class="collapsible__body">Der Versuch wird als ungültig gewertet und als "Zu früh" in den Statistiken markiert. Der Test kann sofort neu gestartet werden.</div>
+    </details>
+
+    <h3>Weitere Klickspiele</h3>
+    <nav aria-label="Verwandte Spiele">
+      <ul style="list-style:none;display:flex;flex-wrap:wrap;gap:10px;padding:0;margin-top:8px">
+        <li><a href="./cps-test.html" style="display:inline-flex;align-items:center;height:44px;padding:0 18px;border-radius:9999px;background:var(--c-secondary-container);color:var(--c-on-secondary-container);font-weight:600;font-size:15px">🖱️ CPS Test</a></li>
+        <li><a href="./leertasten-klicker.html" style="display:inline-flex;align-items:center;height:44px;padding:0 18px;border-radius:9999px;background:var(--c-secondary-container);color:var(--c-on-secondary-container);font-weight:600;font-size:15px">⌨️ Leertasten-Klicker</a></li>
+        <li><a href="./klicktest.html" style="display:inline-flex;align-items:center;height:44px;padding:0 18px;border-radius:9999px;background:var(--c-secondary-container);color:var(--c-on-secondary-container);font-weight:600;font-size:15px">⏱️ Klicktest</a></li>
+        <li><a href="./index.html" style="display:inline-flex;align-items:center;height:44px;padding:0 18px;border-radius:9999px;background:var(--c-surf-mid);color:var(--c-on-surf-var);font-weight:600;font-size:15px">← Alle Spiele</a></li>
+      </ul>
+    </nav>
+  </section>
 </main>
 <footer class="site-footer">
-  <div class="container footer__inner">
-    <div class="footer__links">
-      <a href="/">Start</a>
-      <a href="/ueber-uns/">Über uns</a>
-      <a href="/datenschutz/">Datenschutz</a>
-      <a href="/impressum/">Impressum</a>
-    </div>
-    <div class="footer__small">© 2026 klickspiele.de • Client-only Spiele • Keine externen Abhängigkeiten</div>
-  </div>
+  <nav class="site-footer__nav">
+    <a href="https://klickspiele.de">klickspiele.de</a>
+    <a href="./impressum.html">Impressum</a>
+    <a href="./datenschutz.html">Datenschutz</a>
+  </nav>
+  <p class="site-footer__copy">© 2025 klickspiel.net · Kostenlose Klickspiele ohne Anmeldung</p>
 </footer>
+<script>
+(function(){
+  var dm=localStorage.getItem('dm')==='1';
+  if(dm)document.body.classList.add('dark-mode');
+  document.getElementById('dmBtn').addEventListener('click',function(){dm=!dm;document.body.classList.toggle('dark-mode',dm);localStorage.setItem('dm',dm?'1':'0');});
 
-<div class="cookie" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookie Hinweis">
-  <div class="cookie__card">
-    <div class="cookie__text">
-      Wir verwenden optionales, lokales Tracking (nur Events in der Konsole), um die Nutzung zu verstehen.
-      Erst nach Zustimmung werden Events ausgelöst. Du kannst jederzeit in deinem Browser-Speicher widerrufen.
-    </div>
-    <div class="cookie__actions">
-      <button class="btn" id="cookieAccept" type="button">Akzeptieren</button>
-      <button class="btn btn--ghost" id="cookieDecline" type="button">Ablehnen</button>
-    </div>
-  </div>
-</div>
-<script defer src="/assets/js/tracking.js"></script>
-<script defer src="/assets/js/site.js"></script>
+  var field=document.getElementById('reactionField');
+  var rfIcon=document.getElementById('rfIcon');
+  var rfLabel=document.getElementById('rfLabel');
+  var rfSub=document.getElementById('rfSub');
+  var srStatus=document.getElementById('srStatus');
+  // States: idle | ready | go | result | early
+  var state='idle';
+  var signalTime=0;
+  var waitTO=null;
+  var attempts=JSON.parse(localStorage.getItem('clickgames:reaction:attempts')||'[]');
+  var MAX_ATTEMPTS=10;
+
+  function setState(s,extra){
+    state=s;
+    field.className='reaction-field rpl state-'+s;
+    if(s==='idle'){rfIcon.textContent='⚡';rfLabel.textContent='Klicken zum Starten';rfSub.textContent='Oder Leertaste drücken';}
+    else if(s==='ready'){rfIcon.textContent='⏳';rfLabel.textContent='Warten…';rfSub.textContent='Nicht zu früh klicken!';}
+    else if(s==='go'){rfIcon.textContent='🟢';rfLabel.textContent='JETZT!';rfSub.textContent='Klick oder Leertaste!';}
+    else if(s==='result'){rfIcon.textContent='⏱️';rfLabel.innerHTML='<span class="result-time">'+extra+' ms</span>';rfSub.textContent='Klicken für nächsten Versuch';}
+    else if(s==='early'){rfIcon.textContent='❌';rfLabel.textContent='Zu früh!';rfSub.textContent='Klicken für nächsten Versuch';}
+  }
+
+  function startRound(){
+    setState('ready');
+    var delay=1500+Math.random()*2500; // 1500–4000ms
+    waitTO=setTimeout(function(){
+      signalTime=performance.now();
+      setState('go');
+      srStatus.textContent='Los! Jetzt reagieren!';
+    },delay);
+  }
+
+  function handleInput(){
+    if(state==='idle'){startRound();srStatus.textContent='Test gestartet – warte auf das Signal.';}
+    else if(state==='ready'){
+      clearTimeout(waitTO);
+      setState('early');
+      attempts.unshift({type:'early',ms:null});
+      if(attempts.length>MAX_ATTEMPTS)attempts.pop();
+      saveAndRender();
+      srStatus.textContent='Zu früh! Klicke für nächsten Versuch.';
+    }
+    else if(state==='go'){
+      var rt=Math.round(performance.now()-signalTime);
+      setState('result',rt);
+      attempts.unshift({type:'hit',ms:rt});
+      if(attempts.length>MAX_ATTEMPTS)attempts.pop();
+      saveAndRender();
+      srStatus.textContent='Reaktionszeit: '+rt+' Millisekunden';
+    }
+    else if(state==='result'||state==='early'){startRound();srStatus.textContent='Test gestartet – warte auf das Signal.';}
+  }
+
+  field.addEventListener('click',handleInput);
+  document.addEventListener('keydown',function(e){
+    if(e.code==='Space'&&(state==='idle'||state==='ready'||state==='go'||state==='result'||state==='early')){
+      e.preventDefault();handleInput();
+    }
+  });
+
+  function saveAndRender(){
+    localStorage.setItem('clickgames:reaction:attempts',JSON.stringify(attempts));
+    var hits=attempts.filter(function(a){return a.type==='hit';});
+    var best=hits.length?Math.min.apply(null,hits.map(function(a){return a.ms;})):null;
+    var avg=hits.length?Math.round(hits.reduce(function(s,a){return s+a.ms;},0)/hits.length):null;
+    document.getElementById('statBest').textContent=best!==null?best+' ms':'–';
+    document.getElementById('statAvg').textContent=avg!==null?avg+' ms':'–';
+    document.getElementById('statCount').textContent=attempts.length;
+    var list=document.getElementById('attemptsList');
+    if(!attempts.length){list.innerHTML='<p style="font-size:14px;color:var(--c-on-surf-var);text-align:center;padding:8px">Noch keine Versuche.</p>';return;}
+    var maxMs=hits.length?Math.max.apply(null,hits.map(function(a){return a.ms;})):500;
+    list.innerHTML='';
+    attempts.forEach(function(a,i){
+      var row=document.createElement('div');
+      row.className='attempt-row'+(a.type==='early'?' early':a.ms===best&&hits.length?' best':'');
+      if(a.type==='early'){
+        row.innerHTML='<span class="attempt-n">'+(i+1)+'</span><span style="flex:1;font-size:14px">Zu früh</span><span class="attempt-val" style="color:var(--c-error)">–</span>';
+      } else {
+        var pct=Math.round((a.ms/maxMs)*100);
+        row.innerHTML='<span class="attempt-n">'+(i+1)+'</span>'
+          +'<div class="attempt-bar"><div class="attempt-fill" style="width:'+pct+'%"></div></div>'
+          +'<span class="attempt-val">'+a.ms+' ms</span>';
+      }
+      list.appendChild(row);
+    });
+  }
+  saveAndRender();
+
+  document.getElementById('clearBtn').addEventListener('click',function(){
+    attempts=[];
+    localStorage.removeItem('clickgames:reaction:attempts');
+    saveAndRender();
+    setState('idle');
+    srStatus.textContent='Statistiken gelöscht.';
+  });
+})();
+document.addEventListener('pointerdown',function(e){var h=e.target.closest('.rpl');if(!h)return;var r=h.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,sz=Math.max(r.width,r.height)*2.4,w=document.createElement('span');w.className='rpl-wave';w.style.cssText='width:'+sz+'px;height:'+sz+'px;left:'+(x-sz/2)+'px;top:'+(y-sz/2)+'px';h.appendChild(w);w.addEventListener('animationend',function(){w.remove();});},{passive:true});
+</script>
 </body>
 </html>

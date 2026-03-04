@@ -1,0 +1,404 @@
+/* ═══════════════════════════════════════════════════
+   mahjong.css – Spielspezifische Styles
+   klickspiele.de · ergänzt style.css
+═══════════════════════════════════════════════════ */
+
+/* ── Spielhauptbereich ─────────────────────────── */
+.mj-game-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* ── Breadcrumb ────────────────────────────────── */
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+  font-size: 13px;
+  color: var(--c-on-surf-var);
+  padding: 5px 16px;
+  background: var(--c-surf-low);
+  border-bottom: 1px solid var(--c-outline-var);
+}
+.breadcrumb a { color: var(--c-primary); font-weight: 500; }
+.breadcrumb a:hover { text-decoration: none; opacity: .8; }
+
+/* ── Statusleiste ──────────────────────────────── */
+.mj-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  background: var(--c-surf-low);
+  border-bottom: 1px solid var(--c-outline-var);
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
+.mj-chip {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 40px;
+  padding: 0 14px;
+  border-radius: var(--r-full);
+  background: var(--c-surf-mid);
+  box-shadow: var(--elev-1);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--c-on-surface);
+  white-space: nowrap;
+}
+.mj-chip-num {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 700;
+  min-width: 38px;
+}
+.mj-chip-lbl { font-size: 12px; opacity: .65; }
+.mj-spacer   { flex: 1; }
+.mj-best-wrap {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--c-on-surf-var);
+}
+
+/* ── Spielbrett-Scroll-Wrapper ─────────────────── */
+.mj-board-wrap {
+  flex: 1;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 14px 10px;
+  background: radial-gradient(ellipse at 50% 40%,#2a6635 0%,#194523 55%,#0f2b14 100%);
+  min-height: 240px;
+}
+
+/* Spielbrett (Tiles absolut positioniert) */
+#mj-board {
+  position: relative;
+  margin: 0 auto;
+}
+
+/* ── Action-Buttons ────────────────────────────── */
+.mj-fab-row {
+  display: flex;
+  gap: 6px;
+  padding: 8px 10px;
+  justify-content: center;
+  background: var(--c-surf-low);
+  border-top: 1px solid var(--c-outline-var);
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
+.mj-fab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 48px;
+  padding: 0 16px;
+  border-radius: var(--r-full);
+  border: 1.5px solid var(--c-outline-var);
+  background: var(--c-surf-mid);
+  color: var(--c-secondary);
+  font-family: var(--font-ui);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: background var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease);
+  white-space: nowrap;
+}
+.mj-fab:hover   { background: var(--c-surf-high); box-shadow: var(--elev-1); }
+.mj-fab:active  { background: var(--c-surf-highest); }
+.mj-fab:focus-visible { outline: var(--focus-ring); outline-offset: 3px; }
+.mj-fab-icon    { font-size: 18px; pointer-events: none; }
+.mj-fab-primary {
+  background: var(--c-primary);
+  color: var(--c-on-primary);
+  border-color: transparent;
+}
+.mj-fab-primary:hover { background: #e65100; }
+
+/* ── Mahjong-Stein ─────────────────────────────── */
+.mj-tile {
+  position: absolute;
+  width: 62px;
+  height: 78px;
+  border-radius: 7px;
+  background: linear-gradient(155deg,#fffef8 0%,#f5edd0 55%,#ede0ba 100%);
+  border: 1.5px solid #b8a050;
+  border-top-color: #fff5b0;
+  border-left-color: #fff5b0;
+  box-shadow: 2px 3px 0 0 #8a6820, 3px 5px 10px rgba(0,0,0,.45);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 4px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 120ms var(--ease), box-shadow 120ms var(--ease), filter 150ms;
+  will-change: transform;
+}
+/* Freier Stein */
+.mj-free { filter: none; }
+
+/* Blockierter Stein */
+.mj-blocked {
+  filter: brightness(.62) saturate(.45);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Hover (nur Desktop mit echtem Hover) */
+@media (hover: hover) {
+  .mj-free:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 2px 6px 0 0 #8a6820, 4px 12px 18px rgba(0,0,0,.4);
+    z-index: 9999 !important;
+  }
+}
+
+/* Ausgewählt */
+.mj-selected {
+  background: linear-gradient(155deg,#fff8e1 0%,#ffe082 55%,#ffc107 100%);
+  border-color: var(--c-primary);
+  border-top-color: var(--c-primary);
+  border-left-color: var(--c-primary);
+  box-shadow: 0 0 0 2.5px var(--c-primary), 3px 6px 16px rgba(245,124,0,.55);
+  transform: translateY(-5px) scale(1.07);
+  z-index: 9999 !important;
+  filter: none !important;
+}
+
+/* Hinweis-Puls */
+@keyframes mj-pulse {
+  from { box-shadow: 0 0 0 2px #43a047, 2px 4px 8px rgba(67,160,71,.3); }
+  to   { box-shadow: 0 0 0 6px #43a047, 3px 8px 22px rgba(67,160,71,.6); }
+}
+.mj-hint {
+  animation: mj-pulse .65s ease-in-out infinite alternate;
+  border-color: #43a047 !important;
+  border-top-color: #81c784 !important;
+  border-left-color: #81c784 !important;
+  transform: translateY(-3px);
+  z-index: 9999 !important;
+  filter: none !important;
+}
+
+/* Entfernungs-Animation */
+@keyframes mj-remove {
+  0%   { transform: scale(1);    opacity: 1; }
+  35%  { transform: scale(1.28); opacity: .9; }
+  100% { transform: scale(0);    opacity: 0; }
+}
+.mj-removing {
+  animation: mj-remove .32s ease-in forwards;
+  z-index: 9999 !important;
+  pointer-events: none;
+}
+
+/* ── Stein-Inhalt ──────────────────────────────── */
+.mj-sym {
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1;
+  display: block;
+  pointer-events: none;
+  text-shadow: 0 1px 3px rgba(0,0,0,.18);
+}
+.mj-sub {
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: .3px;
+  pointer-events: none;
+  display: block;
+  opacity: .72;
+}
+.mj-sub-b { transform: rotate(180deg); }
+
+/* ── Dark Mode ─────────────────────────────────── */
+body.dark-mode .mj-tile {
+  background: linear-gradient(155deg,#4c3f28 0%,#3a2f1a 55%,#2a2010 100%);
+  border-color:      #6a5220;
+  border-top-color:  #9a7840;
+  border-left-color: #9a7840;
+  box-shadow: 2px 3px 0 0 #2a1c08, 3px 5px 10px rgba(0,0,0,.7);
+}
+body.dark-mode .mj-blocked {
+  filter: brightness(.38) saturate(.3);
+}
+body.dark-mode .mj-selected {
+  background: linear-gradient(155deg,#4a3800 0%,#7a5c00 55%,#a07e00 100%);
+}
+body.dark-mode .mj-board-wrap {
+  background: radial-gradient(ellipse at 50% 40%,#182a1c 0%,#0e1c10 55%,#080f09 100%);
+}
+
+/* ── Overlay ───────────────────────────────────── */
+.mj-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.65);
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+.mj-overlay[hidden] { display: none; }
+
+.mj-dialog {
+  background: var(--c-surface);
+  border-radius: var(--r-xl);
+  padding: 32px 24px 24px;
+  max-width: 360px;
+  width: 100%;
+  text-align: center;
+  box-shadow: var(--elev-2);
+  animation: mj-dialog-in .25s var(--ease) both;
+}
+@keyframes mj-dialog-in {
+  from { transform: scale(.86); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+.mj-dialog-icon { font-size: 52px; margin-bottom: 10px; display: block; }
+.mj-dialog h2   { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+.mj-dialog p    { color: var(--c-on-surf-var); font-size: 16px; margin-bottom: 20px; line-height: 1.6; }
+
+.mj-stats {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+}
+.mj-stat {
+  background: var(--c-surf-mid);
+  border-radius: var(--r-md);
+  padding: 10px 16px;
+  min-width: 82px;
+}
+.mj-stat-val { font-size: 22px; font-weight: 700; color: var(--c-primary); display: block; }
+.mj-stat-lbl { font-size: 12px; color: var(--c-on-surf-var); display: block; margin-top: 2px; }
+
+.mj-dialog-btns { display: flex; flex-direction: column; gap: 8px; }
+.mj-dialog-btns .mj-fab { width: 100%; justify-content: center; height: 52px; font-size: 16px; }
+
+.mj-new-best {
+  display: inline-block;
+  background: var(--c-primary);
+  color: var(--c-on-primary);
+  border-radius: var(--r-full);
+  padding: 3px 14px;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  animation: mj-badge-pop .4s var(--ease) both;
+}
+@keyframes mj-badge-pop {
+  from { transform: scale(0); }
+  to   { transform: scale(1); }
+}
+
+/* ── SEO-Textbereich ───────────────────────────── */
+.seo-section {
+  max-width: var(--content-max);
+  margin: 40px auto 0;
+  padding: 0 16px 64px;
+  color: var(--c-on-bg);
+}
+.seo-section h1 {
+  font-size: 28px; font-weight: 700; line-height: 36px;
+  margin-bottom: 16px; color: var(--c-on-bg);
+}
+.seo-section h2 {
+  font-size: 21px; font-weight: 700;
+  margin: 36px 0 12px; color: var(--c-on-bg);
+}
+.seo-section h3 {
+  font-size: 17px; font-weight: 600;
+  margin: 20px 0 8px; color: var(--c-on-bg);
+}
+.seo-section p  { margin-bottom: 14px; line-height: 1.75; }
+.seo-section ul { padding-left: 20px; margin-bottom: 14px; }
+.seo-section li { margin-bottom: 6px; line-height: 1.72; }
+
+/* ── FAQ ───────────────────────────────────────── */
+.faq-item {
+  border: 1.5px solid var(--c-outline-var);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+.faq-item summary {
+  padding: 15px 18px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--c-surf-low);
+  gap: 10px;
+  transition: background var(--dur-fast);
+}
+.faq-item summary:hover { background: var(--c-surf-mid); }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: '›';
+  font-size: 22px; font-weight: 400;
+  color: var(--c-primary);
+  transition: transform var(--dur-normal) var(--ease);
+  flex-shrink: 0;
+}
+.faq-item[open] summary::after { transform: rotate(90deg); }
+.faq-body {
+  padding: 16px 18px;
+  border-top: 1px solid var(--c-outline-var);
+  line-height: 1.75;
+  background: var(--c-surface);
+  font-size: 16px;
+}
+
+/* ── Verwandte Spiele ──────────────────────────── */
+.related-games {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+.related-games a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  border-radius: var(--r-full);
+  background: var(--c-secondary-container);
+  color: var(--c-on-secondary-container);
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  border: 1.5px solid var(--c-outline-var);
+  transition: background var(--dur-fast), box-shadow var(--dur-fast);
+}
+.related-games a:hover { background: var(--c-surf-high); box-shadow: var(--elev-1); text-decoration: none; }
+
+/* ── Desktop ≥900px ────────────────────────────── */
+@media (min-width: 900px) {
+  .mj-fab-row { gap: 10px; padding: 10px 16px; }
+  .mj-fab     { height: 52px; font-size: 16px; padding: 0 20px; }
+  .mj-board-wrap { padding: 20px 16px; }
+}

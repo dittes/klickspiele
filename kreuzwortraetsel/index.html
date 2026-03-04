@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#F57C00">
+
+  <!-- ── SEO ──────────────────────────────────────────────── -->
+  <title>Kreuzworträtsel online kostenlos lösen – klickspiele.de</title>
+  <meta name="description" content="Kreuzworträtsel kostenlos online lösen – ohne Anmeldung, mobile-optimiert. Täglich neue Rätsel, Highscore-System und Buchstaben-Tipps. Jetzt spielen!">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://klickspiele.de/kreuzwortratsel">
+
+  <!-- ── Open Graph ────────────────────────────────────────── -->
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://klickspiele.de/kreuzwortratsel">
+  <meta property="og:title"       content="Kreuzworträtsel kostenlos online – klickspiele.de">
+  <meta property="og:description" content="Täglich frische Kreuzworträtsel für alle Schwierigkeitsstufen. Kostenlos, werbefrei, ohne Anmeldung. Jetzt im Browser spielen!">
+  <meta property="og:image"       content="https://klickspiele.de/img/kreuzwortratsel-og.png">
+  <meta property="og:locale"      content="de_DE">
+  <meta property="og:site_name"   content="klickspiele.de">
+
+  <!-- ── Twitter Card ──────────────────────────────────────── -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="Kreuzworträtsel kostenlos online – klickspiele.de">
+  <meta name="twitter:description" content="Täglich frische Kreuzworträtsel. Kostenlos, ohne Anmeldung, direkt im Browser spielen.">
+  <meta name="twitter:image"       content="https://klickspiele.de/img/kreuzwortratsel-og.png">
+
+  <!-- ── Favicon ───────────────────────────────────────────── -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23F57C00'/><path d='M8 4 L8 24 L13 19 L16.5 27 L19.5 25.5 L16 17.5 L22 17.5 Z' fill='white'/></svg>">
+
+  <!-- ── Stylesheet ────────────────────────────────────────── -->
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./crossword.css">
+
+  <!-- ── Structured Data: WebApplication + Game ───────────── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["WebApplication", "Game"],
+    "name": "Kreuzworträtsel online kostenlos",
+    "url": "https://klickspiele.de/kreuzwortratsel",
+    "description": "Kostenlose Kreuzworträtsel online lösen – täglich neue Rätsel, ohne Anmeldung, direkt im Browser.",
+    "applicationCategory": "Game",
+    "genre": "Puzzle",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+    "inLanguage": "de",
+    "publisher": {
+      "@type": "Organization",
+      "name": "klickspiele.de",
+      "url": "https://klickspiele.de"
+    },
+    "audience": { "@type": "Audience", "audienceType": "Allgemein" }
+  }
+  </script>
+
+  <!-- ── Structured Data: BreadcrumbList ──────────────────── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "klickspiele.de", "item": "https://klickspiele.de" },
+      { "@type": "ListItem", "position": 2, "name": "Kreuzworträtsel", "item": "https://klickspiele.de/kreuzwortratsel" }
+    ]
+  }
+  </script>
+
+  <!-- ── Structured Data: FAQPage ─────────────────────────── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Wie spielt man Kreuzworträtsel online?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Klicke auf ein weißes Feld im Rätselgitter, um es auszuwählen. Der zugehörige Hinweis erscheint in der blauen Leiste über dem Gitter. Tippe den gesuchten Begriff Buchstabe für Buchstabe ein. Mit Pfeiltasten oder einem Klick auf die Hinweisliste wechselst du zwischen den Wörtern."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Kann ich das Kreuzworträtsel auf dem Handy spielen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja! Das Rätsel ist vollständig für mobile Geräte optimiert. Tippe auf ein Feld, und die virtuelle Tastatur deines Smartphones öffnet sich automatisch. Das Gitter skaliert sich passend zur Bildschirmgröße."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Was passiert, wenn ich einen Buchstaben falsch eintrage?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Du kannst jederzeit mit der Schaltfläche 'Buchstaben prüfen' alle eingetragenen Buchstaben überprüfen. Falsche Einträge werden rot markiert und leicht animiert. Du kannst sie dann einfach überschreiben."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wie bekomme ich einen Tipp, wenn ich nicht weiterkomme?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Wähle das entsprechende Feld aus und klicke auf das Glühbirnen-Symbol (Buchstabentipp). Der korrekte Buchstabe wird aufgedeckt. Beachte: Jeder Tipp kostet 25 Punkte, das Aufdecken eines ganzen Wortes kostet 100 Punkte."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wird mein Spielfortschritt gespeichert?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja, dein Fortschritt wird automatisch in deinem Browser gespeichert (localStorage). Wenn du das Fenster schließt oder die Seite neu lädst, kannst du genau dort weitermachen, wo du aufgehört hast."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wie wird die Punktzahl berechnet?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Du erhältst 10 Punkte pro korrekt eingetragenem Buchstaben und 50 Bonuspunkte für jedes vollständig gelöste Wort. Am Ende gibt es einen Zeitbonus von bis zu 300 Punkten für besonders schnelle Lösungen. Tipps und Aufdeckungen ziehen Punkte ab."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Was bedeuten 'Waagerecht' und 'Senkrecht' beim Kreuzworträtsel?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "'Waagerecht' bezeichnet Wörter, die von links nach rechts im Gitter eingetragen werden. 'Senkrecht' sind Wörter, die von oben nach unten verlaufen. Jedes Wort hat eine Nummer, die mit dem entsprechenden Hinweis in der Liste übereinstimmt."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Gibt es verschiedene Schwierigkeitsstufen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja, klickspiele.de bietet Kreuzworträtsel in den Stufen Leicht, Mittel und Schwer an. Leichtere Rätsel haben kürzere Wörter und eindeutigere Hinweise, während schwere Rätsel komplexere Begriffe und mehrdeutige Umschreibungen verwenden."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <!-- Skip link -->
+  <a class="skip" href="#main">Zum Inhalt springen</a>
+
+  <!-- ══════════════════════════════════════
+       TOP APP BAR
+  ══════════════════════════════════════ -->
+  <header class="top-bar" role="banner">
+    <a href="https://klickspiele.de" class="home-btn rpl" aria-label="Zurück zu klickspiele.de">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M4 2 L4 19 L8 15 L11 22 L13.5 21 L10.5 14 L16 14 Z"/>
+      </svg>
+    </a>
+    <span class="top-bar__title">Kreuzworträtsel</span>
+    <div class="top-bar__actions">
+      <!-- Timer chip -->
+      <div class="timer-chip" role="timer" aria-label="Spielzeit">
+        <span class="timer-icon" aria-hidden="true">⏱</span>
+        <span class="timer-display" id="cw-timer">00:00</span>
+      </div>
+      <!-- Score -->
+      <div class="timer-chip" aria-label="Punktestand">
+        <span class="timer-icon" aria-hidden="true">★</span>
+        <span class="timer-display" id="cw-score">0</span>
+      </div>
+      <!-- Pause -->
+      <button class="bar-icon-btn rpl" id="btn-pause" aria-label="Pausieren" title="Pausieren">
+        <span class="btn-icon-glyph" aria-hidden="true">⏸</span>
+      </button>
+      <!-- Dark mode -->
+      <button class="bar-icon-btn rpl" id="btn-dark" aria-label="Dark Mode" title="Dark Mode umschalten">
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true">
+          <path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/>
+        </svg>
+      </button>
+      <!-- Stats -->
+      <button class="bar-icon-btn rpl" id="btn-stats" aria-label="Statistik" title="Highscores anzeigen">
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true">
+          <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14H7v-2h5v2zm5-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hidden input for keyboard capture -->
+  <input id="cw-hidden-input" type="text" autocomplete="off" autocorrect="off"
+         autocapitalize="characters" spellcheck="false" aria-hidden="true"
+         tabindex="-1">
+
+  <!-- ══════════════════════════════════════
+       MAIN CONTENT
+  ══════════════════════════════════════ -->
+  <main id="main" class="game-main" role="main">
+
+    <!-- ── Above the fold intro ──────────────────── -->
+    <section class="cw-intro" aria-labelledby="cw-headline">
+      <div class="cw-intro__inner">
+        <h1 id="cw-headline" class="cw-intro__h1">
+          Kreuzworträtsel online kostenlos lösen
+        </h1>
+        <p class="cw-intro__lead">
+          Willkommen beim kostenlosen Kreuzworträtsel auf klickspiele.de – ohne Anmeldung,
+          ohne Download, direkt im Browser spielbar. Wähle ein Feld, lies den Hinweis und
+          fülle das Gitter Buchstabe für Buchstabe aus. Ob am PC, Tablet oder Smartphone –
+          das Rätsel passt sich automatisch an dein Gerät an. Täglich neue Herausforderungen
+          warten auf dich!
+        </p>
+      </div>
+    </section>
+
+    <!-- ── Game area ──────────────────────────────── -->
+    <div class="game-center">
+      <div class="game-left">
+
+        <!-- Mode selector -->
+        <div class="diff-row" role="group" aria-label="Spielmodus wählen">
+          <button class="diff-btn cw-mode-btn active rpl" data-mode="classic" aria-pressed="true">
+            <span class="tick" aria-hidden="true">✓</span> Klassisch
+          </button>
+          <button class="diff-btn cw-mode-btn rpl" data-mode="timed" aria-pressed="false">
+            ⏱ Zeitlimit
+          </button>
+          <button class="diff-btn cw-mode-btn rpl" data-mode="daily" aria-pressed="false">
+            📅 Täglich
+          </button>
+        </div>
+
+        <!-- Action toolbar -->
+        <div class="toolbar-row" role="toolbar" aria-label="Spiel-Aktionen">
+          <div class="toolbar-btns">
+            <!-- Check letter -->
+            <button class="tool-btn rpl" id="btn-check" aria-label="Alle Buchstaben prüfen" title="Buchstaben prüfen">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+              </svg>
+            </button>
+            <!-- Check word -->
+            <button class="tool-btn rpl" id="btn-check-w" aria-label="Aktuelles Wort prüfen" title="Wort prüfen">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+              </svg>
+            </button>
+            <!-- Hint letter -->
+            <button class="tool-btn rpl" id="btn-hint" aria-label="Buchstabentipp anzeigen (−25 Punkte)" title="Buchstabentipp">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z"/>
+              </svg>
+            </button>
+            <!-- Reveal word -->
+            <button class="tool-btn rpl" id="btn-reveal-w" aria-label="Wort aufdecken (−100 Punkte)" title="Wort aufdecken">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+              </svg>
+            </button>
+            <!-- Restart -->
+            <button class="tool-btn rpl" id="btn-restart" aria-label="Rätsel neu starten" title="Neu starten">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
+              </svg>
+            </button>
+            <!-- Browse puzzles -->
+            <button class="tool-btn rpl" id="btn-browse" aria-label="Rätsel auswählen" title="Rätsel auswählen">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h10v2zm-4 4H9v-2h6v2zm4-8H9V5h10v2z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Progress bar -->
+        <div id="cw-progress-wrap" aria-label="Fortschritt">
+          <div id="cw-progress-track" role="progressbar"
+               aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"
+               aria-label="Gelöste Wörter">
+            <div id="cw-progress-bar"></div>
+          </div>
+        </div>
+
+        <!-- Active clue bar -->
+        <div id="cw-clue-bar" aria-live="polite" aria-atomic="true" role="status">
+          Klicke ein Feld an, um zu starten
+        </div>
+        <span id="cw-active-clue" class="sr-only" aria-live="polite"></span>
+
+        <!-- THE GRID -->
+        <div id="cw-grid" role="grid" aria-label="Kreuzworträtsel-Gitter"></div>
+
+      </div><!-- /.game-left -->
+    </div><!-- /.game-center -->
+
+    <!-- Score flash overlay -->
+    <div id="cw-score-flash" aria-hidden="true"></div>
+    <!-- Confetti canvas -->
+    <canvas id="cw-confetti" aria-hidden="true"></canvas>
+
+    <!-- ── Clue lists ─────────────────────────────── -->
+    <section class="cw-clues-section" aria-label="Hinweise">
+      <div>
+        <p class="cw-clues-title">→ Waagerecht</p>
+        <ul id="cw-list-h" aria-label="Waagerechte Hinweise" role="list"></ul>
+      </div>
+      <div>
+        <p class="cw-clues-title">↓ Senkrecht</p>
+        <ul id="cw-list-v" aria-label="Senkrechte Hinweise" role="list"></ul>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         SEO TEXT SECTION
+    ══════════════════════════════════════════════ -->
+    <section class="seo-section" aria-label="Informationen zum Kreuzworträtsel">
+
+      <!-- ── Regeln ──────────────────────────────── -->
+      <details class="collapsible" open>
+        <summary>Spielregeln: So funktioniert das Kreuzworträtsel</summary>
+        <div class="collapsible__body">
+          <p>
+            Ein Kreuzworträtsel besteht aus einem quadratischen oder rechteckigen Gitter aus weißen
+            und schwarzen Feldern. In die weißen Felder werden Buchstaben eingetragen, die
+            zusammen gesuchte Wörter ergeben. Jedes Wort hat eine Nummer und einen zugehörigen
+            Hinweis – entweder <strong>waagerecht</strong> (von links nach rechts) oder
+            <strong>senkrecht</strong> (von oben nach unten).
+          </p>
+          <h3>So geht's Schritt für Schritt</h3>
+          <p>
+            <strong>1. Feld auswählen:</strong> Klicke oder tippe auf ein weißes Feld im Gitter.
+            Das Feld leuchtet orange auf, und das zugehörige Wort wird blau hinterlegt.
+            Der passende Hinweis erscheint in der Hinweisleiste oberhalb des Gitters.
+          </p>
+          <p>
+            <strong>2. Buchstaben eingeben:</strong> Tippe die Buchstaben direkt auf deiner
+            Tastatur oder der Bildschirmtastatur. Der Cursor springt automatisch zum nächsten
+            freien Feld im Wort weiter.
+          </p>
+          <p>
+            <strong>3. Richtung wechseln:</strong> Klicke zweimal auf dasselbe Feld, um zwischen
+            waagerechter und senkrechter Richtung zu wechseln – sofern das Feld zu Wörtern
+            in beiden Richtungen gehört.
+          </p>
+          <p>
+            <strong>4. Buchstaben löschen:</strong> Drücke die Rücktaste (Backspace) oder
+            die Entf-Taste, um den aktuellen Buchstaben zu löschen. Bei leerem Feld springt
+            der Cursor zum vorherigen Feld zurück.
+          </p>
+          <p>
+            <strong>5. Mit Tab navigieren:</strong> Die Tab-Taste springt automatisch zum
+            nächsten ungelösten Wort. Mit Shift+Tab geht es rückwärts.
+          </p>
+        </div>
+      </details>
+
+      <!-- ── Strategien ──────────────────────────── -->
+      <details class="collapsible">
+        <summary>Strategien für Fortgeschrittene</summary>
+        <div class="collapsible__body">
+          <h3>Von kurzen zu langen Wörtern</h3>
+          <p>
+            Beginne immer mit den kürzesten Wörtern im Rätsel (2–3 Buchstaben). Diese lassen
+            sich am einfachsten erschließen und füllen gleichzeitig Kreuzungsbuchstaben für
+            längere Wörter aus. Jeder korrekte Buchstabe ist ein Ankerpunkt für angrenzende
+            Wörter.
+          </p>
+          <h3>Kreuzungsbuchstaben nutzen</h3>
+          <p>
+            Horizontale und vertikale Wörter teilen sich Buchstaben an Kreuzungspunkten.
+            Hast du ein waagerechtes Wort vollständig gelöst, sind die senkrechten Wörter,
+            die durch dieses Wort verlaufen, bereits teilweise ausgefüllt. Nutze diese
+            Vorgaben aktiv: Manchmal genügt ein einzelner bekannter Buchstabe, um das
+            gesuchte Wort zu erraten.
+          </p>
+          <h3>Wortenden beachten</h3>
+          <p>
+            Im Deutschen endet ein Großteil der Nomen auf -ung, -heit, -keit, -schaft oder -tion.
+            Verben im Infinitiv enden auf -en oder -ern. Adjektive häufig auf -ig, -lich oder -sam.
+            Diese Muster helfen enorm, wenn du nur wenige Buchstaben eines Wortes kennst.
+          </p>
+          <h3>Hinweise doppelt lesen</h3>
+          <p>
+            Viele Hinweise haben eine wörtliche und eine übertragene Bedeutung. Lese den Hinweis
+            bewusst zweimal: einmal literal, einmal metaphorisch. „Jemanden in die Schranken
+            weisen" könnte auf einen Begriff aus dem Rechtswesen hindeuten, aber auch auf einen
+            Tennisbegriff anspielen.
+          </p>
+          <h3>Schwierige Wörter eingrenzen</h3>
+          <p>
+            Wenn du ein Wort nicht kennst, hilft es, bekannte Buchstaben in ein leeres Textfeld
+            zu tippen und mit Joker-Zeichen (*) zu suchen. Zum Beispiel: „B*O*" für ein
+            4-buchstabiges Wort, das mit B beginnt und an dritter Stelle ein O enthält.
+          </p>
+        </div>
+      </details>
+
+      <!-- ── Wortarten ───────────────────────────── -->
+      <details class="collapsible">
+        <summary>Wortarten im Kreuzworträtsel erklärt</summary>
+        <div class="collapsible__body">
+          <h3>Nomen (Substantive)</h3>
+          <p>
+            Der Großteil der gesuchten Wörter in deutschen Kreuzworträtseln sind Nomen.
+            Sie stehen im Gitter immer ohne Artikel und häufig im Nominativ Singular.
+            Zusammengesetzte Substantive wie „Haustür" oder „Briefkasten" sind beliebt,
+            da sie das Gitter gut füllen.
+          </p>
+          <h3>Verben</h3>
+          <p>
+            Verben erscheinen meist im Infinitiv (z.&thinsp;B. „LAUFEN", „SCHREIBEN") oder
+            in einer konjugierten Form. Der Hinweis verrät meistens die Person und Zeit:
+            „Ich tue etwas Mutiges" könnte auf „WAGE" hindeuten.
+          </p>
+          <h3>Adjektive</h3>
+          <p>
+            Adjektive kommen in Grundform vor. Ein Hinweis wie „Gegenteil von dunkel" führt
+            zu „HELL". Achte auf Steigerungsformen: „Sehr groß" könnte auf „RIESIG" deuten.
+          </p>
+          <h3>Eigennamen & Fachbegriffe</h3>
+          <p>
+            In Themenrätseln tauchen häufig Eigennamen (Städte, Persönlichkeiten, Flüsse)
+            oder Fachbegriffe (Musik, Biologie, Geschichte) auf. Der Hinweis gibt meist
+            den Kontext vor: „Hauptstadt Frankreichs" → „PARIS".
+          </p>
+          <h3>Abkürzungen & Fremdwörter</h3>
+          <p>
+            Gelegentlich finden sich Abkürzungen wie „EU", „UNO" oder lateinische Lehnwörter
+            wie „EGO", „ERA" oder „AMO". Diese sind in der Regel durch sehr knappe Hinweise
+            gekennzeichnet.
+          </p>
+        </div>
+      </details>
+
+      <!-- ── Tipps für Anfänger ──────────────────── -->
+      <details class="collapsible">
+        <summary>Tipps für Kreuzworträtsel-Einsteiger</summary>
+        <div class="collapsible__body">
+          <p>
+            Du spielst zum ersten Mal ein Kreuzworträtsel? Kein Problem! Mit diesen
+            Grundregeln bist du schnell dabei:
+          </p>
+          <h3>Klein anfangen</h3>
+          <p>
+            Wähle für den Einstieg Rätsel der Stufe „Leicht". Sie enthalten kürzere Wörter
+            aus dem Alltag, klar formulierte Hinweise und ein überschaubares Gitter.
+            Sobald du ein Gefühl für die Struktur hast, steigere die Schwierigkeit.
+          </p>
+          <h3>Keinen Druck machen</h3>
+          <p>
+            Kreuzworträtsel sind kein Wettrennen – zumindest nicht im klassischen Modus.
+            Nimm dir Zeit, lies jeden Hinweis sorgfältig. Wenn ein Wort nicht klappt,
+            überspring es und kehre später zurück. Neue Buchstaben aus anderen Lösungen
+            öffnen oft überraschend den Weg.
+          </p>
+          <h3>Buchstaben-Tipp nutzen</h3>
+          <p>
+            Steckst du bei einem Wort komplett fest? Nutze den integrierten Buchstabentipp
+            (Glühbirnen-Symbol in der Toolbar). Er deckt den ersten unbekannten Buchstaben
+            auf und kostet nur 25 Punkte – ein fairer Kompromiss.
+          </p>
+          <h3>Regelmäßig spielen</h3>
+          <p>
+            Das Kreuzworträtsel ist wie ein Muskel: Wer regelmäßig übt, wird besser.
+            Bereits nach wenigen Wochen täglichen Spielens erkennst du typische Muster,
+            gängige Kreuzworträtsel-Vokabeln und Hinweis-Formulierungen sofort wieder.
+          </p>
+        </div>
+      </details>
+
+      <!-- ── Schwierigkeitsgrade ─────────────────── -->
+      <details class="collapsible">
+        <summary>Schwierigkeitsgrade: Von Leicht bis Experte</summary>
+        <div class="collapsible__body">
+          <h3>Leicht</h3>
+          <p>
+            Gittergröße 8×8 bis 10×10. Alle gesuchten Wörter stammen aus dem
+            Grundwortschatz – Tiere, Farben, Berufe, Alltagsgegenstände. Hinweise sind
+            direkt und eindeutig formuliert. Empfohlen für Kinder ab 10 Jahren und
+            Einsteiger.
+          </p>
+          <h3>Mittel</h3>
+          <p>
+            Gittergröße 12×12 bis 15×15. Der Wortschatz umfasst auch Fachbegriffe,
+            historische Ereignisse und geografische Namen. Einzelne Hinweise können
+            mehrdeutig oder mit Wortspielen formuliert sein.
+          </p>
+          <h3>Schwer</h3>
+          <p>
+            Gittergröße 15×15 und größer. Viele Wörter kommen aus Spezialgebieten:
+            Literatur, Wissenschaft, Kultur, Mythologie. Hinweise sind knapp formuliert
+            oder enthalten Querverweise auf andere Lösungen im selben Rätsel (Kreuzreferenzen).
+          </p>
+          <h3>Experte</h3>
+          <p>
+            Maximale Gittergröße, komplexe Kreuzstrukturen und anspruchsvoller
+            Fachvokabular aus Philosophie, Medizin, Musik und Geschichte. Nur für geübte
+            Kreuzworträtsel-Fans. Manchmal sind Buchstaben bewusst doppeldeutig platziert.
+          </p>
+        </div>
+      </details>
+
+      <!-- ── Geschichte ──────────────────────────── -->
+      <details class="collapsible">
+        <summary>Geschichte des Kreuzworträtsels</summary>
+        <div class="collapsible__body">
+          <p>
+            Das erste bekannte Kreuzworträtsel erschien am <strong>21. Dezember 1913</strong>
+            in der New Yorker Sonntagszeitung <em>New York World</em>. Der britisch-amerikanische
+            Journalist <strong>Arthur Wynne</strong> entwarf das rautenförmige Gitter unter
+            dem Titel „Word-Cross Puzzle". Sein Rätsel hatte 32 Wörter und keine schwarzen Felder.
+          </p>
+          <p>
+            Die Idee verbreitete sich rasch: In den 1920er Jahren veröffentlichten amerikanische
+            Zeitungen regelmäßig Rätsel, und 1924 brachte der Simon-&amp;-Schuster-Verlag
+            das erste eigenständige Kreuzworträtsel-Buch heraus – ein Bestseller, der eine
+            weltweite Begeisterungswelle auslöste.
+          </p>
+          <p>
+            In Deutschland hielten Kreuzworträtsel in den 1920er und 1930er Jahren Einzug.
+            Heute erscheinen sie täglich in nahezu jeder Zeitung, in Rätselheften und seit
+            den 2000er Jahren in immer ausgefeilterer Form im Internet. Moderne Online-Rätsel
+            wie das auf klickspiele.de bieten Echtzeit-Validierung, Tipp-Systeme und
+            automatische Punktewertung.
+          </p>
+          <p>
+            Besondere kulturelle Bedeutung hat das <strong>New York Times Crossword</strong>,
+            das seit 1942 täglich erscheint und für seinen steigenden Schwierigkeitsgrad
+            im Laufe der Woche bekannt ist: Montag ist der leichteste Tag, Samstag der
+            schwerste – der Sonntag fällt als besonders großes Rätsel heraus.
+          </p>
+        </div>
+      </details>
+
+      <!-- ── Vorteile ────────────────────────────── -->
+      <details class="collapsible">
+        <summary>Vorteile für Gedächtnis und Konzentration</summary>
+        <div class="collapsible__body">
+          <p>
+            Kreuzworträtsel sind weit mehr als ein Zeitvertreib – sie sind ein
+            echtes Gehirntraining mit messbarem Nutzen:
+          </p>
+          <h3>Kognitive Fitness</h3>
+          <p>
+            Mehrere Studien, darunter eine der University of Exeter (2019), zeigen,
+            dass regelmäßiges Rätseln den altersbedingten kognitiven Abbau verlangsamt.
+            Wer täglich Kreuzworträtsel löst, hat in Tests zur Gedächtnisleistung und
+            Verarbeitungsgeschwindigkeit signifikant bessere Ergebnisse als Gleichaltrige,
+            die keine Rätsel lösen.
+          </p>
+          <h3>Wortschatz erweitern</h3>
+          <p>
+            Jedes Rätsel enthält im Schnitt 30–80 neue oder seltene Vokabeln.
+            Das wiederholte Begegnen mit unbekannten Wörtern in konkretem Kontext
+            ist eine der effektivsten Methoden zum Vokabellernen – besser als isoliertes
+            Auswendiglernen.
+          </p>
+          <h3>Konzentration trainieren</h3>
+          <p>
+            Ein Kreuzworträtsel zu lösen erfordert anhaltende Aufmerksamkeit über
+            10 bis 60 Minuten. Das trainiert die Fähigkeit zur Tiefenkonzentration,
+            die in der heutigen Welt der permanenten Ablenkungen zunehmend wertvoll wird.
+          </p>
+          <h3>Stressabbau</h3>
+          <p>
+            Das Eintauchen in ein Rätsel hat eine meditative Wirkung. Die Aufmerksamkeit
+            wird bewusst auf eine klar abgegrenzte Aufgabe gelenkt, was den Alltagsstress
+            kurzfristig ausblenden lässt. Ähnlich wie beim Sudoku entsteht durch das
+            Lösen eines Wortes ein kleines Erfolgserlebnis mit Dopamin-Ausschüttung.
+          </p>
+          <h3>Allgemeinwissen vertiefen</h3>
+          <p>
+            Themenbezogene Rätsel (Geschichte, Geografie, Musik, Sport) sind eine
+            unterhaltsame Methode, das eigene Allgemeinwissen zu erweitern. Wer weiß
+            schon auf Anhieb, wie die Hauptstadt von Tadschikistan heißt? Nach dem
+            ersten Kreuzworträtsel-Auftritt vergisst man „Duschanbe" so schnell nicht mehr.
+          </p>
+        </div>
+      </details>
+
+      <!-- ── FAQ ────────────────────────────────── -->
+      <details class="collapsible" id="faq">
+        <summary>Häufige Fragen (FAQ)</summary>
+        <div class="collapsible__body">
+          <div class="faq-item">
+            <p class="faq-q">Wie spielt man Kreuzworträtsel online?</p>
+            <p class="faq-a">
+              Klicke auf ein weißes Feld im Gitter – der Hinweis erscheint oben. Tippe die
+              Buchstaben über die Tastatur oder Bildschirmtastatur ein. Der Cursor wandert
+              automatisch vorwärts. Mit Tab springst du zum nächsten Wort.
+            </p>
+          </div>
+          <div class="faq-item">
+            <p class="faq-q">Funktioniert das Rätsel auch auf dem Handy?</p>
+            <p class="faq-a">
+              Ja, vollständig. Tippe auf ein Feld und die virtuelle Tastatur öffnet sich.
+              Das Gitter skaliert automatisch zur Bildschirmbreite.
+            </p>
+          </div>
+          <div class="faq-item">
+            <p class="faq-q">Wie bekomme ich einen Buchstaben-Tipp?</p>
+            <p class="faq-a">
+              Wähle das gewünschte Feld aus und klicke in der Toolbar auf das Glühbirnen-Symbol.
+              Jeder Tipp kostet 25 Punkte vom Gesamtscore.
+            </p>
+          </div>
+          <div class="faq-item">
+            <p class="faq-q">Wird mein Fortschritt gespeichert?</p>
+            <p class="faq-a">
+              Ja, automatisch im lokalen Speicher deines Browsers. Du kannst das Fenster
+              schließen und später weitermachen – keine Anmeldung nötig.
+            </p>
+          </div>
+          <div class="faq-item">
+            <p class="faq-q">Wie werden Punkte berechnet?</p>
+            <p class="faq-a">
+              10 Punkte pro Buchstabe, 50 Bonuspunkte pro gelöstem Wort, bis zu 300 Zeitbonus-Punkte.
+              Tipps und Aufdeckungen reduzieren den Score.
+            </p>
+          </div>
+          <div class="faq-item">
+            <p class="faq-q">Kann ich das Rätsel zurücksetzen?</p>
+            <p class="faq-a">
+              Ja, über das Pfeil-Symbol in der Toolbar. Nach einer Bestätigung beginnt das Rätsel
+              von vorne. Der gespeicherte Fortschritt wird gelöscht.
+            </p>
+          </div>
+          <div class="faq-item">
+            <p class="faq-q">Was bedeutet 'Waagerecht' und 'Senkrecht'?</p>
+            <p class="faq-a">
+              Waagerecht bedeutet, das Wort wird von links nach rechts eingetragen. Senkrecht
+              bedeutet von oben nach unten. Klicke zweimal auf ein Kreuzungsfeld, um zwischen
+              beiden Richtungen zu wechseln.
+            </p>
+          </div>
+          <div class="faq-item">
+            <p class="faq-q">Gibt es verschiedene Schwierigkeitsstufen?</p>
+            <p class="faq-a">
+              Ja – Leicht, Mittel, Schwer und Experte. Im Menü oben wählst du den Modus.
+              Täglich neue Rätsel warten in der Kategorie „Tägliches Rätsel".
+            </p>
+          </div>
+        </div>
+      </details>
+
+    </section><!-- /.seo-section -->
+  </main>
+
+  <!-- ══════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════ -->
+  <footer class="site-footer" role="contentinfo">
+    <nav class="site-footer__nav" aria-label="Footer-Navigation">
+      <a href="https://klickspiele.de">klickspiele.de</a>
+      <a href="./imprint">Impressum</a>
+      <a href="./privacy">Datenschutz</a>
+    </nav>
+    <p class="site-footer__copy">© 2025 klickspiele.de · Kostenlose Spiele ohne Anmeldung</p>
+  </footer>
+
+  <!-- ══════════════════════════════════════
+       DIALOGS
+  ══════════════════════════════════════ -->
+
+  <!-- Puzzle Browser dialog -->
+  <div class="dialog-scrim" id="dlg-browser" role="dialog"
+       aria-modal="true" aria-hidden="true" aria-labelledby="dlg-browser-headline"
+       style="align-items:flex-start;padding-top:10vh;">
+    <div class="dialog" style="max-width:560px;width:100%;max-height:80vh;overflow-y:auto;">
+      <div class="dialog-icon">🎮</div>
+      <h2 class="dialog-headline" id="dlg-browser-headline">Rätsel auswählen</h2>
+      <p class="dialog-body" style="margin-bottom:12px;">
+        Wähle eine Kategorie und starte ein neues Rätsel.
+      </p>
+      <!-- Daily shortcut -->
+      <div style="margin-bottom:16px;text-align:center;">
+        <button class="btn-filled rpl" id="btn-daily" style="font-size:15px;height:48px;padding:0 22px;">
+          📅 Tagesrätsel laden
+        </button>
+      </div>
+      <!-- Category filter -->
+      <div id="browser-cats" role="group" aria-label="Kategorien"></div>
+      <!-- Puzzle grid -->
+      <div id="browser-grid" role="list" aria-label="Rätsel-Liste"></div>
+      <!-- Pagination -->
+      <div class="browser-pagination">
+        <button id="browser-prev" class="rpl" aria-label="Vorherige Seite">← Zurück</button>
+        <span id="browser-page-info"></span>
+        <button id="browser-next" class="rpl" aria-label="Nächste Seite">Weiter →</button>
+      </div>
+      <div class="dialog-actions" style="margin-top:16px;">
+        <button class="btn-text rpl" id="dlg-browser-close">Schließen</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Confirmation dialog (restart / reveal) -->
+  <div class="dialog-scrim" id="dlg-confirm" role="dialog"
+       aria-modal="true" aria-hidden="true" aria-labelledby="dlg-confirm-headline">
+    <div class="dialog">
+      <div class="dialog-icon" id="dlg-confirm-icon">🔄</div>
+      <h2 class="dialog-headline" id="dlg-confirm-headline">Neu starten?</h2>
+      <p class="dialog-body" id="dlg-confirm-body">Dein Fortschritt geht verloren.</p>
+      <div class="dialog-actions">
+        <button class="btn-text rpl dlg-btn-cancel" aria-label="Abbrechen">Abbrechen</button>
+        <button class="btn-filled rpl dlg-btn-confirm" aria-label="Bestätigen">Bestätigen</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game-complete dialog -->
+  <div class="dialog-scrim" id="dlg-complete" role="dialog"
+       aria-modal="true" aria-hidden="true" aria-labelledby="dlg-complete-headline">
+    <div class="dialog">
+      <div class="dialog-icon">🎉</div>
+      <h2 class="dialog-headline" id="dlg-complete-headline">Gelöst!</h2>
+      <p class="dialog-body">Herzlichen Glückwunsch – du hast das Rätsel vollständig gelöst!</p>
+      <div class="dialog-stats">
+        <div class="d-stat">
+          <div class="d-stat__lbl">Zeit</div>
+          <div class="d-stat__val" id="dlg-complete-time">00:00</div>
+        </div>
+        <div class="d-stat">
+          <div class="d-stat__lbl">Punkte</div>
+          <div class="d-stat__val" id="dlg-complete-score">0</div>
+        </div>
+        <div class="d-stat">
+          <div class="d-stat__lbl">Zeitbonus</div>
+          <div class="d-stat__val" id="dlg-complete-bonus">+0</div>
+        </div>
+        <div class="d-stat">
+          <div class="d-stat__lbl">Tipps</div>
+          <div class="d-stat__val" id="dlg-complete-hints">0</div>
+        </div>
+      </div>
+      <div class="dialog-actions">
+        <button class="btn-filled rpl" id="dlg-complete-restart">Nochmal spielen</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats / Highscore dialog -->
+  <div class="dialog-scrim" id="dlg-stats" role="dialog"
+       aria-modal="true" aria-hidden="true" aria-labelledby="dlg-stats-headline">
+    <div class="dialog">
+      <div class="dialog-icon">🏆</div>
+      <h2 class="dialog-headline" id="dlg-stats-headline">Highscores</h2>
+      <div id="cw-stats-body" style="max-height:300px;overflow-y:auto;margin-bottom:20px;">
+        <p style="color:var(--c-on-surf-var);font-size:16px;">Noch keine Einträge.</p>
+      </div>
+      <div class="dialog-actions">
+        <button class="btn-filled rpl" id="dlg-stats-close">Schließen</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       SCRIPTS
+  ══════════════════════════════════════ -->
+
+  <!-- Ripple handler -->
+  <script>
+    document.addEventListener('pointerdown', function(e) {
+      var h = e.target.closest('.rpl');
+      if (!h) return;
+      var r = h.getBoundingClientRect(),
+          x = e.clientX - r.left,
+          y = e.clientY - r.top,
+          sz = Math.max(r.width, r.height) * 2.4,
+          w = document.createElement('span');
+      w.className = 'rpl-wave';
+      w.style.cssText = 'width:' + sz + 'px;height:' + sz + 'px;left:' + (x - sz/2) + 'px;top:' + (y - sz/2) + 'px';
+      h.appendChild(w);
+      w.addEventListener('animationend', function() { w.remove(); }, { once: true });
+    }, { passive: true });
+  </script>
+
+  <!-- Puzzle database & generator (must load before game.js) -->
+  <script src="./puzzles.js" defer></script>
+  <!-- Game engine -->
+  <script src="./game.js" defer></script>
+
+</body>
+</html>

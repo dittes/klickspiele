@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#F57C00">
+
+  <!-- ══ SEO Meta ══ -->
+  <title>Freecell kostenlos online spielen – klickspiele.de</title>
+  <meta name="description" content="Freecell kostenlos online spielen ohne Anmeldung. Klassisches Kartenspiel direkt im Browser – mit Timer, Highscore, Undo und Tages-Challenge. Mobile optimiert.">
+  <meta name="keywords" content="Freecell, Freecell spielen, Freecell kostenlos, Kartenspiel online, Solitaire, Freecell Regeln">
+  <meta name="author" content="klickspiele.de">
+  <link rel="canonical" href="https://klickspiele.de/freecell">
+  <meta name="robots" content="index, follow">
+
+  <!-- ══ Open Graph ══ -->
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://klickspiele.de/freecell">
+  <meta property="og:title"       content="Freecell kostenlos online spielen – klickspiele.de">
+  <meta property="og:description" content="Klassisches Freecell im Browser – kostenlos, ohne Anmeldung. Mit Timer, Highscore und Tages-Challenge.">
+  <meta property="og:image"       content="https://klickspiele.de/og-freecell.png">
+  <meta property="og:locale"      content="de_DE">
+  <meta property="og:site_name"   content="klickspiele.de">
+
+  <!-- ══ Twitter Card ══ -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="Freecell kostenlos online spielen">
+  <meta name="twitter:description" content="Klassisches Freecell im Browser – kostenlos, ohne Anmeldung.">
+  <meta name="twitter:image"       content="https://klickspiele.de/og-freecell.png">
+
+  <!-- ══ Favicon ══ -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23F57C00'/><path d='M8 4 L8 24 L13 19 L16.5 27 L19.5 25.5 L16 17.5 L22 17.5 Z' fill='white'/></svg>">
+
+  <!-- ══ Shared Design System ══ -->
+  <link rel="stylesheet" href="./style.css">
+
+  <!-- ══ Game-specific Styles ══ -->
+  <style>
+    /* ─────────────────────────────────────
+       FREECELL LAYOUT
+    ───────────────────────────────────── */
+    .fc-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 8px 24px;
+    }
+
+    /* Intro blurb above the fold */
+    .fc-intro {
+      padding: 12px 16px 8px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .fc-intro h1 {
+      font-size: clamp(18px, 4vw, 24px);
+      font-weight: 700;
+      color: var(--c-on-bg);
+      margin: 0 0 4px;
+      line-height: 1.3;
+    }
+    .fc-intro p {
+      font-size: 14px;
+      color: var(--c-on-surf-var);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* ── Top Controls ── */
+    .fc-controls {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 0;
+      flex-wrap: wrap;
+    }
+    .fc-stats {
+      display: flex;
+      gap: 12px;
+      margin-left: auto;
+      align-items: center;
+    }
+    .fc-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 48px;
+    }
+    .fc-stat__val {
+      font-size: 20px;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      color: var(--c-primary);
+      line-height: 1.1;
+    }
+    .fc-stat__lbl {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+      color: var(--c-on-surf-var);
+    }
+
+    /* ── Card sizing token ── */
+    /* --card-w drives ALL card/column sizing. Min 58px so cards never get unreadably small. */
+    :root {
+      --card-gap: 5px;
+      --board-pad: 12px;
+      --card-w: max(58px, calc((min(100vw, 900px) - var(--board-pad) * 2 - var(--card-gap) * 7) / 8));
+      --card-h: calc(var(--card-w) * 1.4);
+      --fan-offset: calc(var(--card-w) * 0.52);
+    }
+
+    /* ── Game Board ── */
+    #game-board {
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: none;
+      overflow-x: auto;
+      overflow-y: visible;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 4px;
+    }
+
+    /* Inner board always exactly fits 8 card columns */
+    .fc-board-inner {
+      min-width: calc(var(--card-w) * 8 + var(--card-gap) * 7);
+    }
+
+    /* ── Top Zone (Free Cells + Foundations) ── */
+    .fc-top-zone {
+      display: grid;
+      grid-template-columns: repeat(4, var(--card-w)) 12px repeat(4, var(--card-w));
+      gap: var(--card-gap);
+      margin-bottom: var(--card-gap);
+    }
+    .fc-top-zone .zone-gap { display: block; }
+
+    /* ── Tableau ── */
+    #tableau {
+      display: grid;
+      grid-template-columns: repeat(8, var(--card-w));
+      gap: var(--card-gap);
+      align-items: start;
+    }
+
+    /* ── Cell (Free Cell & Foundation) ── */
+    .cell {
+      width: var(--card-w);
+      height: var(--card-h);
+      border-radius: var(--r-md);
+      border: 1.5px dashed var(--c-outline-var);
+      background: var(--c-surf-low);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      flex-shrink: 0;
+      transition: border-color var(--dur-fast) var(--ease),
+                  background  var(--dur-fast) var(--ease);
+    }
+    .cell__hint {
+      font-size: calc(var(--card-w) * 0.38);
+      opacity: 0.3;
+      pointer-events: none;
+      font-weight: 700;
+    }
+    .cell.drop-valid   { border-color: #4CAF50; background: #E8F5E9; box-shadow: 0 0 0 2px #4CAF5055; }
+    .cell.drop-invalid { border-color: var(--c-error); background: var(--c-error-container); }
+    .cell.drop-hint    { border-color: var(--c-primary); border-style: solid; background: var(--c-primary-container); }
+
+    /* Foundation icons */
+    .foundation--spades   .cell__hint { color: #333; }
+    .foundation--hearts   .cell__hint { color: #c0392b; }
+    .foundation--diamonds .cell__hint { color: #c0392b; }
+    .foundation--clubs    .cell__hint { color: #333; }
+
+    /* ── Card ── */
+    .card {
+      position: absolute;
+      inset: 0;
+      border-radius: calc(var(--r-md) - 2px);
+      background: #fff;
+      border: 1.5px solid var(--c-outline-var);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding: calc(var(--card-w) * 0.07);
+      cursor: grab;
+      box-shadow: var(--elev-1);
+      transition: transform var(--dur-fast) var(--ease),
+                  box-shadow var(--dur-fast) var(--ease);
+      overflow: hidden;
+    }
+    .card:active { cursor: grabbing; box-shadow: var(--elev-2); transform: scale(1.04); }
+    .card--red   { color: #C62828; }
+    .card--black { color: #111; }
+    .card--selected {
+      outline: 3px solid var(--c-primary) !important;
+      outline-offset: -2px;
+      box-shadow: var(--elev-2), 0 0 0 3px var(--c-primary);
+      z-index: 10;
+    }
+
+    .card__rank {
+      font-size: calc(var(--card-w) * 0.25);
+      font-weight: 800;
+      font-family: var(--font-mono);
+      line-height: 1;
+    }
+    .card__suit {
+      font-size: calc(var(--card-w) * 0.24);
+      line-height: 1.1;
+      margin-top: 1px;
+    }
+    .card__rank--br {
+      position: absolute;
+      bottom: calc(var(--card-w) * 0.04);
+      right: calc(var(--card-w) * 0.06);
+      transform: rotate(180deg);
+    }
+
+    /* ── Tableau Column ── */
+    .tableau-col {
+      position: relative;
+      width: var(--card-w);
+      min-height: calc(var(--card-h) + 4px);
+      border-radius: var(--r-md);
+      padding-top: 2px;
+    }
+    .tableau-col.drop-valid  { background: #E8F5E9; border-radius: var(--r-md); }
+    .tableau-col.drop-hint   { background: var(--c-primary-container); border-radius: var(--r-md); }
+    .tableau-col__empty {
+      width: var(--card-w);
+      height: var(--card-h);
+      border-radius: var(--r-md);
+      border: 1.5px dashed var(--c-outline-var);
+      background: var(--c-surf-low);
+    }
+    .tableau-col__empty.drop-valid { border-color: #4CAF50; background: #E8F5E9; }
+
+    /* Stacked cards in tableau */
+    .tableau-card-wrapper {
+      position: relative;
+      /* fan: show rank+suit — based on card width */
+      height: var(--fan-offset);
+      width: var(--card-w);
+    }
+    .tableau-card-wrapper:last-child {
+      height: var(--card-h);
+    }
+    .tableau-card-wrapper .card {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: var(--card-w);
+      height: var(--card-h);
+    }
+
+    /* Hover highlight on valid card */
+    .draggable-group .card:hover {
+      box-shadow: var(--elev-2);
+      transform: translateY(-2px);
+    }
+
+    /* Dragging state */
+    .dragging .card,
+    .dragging {
+      opacity: 0.4;
+    }
+
+    /* Ghost for touch drag */
+    .drag-ghost {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      width: var(--card-w);
+    }
+    .ghost-card {
+      position: absolute;
+      width: 100%;
+      aspect-ratio: 2.5 / 3.5;
+      border-radius: var(--r-md);
+      background: white;
+      border: 1.5px solid var(--c-outline-var);
+      box-shadow: var(--elev-2);
+      padding: 4px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Controls Buttons ── */
+    .fc-btn {
+      height: 40px;
+      min-width: 40px;
+      border: none;
+      border-radius: var(--r-full);
+      background: var(--c-secondary-container);
+      color: var(--c-on-secondary-container);
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      font-family: var(--font-ui);
+      padding: 0 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      position: relative;
+      overflow: hidden;
+      transition: background var(--dur-fast) var(--ease);
+    }
+    .fc-btn:hover   { background: var(--c-surf-high); }
+    .fc-btn:focus-visible { outline: var(--focus-ring); outline-offset: 2px; }
+    .fc-btn--primary {
+      background: var(--c-primary);
+      color: var(--c-on-primary);
+    }
+    .fc-btn--primary:hover { background: #E65100; }
+    .fc-btn--icon {
+      padding: 0;
+      width: 40px;
+      justify-content: center;
+      font-size: 18px;
+    }
+    .fc-btn[aria-pressed="true"] {
+      background: var(--c-primary-container);
+      color: var(--c-on-primary-container);
+    }
+
+    /* ── Win Dialog ── */
+    .dialog-scrim {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--dur-normal) var(--ease);
+      padding: 24px;
+    }
+    .dialog-scrim.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .dialog {
+      background: var(--c-surface);
+      border-radius: var(--r-xl);
+      padding: 32px 24px 24px;
+      max-width: 400px;
+      width: 100%;
+      box-shadow: var(--elev-2);
+      transform: translateY(20px) scale(0.95);
+      transition: transform var(--dur-normal) var(--ease);
+      position: relative;
+    }
+    .dialog-scrim.show .dialog {
+      transform: translateY(0) scale(1);
+    }
+    .dialog__title {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--c-primary);
+      margin: 0 0 8px;
+      text-align: center;
+    }
+    .dialog__subtitle {
+      font-size: 15px;
+      color: var(--c-on-surf-var);
+      text-align: center;
+      margin: 0 0 24px;
+    }
+    .dialog__stat-row {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-bottom: 24px;
+    }
+    .dialog__stat { text-align: center; }
+    .dialog__stat-val { font-size: 32px; font-weight: 800; color: var(--c-primary); font-family: var(--font-mono); }
+    .dialog__stat-lbl { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--c-on-surf-var); }
+    .dialog__hs { font-size: 13px; color: var(--c-on-surf-var); text-align: center; margin-bottom: 20px; }
+    .dialog__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+    .dialog__close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 36px;
+      height: 36px;
+      border: none;
+      background: var(--c-surf-high);
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 18px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .dialog__close:focus-visible { outline: var(--focus-ring); }
+
+    /* Stats grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 8px;
+    }
+    .stats-item {
+      text-align: center;
+      background: var(--c-surf-low);
+      border-radius: var(--r-md);
+      padding: 12px 8px;
+    }
+    .stats-item__val { display: block; font-size: 28px; font-weight: 800; color: var(--c-primary); font-family: var(--font-mono); }
+    .stats-item__lbl { display: block; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; color: var(--c-on-surf-var); margin-top: 2px; }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: #333;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: var(--r-full);
+      font-size: 14px;
+      font-weight: 600;
+      z-index: 2000;
+      opacity: 0;
+      transition: opacity var(--dur-normal) var(--ease),
+                  transform var(--dur-normal) var(--ease);
+      pointer-events: none;
+      white-space: nowrap;
+    }
+    .toast--visible {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* Confetti canvas */
+    #confetti-canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 999;
+      display: none;
+    }
+
+    /* ── SEO Content Section ── */
+    .seo-section {
+      max-width: 760px;
+      margin: 40px auto 0;
+      padding: 0 16px;
+    }
+    .seo-section h2 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--c-on-bg);
+      margin: 32px 0 12px;
+      border-bottom: 2px solid var(--c-primary-container);
+      padding-bottom: 6px;
+    }
+    .seo-section h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--c-on-bg);
+      margin: 24px 0 8px;
+    }
+    .seo-section p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--c-on-surf-var);
+      margin: 0 0 14px;
+    }
+    .seo-section ul, .seo-section ol {
+      padding-left: 24px;
+      color: var(--c-on-surf-var);
+      font-size: 16px;
+      line-height: 1.7;
+      margin: 0 0 14px;
+    }
+    .seo-section li { margin-bottom: 6px; }
+
+    /* FAQ */
+    .faq-list { margin: 0; padding: 0; list-style: none; }
+    .faq-list .collapsible {
+      margin-bottom: 8px;
+    }
+
+    /* Dark mode adjustments */
+    .dark-mode .card { background: #2A2A2A; border-color: #444; color: inherit; }
+    .dark-mode .card--black { color: #f0f0f0; }
+    .dark-mode .card--red   { color: #FF8A80; }
+    .dark-mode .cell { background: var(--c-surf-var); }
+    .dark-mode .dialog { background: #1A1A1A; }
+    .dark-mode .stats-item { background: var(--c-surf-var); }
+    .dark-mode .cell.drop-valid { background: #1B5E20; }
+    .dark-mode .cell.drop-hint  { background: #2A1400; }
+
+    /* ── Responsive ── */
+    @media (max-width: 480px) {
+      .fc-controls { gap: 4px; }
+      .fc-btn { height: 36px; font-size: 12px; padding: 0 10px; }
+      .fc-btn--icon { width: 36px; }
+      .fc-stats { gap: 8px; }
+      .fc-stat__val { font-size: 17px; }
+      .fc-top-zone { gap: 3px; }
+      #tableau { gap: 3px; }
+      /* card sizes handled by --card-w variable */
+    }
+    @media (max-width: 360px) {
+      .fc-intro h1 { font-size: 16px; }
+      .fc-btn span.btn-label { display: none; }
+    }
+    @media (min-width: 901px) {
+      .fc-wrapper { padding: 0 24px 40px; }
+      .fc-intro   { padding: 16px 24px 8px; }
+    }
+  </style>
+
+  <!-- ══ Structured Data ══ -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Freecell kostenlos online spielen",
+      "url": "https://klickspiele.de/freecell",
+      "description": "Klassisches Freecell-Kartenspiel kostenlos im Browser spielen. Ohne Anmeldung, mit Timer, Undo und Tages-Challenge.",
+      "applicationCategory": "Game",
+      "operatingSystem": "All",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+      "author": { "@type": "Organization", "name": "klickspiele.de", "url": "https://klickspiele.de" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Game",
+      "name": "Freecell",
+      "url": "https://klickspiele.de/freecell",
+      "description": "Freecell ist ein klassisches Kartenspiel für eine Person, bei dem fast alle Partien lösbar sind.",
+      "genre": "Card Game",
+      "playMode": "SinglePlayer",
+      "numberOfPlayers": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 1 }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "klickspiele.de", "item": "https://klickspiele.de" },
+        { "@type": "ListItem", "position": 2, "name": "Freecell",       "item": "https://klickspiele.de/freecell" }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "Wie spielt man Freecell?", "acceptedAnswer": { "@type": "Answer", "text": "Beim Freecell werden alle 52 Karten offen auf 8 Spalten ausgeteilt. Ziel ist es, alle Karten nach Farbe sortiert von Ass bis König auf die vier Ablagestapel zu legen. Als Hilfsmittel stehen vier freie Zellen zur Verfügung, die jeweils eine Karte zwischenlagern können." } },
+        { "@type": "Question", "name": "Ist Freecell immer lösbar?", "acceptedAnswer": { "@type": "Answer", "text": "Nahezu alle Freecell-Partien sind lösbar – nur 8 der insgesamt 32.000 nummerierten Partien des Microsoft-Spiels gelten als unlösbar. Mit guter Strategie und vorausschauendem Denken können über 99% aller Spiele gewonnen werden." } },
+        { "@type": "Question", "name": "Was ist der Unterschied zwischen Freecell und Solitaire?", "acceptedAnswer": { "@type": "Answer", "text": "Beim klassischen Klondike-Solitaire liegen viele Karten verdeckt und der Zufall spielt eine größere Rolle. Freecell zeigt alle 52 Karten von Beginn an offen – dadurch ist das Spiel deutlich strategischer und fast jede Partie gewinnbar." } },
+        { "@type": "Question", "name": "Wann darf ich eine Karte in die freie Zelle legen?", "acceptedAnswer": { "@type": "Answer", "text": "Jede der vier freien Zellen kann jeweils nur eine einzige Karte aufnehmen. Du kannst jede beliebige einzelne Karte dort ablegen, solange die Zelle leer ist. Karten in freien Zellen können jederzeit auf passende Tableau-Spalten oder auf den Ablagestapel verschoben werden." } },
+        { "@type": "Question", "name": "Wie viele Karten kann ich auf einmal verschieben?", "acceptedAnswer": { "@type": "Answer", "text": "Theoretisch darfst du nur eine Karte auf einmal bewegen. Praktisch gilt die Supermove-Regel: Du kannst (freie Zellen + 1) × 2^(leere Spalten) Karten als Sequenz verschieben. Je mehr freie Zellen und leere Spalten vorhanden sind, desto mehr Karten lassen sich auf einmal bewegen." } },
+        { "@type": "Question", "name": "Was bedeutet 'automatisch auf Ablagestapel legen'?", "acceptedAnswer": { "@type": "Answer", "text": "Die Auto-Foundation-Funktion legt Karten automatisch auf den passenden Ablagestapel, sobald dies sicher ist – also wenn alle niedrigeren Karten der gegnerischen Farbe bereits abgelegt wurden. Diese Option kann im Spiel ein- und ausgeschaltet werden." } },
+        { "@type": "Question", "name": "Wie speichere ich meinen Spielstand?", "acceptedAnswer": { "@type": "Answer", "text": "Dein Spielstand wird automatisch im Browser gespeichert. Beim nächsten Besuch kannst du nahtlos weiterspielen. Es ist keine Anmeldung erforderlich. Bitte beachte: Das Leeren des Browser-Caches löscht auch den Spielstand." } },
+        { "@type": "Question", "name": "Was ist die Tages-Challenge?", "acceptedAnswer": { "@type": "Answer", "text": "Die Tages-Challenge ist jeden Tag eine neue, festgelegte Kartenanordnung, die für alle Spieler gleich ist. So kannst du dein Ergebnis mit Freunden vergleichen, die am selben Tag spielen." } }
+      ]
+    }
+  ]
+  </script>
+</head>
+
+<body>
+
+  <!-- Skip Link -->
+  <a class="skip" href="#main">Zum Inhalt springen</a>
+
+  <!-- ══ Top App Bar ══ -->
+  <header class="top-bar">
+    <a href="https://klickspiele.de" class="home-btn rpl" aria-label="Zurück zu klickspiele.de">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="white" width="22" height="22">
+        <path d="M4 2 L4 19 L8 15 L11 22 L13.5 21 L10.5 14 L16 14 Z"/>
+      </svg>
+    </a>
+    <span class="top-bar__title">Freecell</span>
+    <div class="top-bar__actions">
+      <button id="btn-stats" class="bar-icon-btn rpl" aria-label="Statistiken anzeigen" title="Statistiken">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="22" height="22">
+          <rect x="3" y="12" width="4" height="9"/><rect x="10" y="7" width="4" height="14"/><rect x="17" y="3" width="4" height="18"/>
+        </svg>
+      </button>
+      <button id="btn-dark" class="bar-icon-btn rpl" aria-label="Dark Mode umschalten" aria-pressed="false" title="Dark Mode">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="22" height="22">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- ══ Main Content ══ -->
+  <main id="main" class="page-content">
+
+    <!-- H1 + Intro (above-fold, SEO) -->
+    <div class="fc-intro">
+      <h1>Freecell kostenlos online spielen</h1>
+      <p>Klassisches Freecell direkt im Browser – alle 52 Karten offen, fast jede Partie gewinnbar. Kein Download, keine Anmeldung. Mit Timer, Undo, Tages-Challenge und Highscore.</p>
+    </div>
+
+    <div class="fc-wrapper">
+      <!-- Controls Row -->
+      <div class="fc-controls" role="toolbar" aria-label="Spielsteuerung">
+        <button id="btn-new-game" class="fc-btn fc-btn--primary rpl" aria-label="Neues Spiel starten">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" width="16" height="16"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+          <span class="btn-label">Neu</span>
+        </button>
+        <button id="btn-restart" class="fc-btn rpl" aria-label="Gleiche Partie neu starten">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" width="16" height="16"><path d="M21 2v6h-6"/><path d="M21 8A9 9 0 0 0 5 6L3 8"/></svg>
+          <span class="btn-label">Neu laden</span>
+        </button>
+        <button id="btn-undo" class="fc-btn rpl" aria-label="Letzten Zug rückgängig machen" title="Rückgängig (Strg+Z)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" width="16" height="16"><path d="M3 7h11a5 5 0 0 1 0 10h-6"/><path d="M7 3 3 7l4 4"/></svg>
+          <span class="btn-label">Undo</span>
+        </button>
+        <button id="btn-daily" class="fc-btn rpl" aria-label="Tages-Challenge starten" title="Heute's Challenge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" width="16" height="16"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <span class="btn-label">Daily</span>
+        </button>
+        <button id="btn-auto-found" class="fc-btn rpl" aria-label="Auto-Ablage umschalten" aria-pressed="true" title="Auto-Foundation an/aus">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" width="16" height="16"><polyline points="20 6 9 17 4 12"/></svg>
+          <span class="btn-label">Auto</span>
+        </button>
+
+        <!-- Stats display -->
+        <div class="fc-stats" aria-label="Spielstatistiken">
+          <div class="fc-stat">
+            <span id="stat-moves" class="fc-stat__val" aria-live="polite" aria-atomic="true">0</span>
+            <span class="fc-stat__lbl">Züge</span>
+          </div>
+          <div class="fc-stat">
+            <span id="stat-time" class="fc-stat__val" aria-live="polite" aria-atomic="true">00:00</span>
+            <span class="fc-stat__lbl">Zeit</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ Game Board ══ -->
+      <div id="game-board" role="application" aria-label="Freecell Spielfeld">
+        <div class="fc-board-inner">
+          <!-- Top Zone -->
+          <div class="fc-top-zone" role="group" aria-label="Freie Zellen und Ablagestapel">
+            <div id="freecells" style="display:contents" role="group" aria-label="Freie Zellen"></div>
+            <span class="zone-gap"></span>
+            <div id="foundations" style="display:contents" role="group" aria-label="Ablagestapel"></div>
+          </div>
+
+          <!-- Tableau -->
+          <div id="tableau" role="group" aria-label="Spielfeld-Spalten"></div>
+        </div>
+      </div><!-- /#game-board -->
+    </div><!-- /.fc-wrapper -->
+
+    <!-- ══════════════════════════════════════
+         SEO CONTENT SECTION
+    ═════════════════════════════════════════ -->
+    <article class="seo-section">
+
+      <h2>Freecell Regeln – So funktioniert das Spiel</h2>
+      <p>
+        Freecell ist ein Einzel-Kartenspiel mit einem vollständigen Deck aus 52 Karten. Anders als bei den meisten Solitaire-Varianten werden beim Freecell alle Karten von Beginn an offen auf acht Spalten (Tableau) ausgeteilt: die ersten vier Spalten erhalten je sieben Karten, die letzten vier je sechs. Dazu gibt es vier <strong>freie Zellen</strong> oben links als temporäre Ablageplätze sowie vier <strong>Ablagestapel</strong> (Foundation) oben rechts, auf denen Karten nach Farbe von Ass bis König aufgebaut werden.
+      </p>
+      <p>
+        Das Ziel des Spiels ist es, alle 52 Karten auf die vier Ablagestapel zu bringen, jeweils eine Farbe pro Stapel, in aufsteigender Reihenfolge (Ass, 2, 3, … Dame, König). Die Karten auf dem Tableau können nach den folgenden Regeln verschoben werden:
+      </p>
+      <ul>
+        <li><strong>Tableau-Bewegung:</strong> Eine Karte (oder eine gültige Sequenz) kann auf eine andere Karte gelegt werden, wenn die untere Karte eine höhere Rangstufe hat und die Farbe sich abwechselt – also Rot auf Schwarz oder Schwarz auf Rot.</li>
+        <li><strong>Freie Zellen:</strong> Jede der vier freien Zellen kann genau eine Karte aufnehmen. Diese Karte kann jederzeit wieder bewegt werden.</li>
+        <li><strong>Ablagestapel (Foundation):</strong> Asse werden zuerst abgelegt, dann aufsteigend nach Farbe bis zum König.</li>
+        <li><strong>Leere Spalten:</strong> Ist eine Tableau-Spalte komplett leer, kann jede Karte dort platziert werden.</li>
+      </ul>
+
+      <h3>Die Supermove-Regel</h3>
+      <p>
+        Offiziell darf man immer nur eine einzige Karte gleichzeitig bewegen. In der Praxis erlauben die meisten Freecell-Implementierungen das Verschieben einer gültigen Sequenz von mehreren Karten auf einmal – solange genügend freie Ressourcen vorhanden sind. Die maximale Anzahl verschiebbarer Karten berechnet sich nach der Formel: <strong>(freie Zellen + 1) × 2^(leere Spalten)</strong>. Mit drei freien Zellen und zwei leeren Spalten könnten also theoretisch (3+1) × 2² = 16 Karten auf einmal bewegt werden.
+      </p>
+
+      <h2>Strategie und Tipps für Freecell</h2>
+      <h3>1. Freie Zellen sparsam einsetzen</h3>
+      <p>
+        Die vier freien Zellen sind das Herzstück des Spiels – und gleichzeitig die häufigste Falle für Einsteiger. Wer alle vier Zellen blockiert, kann keine Sequenzen mehr aufbauen und gerät schnell ins Stocken. Nutze freie Zellen nur dann, wenn es wirklich nötig ist, und befreie sie so schnell wie möglich wieder.
+      </p>
+      <h3>2. Asse und Zweier priorisieren</h3>
+      <p>
+        Bringe Asse und Zweier so früh wie möglich auf die Ablagestapel. Sie versperren unten liegende Karten und ihre Entfernung verschafft dir Bewegungsspielraum im Tableau. Ein Zwei kann zudem sofort nach dem dazugehörigen Ass folgen.
+      </p>
+      <h3>3. Sequenzen aufbauen, nicht blockieren</h3>
+      <p>
+        Versuche, Karten in absteigenden, farbwechselnden Sequenzen anzuordnen. Eine gut aufgebaute Spalte – zum Beispiel schwarze 9, rote 8, schwarze 7, rote 6 – bietet dir maximale Flexibilität. Vermeide es, hohe Karten oben auf wichtige niedrige Karten zu stapeln.
+      </p>
+      <h3>4. Leere Spalten bewusst einsetzen</h3>
+      <p>
+        Eine leere Tableau-Spalte ist fast so wertvoll wie eine freie Zelle – sie ermöglicht es, viel größere Sequenzen zu bewegen. Plane langfristig, wann du eine Spalte leerst, und nutze den Freiraum gezielt für kritische Umstellungen.
+      </p>
+      <h3>5. Vorausschauend denken</h3>
+      <p>
+        Freecell ist ein Spiel der Vorhersicht. Bevor du einen Zug machst, denke mindestens drei bis fünf Züge im Voraus. Frage dich: Welche Karte muss ich als nächstes befreien? Was wird dadurch blockiert? Gibt es einen anderen Weg, der mir mehr Optionen lässt?
+      </p>
+
+      <h2>Geschichte von Freecell</h2>
+      <p>
+        Freecell blickt auf eine überraschend lange Geschichte zurück. Die Grundidee des Spiels – alle Karten offen, vier Ablageplätze – wurde bereits in den 1940er Jahren als <em>Einzel-Patience</em> gespielt. Die moderne Variante wurde 1978 von Paul Alfille für das PLATO-Computersystem programmiert und war damit eine der ersten elektronischen Kartenspiel-Implementierungen.
+      </p>
+      <p>
+        Weltweite Bekanntheit erlangte Freecell durch <strong>Microsoft</strong>: Seit Windows 3.1 (1992) ist eine Version des Spiels Bestandteil des Betriebssystems. Microsoft nummerierte in seiner ursprünglichen Version 32.000 Spiele durch – und ließ Spieler weltweit über Foren und Mailinglisten diskutieren, welche davon unlösbar seien. Es stellte sich heraus: Nur acht der 32.000 Partien sind tatsächlich unlösbar (die Spiele Nr. 11982, 146692, 186216, 455889, 495505, 512118, 517776 und 781948).
+      </p>
+      <p>
+        Diese außergewöhnlich hohe Lösbarkeitsrate machte Freecell zu einem Liebling unter Strategiespielern und einer beliebten Testaufgabe für KI-Forschung und Suchmaschinenalgorithmen. Bis heute ist es eines der meistgespielten Kartenspiele weltweit.
+      </p>
+
+      <h2>Freecell vs. Solitaire – Unterschiede im Überblick</h2>
+      <p>
+        Oft werden Freecell und Klondike-Solitaire (das klassische Solitaire mit verdeckten Karten) verwechselt. Sie gehören zwar zur selben Spielfamilie, unterscheiden sich aber grundlegend:
+      </p>
+      <ul>
+        <li><strong>Sichtbarkeit:</strong> Bei Freecell liegen alle 52 Karten von Anfang an offen – bei Klondike sind viele Karten zunächst verdeckt.</li>
+        <li><strong>Zufallsfaktor:</strong> Klondike ist zu einem erheblichen Teil vom Glück abhängig; bei Freecell entscheidet fast ausschließlich die Strategie.</li>
+        <li><strong>Lösbarkeit:</strong> Über 99% aller Freecell-Partien sind lösbar, während Klondike je nach Zieh-Modus nur zu 60–80% gewinnbar ist.</li>
+        <li><strong>Komplexität:</strong> Freecell gilt als kognitiv anspruchsvoller, da die vollständige Information mehr strategische Tiefe ermöglicht.</li>
+        <li><strong>Freie Zellen:</strong> Das namensgebende Merkmal fehlt bei Klondike komplett – dort können keine Karten temporär zwischengelagert werden.</li>
+      </ul>
+
+      <h2>Häufige Fehler und wie du sie vermeidest</h2>
+      <ul>
+        <li><strong>Alle freien Zellen blockieren:</strong> Sobald alle vier freien Zellen besetzt sind, endet das Spiel oft schnell. Behalte immer mindestens eine oder zwei Zellen frei.</li>
+        <li><strong>Wahllos verschieben:</strong> Jeder Zug ohne Plan schränkt deine Optionen ein. Besonders schlimm: eine Karte mit hohem Wert über eine benötigte niedrige Karte legen.</li>
+        <li><strong>Asse ignorieren:</strong> Asse sollten so früh wie möglich auf die Foundation. Jedes Ass, das im Tableau liegt, kostet dich Platz und Flexibilität.</li>
+        <li><strong>Leere Spalten zu früh füllen:</strong> Eine leere Spalte ist wertvoll. Befülle sie nicht sofort wieder mit einer beliebigen Karte, sondern nutze den Platz für wichtige Umstrukturierungen.</li>
+        <li><strong>Zu spät aufgeben:</strong> Wenn du erkennst, dass das Spiel verloren ist, starte lieber neu. Die Undo-Funktion hilft, einzelne Fehler zu korrigieren.</li>
+      </ul>
+
+      <!-- FAQ Section -->
+      <h2 id="faq">Häufige Fragen (FAQ)</h2>
+      <ul class="faq-list">
+        <li>
+          <details class="collapsible">
+            <summary>Wie spielt man Freecell?</summary>
+            <div class="collapsible__body">
+              <p>Beim Freecell werden alle 52 Karten offen auf 8 Spalten ausgeteilt. Ziel ist es, alle Karten nach Farbe sortiert von Ass bis König auf die vier Ablagestapel zu legen. Als Hilfsmittel stehen vier freie Zellen zur Verfügung, die jeweils eine Karte zwischenlagern können. Karten dürfen im Tableau nur auf eine Karte mit der nächsthöheren Rangstufe in Gegenfarbe gelegt werden.</p>
+            </div>
+          </details>
+        </li>
+        <li>
+          <details class="collapsible">
+            <summary>Ist Freecell immer lösbar?</summary>
+            <div class="collapsible__body">
+              <p>Nahezu alle Freecell-Partien sind lösbar – nur 8 der insgesamt 32.000 nummerierten Partien des Microsoft-Spiels gelten als unlösbar. Mit guter Strategie und vorausschauendem Denken können über 99% aller Spiele gewonnen werden. In dieser Version sind alle Partien auf Lösbarkeit ausgelegt.</p>
+            </div>
+          </details>
+        </li>
+        <li>
+          <details class="collapsible">
+            <summary>Was ist der Unterschied zwischen Freecell und Solitaire?</summary>
+            <div class="collapsible__body">
+              <p>Beim klassischen Klondike-Solitaire liegen viele Karten verdeckt, und der Zufall spielt eine größere Rolle. Freecell zeigt alle 52 Karten von Beginn an offen – dadurch ist das Spiel deutlich strategischer und fast jede Partie gewinnbar. Außerdem fehlen beim Solitaire die charakteristischen freien Zellen.</p>
+            </div>
+          </details>
+        </li>
+        <li>
+          <details class="collapsible">
+            <summary>Wann darf ich eine Karte in die freie Zelle legen?</summary>
+            <div class="collapsible__body">
+              <p>Jede der vier freien Zellen kann jeweils nur eine einzige Karte aufnehmen. Du kannst jede beliebige einzelne Karte dort ablegen, solange die Zelle leer ist. Karten in freien Zellen können jederzeit auf passende Tableau-Spalten oder auf den Ablagestapel verschoben werden.</p>
+            </div>
+          </details>
+        </li>
+        <li>
+          <details class="collapsible">
+            <summary>Wie viele Karten kann ich auf einmal verschieben?</summary>
+            <div class="collapsible__body">
+              <p>Theoretisch darfst du nur eine Karte auf einmal bewegen. Praktisch gilt die Supermove-Regel: Du kannst (freie Zellen + 1) × 2^(leere Spalten) Karten als Sequenz verschieben. Je mehr freie Zellen und leere Spalten vorhanden sind, desto mehr Karten lassen sich auf einmal bewegen.</p>
+            </div>
+          </details>
+        </li>
+        <li>
+          <details class="collapsible">
+            <summary>Was bedeutet 'Auto-Foundation'?</summary>
+            <div class="collapsible__body">
+              <p>Die Auto-Foundation-Funktion legt Karten automatisch auf den passenden Ablagestapel, sobald dies sicher ist. Sicher bedeutet: Alle niedrigeren Karten der gegnerischen Farbe wurden bereits abgelegt. Diese Option kann über den „Auto"-Button im Spiel ein- und ausgeschaltet werden.</p>
+            </div>
+          </details>
+        </li>
+        <li>
+          <details class="collapsible">
+            <summary>Wie speichere ich meinen Spielstand?</summary>
+            <div class="collapsible__body">
+              <p>Dein Spielstand wird automatisch im Browser (localStorage) gespeichert. Beim nächsten Besuch kannst du nahtlos weiterspielen. Es ist keine Anmeldung erforderlich. Bitte beachte: Das Löschen der Browser-Daten entfernt auch den gespeicherten Spielstand.</p>
+            </div>
+          </details>
+        </li>
+        <li>
+          <details class="collapsible">
+            <summary>Was ist die Tages-Challenge?</summary>
+            <div class="collapsible__body">
+              <p>Die Tages-Challenge ist jeden Tag eine neue, festgelegte Kartenanordnung, die für alle Spieler gleich ist. Klicke auf „Daily" in der Spielsteuerung, um die heutige Challenge zu starten. So kannst du dein Ergebnis mit Freunden vergleichen, die am selben Tag spielen.</p>
+            </div>
+          </details>
+        </li>
+      </ul>
+
+    </article>
+  </main>
+
+  <!-- ══ Footer ══ -->
+  <footer class="site-footer">
+    <nav class="site-footer__nav">
+      <a href="https://klickspiele.de">klickspiele.de</a>
+      <a href="./imprint">Impressum</a>
+      <a href="./privacy">Datenschutz</a>
+    </nav>
+    <p class="site-footer__copy">© 2025 klickspiele.de · Kostenlose Spiele ohne Anmeldung</p>
+  </footer>
+
+  <!-- ══ Win Dialog ══ -->
+  <div id="win-dialog-scrim" class="dialog-scrim" role="dialog" aria-modal="true" aria-labelledby="win-title" aria-hidden="true">
+    <div class="dialog">
+      <p class="dialog__title" id="win-title">🎉 Gewonnen!</p>
+      <p class="dialog__subtitle">Hervorragend – alle Karten sind abgelegt!</p>
+      <div class="dialog__stat-row">
+        <div class="dialog__stat">
+          <div class="dialog__stat-val win__moves">0</div>
+          <div class="dialog__stat-lbl">Züge</div>
+        </div>
+        <div class="dialog__stat">
+          <div class="dialog__stat-val win__time">00:00</div>
+          <div class="dialog__stat-lbl">Zeit</div>
+        </div>
+      </div>
+      <p class="dialog__hs win__hs"></p>
+      <div class="dialog__actions">
+        <button id="win-new-game" class="fc-btn fc-btn--primary rpl">Neues Spiel</button>
+        <button id="win-share"    class="fc-btn rpl">Teilen 🔗</button>
+        <button id="win-restart"  class="fc-btn rpl">Gleiches Spiel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ Stats Dialog ══ -->
+  <div id="stats-dialog-scrim" class="dialog-scrim" role="dialog" aria-modal="true" aria-labelledby="stats-title" aria-hidden="true">
+    <div class="dialog">
+      <button class="dialog__close rpl" data-close-dialog aria-label="Statistiken schließen">✕</button>
+      <p class="dialog__title" id="stats-title">📊 Statistiken</p>
+      <div class="stats__body"></div>
+      <div class="dialog__actions">
+        <button class="fc-btn fc-btn--primary rpl" data-close-dialog>Schließen</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ Confetti Canvas ══ -->
+  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+  <!-- ══ Ripple Handler ══ -->
+  <script>
+    document.addEventListener('pointerdown', function(e) {
+      var h = e.target.closest('.rpl');
+      if (!h) return;
+      var r = h.getBoundingClientRect(),
+          x = e.clientX - r.left,
+          y = e.clientY - r.top,
+          sz = Math.max(r.width, r.height) * 2.4,
+          w = document.createElement('span');
+      w.className = 'rpl-wave';
+      w.style.cssText = 'width:' + sz + 'px;height:' + sz + 'px;left:' + (x - sz/2) + 'px;top:' + (y - sz/2) + 'px';
+      h.appendChild(w);
+      w.addEventListener('animationend', function() { w.remove(); });
+    }, { passive: true });
+  </script>
+
+  <!-- ══ Game Script ══ -->
+  <script src="./game.js" defer></script>
+
+</body>
+</html>

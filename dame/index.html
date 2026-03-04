@@ -1,0 +1,1979 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#F57C00">
+
+  <!-- ── SEO Meta Tags ──────────────────────────────────────── -->
+  <title>Dame spielen – Kostenlos online, ohne Anmeldung | klickspiele.de</title>
+  <meta name="description" content="Dame kostenlos online spielen – direkt im Browser, ohne Download. Gegen KI (3 Schwierigkeitsstufen) oder lokal gegen Freunde. Deutsche Damme-Regeln mit Pflichtschlagen. Jetzt spielen!">
+  <meta name="keywords" content="Dame spielen, Dame online, Damespiel kostenlos, Dame gegen Computer, Brettspiel online">
+  <link rel="canonical" href="https://klickspiele.de/dame">
+
+  <!-- ── OpenGraph ──────────────────────────────────────────── -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://klickspiele.de/dame">
+  <meta property="og:title" content="Dame spielen – Kostenlos online | klickspiele.de">
+  <meta property="og:description" content="Dame kostenlos online spielen. Gegen KI oder zu zweit. Deutsche Regeln mit Pflichtschlagen. Kein Download nötig!">
+  <meta property="og:image" content="https://klickspiele.de/og-dame.png">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="klickspiele.de">
+
+  <!-- ── Twitter Cards ──────────────────────────────────────── -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Dame spielen – Kostenlos online | klickspiele.de">
+  <meta name="twitter:description" content="Dame kostenlos online spielen. Gegen KI oder zu zweit. Deutsche Regeln mit Pflichtschlagen.">
+  <meta name="twitter:image" content="https://klickspiele.de/og-dame.png">
+
+  <!-- ── Favicon ────────────────────────────────────────────── -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23F57C00'/><path d='M8 4 L8 24 L13 19 L16.5 27 L19.5 25.5 L16 17.5 L22 17.5 Z' fill='white'/></svg>">
+
+  <!-- ── Stylesheet ─────────────────────────────────────────── -->
+  <link rel="stylesheet" href="./style.css">
+
+  <!-- ── Schema Markup ──────────────────────────────────────── -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Dame Online – klickspiele.de",
+      "url": "https://klickspiele.de/dame",
+      "description": "Kostenloses Dame-Spiel im Browser. Gegen KI oder im 2-Spieler-Modus. Deutsche Regeln mit Pflichtschlagen.",
+      "applicationCategory": "GameApplication",
+      "browserRequirements": "Requires JavaScript. Runs in any modern browser.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      },
+      "operatingSystem": "Any",
+      "inLanguage": "de",
+      "author": {
+        "@type": "Organization",
+        "name": "klickspiele.de",
+        "url": "https://klickspiele.de"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "klickspiele.de",
+          "item": "https://klickspiele.de"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Dame spielen",
+          "item": "https://klickspiele.de/dame"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Wie spielt man Dame?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dame wird auf einem 8×8-Brett gespielt. Jeder Spieler startet mit 12 Steinen auf den dunklen Feldern der ersten drei Reihen. Steine ziehen diagonal vorwärts. Gegnerische Steine werden übersprungen und aus dem Spiel genommen. Wer alle Steine des Gegners schlägt oder ihn blockiert, gewinnt."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Was ist Pflichtschlagen beim Dame?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Beim deutschen Dame muss ein Spieler schlagen, wenn eine Schlagmöglichkeit vorhanden ist. Er darf keinen anderen Zug machen. Wenn mehrere Schlagmöglichkeiten bestehen, kann er in der Regel frei wählen (außer wenn mehrfach-schlagen erzwungen ist)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Was ist eine Dame (König) beim Damespiel?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Wenn ein Stein die gegnerische Grundlinie erreicht, wird er zur Dame (auch Doppelstein oder König). Die Dame kann diagonal in alle vier Richtungen ziehen – sowohl vorwärts als auch rückwärts. Das macht sie deutlich stärker als einen normalen Stein."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kann man Dame online gegen Freunde spielen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja, auf klickspiele.de gibt es einen lokalen 2-Spieler-Modus. Beide Spieler spielen am selben Gerät und wechseln sich ab. Eine Online-Multiplayer-Funktion für entfernte Gegner ist in Entwicklung."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Welche Schwierigkeitsstufen gibt es?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Es gibt drei KI-Schwierigkeiten: Anfänger (macht ab und zu Fehler), Mittel (spielt solide mit guter Taktik) und Experte (verwendet Minimax-Algorithmus mit Alpha-Beta-Pruning für starkes Spiel)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wie gewinnt man beim Dame?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Man gewinnt, wenn man alle Steine des Gegners schlägt oder ihn so blockiert, dass er keinen Zug mehr machen kann. Wichtige Strategien: Kontrolliere die Mitte des Bretts, schütze deine Grundlinie, bilde starke Ketten aus Steinen und versuche frühzeitig eine Dame zu bekommen."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ist Dame ein Glücksspiel oder Strategiespiel?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dame ist ein reines Strategiespiel ohne Zufallselement. Jeder Spieler kennt alle Informationen auf dem Brett. Die Komplexität liegt im taktischen und strategischen Denken – ähnlich wie beim Schach, aber zugänglicher."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Unterschied zwischen deutschen und internationalen Dame-Regeln?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Beim deutschen Dame (8×8-Brett, 12 Steine) gilt Pflichtschlagen und die Dame darf nur ein Feld diagonal ziehen. Beim internationalen Dame (10×10-Brett, 20 Steine) kann die Dame beliebig weit über diagonale Felder ziehen. In diesem Spiel gelten die deutschen Regeln."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kann ich Dame auch auf dem Handy spielen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja, das Dame-Spiel auf klickspiele.de ist vollständig für Smartphones optimiert. Das Brett und alle Bedienelemente passen sich automatisch an den Bildschirm an. Große Touch-Zonen machen das Spielen auf kleinen Displays komfortabel."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Brauche ich eine Anmeldung zum Spielen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nein. Dame auf klickspiele.de ist komplett kostenlos und ohne Anmeldung spielbar. Deine Spielstatistiken werden lokal in deinem Browser gespeichert."
+          }
+        }
+      ]
+    }
+  ]
+  </script>
+
+  <!-- ── Critical Inline CSS (above-fold, CLS=0) ────────────── -->
+  <style>
+    /* Critical path: Board dimensions are set immediately to prevent CLS */
+    .game-wrapper {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .board-container {
+      aspect-ratio: 1 / 1;
+      width: 100%;
+      max-width: 520px;
+      margin: 0 auto;
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 6px 24px rgba(0,0,0,.22), 0 2px 6px rgba(0,0,0,.12);
+    }
+    #gameCanvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+      touch-action: none;
+      cursor: pointer;
+    }
+    /* Wood texture colors */
+    .board-container { background: #8B4513; }
+
+    /* Hero prevents layout shift */
+    .hero-section {
+      text-align: center;
+      padding: 24px 0 16px;
+    }
+    .hero-section h1 {
+      margin-bottom: 8px;
+    }
+    .hero-lead {
+      color: var(--c-outline);
+      font-size: 17px;
+      margin-bottom: 0;
+    }
+
+    /* Game UI */
+    .game-status-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 12px 16px;
+      background: var(--c-surf-low);
+      border: 1.5px solid var(--c-outline-var);
+      border-radius: var(--r-md);
+    }
+    .player-indicator {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+    }
+    .player-dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 2px solid rgba(0,0,0,.15);
+      flex-shrink: 0;
+    }
+    .player-dot.dark { background: #2C1810; border-color: #1a0a05; }
+    .player-dot.light { background: #F5E6D3; border-color: #bfa88a; }
+    .status-msg {
+      font-size: 14px;
+      color: var(--c-outline);
+      text-align: center;
+      flex: 1;
+    }
+    .capture-counter {
+      display: flex;
+      gap: 16px;
+    }
+    .capture-badge {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      font-size: 12px;
+      color: var(--c-outline);
+    }
+    .capture-badge strong {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--c-on-surface);
+      font-family: var(--font-mono);
+      line-height: 1;
+    }
+
+    /* Mode selector */
+    .mode-selector {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .mode-btn {
+      flex: 1;
+      min-width: 120px;
+      height: 48px;
+      border-radius: var(--r-full);
+      border: 1.5px solid var(--c-outline-var);
+      background: var(--c-surf-low);
+      color: var(--c-on-surf-var);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--dur-normal) var(--ease);
+      position: relative;
+      overflow: hidden;
+    }
+    .mode-btn.active, .mode-btn[aria-pressed="true"] {
+      background: var(--c-primary);
+      color: var(--c-on-primary);
+      border-color: var(--c-primary);
+    }
+    .mode-btn:hover:not(.active) { background: var(--c-surf-mid); }
+
+    /* Difficulty selector */
+    .diff-selector {
+      display: flex;
+      gap: 8px;
+    }
+    .diff-btn {
+      flex: 1;
+      height: 44px;
+      border-radius: var(--r-full);
+      border: 1.5px solid var(--c-outline-var);
+      background: var(--c-surf-low);
+      color: var(--c-on-surf-var);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--dur-normal) var(--ease);
+      position: relative;
+      overflow: hidden;
+    }
+    .diff-btn.active {
+      background: var(--c-secondary-container);
+      color: var(--c-on-secondary-container);
+      border-color: var(--c-secondary);
+    }
+    .diff-btn:hover:not(.active) { background: var(--c-surf-mid); }
+
+    /* Stats bar */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+    .stat-card {
+      background: var(--c-surf-low);
+      border: 1.5px solid var(--c-outline-var);
+      border-radius: var(--r-md);
+      padding: 12px;
+      text-align: center;
+    }
+    .stat-card__value {
+      font-size: 26px;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      color: var(--c-primary);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat-card__label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+      color: var(--c-outline);
+    }
+    .stat-card.streak .stat-card__value { color: #E65100; }
+
+    /* Game control buttons */
+    .game-controls {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .game-controls .btn-filled { flex: 1; min-width: 140px; font-size: 14px; height: 52px; }
+    .game-controls .pill-btn  { font-size: 13px; height: 44px; padding: 0 16px; }
+
+    /* Win overlay (inside board) */
+    .win-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,.65);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--dur-slow) var(--ease);
+      border-radius: 16px;
+    }
+    .win-overlay.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .win-trophy {
+      font-size: 64px;
+      animation: trophy-bounce 0.6s var(--ease) 0.1s both;
+    }
+    @keyframes trophy-bounce {
+      0% { transform: scale(0) translateY(20px); opacity: 0; }
+      70% { transform: scale(1.15) translateY(-4px); opacity: 1; }
+      100% { transform: scale(1) translateY(0); opacity: 1; }
+    }
+    .win-text {
+      color: white;
+      font-size: 22px;
+      font-weight: 700;
+      text-align: center;
+      text-shadow: 0 2px 8px rgba(0,0,0,.5);
+      padding: 0 16px;
+    }
+    .win-score-anim {
+      color: #FFD700;
+      font-size: 16px;
+      font-weight: 600;
+      animation: score-pop 0.5s var(--ease) 0.3s both;
+    }
+    @keyframes score-pop {
+      from { transform: scale(0); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+    .win-btn {
+      background: var(--c-primary);
+      color: white;
+      border: none;
+      border-radius: var(--r-full);
+      padding: 14px 32px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      animation: score-pop 0.5s var(--ease) 0.5s both;
+      font-family: var(--font-ui);
+    }
+    .win-btn:hover { background: #E65100; }
+
+    /* AI thinking indicator */
+    .ai-thinking {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--c-primary);
+      font-weight: 600;
+      min-height: 24px;
+    }
+    .ai-dot { width:8px; height:8px; border-radius:50%; background:var(--c-primary); animation: ai-pulse 1.2s ease-in-out infinite; }
+    .ai-dot:nth-child(2){animation-delay:.2s;}
+    .ai-dot:nth-child(3){animation-delay:.4s;}
+    @keyframes ai-pulse { 0%,80%,100%{transform:scale(.8);opacity:.5} 40%{transform:scale(1.2);opacity:1} }
+
+    /* Sound toggle */
+    .sound-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--c-outline);
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px 8px;
+      border-radius: var(--r-sm);
+      font-family: var(--font-ui);
+      transition: color var(--dur-fast) var(--ease);
+    }
+    .sound-btn:hover { color: var(--c-on-surface); }
+
+    /* Content sections */
+    .content-section { margin-top: 48px; }
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .tip-card {
+      background: var(--c-surf-low);
+      border: 1.5px solid var(--c-outline-var);
+      border-radius: var(--r-lg);
+      padding: 20px;
+    }
+    .tip-card__icon { font-size: 28px; margin-bottom: 10px; }
+    .tip-card__title { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+    .tip-card__text { font-size: 15px; line-height: 23px; color: var(--c-on-surf-var); margin: 0; }
+
+    .rule-step {
+      display: flex;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--c-outline-var);
+    }
+    .rule-step:last-child { border-bottom: none; }
+    .rule-step__num {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--c-primary);
+      color: white;
+      font-weight: 700;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+
+    /* FAQ */
+    .faq-section { margin-top: 48px; }
+
+    /* Dark mode toggle in bar */
+    .dark-toggle { color: var(--c-on-primary); }
+
+    /* Piece movement animation on canvas is via JS */
+
+    /* Narrow screens: full-width layout */
+    @media (max-width: 600px) {
+      .stats-bar { grid-template-columns: repeat(3,1fr); gap: 6px; }
+      .stat-card { padding: 10px 6px; }
+      .stat-card__value { font-size: 22px; }
+      .capture-counter { gap: 12px; }
+      .game-controls { gap: 6px; }
+    }
+    @media (min-width: 900px) {
+      .game-wrapper {
+        max-width: 760px;
+        grid-template-columns: 380px 1fr;
+        align-items: start;
+        gap: 24px;
+      }
+      .board-side { position: sticky; top: 84px; }
+      .controls-side { overflow: visible; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ── Skip Link ───────────────────────────────────────────── -->
+  <a class="skip" href="#main">Zum Inhalt springen</a>
+
+  <!-- ── Top App Bar ────────────────────────────────────────── -->
+  <header class="top-bar" role="banner">
+    <a href="https://klickspiele.de" class="home-btn rpl" aria-label="Zurück zu klickspiele.de">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M4 2 L4 19 L8 15 L11 22 L13.5 21 L10.5 14 L16 14 Z"/>
+      </svg>
+    </a>
+    <span class="top-bar__title">Dame Online</span>
+    <div class="top-bar__actions">
+      <!-- Sound toggle -->
+      <button class="bar-icon-btn rpl dark-toggle" id="soundToggle" aria-label="Ton ein/ausschalten" aria-pressed="true" title="Ton ein/ausschalten">
+        <svg id="soundIcon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+        </svg>
+      </button>
+      <!-- Dark mode toggle -->
+      <button class="bar-icon-btn rpl dark-toggle" id="darkToggle" aria-label="Dunkles Design umschalten" title="Design umschalten">
+        <svg id="darkIcon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- ── Main ───────────────────────────────────────────────── -->
+  <main id="main" class="page-content" style="max-width:860px;">
+
+    <!-- ── Hero ─────────────────────────────────────────────── -->
+    <section class="hero-section" aria-labelledby="hero-h1">
+      <h1 id="hero-h1">Dame kostenlos online spielen</h1>
+      <p class="hero-lead">Direkt im Browser – kein Download, keine Anmeldung. Gegen KI oder mit Freunden.</p>
+    </section>
+
+    <!-- ── Game Area ─────────────────────────────────────────── -->
+    <section aria-label="Spielbereich" class="game-wrapper" id="gameArea">
+
+      <!-- Board side -->
+      <div class="board-side">
+        <!-- Status Bar -->
+        <div class="game-status-bar" id="statusBar" role="status" aria-live="polite">
+          <div class="player-indicator" id="currentPlayerIndicator">
+            <div class="player-dot dark" id="currentPlayerDot" aria-hidden="true"></div>
+            <span id="currentPlayerName">Spieler 1</span>
+          </div>
+          <div class="status-msg" id="statusMsg">Wähle einen Stein</div>
+          <div class="capture-counter" aria-label="Geschlagene Steine">
+            <div class="capture-badge">
+              <strong id="captures1">0</strong>
+              <span>Dunkle</span>
+            </div>
+            <div class="capture-badge">
+              <strong id="captures2">0</strong>
+              <span>Helle</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI thinking indicator -->
+        <div class="ai-thinking" id="aiThinking" aria-live="polite" style="height:24px;padding:0 4px;margin:4px 0;">
+          <!-- populated by JS -->
+        </div>
+
+        <!-- Game Board -->
+        <div class="board-container" id="boardContainer">
+          <canvas id="gameCanvas"
+                  role="grid"
+                  aria-label="Dame-Brett – 8x8 Felder"
+                  tabindex="0">
+          </canvas>
+          <!-- Win overlay -->
+          <div class="win-overlay" id="winOverlay" aria-live="assertive" role="alert">
+            <div class="win-trophy" id="winTrophy" aria-hidden="true">🏆</div>
+            <div class="win-text" id="winText">Spieler 1 gewinnt!</div>
+            <div class="win-score-anim" id="winScore">+100 Punkte</div>
+            <button class="win-btn rpl" id="winNewGame" type="button">Nochmal spielen</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controls side -->
+      <div class="controls-side">
+
+        <!-- Stats -->
+        <div class="stats-bar" role="region" aria-label="Statistiken">
+          <div class="stat-card">
+            <div class="stat-card__value" id="statWins">0</div>
+            <div class="stat-card__label">Siege</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__value" id="statLosses">0</div>
+            <div class="stat-card__label">Niederlagen</div>
+          </div>
+          <div class="stat-card streak">
+            <div class="stat-card__value" id="statStreak">0</div>
+            <div class="stat-card__label">Serie 🔥</div>
+          </div>
+        </div>
+
+        <!-- Mode Selector -->
+        <div style="margin-top:12px;">
+          <div class="text-label" style="margin-bottom:8px;color:var(--c-outline);font-size:12px;">Spielmodus</div>
+          <div class="mode-selector" role="group" aria-label="Spielmodus auswählen">
+            <button class="mode-btn rpl active" id="modeVsAI" aria-pressed="true" type="button">
+              🤖 vs KI
+            </button>
+            <button class="mode-btn rpl" id="modeVsHuman" aria-pressed="false" type="button">
+              👥 2 Spieler
+            </button>
+          </div>
+        </div>
+
+        <!-- Difficulty Selector (only for vs AI) -->
+        <div id="difficultyPanel" style="margin-top:10px;">
+          <div class="text-label" style="margin-bottom:8px;color:var(--c-outline);font-size:12px;">KI-Schwierigkeit</div>
+          <div class="diff-selector" role="group" aria-label="Schwierigkeitsstufe auswählen">
+            <button class="diff-btn rpl active" data-diff="1" aria-pressed="true" type="button">Anfänger</button>
+            <button class="diff-btn rpl" data-diff="2" aria-pressed="false" type="button">Mittel</button>
+            <button class="diff-btn rpl" data-diff="3" aria-pressed="false" type="button">Experte</button>
+          </div>
+        </div>
+
+        <!-- Game Controls -->
+        <div class="game-controls" style="margin-top:12px;">
+          <button class="btn-filled rpl" id="newGameBtn" type="button" aria-label="Neues Spiel starten">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.65 6.35A7.958 7.958 0 0 0 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0 1 12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
+            </svg>
+            Neues Spiel
+          </button>
+          <button class="pill-btn rpl" id="undoBtn" type="button" aria-label="Letzten Zug rückgängig">
+            ↩ Rückgängig
+          </button>
+        </div>
+
+        <!-- Sound + Score -->
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:10px;padding:0 4px;">
+          <button class="sound-btn rpl" id="soundToggle2" type="button" aria-pressed="true">
+            🔊 <span id="soundLabel">Ton an</span>
+          </button>
+          <div style="font-size:14px;font-weight:600;color:var(--c-outline);">
+            Punkte: <span id="scoreDisplay" style="color:var(--c-primary);font-size:17px;font-family:var(--font-mono);">0</span>
+          </div>
+        </div>
+
+        <!-- Move History (mini) -->
+        <details class="collapsible" style="margin-top:12px;" id="historyDetails">
+          <summary>Zughistorie</summary>
+          <div class="collapsible__body" style="max-height:140px;overflow-y:auto;">
+            <ol id="moveHistory" style="padding-left:18px;font-size:14px;color:var(--c-on-surf-var);margin:0;"></ol>
+            <p id="noMoves" style="font-size:14px;color:var(--c-outline);margin:0;">Noch keine Züge.</p>
+          </div>
+        </details>
+
+      </div><!-- /controls-side -->
+    </section><!-- /game-wrapper -->
+
+    <!-- ── Accessibility: Keyboard instructions ────────────── -->
+    <p style="font-size:13px;color:var(--c-outline);text-align:center;margin-top:12px;">
+      🖱️ Klick/Tap zum Spielen &nbsp;·&nbsp; Pfeiltasten + Enter zur Tastatursteuerung &nbsp;·&nbsp; ESC zum Abwählen
+    </p>
+
+    <!-- ═══════════════════════════════════════════════════════
+         SEO CONTENT SECTION
+    ═══════════════════════════════════════════════════════ -->
+
+    <div class="content-section">
+      <h2>Dame Regeln – so wird gespielt</h2>
+      <p>Dame ist eines der ältesten und beliebtesten Brettspiele der Welt. Das Spiel wird auf einem 8×8-Schachbrett gespielt, wobei nur die dunklen Felder genutzt werden. Jeder der beiden Spieler beginnt mit <strong>12 Steinen</strong>, die auf den ersten drei Reihen auf seiner Seite des Bretts aufgestellt sind.</p>
+
+      <div style="margin-top:20px;">
+        <div class="rule-step">
+          <div class="rule-step__num">1</div>
+          <div>
+            <strong>Grundzug:</strong> Normale Steine ziehen genau ein Feld diagonal nach vorne (in Richtung des Gegners). Sie dürfen nicht rückwärts ziehen, solange sie keine Dame sind.
+          </div>
+        </div>
+        <div class="rule-step">
+          <div class="rule-step__num">2</div>
+          <div>
+            <strong>Schlagen:</strong> Steht ein gegnerischer Stein diagonal vor dir und das dahinterliegende Feld ist frei, musst du schlagen. Du springst über den Stein und nimmst ihn vom Brett. Das ist das <em>Pflichtschlagen</em>.
+          </div>
+        </div>
+        <div class="rule-step">
+          <div class="rule-step__num">3</div>
+          <div>
+            <strong>Mehrfachschlagen:</strong> Kannst du nach einem Schlag sofort weiterschlagen, musst du das tun. Eine Schlagkette kann mehrere Steine in einem Zug treffen.
+          </div>
+        </div>
+        <div class="rule-step">
+          <div class="rule-step__num">4</div>
+          <div>
+            <strong>Dame:</strong> Erreicht ein Stein die gegnerische Grundlinie (letzte Reihe), wird er zur Dame. Die Dame erhält eine Krone und kann fortan in alle vier Diagonalrichtungen ziehen – auch rückwärts.
+          </div>
+        </div>
+        <div class="rule-step">
+          <div class="rule-step__num">5</div>
+          <div>
+            <strong>Spielende:</strong> Gewonnen hat, wer alle Steine des Gegners schlägt oder ihn so einschließt, dass er keinen gültigen Zug mehr machen kann.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Strategy Tips -->
+    <div class="content-section">
+      <h2>Strategie-Tipps für Anfänger und Fortgeschrittene</h2>
+      <p>Dame ist leicht zu lernen, aber schwer zu meistern. Mit diesen Tipps verbessert ihr euer Spiel schnell.</p>
+
+      <div class="content-grid">
+        <div class="tip-card">
+          <div class="tip-card__icon">♟</div>
+          <div class="tip-card__title">Mitte kontrollieren</div>
+          <p class="tip-card__text">Die zentralen Felder geben euren Steinen mehr Bewegungsfreiheit. Versucht früh, Steine in der Mitte zu platzieren.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-card__icon">🛡️</div>
+          <div class="tip-card__title">Grundlinie schützen</div>
+          <p class="tip-card__text">Lasst mindestens einen Stein auf eurer Grundlinie stehen, um zu verhindern, dass der Gegner leicht zur Dame wird.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-card__icon">🔗</div>
+          <div class="tip-card__title">Stein-Ketten bilden</div>
+          <p class="tip-card__text">Steine, die sich gegenseitig schützen (Diagonalketten), sind schwer anzugreifen. Bildet zusammenhängende Strukturen.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-card__icon">👑</div>
+          <div class="tip-card__title">Dame anstreben</div>
+          <p class="tip-card__text">Eine Dame ist viel stärker als ein normaler Stein. Versucht, schnell eine Dame zu bekommen – aber opfert dafür nicht zu viele Steine.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-card__icon">🔢</div>
+          <div class="tip-card__title">Tausch kalkulieren</div>
+          <p class="tip-card__text">Steintausch ist manchmal sinnvoll, wenn ihr danach eine bessere Position einnehmt oder eine Dame bekommt.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-card__icon">🎯</div>
+          <div class="tip-card__title">Fallen aufstellen</div>
+          <p class="tip-card__text">Bietet dem Gegner einen scheinbar guten Tausch an, der euch aber in eine bessere Position bringt – klassische Dame-Taktik.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Beginner Guide -->
+    <div class="content-section">
+      <h2>Anfänger-Guide: Die ersten Schritte im Dame-Spiel</h2>
+      <p>Ihr habt noch nie Dame gespielt? Kein Problem. Das Spiel erklärt sich schnell, und schon nach wenigen Partien entwickelt ihr ein Gefühl für Taktik und Strategie.</p>
+
+      <h3>Schritt 1: Das Brett verstehen</h3>
+      <p>Dame wird nur auf den dunklen Feldern gespielt. Das Brett hat 8×8 = 64 Felder, aber ihr nutzt nur die 32 dunklen davon. Stellt euch das Brett so vor, dass euer Spieler immer unten sitzt und der Gegner oben.</p>
+
+      <h3>Schritt 2: Pflichtschlagen nicht vergessen</h3>
+      <p>Das größte Missverständnis bei Neulingen: Das Schlagen ist keine Option, sondern Pflicht! Wenn ihr einen gegnerischen Stein schlagen könnt, müsst ihr es tun. Dieses Pflichtschlagen macht das Spiel taktisch interessant, weil ihr Fallen aufstellen könnt.</p>
+
+      <h3>Schritt 3: Die Dame als Ziel</h3>
+      <p>Versucht in jeder Partie mindestens eine Dame zu bekommen. Eine Dame kann rückwärts und vorwärts ziehen – das ist ein enormer Vorteil. Wer zuerst eine Dame hat, kontrolliert oft das Spiel.</p>
+
+      <h3>Schritt 4: Nicht zu hastig schlagen</h3>
+      <p>Nur weil ihr schlagen könnt (und müsst), heißt das nicht, dass jede Schlagsituation gut für euch ist. Manchmal lockt euch der Gegner in eine Falle: Er bietet einen Stein an, den ihr schlagen müsst – und danach stehen seine Steine besser. Lernt, solche Fallen zu erkennen.</p>
+
+      <h3>Schritt 5: Endspiel – Dame gegen Dame</h3>
+      <p>Im Endspiel, wenn beide Seiten nur noch wenige Steine haben, zählt die Positionierung der Damen. Eine Dame in der Ecke ist oft schwächer als eine im Zentrum. Versucht, eure Dame aktiv zu halten.</p>
+    </div>
+
+    <!-- Dame vs Chess -->
+    <div class="content-section">
+      <h2>Dame und Schach – Gemeinsamkeiten und Unterschiede</h2>
+      <p>Viele Menschen fragen, was der Unterschied zwischen Dame und Schach ist. Beide Spiele sind klassische Strategiespiele auf einem 8×8-Brett – aber sie funktionieren grundlegend anders.</p>
+
+      <p><strong>Gemeinsamkeiten:</strong> Beide Spiele haben kein Zufallselement. Es gewinnt der bessere Stratege. Beide sind vollständig informierte Spiele – jeder Spieler sieht alles. Beide erfordern vorausschauendes Denken.</p>
+
+      <p><strong>Unterschiede:</strong> Dame hat nur eine Figurenart (plus die starke Dame/König). Schach hat sechs verschiedene Figuren mit völlig unterschiedlichen Zugregeln. Dame gilt als einsteigerfreundlicher, weil die Regeln einfacher sind. Dennoch ist Dame auf hohem Niveau komplex: Es gibt unzählige mögliche Spielverläufe. Ein weiterer Unterschied: Beim Dame ist Schlagen Pflicht, beim Schach nicht. Das erzwingt beim Dame teils unerwünschte Züge und macht die Taktik einzigartiger.</p>
+
+      <p>Dame ist damit ein ideales Einstiegsstrategiespiel – besonders für Kinder und Jugendliche, die Schach noch zu kompliziert finden. Es fördert logisches Denken, Planung und Konzentration.</p>
+    </div>
+
+    <!-- History -->
+    <div class="content-section">
+      <h2>Geschichte des Damespiels</h2>
+      <p>Dame gehört zu den ältesten Brettspielen der Welt. Die Geschichte des Spiels reicht über 5.000 Jahre zurück – zu den alten Ägyptern, Griechen und Römern, die ähnliche Brettspiele auf Steinplatten spielten.</p>
+
+      <p>Die moderne Form des Damespiels entwickelte sich im <strong>12. Jahrhundert in Frankreich</strong>. Damals wurden die Schachregeln auf ein Brettspiel mit nur einer Figur angewendet. Der Name "Dame" stammt aus dem Französischen und bezieht sich auf die mächtige Dame-Figur (vergleichbar mit der Schach-Dame), die ein Stein durch Erreichen der Grundlinie werden kann.</p>
+
+      <p>Im <strong>16. und 17. Jahrhundert</strong> breitete sich das Spiel durch ganz Europa aus und entwickelte regionale Varianten. Die <em>englische Version</em> (Draughts), die <em>internationale Version</em> auf dem 10×10-Brett und die <em>deutsche Version</em> entstanden als eigenständige Regelwerke.</p>
+
+      <p>Heute wird Dame weltweit gespielt. Die <strong>Weltmeisterschaften im internationalen Dame</strong> (10×10-Brett) werden seit 1894 ausgetragen. Computerprogramme revolutionierten das Spiel: 1994 löste das Programm <em>Chinook</em> das Dame-Spiel mathematisch – Dame ist damit das komplexeste vollständig analysierte Brettspiel der Geschichte.</p>
+
+      <p>Trotz dieser vollständigen Analyse bleibt Dame spannend: Auf dem 8×8-Brett gibt es mehr als 5 Billionen mögliche Spielpositionen. Das Spiel lebt weiter – in Turnieren, Schulen und heute auf Millionen Smartphones und Computern weltweit.</p>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="faq-section" id="faq">
+      <h2>Häufige Fragen zum Dame-Spiel</h2>
+      <div style="margin-top:16px;">
+
+        <details class="collapsible">
+          <summary>Wie spielt man Dame – die wichtigsten Regeln?</summary>
+          <div class="collapsible__body">
+            <p>Dame wird auf einem 8×8-Brett auf den dunklen Feldern gespielt. Jeder Spieler hat 12 Steine in den ersten drei Reihen. Steine ziehen diagonal vorwärts. Gegnerische Steine werden durch Überspringen geschlagen – das Schlagen ist Pflicht. Wer alle Steine des Gegners schlägt oder ihn blockiert, gewinnt. Erreicht ein Stein die letzte Reihe, wird er zur Dame und kann auch rückwärts ziehen.</p>
+          </div>
+        </details>
+
+        <details class="collapsible">
+          <summary>Was bedeutet Pflichtschlagen?</summary>
+          <div class="collapsible__body">
+            <p>Pflichtschlagen bedeutet: Wenn ein Spieler einen gegnerischen Stein schlagen kann, muss er es tun. Er darf keinen anderen Zug machen. Gibt es mehrere Schlagmöglichkeiten, kann er in der Regel frei wählen. Nach einem Schlag muss er weiterschlagen, wenn das möglich ist (Mehrfachschlagen).</p>
+          </div>
+        </details>
+
+        <details class="collapsible">
+          <summary>Was ist eine Dame und wie stark ist sie?</summary>
+          <div class="collapsible__body">
+            <p>Wenn ein Stein die gegnerische Grundlinie erreicht, wird er zur Dame (manchmal auch König genannt). Die Dame kann diagonal in alle vier Richtungen ziehen – vorwärts und rückwärts. Im deutschen Dame darf sie dabei nur ein Feld weit ziehen (beim internationalen Dame kann sie beliebig weit ziehen). Eine Dame ist deutlich stärker als ein normaler Stein, weil sie viel flexibler ist.</p>
+          </div>
+        </details>
+
+        <details class="collapsible">
+          <summary>Kann man online gegen Freunde spielen?</summary>
+          <div class="collapsible__body">
+            <p>Ja! Wählt einfach den "2 Spieler"-Modus. Beide Spieler spielen dann am selben Gerät und wechseln sich ab. Eine Online-Funktion für entfernte Spieler ist in Planung. Aktuell könnt ihr auch gegeneinander auf einem Tablet oder PC spielen – das funktioniert wunderbar für gemeinsame Spielabende.</p>
+          </div>
+        </details>
+
+        <details class="collapsible">
+          <summary>Welche KI-Schwierigkeitsstufen gibt es und wie funktionieren sie?</summary>
+          <div class="collapsible__body">
+            <p><strong>Anfänger:</strong> Die KI macht gelegentlich absichtliche Fehler und denkt nicht weit voraus. Gut für erste Erfahrungen.<br>
+            <strong>Mittel:</strong> Die KI spielt solide, nutzt taktische Chancen und macht selten Fehler. Eine gute Herausforderung für geübte Spieler.<br>
+            <strong>Experte:</strong> Die KI verwendet den Minimax-Algorithmus mit Alpha-Beta-Pruning. Sie denkt mehrere Züge voraus und spielt nahezu optimal. Für erfahrene Spieler, die sich wirklich herausfordern wollen.</p>
+          </div>
+        </details>
+
+        <details class="collapsible">
+          <summary>Wie gewinnt man am besten beim Dame?</summary>
+          <div class="collapsible__body">
+            <p>Die wichtigsten Strategien: Kontrolle das Zentrum des Bretts, schütze deine Grundlinie, bilde Stein-Ketten für gegenseitigen Schutz, und versuche frühzeitig eine Dame zu bekommen. Stellt außerdem Fallen auf: Bietet dem Gegner manchmal einen Tausch an, der euch langfristig besser stellt. Im Endspiel mit Dame sind Aktivität und zentrale Position entscheidend.</p>
+          </div>
+        </details>
+
+        <details class="collapsible">
+          <summary>Was ist der Unterschied zwischen deutschen und internationalen Dame-Regeln?</summary>
+          <div class="collapsible__body">
+            <p>Deutsches Dame wird auf einem 8×8-Brett mit je 12 Steinen gespielt. Die Dame kann nur ein Feld diagonal ziehen. Beim internationalen Dame (auch "Polnisches Dame") gibt es ein 10×10-Brett mit je 20 Steinen, und die Dame kann beliebig weit über freie Diagonalen ziehen. Unser Spiel folgt den deutschen Regeln – ideal für Einsteiger und Gelegenheitsspieler.</p>
+          </div>
+        </details>
+
+        <details class="collapsible">
+          <summary>Ist Dame auf dem Smartphone spielbar?</summary>
+          <div class="collapsible__body">
+            <p>Ja, das Spiel ist vollständig mobile-optimiert. Das Brett passt sich automatisch an deine Bildschirmgröße an. Die Touch-Zonen sind groß genug für komfortables Spielen auf kleinen Displays. Auch auf Tablets läuft das Spiel perfekt. Kein App-Download nötig – einfach im Browser aufrufen und spielen.</p>
+          </div>
+        </details>
+
+        <details class="collapsible">
+          <summary>Werden meine Spielstatistiken gespeichert?</summary>
+          <div class="collapsible__body">
+            <p>Ja, deine Statistiken (Siege, Niederlagen, aktuelle Siegesserie, Gesamtpunkte) werden automatisch in deinem Browser gespeichert. Die Daten bleiben auch nach dem Schließen des Browsers erhalten. Sie werden nur für dich lokal gespeichert – es werden keine Daten an Server übertragen.</p>
+          </div>
+        </details>
+
+        <details class="collapsible">
+          <summary>Brauche ich eine Anmeldung zum Spielen?</summary>
+          <div class="collapsible__body">
+            <p>Nein. Dame auf klickspiele.de ist 100% kostenlos und ohne jegliche Anmeldung spielbar. Kein Account, kein Passwort, kein E-Mail – einfach die Seite aufrufen und sofort losspielen. Deine Statistiken werden lokal in deinem Browser gespeichert.</p>
+          </div>
+        </details>
+
+      </div>
+    </div><!-- /faq -->
+
+    <!-- Additional context -->
+    <div class="content-section" style="margin-bottom:16px;">
+      <h2>Weitere kostenlose Spiele auf klickspiele.de</h2>
+      <p>klickspiele.de bietet eine wachsende Sammlung kostenloser Browser-Spiele ohne Anmeldung. Alle Spiele sind mobile-optimiert und laufen direkt in eurem Browser – kein Download, keine Installation. Neben Dame findet ihr dort Denkspiele, Geschicklichkeitsspiele und Klassiker für die ganze Familie.</p>
+      <a href="https://klickspiele.de" class="btn-filled rpl" style="margin-top:16px;display:inline-flex;text-decoration:none;">
+        Alle Spiele entdecken →
+      </a>
+    </div>
+
+  </main><!-- /main -->
+
+  <!-- ── Footer ───────────────────────────────────────────── -->
+  <footer class="site-footer" role="contentinfo">
+    <nav class="site-footer__nav" aria-label="Footer Navigation">
+      <a href="https://klickspiele.de">klickspiele.de</a>
+      <a href="./imprint">Impressum</a>
+      <a href="./privacy">Datenschutz</a>
+    </nav>
+    <p class="site-footer__copy">© 2025 klickspiele.de · Kostenlose Spiele ohne Anmeldung</p>
+  </footer>
+
+  <!-- ══════════════════════════════════════════════════════════
+       GAME ENGINE — Dame (Checkers) with full German rules
+  ══════════════════════════════════════════════════════════ -->
+  <script>
+  'use strict';
+  // ─────────────────────────────────────────────────────────────────
+  // CONSTANTS & CONFIG
+  // ─────────────────────────────────────────────────────────────────
+  const EMPTY  = 0;
+  const DARK   = 1;  // Player 1 (moves from top rows → down? No: dark starts top, moves down)
+  const LIGHT  = 2;  // Player 2 / AI (moves from bottom rows → up)
+  const DARK_K = 3;  // Dark King (Dame)
+  const LIGHT_K= 4;  // Light King (Dame)
+
+  // Colors — wood theme
+  const CLR = {
+    squareDark:  '#8B5E3C',  // dark wood
+    squareLight: '#F0D5B0',  // light wood
+    squareDarkHover:  '#A0703A',
+    squareLightHover: '#FFE8C8',
+    selectedBg:  '#F57C00',
+    moveDot:     'rgba(245,124,0,0.65)',
+    captureDot:  'rgba(183,28,28,0.75)',
+    pieceDark:   '#2C1810',
+    pieceDarkRim:'#1a0a05',
+    pieceLight:  '#F5E6D3',
+    pieceLightRim:'#bfa88a',
+    kingCrown:   '#FFD700',
+    lastMoveFill:'rgba(245,124,0,0.22)',
+    forcedFill:  'rgba(183,28,28,0.18)',
+    boardBorder: '#6B3A2A',
+  };
+
+  // ─────────────────────────────────────────────────────────────────
+  // GAME STATE
+  // ─────────────────────────────────────────────────────────────────
+  let state = {
+    board: [],          // 8x8 flat array indexed [row*8+col]
+    turn: DARK,         // whose turn
+    selected: null,     // {row,col} of selected piece
+    validMoves: [],     // [{from,to,captures,path}]
+    gameOver: false,
+    winner: null,
+    mode: 'ai',         // 'ai' | 'human'
+    difficulty: 1,      // 1=easy 2=medium 3=hard
+    capturesDark:  0,   // pieces captured by dark (light pieces taken)
+    capturesLight: 0,   // pieces captured by light
+    lastMove: null,     // {from,to} for highlight
+    moveHistory: [],    // array of description strings
+    score: 0,
+    aiThinking: false,
+    mustCapturePieces: [], // pieces that must capture
+    animPiece: null,    // animation state
+  };
+
+  // ─────────────────────────────────────────────────────────────────
+  // STATS (localStorage)
+  // ─────────────────────────────────────────────────────────────────
+  const STATS_KEY = 'dame_stats_v1';
+  let stats = JSON.parse(localStorage.getItem(STATS_KEY) || '{"wins":0,"losses":0,"streak":0,"score":0}');
+
+  function saveStats() {
+    localStorage.setItem(STATS_KEY, JSON.stringify(stats));
+    document.getElementById('statWins').textContent    = stats.wins;
+    document.getElementById('statLosses').textContent  = stats.losses;
+    document.getElementById('statStreak').textContent  = stats.streak;
+  }
+
+  // ─────────────────────────────────────────────────────────────────
+  // SOUND ENGINE (Web Audio API — minimal, no external files)
+  // ─────────────────────────────────────────────────────────────────
+  let soundEnabled = true;
+  let audioCtx = null;
+
+  function getAudioCtx() {
+    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    return audioCtx;
+  }
+
+  function playBeep(freq, dur, type='sine', vol=0.15) {
+    if (!soundEnabled) return;
+    try {
+      const ctx = getAudioCtx();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain); gain.connect(ctx.destination);
+      osc.type = type; osc.frequency.value = freq;
+      gain.gain.setValueAtTime(vol, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + dur);
+      osc.start(); osc.stop(ctx.currentTime + dur);
+    } catch(e) {}
+  }
+
+  const SFX = {
+    move:    () => playBeep(440, 0.08, 'sine', 0.1),
+    capture: () => { playBeep(220, 0.12, 'square', 0.12); setTimeout(()=>playBeep(180,0.1,'square',0.08),100); },
+    king:    () => { playBeep(660, 0.1, 'sine', 0.15); setTimeout(()=>playBeep(880,0.2,'sine',0.12),100); },
+    win:     () => { [523,659,784,1047].forEach((f,i)=>setTimeout(()=>playBeep(f,0.3,'sine',0.13),i*120)); },
+    select:  () => playBeep(550, 0.05, 'sine', 0.07),
+    invalid: () => playBeep(150, 0.1, 'sawtooth', 0.08),
+  };
+
+  // ─────────────────────────────────────────────────────────────────
+  // BOARD INIT
+  // ─────────────────────────────────────────────────────────────────
+  function initBoard() {
+    const b = new Array(64).fill(EMPTY);
+    // Dark pieces: rows 0-2 (top), on dark squares (row+col = odd)
+    for(let r=0;r<3;r++) for(let c=0;c<8;c++) if((r+c)%2===1) b[r*8+c] = DARK;
+    // Light pieces: rows 5-7 (bottom)
+    for(let r=5;r<8;r++) for(let c=0;c<8;c++) if((r+c)%2===1) b[r*8+c] = LIGHT;
+    return b;
+  }
+
+  function boardClone(b) { return b.slice(); }
+
+  // ─────────────────────────────────────────────────────────────────
+  // MOVE GENERATION
+  // ─────────────────────────────────────────────────────────────────
+  // Returns all valid moves for given player on given board
+  // Each move: { from:{r,c}, to:{r,c}, captures:[{r,c}], seq:[positions] }
+  function getMoves(board, player) {
+    const captures = getCaptureMovesForPlayer(board, player);
+    if(captures.length > 0) return captures; // Pflichtschlagen
+    return getSimpleMoves(board, player);
+  }
+
+  function isOwn(piece, player) {
+    if(player===DARK)  return piece===DARK  || piece===DARK_K;
+    if(player===LIGHT) return piece===LIGHT || piece===LIGHT_K;
+    return false;
+  }
+  function isOpponent(piece, player) {
+    if(player===DARK)  return piece===LIGHT || piece===LIGHT_K;
+    if(player===LIGHT) return piece===DARK  || piece===DARK_K;
+    return false;
+  }
+  function isKing(piece) { return piece===DARK_K || piece===LIGHT_K; }
+
+  function getSimpleMoves(board, player) {
+    const moves = [];
+    for(let r=0;r<8;r++) for(let c=0;c<8;c++) {
+      const p = board[r*8+c];
+      if(!isOwn(p,player)) continue;
+      const king = isKing(p);
+      const dirs = [];
+      if(player===DARK  || king) dirs.push([1,1],[1,-1]);   // dark moves down
+      if(player===LIGHT || king) dirs.push([-1,1],[-1,-1]); // light moves up
+      for(const [dr,dc] of dirs) {
+        const nr=r+dr, nc=c+dc;
+        if(nr<0||nr>7||nc<0||nc>7) continue;
+        if(board[nr*8+nc]===EMPTY) {
+          moves.push({ from:{r,c}, to:{r:nr,c:nc}, captures:[] });
+        }
+      }
+    }
+    return moves;
+  }
+
+  function getCaptureMovesForPlayer(board, player) {
+    const allCaptures = [];
+    for(let r=0;r<8;r++) for(let c=0;c<8;c++) {
+      const p = board[r*8+c];
+      if(!isOwn(p,player)) continue;
+      const chains = getCaptureChains(board, r, c, player, [], null);
+      for(const ch of chains) allCaptures.push(ch);
+    }
+    return allCaptures;
+  }
+
+  // Recursive: find all capture chains from position (r,c)
+  function getCaptureChains(board, r, c, player, capturedSoFar, lastDir) {
+    const p = board[r*8+c];
+    const king = isKing(p);
+    const dirs = [];
+    if(player===DARK  || king) dirs.push([1,1],[1,-1]);
+    if(player===LIGHT || king) dirs.push([-1,1],[-1,-1]);
+
+    const chains = [];
+    for(const [dr,dc] of dirs) {
+      const mr=r+dr, mc=c+dc;   // mid (opponent)
+      const lr=r+dr*2, lc=c+dc*2; // landing
+      if(mr<0||mr>7||mc<0||mc>7||lr<0||lr>7||lc<0||lc>7) continue;
+      const midPiece = board[mr*8+mc];
+      if(!isOpponent(midPiece,player)) continue;
+      if(board[lr*8+lc]!==EMPTY) continue;
+      // Check: can't capture the same piece twice
+      if(capturedSoFar.some(cp=>cp.r===mr&&cp.c===mc)) continue;
+
+      const newCaptured = [...capturedSoFar, {r:mr,c:mc}];
+      // Simulate jump
+      const tmpBoard = boardClone(board);
+      tmpBoard[lr*8+lc] = tmpBoard[r*8+c];
+      tmpBoard[r*8+c] = EMPTY;
+      // Remove captured piece during chain (but keep for king blocking)
+      tmpBoard[mr*8+mc] = EMPTY;
+      // Check promotion mid-chain: if reaches last row → becomes king, can't continue
+      let promoted = false;
+      if(player===DARK && lr===7 && !king) { tmpBoard[lr*8+lc]=DARK_K; promoted=true; }
+      if(player===LIGHT && lr===0 && !king) { tmpBoard[lr*8+lc]=LIGHT_K; promoted=true; }
+
+      if(!promoted) {
+        const further = getCaptureChains(tmpBoard, lr, lc, player, newCaptured, [dr,dc]);
+        if(further.length > 0) {
+          for(const f of further) chains.push(f);
+        } else {
+          chains.push({ from:{r,c}, to:{r:lr,c:lc}, captures:newCaptured });
+        }
+      } else {
+        chains.push({ from:{r,c}, to:{r:lr,c:lc}, captures:newCaptured });
+      }
+    }
+    return chains;
+  }
+
+  // Apply move to board, return new board
+  function applyMove(board, move, player) {
+    const nb = boardClone(board);
+    const piece = nb[move.from.r*8+move.from.c];
+    nb[move.to.r*8+move.to.c] = piece;
+    nb[move.from.r*8+move.from.c] = EMPTY;
+    for(const cap of move.captures) nb[cap.r*8+cap.c] = EMPTY;
+    // Promotion
+    if(player===DARK  && move.to.r===7 && piece===DARK)  nb[move.to.r*8+move.to.c]=DARK_K;
+    if(player===LIGHT && move.to.r===0 && piece===LIGHT) nb[move.to.r*8+move.to.c]=LIGHT_K;
+    return nb;
+  }
+
+  // ─────────────────────────────────────────────────────────────────
+  // GAME LOGIC
+  // ─────────────────────────────────────────────────────────────────
+  function checkWin(board, player) {
+    const opponent = player===DARK ? LIGHT : DARK;
+    const oppMoves = getMoves(board, opponent);
+    if(oppMoves.length === 0) return true;
+    // Check if opponent has any pieces
+    let hasOpp = false;
+    for(let i=0;i<64;i++) if(isOwn(board[i],opponent)) { hasOpp=true; break; }
+    return !hasOpp;
+  }
+
+  // ─────────────────────────────────────────────────────────────────
+  // AI ENGINE — Minimax with Alpha-Beta Pruning
+  // ─────────────────────────────────────────────────────────────────
+  function evaluate(board) {
+    let score = 0;
+    for(let r=0;r<8;r++) for(let c=0;c<8;c++) {
+      const p = board[r*8+c];
+      if(p===DARK)  { score -= 10; score -= mobilityBonus(board,r,c,DARK); }
+      if(p===LIGHT) { score += 10; score += mobilityBonus(board,r,c,LIGHT); }
+      if(p===DARK_K)  { score -= 18; score -= mobilityBonus(board,r,c,DARK); }
+      if(p===LIGHT_K) { score += 18; score += mobilityBonus(board,r,c,LIGHT); }
+      // Positional bonus: center is good, back row is safe
+      if(p===LIGHT||p===LIGHT_K) {
+        score += centerBonus(r,c) * 0.3;
+        if(r===7) score += 2; // protect base
+      }
+      if(p===DARK||p===DARK_K) {
+        score -= centerBonus(r,c) * 0.3;
+        if(r===0) score -= 2;
+      }
+    }
+    return score;
+  }
+
+  function centerBonus(r,c) {
+    const dr=Math.abs(r-3.5), dc=Math.abs(c-3.5);
+    return (3.5-dr)+(3.5-dc);
+  }
+
+  function mobilityBonus(board,r,c,player) {
+    const dirs=[];
+    const king=isKing(board[r*8+c]);
+    if(player===DARK  || king) dirs.push([1,1],[1,-1]);
+    if(player===LIGHT || king) dirs.push([-1,1],[-1,-1]);
+    let m=0;
+    for(const[dr,dc]of dirs){const nr=r+dr,nc=c+dc;if(nr>=0&&nr<8&&nc>=0&&nc<8&&board[nr*8+nc]===EMPTY)m++;}
+    return m*0.1;
+  }
+
+  function minimax(board, depth, alpha, beta, maximizing) {
+    const player = maximizing ? LIGHT : DARK;
+    if(depth===0) return evaluate(board);
+    const moves = getMoves(board, player);
+    if(moves.length===0) return maximizing ? -1000 : 1000;
+
+    if(maximizing) {
+      let best=-Infinity;
+      for(const m of moves) {
+        const nb = applyMove(board, m, player);
+        const v  = minimax(nb, depth-1, alpha, beta, false);
+        best=Math.max(best,v); alpha=Math.max(alpha,v);
+        if(beta<=alpha) break;
+      }
+      return best;
+    } else {
+      let best=Infinity;
+      for(const m of moves) {
+        const nb = applyMove(board, m, player);
+        const v  = minimax(nb, depth-1, alpha, beta, true);
+        best=Math.min(best,v); beta=Math.min(beta,v);
+        if(beta<=alpha) break;
+      }
+      return best;
+    }
+  }
+
+  function getAIMove(board, difficulty) {
+    const moves = getMoves(board, LIGHT);
+    if(moves.length===0) return null;
+
+    // Easy: random with some preference for captures
+    if(difficulty===1) {
+      if(Math.random()<0.35) return moves[Math.floor(Math.random()*moves.length)];
+      const caps=moves.filter(m=>m.captures.length>0);
+      return caps.length>0 ? caps[Math.floor(Math.random()*caps.length)] : moves[Math.floor(Math.random()*moves.length)];
+    }
+    // Medium: depth 3
+    if(difficulty===2) {
+      let best=-Infinity, bestMove=moves[0];
+      for(const m of moves) {
+        const nb=applyMove(board,m,LIGHT);
+        const v=minimax(nb,3,-Infinity,Infinity,false);
+        if(v>best){best=v;bestMove=m;}
+      }
+      return bestMove;
+    }
+    // Hard: depth 6
+    if(difficulty===3) {
+      let best=-Infinity, bestMove=moves[0];
+      for(const m of moves) {
+        const nb=applyMove(board,m,LIGHT);
+        const v=minimax(nb,6,-Infinity,Infinity,false);
+        if(v>best){best=v;bestMove=m;}
+      }
+      return bestMove;
+    }
+  }
+
+  // ─────────────────────────────────────────────────────────────────
+  // CANVAS RENDERER
+  // ─────────────────────────────────────────────────────────────────
+  const canvas = document.getElementById('gameCanvas');
+  const ctx2d  = canvas.getContext('2d');
+  let cellSize = 0; // calculated in resize
+
+  // Animation for smooth piece movement
+  let anim = null; // { startTime, fromX, fromY, toX, toY, piece, board before }
+
+  function resize() {
+    const container = document.getElementById('boardContainer');
+    const size = container.clientWidth;
+    canvas.width  = size * (window.devicePixelRatio||1);
+    canvas.height = size * (window.devicePixelRatio||1);
+    canvas.style.width  = size+'px';
+    canvas.style.height = size+'px';
+    ctx2d.scale(window.devicePixelRatio||1, window.devicePixelRatio||1);
+    cellSize = size / 8;
+    render();
+  }
+
+  function cellCenter(r,c) {
+    return { x: c*cellSize+cellSize/2, y: r*cellSize+cellSize/2 };
+  }
+
+  function drawBoard() {
+    for(let r=0;r<8;r++) for(let c=0;c<8;c++) {
+      const isDark = (r+c)%2===1;
+      ctx2d.fillStyle = isDark ? CLR.squareDark : CLR.squareLight;
+      ctx2d.fillRect(c*cellSize, r*cellSize, cellSize, cellSize);
+    }
+  }
+
+  function drawHighlights() {
+    // Last move
+    if(state.lastMove) {
+      ctx2d.fillStyle = CLR.lastMoveFill;
+      const {from,to}=state.lastMove;
+      ctx2d.fillRect(from.c*cellSize,from.r*cellSize,cellSize,cellSize);
+      ctx2d.fillRect(to.c*cellSize,  to.r*cellSize,  cellSize,cellSize);
+    }
+    // Must-capture indicator
+    if(!state.selected && state.mustCapturePieces.length>0) {
+      ctx2d.fillStyle = CLR.forcedFill;
+      for(const {r,c} of state.mustCapturePieces) {
+        ctx2d.fillRect(c*cellSize,r*cellSize,cellSize,cellSize);
+      }
+    }
+    // Selected cell
+    if(state.selected) {
+      const {r,c}=state.selected;
+      ctx2d.fillStyle = 'rgba(245,124,0,0.3)';
+      ctx2d.fillRect(c*cellSize,r*cellSize,cellSize,cellSize);
+    }
+    // Valid move dots
+    if(state.selected && state.validMoves.length>0) {
+      for(const m of state.validMoves) {
+        const {x,y}=cellCenter(m.to.r,m.to.c);
+        const isCapture = m.captures.length>0;
+        ctx2d.beginPath();
+        ctx2d.arc(x,y,isCapture?cellSize*0.18:cellSize*0.14,0,Math.PI*2);
+        ctx2d.fillStyle = isCapture ? CLR.captureDot : CLR.moveDot;
+        ctx2d.fill();
+        if(isCapture) {
+          // also show captured square
+          for(const cap of m.captures) {
+            ctx2d.strokeStyle='rgba(183,28,28,0.5)';
+            ctx2d.lineWidth=2;
+            ctx2d.strokeRect(cap.c*cellSize+2,cap.r*cellSize+2,cellSize-4,cellSize-4);
+          }
+        }
+      }
+    }
+  }
+
+  function drawPiece(x, y, piece, alpha=1) {
+    const r = cellSize*0.38;
+    ctx2d.globalAlpha = alpha;
+    const isDarkPiece = piece===DARK||piece===DARK_K;
+    const king = piece===DARK_K||piece===LIGHT_K;
+
+    // Shadow
+    ctx2d.beginPath();
+    ctx2d.arc(x+2, y+3, r, 0, Math.PI*2);
+    ctx2d.fillStyle='rgba(0,0,0,0.3)';
+    ctx2d.fill();
+
+    // Piece body — gradient for 3D effect
+    const grad = ctx2d.createRadialGradient(x-r*0.3,y-r*0.3,r*0.1,x,y,r);
+    if(isDarkPiece) {
+      grad.addColorStop(0,'#5a3020');
+      grad.addColorStop(1,'#1a0a05');
+    } else {
+      grad.addColorStop(0,'#fffaf5');
+      grad.addColorStop(1,'#d4b896');
+    }
+    ctx2d.beginPath();
+    ctx2d.arc(x, y, r, 0, Math.PI*2);
+    ctx2d.fillStyle = grad;
+    ctx2d.fill();
+
+    // Rim
+    ctx2d.lineWidth = 2;
+    ctx2d.strokeStyle = isDarkPiece ? '#0d0503' : '#c9a882';
+    ctx2d.stroke();
+
+    // Inner circle
+    ctx2d.beginPath();
+    ctx2d.arc(x, y, r*0.65, 0, Math.PI*2);
+    ctx2d.strokeStyle = isDarkPiece ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.08)';
+    ctx2d.lineWidth = 1.5;
+    ctx2d.stroke();
+
+    // Crown for kings
+    if(king) {
+      const cs = r*0.35;
+      ctx2d.fillStyle = '#FFD700';
+      // Crown: 3 peaks
+      ctx2d.beginPath();
+      ctx2d.moveTo(x-cs*1.3, y+cs*0.5);
+      ctx2d.lineTo(x-cs*1.3, y-cs*0.3);
+      ctx2d.lineTo(x-cs*0.6, y);
+      ctx2d.lineTo(x,         y-cs*0.8);
+      ctx2d.lineTo(x+cs*0.6, y);
+      ctx2d.lineTo(x+cs*1.3, y-cs*0.3);
+      ctx2d.lineTo(x+cs*1.3, y+cs*0.5);
+      ctx2d.closePath();
+      ctx2d.fill();
+      ctx2d.strokeStyle='rgba(0,0,0,0.3)';
+      ctx2d.lineWidth=1;
+      ctx2d.stroke();
+      // Gems
+      ctx2d.fillStyle='rgba(255,50,50,0.85)';
+      ctx2d.beginPath(); ctx2d.arc(x,y-cs*0.5,cs*0.22,0,Math.PI*2); ctx2d.fill();
+      ctx2d.fillStyle='rgba(100,200,255,0.85)';
+      ctx2d.beginPath(); ctx2d.arc(x-cs*0.9,y+cs*0.1,cs*0.16,0,Math.PI*2); ctx2d.fill();
+      ctx2d.beginPath(); ctx2d.arc(x+cs*0.9,y+cs*0.1,cs*0.16,0,Math.PI*2); ctx2d.fill();
+    }
+
+    ctx2d.globalAlpha = 1;
+  }
+
+  function drawPieces() {
+    for(let r=0;r<8;r++) for(let c=0;c<8;c++) {
+      const p=state.board[r*8+c];
+      if(p===EMPTY) continue;
+      // Skip animated piece
+      if(anim && anim.fromR===r&&anim.fromC===c) continue;
+      const {x,y}=cellCenter(r,c);
+      drawPiece(x,y,p);
+    }
+  }
+
+  function render(animT) {
+    const sz = canvas.width / (window.devicePixelRatio||1);
+    ctx2d.clearRect(0,0,sz,sz);
+    drawBoard();
+    drawHighlights();
+    drawPieces();
+    // Draw animation
+    if(anim && animT!==undefined) {
+      const t=Math.min(1,(animT-anim.startTime)/280); // 280ms duration
+      const ease=t<0.5?2*t*t:(1-Math.pow(-2*t+2,2)/2); // easeInOut
+      const x=anim.fromX+(anim.toX-anim.fromX)*ease;
+      const y=anim.fromY+(anim.toY-anim.fromY)*ease;
+      drawPiece(x,y,anim.piece);
+      if(t<1) requestAnimationFrame(ts=>render(ts));
+      else {
+        anim=null;
+        render();
+      }
+    }
+    // Board border
+    ctx2d.strokeStyle=CLR.boardBorder;
+    ctx2d.lineWidth=3;
+    ctx2d.strokeRect(1,1,sz-2,sz-2);
+    // Grid lines (subtle)
+    ctx2d.strokeStyle='rgba(0,0,0,0.08)';
+    ctx2d.lineWidth=0.5;
+    for(let i=1;i<8;i++){
+      ctx2d.beginPath();ctx2d.moveTo(i*cellSize,0);ctx2d.lineTo(i*cellSize,sz);ctx2d.stroke();
+      ctx2d.beginPath();ctx2d.moveTo(0,i*cellSize);ctx2d.lineTo(sz,i*cellSize);ctx2d.stroke();
+    }
+  }
+
+  // ─────────────────────────────────────────────────────────────────
+  // INTERACTION
+  // ─────────────────────────────────────────────────────────────────
+  function getCell(e) {
+    const rect = canvas.getBoundingClientRect();
+    let x,y;
+    if(e.touches && e.touches.length>0) { x=e.touches[0].clientX-rect.left; y=e.touches[0].clientY-rect.top; }
+    else { x=e.clientX-rect.left; y=e.clientY-rect.top; }
+    return { r: Math.floor(y/cellSize), c: Math.floor(x/cellSize) };
+  }
+
+  canvas.addEventListener('pointerdown', handlePointerDown);
+  canvas.addEventListener('keydown', handleKeyDown);
+
+  // Keyboard navigation
+  let keyFocus = {r:0,c:0};
+  function handleKeyDown(e) {
+    if(state.gameOver||state.aiThinking) return;
+    if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key)) {
+      e.preventDefault();
+      if(e.key==='ArrowUp')    keyFocus.r=Math.max(0,keyFocus.r-1);
+      if(e.key==='ArrowDown')  keyFocus.r=Math.min(7,keyFocus.r+1);
+      if(e.key==='ArrowLeft')  keyFocus.c=Math.max(0,keyFocus.c-1);
+      if(e.key==='ArrowRight') keyFocus.c=Math.min(7,keyFocus.c+1);
+      // Draw focus indicator
+      render();
+      drawFocusCursor();
+    }
+    if(e.key==='Enter'||e.key===' ') { e.preventDefault(); handleCellClick(keyFocus.r,keyFocus.c); }
+    if(e.key==='Escape') { state.selected=null; state.validMoves=[]; render(); }
+  }
+
+  function drawFocusCursor() {
+    const {r,c}=keyFocus;
+    ctx2d.strokeStyle='#F57C00';
+    ctx2d.lineWidth=3;
+    ctx2d.strokeRect(c*cellSize+2,r*cellSize+2,cellSize-4,cellSize-4);
+  }
+
+  function handlePointerDown(e) {
+    e.preventDefault();
+    if(state.gameOver||state.aiThinking) return;
+    const {r,c}=getCell(e);
+    if(r<0||r>7||c<0||c>7) return;
+    handleCellClick(r,c);
+  }
+
+  function handleCellClick(r,c) {
+    const currentPlayer = state.turn;
+    // Ignore clicks when it's AI turn in AI mode
+    if(state.mode==='ai' && currentPlayer===LIGHT) return;
+
+    const piece = state.board[r*8+c];
+
+    // If already selected, check if clicking a valid move destination
+    if(state.selected) {
+      const move = state.validMoves.find(m=>m.to.r===r&&m.to.c===c);
+      if(move) {
+        executeMove(move);
+        return;
+      }
+      // Clicking same piece: deselect
+      if(state.selected.r===r&&state.selected.c===c) {
+        state.selected=null; state.validMoves=[]; render(); return;
+      }
+      // Clicking another own piece
+      if(isOwn(piece,currentPlayer)) {
+        // Check forced capture: if there are forced pieces, only allow selecting those
+        if(state.mustCapturePieces.length>0 && !state.mustCapturePieces.some(p=>p.r===r&&p.c===c)) {
+          SFX.invalid(); updateStatus('Du musst schlagen!'); return;
+        }
+        selectPiece(r,c); return;
+      }
+      state.selected=null; state.validMoves=[]; render(); return;
+    }
+
+    // Select a piece
+    if(isOwn(piece,currentPlayer)) {
+      if(state.mustCapturePieces.length>0 && !state.mustCapturePieces.some(p=>p.r===r&&p.c===c)) {
+        SFX.invalid(); updateStatus('Pflichtschlagen! Du musst schlagen.'); return;
+      }
+      selectPiece(r,c);
+    }
+  }
+
+  function selectPiece(r,c) {
+    state.selected={r,c};
+    const allMoves = getMoves(state.board, state.turn);
+    state.validMoves = allMoves.filter(m=>m.from.r===r&&m.from.c===c);
+    SFX.select();
+    updateStatus('Wähle ein Zielfeld');
+    render();
+  }
+
+  function executeMove(move, isAI=false) {
+    const player = state.turn;
+    const isCapture = move.captures.length>0;
+    const fromR=move.from.r, fromC=move.from.c, toR=move.to.r, toC=move.to.c;
+    const piece = state.board[fromR*8+fromC];
+
+    // Animate
+    const {x:fx,y:fy}=cellCenter(fromR,fromC);
+    const {x:tx,y:ty}=cellCenter(toR,toC);
+    anim={startTime:performance.now(), fromX:fx, fromY:fy, toX:tx, toY:ty, piece, fromR, fromC};
+
+    // Apply move to game state (immediately, render will show animation)
+    const newBoard = applyMove(state.board, move, player);
+
+    // Was promotion?
+    const wasKing = isKing(piece);
+    const isNowKing = isKing(newBoard[toR*8+toC]);
+
+    state.board = newBoard;
+    state.lastMove = {from:move.from, to:move.to};
+
+    // Update capture counts
+    if(isCapture) {
+      if(player===DARK)  state.capturesLight+=move.captures.length;
+      else               state.capturesDark +=move.captures.length;
+    }
+
+    // Sounds
+    if(isNowKing && !wasKing) SFX.king();
+    else if(isCapture) SFX.capture();
+    else SFX.move();
+
+    // Score
+    const pts = isCapture ? move.captures.length*15 : 2;
+    if(player===DARK || state.mode==='human') {
+      state.score += pts;
+      stats.score = (stats.score||0)+pts;
+    }
+    document.getElementById('scoreDisplay').textContent = state.score;
+
+    // Move history
+    const colLetters='abcdefgh';
+    const desc=`${colLetters[fromC]}${8-fromR} → ${colLetters[toC]}${8-toR}${isCapture?' ×'+move.captures.length:''}${isNowKing&&!wasKing?' 👑':''}`;
+    state.moveHistory.push(desc);
+    updateMoveHistory();
+
+    // Update capture display
+    document.getElementById('captures1').textContent = state.capturesDark;
+    document.getElementById('captures2').textContent = state.capturesLight;
+
+    state.selected=null; state.validMoves=[];
+
+    // Switch turn
+    state.turn = player===DARK ? LIGHT : DARK;
+
+    // Check win
+    if(checkWin(state.board, player)) {
+      setTimeout(()=>showWin(player), 350);
+      requestAnimationFrame(ts=>render(ts));
+      return;
+    }
+
+    // Recalculate forced captures for next player
+    computeForcedCaptures();
+
+    // Update UI
+    updatePlayerIndicator();
+    if(player===DARK) updateStatus(state.mode==='ai'?'KI denkt…':'Spieler 2 ist dran');
+    else updateStatus('Spieler 1 ist dran');
+
+    requestAnimationFrame(ts=>render(ts));
+
+    // AI turn
+    if(state.mode==='ai' && state.turn===LIGHT && !state.gameOver) {
+      triggerAIMove();
+    }
+  }
+
+  function computeForcedCaptures() {
+    const caps = getCaptureMovesForPlayer(state.board, state.turn);
+    if(caps.length>0) {
+      state.mustCapturePieces = [...new Map(caps.map(m=>[`${m.from.r},${m.from.c}`,m.from])).values()];
+    } else {
+      state.mustCapturePieces=[];
+    }
+  }
+
+  // ─────────────────────────────────────────────────────────────────
+  // AI TURN
+  // ─────────────────────────────────────────────────────────────────
+  function triggerAIMove() {
+    state.aiThinking=true;
+    showAIThinking(true);
+    // Use setTimeout to let UI update first
+    const delay = state.difficulty===3 ? 300 : 200;
+    setTimeout(()=>{
+      const move = getAIMove(state.board, state.difficulty);
+      state.aiThinking=false;
+      showAIThinking(false);
+      if(move) executeMove(move, true);
+      else { showWin(DARK); } // no moves = AI loses
+    }, delay + Math.random()*200);
+  }
+
+  function showAIThinking(show) {
+    const el=document.getElementById('aiThinking');
+    if(show) el.innerHTML='<div class="ai-dot"></div><div class="ai-dot"></div><div class="ai-dot"></div><span style="margin-left:4px">KI denkt…</span>';
+    else el.innerHTML='';
+  }
+
+  // ─────────────────────────────────────────────────────────────────
+  // UI HELPERS
+  // ─────────────────────────────────────────────────────────────────
+  function updatePlayerIndicator() {
+    const dot=document.getElementById('currentPlayerDot');
+    const name=document.getElementById('currentPlayerName');
+    if(state.turn===DARK) {
+      dot.className='player-dot dark'; name.textContent='Spieler 1';
+    } else {
+      dot.className='player-dot light'; name.textContent=state.mode==='ai'?'KI':'Spieler 2';
+    }
+  }
+
+  function updateStatus(msg) {
+    document.getElementById('statusMsg').textContent=msg;
+    if(state.mustCapturePieces.length>0 && !state.selected) {
+      document.getElementById('statusMsg').textContent='⚠️ Pflichtschlagen aktiv!';
+    }
+  }
+
+  function updateMoveHistory() {
+    const ol=document.getElementById('moveHistory');
+    const np=document.getElementById('noMoves');
+    if(state.moveHistory.length>0) {
+      np.style.display='none';
+      ol.innerHTML='';
+      const show=state.moveHistory.slice(-10).reverse();
+      show.forEach(m=>{ const li=document.createElement('li'); li.textContent=m; ol.appendChild(li); });
+    }
+  }
+
+  function showWin(winner) {
+    if(state.gameOver) return;
+    state.gameOver=true; state.winner=winner;
+    const overlay=document.getElementById('winOverlay');
+    const winText=document.getElementById('winText');
+    const winScore=document.getElementById('winScore');
+    const winTrophy=document.getElementById('winTrophy');
+    SFX.win();
+
+    let msg, pts=0;
+    if(winner===DARK || (state.mode==='human' && winner===LIGHT)) {
+      const p1wins = winner===DARK;
+      if(state.mode==='ai') {
+        if(winner===DARK) { msg='Du gewinnst! 🎉'; pts=50+state.difficulty*30; stats.wins++; stats.streak++; winTrophy.textContent='🏆'; }
+        else               { msg='KI gewinnt!';     pts=0; stats.losses++; stats.streak=0; winTrophy.textContent='😔'; }
+      } else {
+        msg=p1wins?'Spieler 1 gewinnt! 🎉':'Spieler 2 gewinnt! 🎉'; pts=50; stats.wins++; stats.streak++; winTrophy.textContent='🏆';
+      }
+    } else {
+      if(state.mode==='ai') {
+        msg='KI gewinnt!'; stats.losses++; stats.streak=0; winTrophy.textContent='😔';
+      } else {
+        msg='Spieler 2 gewinnt! 🎉'; pts=50; stats.wins++; stats.streak++; winTrophy.textContent='🏆';
+      }
+    }
+
+    state.score+=pts; stats.score=(stats.score||0)+pts;
+    winText.textContent=msg;
+    winScore.textContent=pts>0?`+${pts} Punkte`:'Viel Glück beim nächsten Mal';
+    document.getElementById('scoreDisplay').textContent=state.score;
+    saveStats();
+
+    setTimeout(()=>{ overlay.classList.add('show'); overlay.removeAttribute('aria-hidden'); }, 400);
+    render();
+  }
+
+  // ─────────────────────────────────────────────────────────────────
+  // NEW GAME
+  // ─────────────────────────────────────────────────────────────────
+  function newGame() {
+    state = {
+      board: initBoard(),
+      turn: DARK,
+      selected: null,
+      validMoves: [],
+      gameOver: false,
+      winner: null,
+      mode: state.mode,
+      difficulty: state.difficulty,
+      capturesDark: 0,
+      capturesLight: 0,
+      lastMove: null,
+      moveHistory: [],
+      score: state.score,
+      aiThinking: false,
+      mustCapturePieces: [],
+      animPiece: null,
+    };
+    anim=null;
+    computeForcedCaptures();
+    updatePlayerIndicator();
+    updateStatus('Wähle einen Stein');
+    document.getElementById('captures1').textContent='0';
+    document.getElementById('captures2').textContent='0';
+    document.getElementById('moveHistory').innerHTML='';
+    document.getElementById('noMoves').style.display='';
+    document.getElementById('winOverlay').classList.remove('show');
+    document.getElementById('winOverlay').setAttribute('aria-hidden','true');
+    showAIThinking(false);
+    render();
+  }
+
+  // Undo
+  let boardHistory = []; // stack of board states before each move
+  // We'll capture boards on each executeMove call
+  const _origExecute = executeMove;
+  // Monkey-patch via closure (simpler approach: store full states)
+  let stateHistory=[];
+  const origExec = executeMove;
+
+  // ─────────────────────────────────────────────────────────────────
+  // EVENT LISTENERS
+  // ─────────────────────────────────────────────────────────────────
+  document.getElementById('newGameBtn').addEventListener('click',()=>{
+    stateHistory=[];
+    newGame();
+  });
+  document.getElementById('winNewGame').addEventListener('click',()=>{
+    stateHistory=[];
+    newGame();
+  });
+
+  document.getElementById('undoBtn').addEventListener('click',()=>{
+    if(stateHistory.length===0||state.aiThinking) return;
+    const prev=stateHistory.pop();
+    state.board=prev.board;
+    state.turn=prev.turn;
+    state.capturesDark=prev.capturesDark;
+    state.capturesLight=prev.capturesLight;
+    state.lastMove=prev.lastMove;
+    state.moveHistory=prev.moveHistory;
+    state.gameOver=false;
+    state.selected=null; state.validMoves=[];
+    anim=null;
+    computeForcedCaptures();
+    updatePlayerIndicator();
+    updateStatus('Zug rückgängig');
+    document.getElementById('captures1').textContent=state.capturesDark;
+    document.getElementById('captures2').textContent=state.capturesLight;
+    document.getElementById('winOverlay').classList.remove('show');
+    updateMoveHistory();
+    render();
+  });
+
+  // Mode buttons
+  document.getElementById('modeVsAI').addEventListener('click',()=>{
+    state.mode='ai';
+    document.getElementById('modeVsAI').classList.add('active');
+    document.getElementById('modeVsAI').setAttribute('aria-pressed','true');
+    document.getElementById('modeVsHuman').classList.remove('active');
+    document.getElementById('modeVsHuman').setAttribute('aria-pressed','false');
+    document.getElementById('difficultyPanel').style.display='';
+    newGame();
+  });
+  document.getElementById('modeVsHuman').addEventListener('click',()=>{
+    state.mode='human';
+    document.getElementById('modeVsHuman').classList.add('active');
+    document.getElementById('modeVsHuman').setAttribute('aria-pressed','true');
+    document.getElementById('modeVsAI').classList.remove('active');
+    document.getElementById('modeVsAI').setAttribute('aria-pressed','false');
+    document.getElementById('difficultyPanel').style.display='none';
+    newGame();
+  });
+
+  // Difficulty buttons
+  document.querySelectorAll('.diff-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('.diff-btn').forEach(b=>{ b.classList.remove('active'); b.setAttribute('aria-pressed','false'); });
+      btn.classList.add('active'); btn.setAttribute('aria-pressed','true');
+      state.difficulty=parseInt(btn.dataset.diff);
+      newGame();
+    });
+  });
+
+  // Sound toggle
+  function toggleSound() {
+    soundEnabled=!soundEnabled;
+    const icon=document.getElementById('soundIcon');
+    const label=document.getElementById('soundLabel');
+    document.getElementById('soundToggle').setAttribute('aria-pressed',soundEnabled);
+    document.getElementById('soundToggle2').setAttribute('aria-pressed',soundEnabled);
+    if(soundEnabled) {
+      icon.innerHTML='<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>';
+      label.textContent='Ton an';
+    } else {
+      icon.innerHTML='<path d="M16.5 12A4.5 4.5 0 0 0 14 7.97v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51A8.796 8.796 0 0 0 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06A8.99 8.99 0 0 0 17.73 18l2 2 1.27-1.27L4.27 3zM19 0"/><path d="M11 4.55l-1.77 1.77L11 8.09V4.55zM16.5 12c0-.24-.02-.45-.05-.67l-3.45-3.45V7.97c1.4.68 2.48 2.06 2.5 3.56v.47z" opacity=".3"/>';
+      label.textContent='Ton aus';
+    }
+  }
+  document.getElementById('soundToggle').addEventListener('click', toggleSound);
+  document.getElementById('soundToggle2').addEventListener('click', toggleSound);
+
+  // Dark mode
+  const darkToggle=document.getElementById('darkToggle');
+  let isDark=localStorage.getItem('dame_dark')==='1';
+  if(isDark) document.body.classList.add('dark-mode');
+  darkToggle.addEventListener('click',()=>{
+    isDark=!isDark;
+    document.body.classList.toggle('dark-mode',isDark);
+    localStorage.setItem('dame_dark',isDark?'1':'0');
+  });
+
+  // ─────────────────────────────────────────────────────────────────
+  // WRAP executeMove to save undo history
+  // ─────────────────────────────────────────────────────────────────
+  const _realExecuteMove = executeMove;
+  // Override: save state before each human move
+  function executeMoveWithUndo(move, isAI=false) {
+    if(!isAI) {
+      stateHistory.push({
+        board: boardClone(state.board),
+        turn: state.turn,
+        capturesDark: state.capturesDark,
+        capturesLight: state.capturesLight,
+        lastMove: state.lastMove,
+        moveHistory: [...state.moveHistory],
+      });
+    }
+    executeMove(move, isAI);
+  }
+
+  // Patch the interaction handler to use undo-aware version
+  function handleCellClickPatched(r,c) {
+    const currentPlayer=state.turn;
+    if(state.mode==='ai' && currentPlayer===LIGHT) return;
+    const piece=state.board[r*8+c];
+    if(state.selected) {
+      const move=state.validMoves.find(m=>m.to.r===r&&m.to.c===c);
+      if(move) { executeMoveWithUndo(move,false); return; }
+      if(state.selected.r===r&&state.selected.c===c) { state.selected=null;state.validMoves=[];render();return; }
+      if(isOwn(piece,currentPlayer)) {
+        if(state.mustCapturePieces.length>0&&!state.mustCapturePieces.some(p=>p.r===r&&p.c===c)) { SFX.invalid();updateStatus('Pflichtschlagen!');return; }
+        selectPiece(r,c);return;
+      }
+      state.selected=null;state.validMoves=[];render();return;
+    }
+    if(isOwn(piece,currentPlayer)) {
+      if(state.mustCapturePieces.length>0&&!state.mustCapturePieces.some(p=>p.r===r&&p.c===c)) { SFX.invalid();updateStatus('Pflichtschlagen!');return; }
+      selectPiece(r,c);
+    }
+  }
+
+  // Also patch AI to save before AI moves (for undo both turns)
+  function triggerAIMovePatched() {
+    state.aiThinking=true;
+    showAIThinking(true);
+    const delay=state.difficulty===3?300:200;
+    setTimeout(()=>{
+      stateHistory.push({
+        board:boardClone(state.board),
+        turn:state.turn,
+        capturesDark:state.capturesDark,
+        capturesLight:state.capturesLight,
+        lastMove:state.lastMove,
+        moveHistory:[...state.moveHistory],
+      });
+      const move=getAIMove(state.board,state.difficulty);
+      state.aiThinking=false;
+      showAIThinking(false);
+      if(move) executeMove(move,true);
+      else showWin(DARK);
+    },delay+Math.random()*200);
+  }
+
+  // Re-wire event
+  canvas.removeEventListener('pointerdown',handlePointerDown);
+  canvas.addEventListener('pointerdown',(e)=>{
+    e.preventDefault();
+    if(state.gameOver||state.aiThinking) return;
+    const{r,c}=getCell(e);
+    if(r<0||r>7||c<0||c>7) return;
+    handleCellClickPatched(r,c);
+  });
+
+  // Re-wire keyboard
+  canvas.removeEventListener('keydown',handleKeyDown);
+  canvas.addEventListener('keydown',(e)=>{
+    if(state.gameOver||state.aiThinking) return;
+    if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key)){
+      e.preventDefault();
+      if(e.key==='ArrowUp')    keyFocus.r=Math.max(0,keyFocus.r-1);
+      if(e.key==='ArrowDown')  keyFocus.r=Math.min(7,keyFocus.r+1);
+      if(e.key==='ArrowLeft')  keyFocus.c=Math.max(0,keyFocus.c-1);
+      if(e.key==='ArrowRight') keyFocus.c=Math.min(7,keyFocus.c+1);
+      render(); drawFocusCursor();
+    }
+    if(e.key==='Enter'||e.key===' '){e.preventDefault();handleCellClickPatched(keyFocus.r,keyFocus.c);}
+    if(e.key==='Escape'){state.selected=null;state.validMoves=[];render();}
+  });
+
+  // Patch triggerAIMove inside executeMove — we need to override after state switch
+  // Since executeMove references triggerAIMove directly in its scope,
+  // we replace the global reference
+  // (JS closure — we must replace the function called inside executeMove)
+  // The cleanest way: re-define executeMove to call triggerAIMovePatched
+  // Given the complexity, we'll patch via the triggerAIMove variable directly
+  // This works because executeMove calls triggerAIMove as a local name
+  // — actually it calls the outer function. Let's just override it:
+  window.triggerAIMove = triggerAIMovePatched; // won't work for closure
+  // Alternative: simply accept that AI moves don't get saved to undo stack
+  // (undo button undoes back to before the player's move, which effectively undoes the AI response too)
+
+  // ─────────────────────────────────────────────────────────────────
+  // RIPPLE
+  // ─────────────────────────────────────────────────────────────────
+  document.addEventListener('pointerdown',function(e){
+    var h=e.target.closest('.rpl');
+    if(!h||h===canvas) return;
+    var rect=h.getBoundingClientRect(),
+        x=e.clientX-rect.left,y=e.clientY-rect.top,
+        sz=Math.max(rect.width,rect.height)*2.4,
+        w=document.createElement('span');
+    w.className='rpl-wave';
+    w.style.cssText='width:'+sz+'px;height:'+sz+'px;left:'+(x-sz/2)+'px;top:'+(y-sz/2)+'px';
+    h.appendChild(w);
+    w.addEventListener('animationend',function(){w.remove();});
+  },{passive:true});
+
+  // ─────────────────────────────────────────────────────────────────
+  // INIT
+  // ─────────────────────────────────────────────────────────────────
+  saveStats();  // load stats into UI
+  window.addEventListener('resize',()=>{ resize(); });
+  // Use ResizeObserver for precise container size changes
+  if(window.ResizeObserver) {
+    new ResizeObserver(()=>resize()).observe(document.getElementById('boardContainer'));
+  } else {
+    resize();
+  }
+
+  // Kick off first game
+  newGame();
+
+  // Log version for debugging
+  console.info('[klickspiele.de] Dame v1.0 loaded. Mode:', state.mode);
+  </script>
+
+</body>
+</html>

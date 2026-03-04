@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#F57C00">
+<title>Datenschutz – klickspiele.de</title>
+<meta name="robots" content="noindex,follow">
+<link rel="stylesheet" href="./style.css">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23F57C00'/><path d='M8 4 L8 24 L13 19 L16.5 27 L19.5 25.5 L16 17.5 L22 17.5 Z' fill='white'/></svg>">
+</head>
+<body>
+<a class="skip" href="#main">Zum Inhalt springen</a>
+<header class="top-bar">
+  <a href="https://klickspiele.de" class="home-btn rpl" aria-label="Zurück zu klickspiele.de">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2 L4 19 L8 15 L11 22 L13.5 21 L10.5 14 L16 14 Z"/></svg>
+  </a>
+  <span class="top-bar__title">Datenschutz</span>
+  <div class="top-bar__actions"></div>
+</header>
+<main id="main">
+  <div class="seo-section">
+    <div class="card">
+      <h1>Datenschutzerklärung</h1>
+
+      <h2>1. Grundsatz: Datensparsamkeit</h2>
+      <p>
+        klickspiele.de ist darauf ausgelegt, so wenig Daten wie möglich zu verarbeiten.
+        Das Memory-Spiel läuft vollständig in deinem Browser – es werden <strong>keine
+        personenbezogenen Daten an Server übertragen</strong>.
+      </p>
+
+      <h2>2. Lokal gespeicherte Daten (localStorage)</h2>
+      <p>
+        Das Spiel speichert <strong>ausschließlich lokal</strong> in deinem Browser:
+      </p>
+      <ul>
+        <li>Spieleinstellungen (Thema, Rastergröße, Timer, Anzeigemodus)</li>
+        <li>Highscores (Anzahl Züge, Zeit – ohne Personenbezug)</li>
+      </ul>
+      <p>
+        Diese Daten verlassen deinen Browser nicht. Du kannst sie jederzeit löschen,
+        indem du den Browser-Webspeicher (localStorage) für diese Domain leerst.
+      </p>
+
+      <h2>3. Keine Tracking-Cookies, keine Analyse</h2>
+      <p>
+        Wir setzen <strong>keine Tracking-Cookies</strong> ein und nutzen keine
+        Analyse-Dienste (Google Analytics, Facebook Pixel o. ä.). Es gibt keine
+        eingebetteten Werbeanzeigen.
+      </p>
+
+      <h2>4. Externe Ressourcen</h2>
+      <p>
+        Das Spiel lädt <strong>keine externen Schriften, Skripte oder Medien</strong>.
+        Alle Symbole basieren auf systemseitig vorhandenen Emoji/Unicode-Zeichen.
+      </p>
+
+      <h2>5. Hosting / Server-Logs</h2>
+      <p>
+        Beim Aufrufen unserer Website speichert der Webserver technische Zugriffsdaten
+        (IP-Adresse, Datum, aufgerufene Seite) in Server-Logs. Diese Daten werden
+        ausschließlich zur Fehleranalyse genutzt und nach spätestens 7 Tagen gelöscht.
+        Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse).
+      </p>
+
+      <h2>6. Deine Rechte</h2>
+      <p>
+        Du hast das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung
+        der Verarbeitung deiner Daten sowie auf Datenübertragbarkeit.
+        Wende dich dazu an: [kontakt@klickspiele.de]
+      </p>
+
+      <p style="margin-top:24px;">
+        <a href="./index.html" class="btn-filled rpl" style="display:inline-flex; align-items:center; gap:8px; text-decoration:none;">
+          ← Zurück zum Spiel
+        </a>
+      </p>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <nav class="site-footer__nav">
+    <a href="https://klickspiele.de">klickspiele.de</a>
+    <a href="./impressum.html">Impressum</a>
+    <a href="./datenschutz.html">Datenschutz</a>
+  </nav>
+  <p class="site-footer__copy">© 2025 klickspiele.de · Kostenlose Spiele ohne Anmeldung</p>
+</footer>
+<script>
+document.addEventListener('pointerdown',function(e){var h=e.target.closest('.rpl');if(!h)return;var r=h.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,sz=Math.max(r.width,r.height)*2.4,w=document.createElement('span');w.className='rpl-wave';w.style.cssText='width:'+sz+'px;height:'+sz+'px;left:'+(x-sz/2)+'px;top:'+(y-sz/2)+'px';h.appendChild(w);w.addEventListener('animationend',function(){w.remove();});},{passive:true});
+</script>
+</body>
+</html>
